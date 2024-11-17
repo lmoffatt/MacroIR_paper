@@ -48,6 +48,7 @@
 \usepackage{mathrsfs}%
 \usepackage[title]{appendix}%
 \usepackage{xcolor}%
+\usepackage{color, colortbl}
 \usepackage{textcomp}%
 \usepackage{manyfoot}%
 \usepackage{booktabs}%
@@ -82,7 +83,7 @@
 \title[Article Title]{Bayesian Evidence of alternative models of P2X2 activation}
 
 \author*[1]{\fnm{Luciano} \sur{Moffatt}}\email{lmoffatt@qi.fcen.uba.ar}
-\author[2]{\fnm{Gustavo} \sur{Pierdominici-Sottile}}\email{gustavopierdominici@gmail.com }
+\author[2]{\fnm{Gustavo} \sur{Pierdominici-Sottile}}\email{gsottile@unq.edu.ar}
 %\equalcont{These authors contributed equally to this work.}
 
 %\author[1,2]{\fnm{Third} \sur{Author}}\email{iiiauthor@gmail.com}
@@ -124,28 +125,30 @@ We anticipate that our Bayesian kinetic analysis will be instrumental in validat
 
 \maketitle
 
-\section{Introduction}\label{sec1}
+\section{Introduction}
+\label{sec1}
 
 
 Ligand-gated ion channels (LGICs) are multimeric membrane proteins that allow ions to cross the cell membrane in response to ligand binding \cite{p2x_cuerpo_humano}. These channels play critical roles in synaptic transmission, muscle contraction, and other physiological processes (add them), making them important targets in neuropharmacology \cite{p2x_drugs,therapeutic,p2x7_pharmacology}. LGIC families are classified based on their subunit composition and the location of ligand-binding sites. In pentameric Cys-loop receptors, the binding site is located at the interface between adjacent subunits, while in tetrameric glutamate receptors, it is within individual subunits. In trimeric P2X receptors, like Cys-loop receptors, the binding sites are located between subunits.
 
 P2X receptors are the only LGICs for which high-resolution structures of both open and closed conformations are available \cite{cerrada_p2x,abierta_p2x}. These structures reveal that ATP binding triggers a rotational movement in all three subunits, leading to the separation of the transmembrane domains that form the pore, allowing ions to pass through. However, the intermediate states between these conformations remain unresolved. Understanding these intermediate states is essential for elucidating the mechanism of channel opening, which could inform the design of drugs that modulate P2X receptor function.
 
-Two types of gating models have been proposed for P2X receptor activation: sequential rotation models, where subunits rotate one at a time to gradually open the pore, and synchronous models, where all subunits rotate together in a concerted motion. In sequential models, a key question arises about potential asymmetry: whether one subunit rotates first, specifically the subunit bound to the ATP by the Lower Body or the one bound by the Upper Body. Resolving this question is crucial for understanding the full activation mechanism of P2X receptors opening the door for a clever pharmacological design. 
+Two types of gating models have been proposed for P2X receptor activation: sequential rotation models, where subunits rotate one at a time to gradually open the pore, and synchronous models, where all subunits rotate together in a concerted motion. In sequential models, a key question arises about potential asymmetry: whether one subunit rotates first, specifically the subunit bound to the ATP by the Lower Body (LB) or the one bound by the Upper Body (UB). Resolving this question is crucial for understanding the full activation mechanism of P2X receptors opening the door for a clever pharmacological design. 
 
-In the case of P2X2 receptors, recordings of macroscopic currents in response to ultrashort (0.2 ms) ATP pulses provide valuable insights into the channel's activation process \cite {Moffatt_hume}. Previous models fitted to these data have proposed both sequential and synchronous gating schemes. However, early models incorrectly assumed intrasubunit binding sites akin to glutamate receptors, and no direct comparison of the evidence for the two gating models has been performed. 
+In the case of P2X2 receptors, recordings of macroscopic currents in response to ultrashort (0.2 ms) ATP pulses provide valuable insights into the channel's activation process \cite{Moffatt_hume}. Previous models fitted to these data have proposed both sequential and synchronous gating schemes. However, early models incorrectly assumed intrasubunit binding sites akin to glutamate receptors, and no direct comparison of the evidence for the two gating models has been performed. 
 
-Macrocurrents reflect the collective activity of numerous channels. The fluctuations in these currents contain valuable kinetic information. To analyze these fluctuations, we developed a novel algorithm, MacroIR, which improves upon the Macroscopic Recursive (MacroR) algorithm by accounting for finite integration times in voltage clamp recordings. MacroIR calculates the mean conductance and its variance over specified time intervals, providing a more accurate approximation of the likelihood function.
+Macrocurrents reflect the collective activity of numerous channels. The fluctuations in these currents contain valuable kinetic information. To analyze these fluctuations, we developed a novel algorithm, MacroIR, which improves the Macroscopic Recursive (MacroR) algorithm by accounting for finite integration times in voltage clamp recordings. MacroIR calculates the mean conductance and its variance over specified time intervals, providing a more accurate approximation of the likelihood function.
 
-In this study, we applied MacroIR to our previously published recordings of ultrashort ATP pulses to investigate P2X2 receptor gating. We introduced new sequential gating schemes that take into account the inter-subunit binding sites and employed an affine-invariant Monte Carlo Markov chain (MCMC) algorithm to calculate posterior distributions and model evidence. Our results reveal that a sequential model with asymmetric allosteric coupling has a stronger evidence than either  symmetric sequential or synchronous models. Our study provides a novel framework for analyzing gating mechanisms in P2X2 receptors by combining advanced kinetic modeling with the MacroIR algorithm, offering new insights into receptor activation.
-
-
-\section{Methods}\label{sec11}
+In this study, we applied MacroIR to our previously published recordings of ultrashort ATP pulses to investigate P2X2 receptor gating. We introduced new sequential gating schemes that take into account the inter-subunit binding sites and implement an affine-invariant Monte Carlo Markov chain (MCMC) algorithm to calculate posterior distributions and model evidence. Our results reveal that a sequential model with asymmetric allosteric coupling has a stronger evidence than either symmetric sequential or synchronous models. Our study provides a novel framework for analyzing gating mechanisms in P2X2 receptors by combining advanced kinetic modeling with the MacroIR algorithm, offering new insights into receptor activation.
 
 
-\subsubsection{Markov model of the behavior of a single channel}
+\section{Methods}
+\label{sec11}
 
-From the early days of single channel recordings its was clear that the channel was open and closed at irregular intervals in what seemed to be a stochastic process, what is unsurprising given the thermal fluctuations a macromolecule is exposed to. Therefore it was straightforward to model it as a Markov process of a finite number of states $k$, each representing a subset of the conformations of the whole protein. The Markov process cannot ascertain where the channel is at each moment of time but it provides a probability of finding the channel at each state defined by the state vector $\bold p$. It assumes a constant jump probability rate from one state $i$  to the other $j$, $k_{ij}$. The evolution of the probability of finding the channel in each state is set by the vector $\bold p$ - for a time lapse $t$ is defined by first order differential equation: 
+
+\subsection{Markov model of the behavior of a single channel}
+
+From the early days of single channel recordings its was clear that channels open and close at irregular intervals in what seemed to be a stochastic process, what is unsurprising given the thermal fluctuations a macromolecule is exposed to. Therefore it was straightforward to model it as a Markov process of a finite number of states $k$, each representing a subset of the conformations of the whole protein. The Markov process cannot ascertain where the channel is at each moment of time but it provides a probability of finding the channel at each state defined by the state vector $\bold p$. It assumes a constant jump probability rate from one state $i$  to the other $j$, $k_{ij}$. The evolution of the probability of finding the channel in each state is set by the vector $\bold p$ - for a time lapse $t$ is defined by first order differential equation: 
 
 \begin{equation}
 \frac {d \bold p}{dt}(t) = \bold p(t) \cdot \bold Q (t)
@@ -168,9 +171,9 @@ The integration of Eq. \ref{eq:eq1} allow us to calculate the evolution of $ \bo
 The actual state of the Markov process is hidden, it is not observable. What is observable is the single current that each state generates. This is coded in the current vector $\bold \gamma$. 
 
 
-\subsubsection{Bayesian model of instantaneous measurements of a single channel behavior}
+\subsection{Bayesian model of instantaneous measurements of a single channel behavior}
 
-Suppose now we made a one "instantaneous" current measurement y. We are told that the state
+Suppose now we made a one ``instantaneous'' current measurement $y$. We are told that the state
  probability is $p_{prior}$. We are told that the instrumental noise for each measurement has a variance of $\epsilon$. 
 Then, we can obtain the posterior probability and the likelihood of measurement 
 \begin{equation}
@@ -182,7 +185,7 @@ Lik=P(y_{obs})= \sum_i Normal (p_i \cdot \gamma_i - y_{obs}, \epsilon^2 )
 p_{post} = p_i \cdot \frac {Normal(p_i \cdot \gamma_i -y, \epsilon)}{P(y_{obs})}
 \end{equation}
 
-now suppose we do another measurement after some time t. Then 
+now suppose we do another measurement after some time $t$. Then 
 
 \begin{align}
 p_{prior}(t) = p_{post}(0) \cdot \bold P  \nonumber \\
@@ -192,7 +195,7 @@ p_{prior}(t) = p_{post}(0) \cdot \bold P  \nonumber \\
 
 and we can in the same way calculate the next posterior and Likelihood
 
-The total logLikelihood is
+The total logLikelihood ($logLik$) is:
 \begin{equation}
 logLik= \sum_i \log(Lik_i)
 \end{equation}
@@ -200,9 +203,9 @@ logLik= \sum_i \log(Lik_i)
  
 
 
-\subsubsection{Bayesian model of time averaged measurements of a single channel behavior}
+\subsection{Bayesian model of time averaged measurements of a single channel behavior}
 Suppose now that instead of an instantaneous measurement, we have the averaged current during the interval $t$. 
-We have also the prior state $p_{prior}$ at the beginning of the interval t. We can also calculate the prior state probability at the end of the interval t, which is conditional to the probability state at the begining of the interval. Therefore, the joint state probability matrix P  of starting at state i and ending at state j is given by
+We have also the prior state $p_{prior}$ at the beginning of the interval t. We can also calculate the prior state probability at the end of the interval t, which is conditional to the probability state at the beginning of the interval. Therefore, the joint state probability matrix P  of starting at state i and ending at state j is given by
 
 \begin{equation}
 \bold \Pi  = diag (\bold p) \cdot \bold P
@@ -463,24 +466,35 @@ Scheme IV is scheme III plus a flip state.
 We obtain the evidence of all these four schemes. Inclusion of the flip state resulted in higher evidence and there was strong evidence for interaction in binding and complex gating. 
 However it is difficult to associate these complex gating to any particular conformational change in the receptor. It is for the later that we used allosteric schemes. 
 
-\subsection{allosteric Kinetic schemes}\label{subsec2}
-One of the key questions in LGIC activation is how the binding of the agonist molecule triggers the opening of the pore. Schemes 1-4, simply assume that binding of the 3 ATP is a necessary condition for that, without any further consideration. 
-However, if we analyze both binding and gating as separate but coupled conformational changes, we see that in these schemes gating can only occur on bound states and that open states cannot loose the ATP. So these schemes assume an "infinite" coupling between binding and gating. Now we can relax this assumption and allow for the coupling to be big but not infinite and see if this relaxation can account for some of the complex gating that is described by schemes 3-4. 
-\subsubsection{Scheme V} \label{scheme VI}
+\subsection{Allosteric Kinetic schemes}
+\label{subsec2}
+
+One of the key questions in LGIC activation is how the binding of the agonist molecule triggers the opening of the pore. Schemes I-IV, simply assume that binding of the 3 ATP is a necessary condition for that, without any further consideration. 
+However, if we analyze both binding and gating as separate but coupled conformational changes, we see that in these schemes gating can only occur on bound states and that open states cannot loose the ATP. So these schemes assume an "infinite" coupling between binding and gating. Now we can relax this assumption and allow for the coupling to be big but not infinite and see if this relaxation can account for some of the complex gating that is described by schemes III-IV. 
+
+\subsubsection{Scheme V} 
+\label{scheme V}
 Scheme V does exactly that. It assumes as scheme I that each ATP binds to each closed subunit with the same rate, but now we allow for partially bound states to also open. Opening can occur even for unbounded states, although with a very low probability. Binding of each ATP increases the binding rate by a fixed factor and decreases the closing rate by another fixed factor. 
 
 
-\subsubsection{Schemes 6 and 7} \label{scheme67}
-Scheme V does not explain what the flip state might be. There are two possibilities. Either, flip state is a global state that comprises a change in the conformation of the whole protein or is a change that occurs at each subunit separately. Or in other words, flipping could happen synchronously on the whole receptor or sequentially at each subunit. 
-Scheme 6 represents the former, Scheme 7 the later. In both cases we assume 3 conformational changes: binding at each subunit, flipping either the whole receptor or at each subunit  and gating at the whole receptor. We assume also 3 allosteric couplings: BF (binding-flipping), FG (flipping- gating) and BG (binding- gating). 
+\subsubsection{Schemes VI and VII} 
+\label{scheme67}
 
-\subsubsection{Schemes 8-11} \label{scheme67}
-Schemes 1-7 were proposed before it became clear that purinergic binding site was inter-subunit and not intrasubunit. Also it became clear that subunit rotation is a good candidate as a conformational counterpart of flipping. We could now hypothesize another conformational change: rotation of each subunit. Now each rotated subunit would contribute to change the opening of the pore, so we could reduce the number of states by modeling the single state current as a parametric function of the number of rotated subunits. 
-Then, a distinction arises from the subunit left or right of the binding site, so we could consider two different allosteric couplings: RB, rotation-binding and BR, tation, depending on wether the subunit left or right of the binding is considered. Also a ternary interaction RBR  rotation-binding-rotation might be consider as well. We considered the following schemes:
-Scheme 8, only one ternary allosteric interaction RBR
-Scheme 9 we consider that the binary interaction binding rotation is symmetric, being the same with the left and right subunit. 
-Scheme 10 considers two binary interactions: RB and BR.
-Scheme 11 considers all three interactions RB BR and RBR. 
+Scheme V does not explain what the flip state might be. There are two possibilities. Either, flip state is a global state that comprises a change in the conformation of the whole protein or is a change that occurs at each subunit separately. Or in other words, flipping could happen synchronously on the whole receptor or sequentially at each subunit. 
+Scheme VI represents the former, Scheme VII the later. In both cases we assume three conformational changes: binding at each subunit, flipping either the whole receptor or at each subunit  and gating at the whole receptor. We assume also three allosteric couplings: BF (binding-flipping), FG (flipping-gating) and BG (binding-gating). 
+
+\subsubsection{Schemes VIII-XI} 
+\label{scheme811}
+
+Schemes I-VII were proposed before it became clear that purinergic binding site was inter-subunit and not intrasubunit. Also it became clear that subunit rotation is a good candidate as a conformational counterpart of flipping. We could now hypothesize another conformational change: rotation of each subunit. Now each rotated subunit would contribute to change the opening of the pore, so we |could reduce the number of states by modeling the single state current as a parametric function of the number of rotated subunits. 
+Then, a distinction arises from the subunit left or right of the binding site, so we could consider two different allosteric couplings: RB, rotation-binding; and BR, binding-rotation, depending on wether the subunit left or right of the binding is considered. Also a ternary interaction RBR rotation-binding-rotation might be consider as well. We considered the following schemes:
+
+\begin{enumerate}
+\item Scheme VIII, only one ternary allosteric interaction RBR.
+\item Scheme IX considers that the binary interaction binding rotation is symmetric, being the same with the left and right subunit. 
+\item Scheme X considers two binary interactions: RB and BR.
+\item Scheme XI considers all three interactions RB BR and RBR. 
+\end{enumerate}
 
 \subsection{Evidence of different schemes: what does it mean?}
 \begin{figure}[h]
@@ -491,35 +505,47 @@ Scheme 11 considers all three interactions RB BR and RBR.
 
 
 
-Highest Evidence was found for scheme 4 (\ref{fig_evidences}). That means that there still information in the kinetic responses that remains to be explained, Scheme 4 does not explain it until we found a reasonable mechanistic counterpart. 
-Then, all all the remaining schemes the one with the highest evidence is scheme 10. This tell us that sequential asymmetric gating is the most likely mechanism. There is strong evidence against a symmetrical gating (10 vs 9) and there is evidence against a tertiary interaction with the other rotating subunit (10 vs 11). All the gating mechanism is explained by an asymmetric binding induced conformational change. No inter-subunit interaction is detected by the models. 
-Also, there is strong evidence that supports this sequential asymmetric gating model against a synchronous gating model (scheme 6). 
+Highest Evidence was found for Scheme IV (\ref{fig_evidences}). That means that there still information in the kinetic responses that remains to be explained, Scheme IV does not explain it until we found a reasonable mechanistic counterpart. 
+Then, all all the remaining schemes the one with the highest evidence is Scheme X. This tell us that sequential asymmetric gating is the most likely mechanism. There is strong evidence against a symmetrical gating (X vs IX) and there is evidence against a tertiary interaction with the other rotating subunit (X vs XI). All the gating mechanism is explained by an asymmetric binding induced conformational change. No inter-subunit interaction is detected by the models. 
+Also, there is strong evidence that supports this sequential asymmetric gating model against a synchronous gating model (scheme VI). 
 However, a more sophisticated (and computationally prohibitive) synchronous diffusive process (where rotation is a continuous and possibly contagious process) cannot be discarded, so there is still some chance for a synchronous model. 
 
 
 
 
-\subsection{posterior distribution of parameters of scheme 10: why is it bimodal}
+\subsection{Posterior distribution of parameters of Scheme X: why is it bimodal}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{Figure_2_ABC.eps}
-\caption{Posterior distribution of allosteric parameters}\label{fig_bimodal}
+\caption{Posterior distribution of allosteric parameters}
+\label{fig_bimodal}
 \end{figure}
 
 
-Schemes cannot mathematically differentiate between interaction with the left subunit or the right subunit, there is no left-right information in the macrocurrents. Therefore it is not surprising that the posterior distribution of the allosteric parameters of scheme 10 are all bimodal. As a way to break such symmetry in the priors we arbitrarily set BR to be 10 times RB. However, as the prior standard deviation of the $log10$ of both paramters (and all the remaining ones) was set to be 2, there was enough exploration at low thermodynamic temperatures to jump from one minimum to the other, so both values appear, although at different frequencies. 
+Schemes cannot mathematically differentiate between interaction with the left subunit or the right subunit, there is no left-right information in the macrocurrents. Therefore it is not surprising that the posterior distribution of the allosteric parameters of scheme 10 are all bimodal. As a way to break such symmetry in the priors we arbitrarily set BR to be 10 times RB. However, as the prior standard deviation of the $log10$ of both parameters (and all the remaining ones) was set to be 2, there was enough exploration at low thermodynamic temperatures to jump from one minimum to the other, so both values appear, although at different frequencies. 
 This bimodality can be removed by determining which is greater if RB or BR, and if the former if the case, swap all the remaining parameters. In this was unimodal distribution were recovered for all allosteric parameters. 
 
 \subsection{Asymmetry in the allosteric coupling. analysis of parameters, rates and states}
-Once we correct for the bimodality we find that whereas one interaction is considerable (100-10E4 times), the other is much smaller(0-2 times). So, upon binding, there is a strong allosteric interaction with one subunit and a weak interaction with the other. This second subunit will have strong interaction at the other binding site that it is forming. 
+
+Once we correct for the bimodality we find that whereas one interaction is considerable (100-10$^4$ times), the other is much smaller(0-2 times). So, upon binding, there is a strong allosteric interaction with one subunit and a weak interaction with the other. This second subunit will have strong interaction at the other binding site that it is forming. 
 If we then look at the decomposition of the allosteric interaction we see the following.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{Figure_3_definitive.pdf}
+\caption{Posterior distribution of allosteric parameters}
+\label{fig_bimodal}
+\end{figure}
+
+
 First, binding 
 
 
 
 
-\subsection{ One path for activating, another for deactivating}
+\subsection{One path for activating, another for deactivating}
 
 \subsection{white and pink noise}
 
@@ -536,66 +562,28 @@ For simultaneous rotation of all subunits, this would not make much of a differe
 
 
 
-
-
-
-%Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
-
-%\section{This is an example for first level head---section head}\label{sec3}
-
-%\subsection{This is an example for second level head---subsection head}\label{subsec2}
-
-%\subsubsection{This is an example for third level head---subsubsection head}\label{subsubsec2}
-
-%Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. 
-
-%\section{Equations}\label{sec4}
-
-%Equations in \LaTeX\ can either be inline or on-a-line by itself (``display equations''). For
-%inline equations use the \verb+$...$+ commands. E.g.: The equation
-%$H\psi = E \psi$ is written via the command \verb+$H \psi = E \psi$+.
-
-%For display equations (with auto generated equation numbers)
-%one can use the equation or align environments:
-%\begin{equation}
-%\|\tilde{X}(k)\|^2 \leq\frac{\sum\limits_{i=1}^{p}\left\|\tilde{Y}_i(k)\right\|^2+\sum\limits_{j=1}^{q}\left\|\tilde{Z}_j(k)\right\|^2 }{p+q}.\label{eq1}
-%\end{equation}
-%where,
-%\begin{align}
-%D_\mu &=  \partial_\mu - ig \frac{\lambda^a}{2} A^a_\mu \nonumber \\
-%F^a_{\mu\nu} &= \partial_\mu A^a_\nu - \partial_\nu A^a_\mu + g f^{abc} A^b_\mu A^a_\nu \label{eq2}
-%\end{align}
-%Notice the use of \verb+\nonumber+ in the align environment at the end
-%of each line, except the last, so as not to produce equation numbers on
-%lines where no equation numbers are required. The \verb+\label{}+ command
-%should only be used at the last line of an align environment where
-%\verb+\nonumber+ is not used.
-%\begin{equation}
-%Y_\infty = \left( \frac{m}{\textrm{GeV}} \right)^{-3}
-%    \left[ 1 + \frac{3 \ln(m/\textrm{GeV})}{15}
-%    + \frac{\ln(c_2/5)}{15} \right]
-%\end{equation}
-%The class file also supports the use of \verb+\mathbb{}+, \verb+\mathscr{}+ and
-%\verb+\mathcal{}+ commands. As such \verb+\mathbb{R}+, \verb+\mathscr{R}+
-%and \verb+\mathcal{R}+ produces $\mathbb{R}$, $\mathscr{R}$ and $\mathcal{R}$
-%respectively (refer Subsubsection~\ref{subsubsec2}).
-
 \section{Tables}\label{sec5}
 
 
 \begin{table}[h]
-\caption{Posterior distribution of scheme 10}\label{tab1}%
-\begin{tabular}{@{}lllll@{}}
-\toprule
- & parameters & median & CI\_hdi\_low & CI\_hdi\_hi \\ 
-\midrule
-1 & RB & 632.661 & 0.1441125 & 3.918861e+03 \\ 
-  2 & RB\_ron & 2.454486e+04 & 1.260341 & 1.401152e+05 \\ 
-  3 & RB\_bon & 6.248909 & 1.933688e-06 & 38.56124 \\ 
-  4 & BR & 1.612385 & 0.2657464 & 1.106451e+03 \\ 
-  5 & BR\_ron & 2.241492 & 1.077178 & 3.979711e+04 \\ 
-  6 & BR\_bon & 6.986098e-03 & 9.626552e-07 & 11.16657 \\ 
-\botrule
+\caption{Posterior distribution of Scheme X}\label{tab1}%
+\begin{tabular}{c|c|c|c}
+\hline
+\hline
+  parameters & median & CI\_hdi\_low & CI\_hdi\_hi \\ 
+\hline
+\hline
+  \rowcolor[HTML]{efefef} 
+  RB & 632.661 & 0.1441125 & 3.918861 10^{3} \\ 
+  RB_{rot} & 2.454486 10^{4} & 1.260341 & 1.401152 10^{5} \\ 
+  \rowcolor[HTML]{efefef} 
+  RB_{bon} & 6.248909 & 1.933688 10^{-6} & 38.56124 \\ 
+  BR & 1.612385 & 0.2657464 & 1.106451 10^{3} \\ 
+  \rowcolor[HTML]{efefef} 
+  BR_{rot} & 2.241492 & 1.077178 & 3.979711 10^{4} \\ 
+  BR_{bon} & 6.986098 10^{-3} & 9.626552 10^{-7} & 11.16657 \\ 
+\hline
+\hline
 \end{tabular}
 \footnotetext{Source: This is an example of table footnote. This is an example of table footnote.}
 \footnotetext[1]{Example for a first table footnote. This is an example of table footnote.}
@@ -604,67 +592,12 @@ For simultaneous rotation of all subunits, this would not make much of a differe
 
 
 
-
-
-
-
-Tables can be inserted via the normal table and tabular environment. To put
-footnotes inside tables you should use \verb+\footnotetext[]{...}+ tag.
-The footnote appears just below the table itself (refer Tables~\ref{tab1} and \ref{tab2}). 
-For the corresponding footnotemark use \verb+\footnotemark[...]+
-
-\begin{table}[h]
-\caption{Caption text}\label{tab1}%
-\begin{tabular}{@{}llll@{}}
-\toprule
-Column 1 & Column 2  & Column 3 & Column 4\\
-\midrule
-row 1    & data 1   & data 2  & data 3  \\
-row 2    & data 4   & data 5\footnotemark[1]  & data 6  \\
-row 3    & data 7   & data 8  & data 9\footnotemark[2]  \\
-\botrule
-\end{tabular}
-\footnotetext{Source: This is an example of table footnote. This is an example of table footnote.}
-\footnotetext[1]{Example for a first table footnote. This is an example of table footnote.}
-\footnotetext[2]{Example for a second table footnote. This is an example of table footnote.}
-\end{table}
 
 \noindent
+
 The input format for the above table is as follows:
 
 
-%\iffalse
-
-%%=============================================%%
-%% For presentation purpose, we have included  %%
-%% \bigskip command. Please ignore this.       %%
-%%=============================================%%
-\bigskip
-\begin{verbatim}
-\begin{table}[<placement-specifier>]
-\caption{<table-caption>}\label{<table-label>}%
-\begin{tabular}{@{}llll@{}}
-\toprule
-Column 1 & Column 2 & Column 3 & Column 4\\
-\midrule
-row 1 & data 1 & data 2	 & data 3 \\
-row 2 & data 4 & data 5\footnotemark[1] & data 6 \\
-row 3 & data 7 & data 8	 & data 9\footnotemark[2]\\
-\botrule
-\end{tabular}
-\footnotetext{Source: This is an example of table footnote. 
-This is an example of table footnote.}
-\footnotetext[1]{Example for a first table footnote.
-This is an example of table footnote.}
-\footnotetext[2]{Example for a second table footnote. 
-This is an example of table footnote.}
-\end{table}
-\end{verbatim}
-\bigskip
-%%=============================================%%
-%% For presentation purpose, we have included  %%
-%% \bigskip command. Please ignore this.       %%
-%%=============================================%%
 
 
 \begin{table}[h]
@@ -826,137 +759,14 @@ Write('Pascal keywords.');
 \end{lstlisting}
 \end{minipage}
 
-\section{Cross referencing}\label{sec8}
 
-Environments such as figure, table, equation and align can have a label
-declared via the \verb+\label{#label}+ command. For figures and table
-environments use the \verb+\label{}+ command inside or just
-below the \verb+\caption{}+ command. You can then use the
-\verb+\ref{#label}+ command to cross-reference them. As an example, consider
-the label declared for Figure~\ref{fig1} which is
-\verb+\label{fig1}+. To cross-reference it, use the command 
-\verb+Figure \ref{fig1}+, for which it comes up as
-``Figure~\ref{fig1}''. 
-
-To reference line numbers in an algorithm, consider the label declared for the line number 2 of Algorithm~\ref{algo1} is \verb+\label{algln2}+. To cross-reference it, use the command \verb+\ref{algln2}+ for which it comes up as line~\ref{algln2} of Algorithm~\ref{algo1}.
-
-\subsection{Details on reference citations}\label{subsec7}
-
-Standard \LaTeX\ permits only numerical citations. To support both numerical and author-year citations this template uses \verb+natbib+ \LaTeX\ package. For style guidance please refer to the template user manual.
-
-Here is an example for \verb+\cite{...}+: \cite{bib1}. Another example for \verb+\citep{...}+: \citep{bib2}. For author-year citation mode, \verb+\cite{...}+ prints Jones et al. (1990) and \verb+\citep{...}+ prints (Jones et al., 1990).
-
-All cited bib entries are printed at the end of this article: \cite{bib3}, \cite{bib4}, \cite{bib5}, \cite{bib6}, \cite{bib7}, \cite{bib8}, \cite{bib9}, \cite{bib10}, \cite{bib11}, \cite{bib12} and \cite{bib13}.
+\section{Discussion}
+\label{dis}
 
 
-\section{Examples for theorem like environments}\label{sec10}
+\section{Conclusion}
+\label{con}
 
-For theorem like environments, we require \verb+amsthm+ package. There are three types of predefined theorem styles exists---\verb+thmstyleone+, \verb+thmstyletwo+ and \verb+thmstylethree+ 
-
-%%=============================================%%
-%% For presentation purpose, we have included  %%
-%% \bigskip command. Please ignore this.       %%
-%%=============================================%%
-\bigskip
-\begin{tabular}{|l|p{19pc}|}
-\hline
-\verb+thmstyleone+ & Numbered, theorem head in bold font and theorem text in italic style \\\hline
-\verb+thmstyletwo+ & Numbered, theorem head in roman font and theorem text in italic style \\\hline
-\verb+thmstylethree+ & Numbered, theorem head in bold font and theorem text in roman style \\\hline
-\end{tabular}
-\bigskip
-%%=============================================%%
-%% For presentation purpose, we have included  %%
-%% \bigskip command. Please ignore this.       %%
-%%=============================================%%
-
-For mathematics journals, theorem styles can be included as shown in the following examples:
-
-\begin{theorem}[Theorem subhead]\label{thm1}
-Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text. 
-Example theorem text. Example theorem text. Example theorem text. Example theorem text. Example theorem text. 
-Example theorem text. 
-\end{theorem}
-
-Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
-
-\begin{proposition}
-Example proposition text. Example proposition text. Example proposition text. Example proposition text. Example proposition text. 
-Example proposition text. Example proposition text. Example proposition text. Example proposition text. Example proposition text. 
-\end{proposition}
-
-Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
-
-\begin{example}
-Phasellus adipiscing semper elit. Proin fermentum massa
-ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
-at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. 
-\end{example}
-
-Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
-
-\begin{remark}
-Phasellus adipiscing semper elit. Proin fermentum massa
-ac quam. Sed diam turpis, molestie vitae, placerat a, molestie nec, leo. Maecenas lacinia. Nam ipsum ligula, eleifend
-at, accumsan nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. 
-\end{remark}
-
-Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
-
-\begin{definition}[Definition sub head]
-Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. Example definition text. 
-\end{definition}
-
-Additionally a predefined ``proof'' environment is available: \verb+\begin{proof}+ \verb+...+ \verb+\end{proof}+. This prints a ``Proof'' head in italic font style and the ``body text'' in roman font style with an open square at the end of each proof environment. 
-
-\begin{proof}
-Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. 
-\end{proof}
-
-Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text. Sample body text.
-
-\begin{proof}[Proof of Theorem~{\upshape\ref{thm1}}]
-Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. Example for proof text. 
-\end{proof}
-
-\noindent
-For a quote environment, use \verb+\begin{quote}...\end{quote}+
-\begin{quote}
-Quoted text example. Aliquam porttitor quam a lacus. Praesent vel arcu ut tortor cursus volutpat. In vitae pede quis diam bibendum placerat. Fusce elementum
-convallis neque. Sed dolor orci, scelerisque ac, dapibus nec, ultricies ut, mi. Duis nec dui quis leo sagittis commodo.
-\end{quote}
-
-Sample body text. Sample body text. Sample body text. Sample body text. Sample body text (refer Figure~\ref{fig1}). Sample body text. Sample body text. Sample body text (refer Table~\ref{tab3}). 
-
-
-
-
-
-
-
-\textbf{Ethical approval declarations} (only required where applicable) Any article reporting experiment/s carried out on (i)~live vertebrate (or higher invertebrates), (ii)~humans or (iii)~human samples must include an unambiguous statement within the methods section that meets the following requirements: 
-
-\begin{enumerate}[1.]
-\item Approval: a statement which confirms that all experimental protocols were approved by a named institutional and/or licensing committee. Please identify the approving body in the methods section
-
-\item Accordance: a statement explicitly saying that the methods were carried out in accordance with the relevant guidelines and regulations
-
-\item Informed consent (for experiments involving humans or human tissue samples): include a statement confirming that informed consent was obtained from all participants and/or their legal guardian/s
-\end{enumerate}
-
-If your manuscript includes potentially identifying patient/participant information, or if it describes human transplantation research, or if it reports results of a clinical trial then  additional information will be required. Please visit (\url{https://www.nature.com/nature-research/editorial-policies}) for Nature Portfolio journals, (\url{https://www.springer.com/gp/authors-editors/journal-author/journal-author-helpdesk/publishing-ethics/14214}) for Springer Nature journals, or (\url{https://www.biomedcentral.com/getpublished/editorial-policies\#ethics+and+consent}) for BMC.
-
-\fi
-
-\section{Discussion}\label{sec12}
-
-Discussions should be brief and focused. In some disciplines use of Discussion or `Conclusion' is interchangeable. It is not mandatory to use both. Some journals prefer a section `Results and Discussion' followed by a section `Conclusion'. Please refer to Journal-level guidance for any specific requirements. 
-
-\section{Conclusion}\label{sec13}
-
-Conclusions may be used to restate your hypothesis or research question, restate your major findings, explain the relevance and the added value of your work, highlight any limitations of your study, describe future directions for research and recommendations. 
-
-In some disciplines use of Discussion or 'Conclusion' is interchangeable. It is not mandatory to use both. Please refer to Journal-level guidance for any specific requirements. 
 
 \backmatter
 
