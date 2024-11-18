@@ -263,35 +263,38 @@ where:
 \end{equation}
 
 
+\subsubsection{Calculation of the Variance of the Average Current Conditional on Starting and Ending States}
 
+The variance \( \sigma^2_{\overline{\Gamma}_{i \rightarrow j}} \) of the average current, given that the channel starts in state \( i \) and ends in state \( j \) during an interval \( t \), accounts for the fluctuations in the state transitions within the interval. This variance captures the intrinsic noise due to stochastic gating, as well as the variability in the time spent in each state.
 
-\subsubsection{Calculation of the Average Current conditional on starting and ending states} 
-
-We calculate the average current $\overline{\Gamma}_{ij}$ and its variance $\sigma^2_{\overline{\Gamma}_{ij}}$ for a transition from state $i$ to state $j$ during a measurement interval $t$.
-
-The average current $\overline{\Gamma}_{ij}$ is calculated as the time-weighted average of the current in each state, weighted by the probability of being in that state during the interval:
+The variance \( \sigma^2_{\overline{\Gamma}_{i \rightarrow j}} \) is computed as follows:
 
 \begin{equation}
-	\overline{\Gamma}_{ij} = \frac{1}{t \cdot P_{i \rightarrow j}} \int_0^t \sum_k P_{i \rightarrow k}(\tau) \gamma_k P_{k \rightarrow j}(t-\tau) d\tau
+	\sigma^2_{\overline{\Gamma}_{i \rightarrow j}} = \frac{1}{t^2 \cdot P_{i \rightarrow j}^2} \int_0^t d\tau_1 \int_0^t d\tau_2 \, \sum_{k, l} \left[ P_{i \rightarrow k}(\tau_1) \gamma_k P_{k \rightarrow j}(t-\tau_1) \right] \left[ P_{i \rightarrow l}(\tau_2) \gamma_l P_{l \rightarrow j}(t-\tau_2) \right] C(\tau_1, \tau_2)
 \end{equation}
 
-where $P_{i \rightarrow j}$ is the probability of transitioning from state $i$ to state $j$ in time $t$, $P_{i \rightarrow k}(\tau)$ is the probability of transitioning from state $i$ to state $k$ in time $\tau$, and $\gamma_k$ is the current associated with state $k$.
+where:
+- \( P_{i \rightarrow j} \) is the probability of transitioning from state \( i \) to state \( j \) within time \( t \).
+- \( \gamma_k \) and \( \gamma_l \) are the currents associated with states \( k \) and \( l \), respectively.
+- \( C(\tau_1, \tau_2) \) is the covariance function representing the correlation between state occupancies at times \( \tau_1 \) and \( \tau_2 \).
 
-After using the spectral approximation of the matrix exponential, this integral can be solved and a closed expression is obtained: 
+#### Spectral Approximation
+To compute this variance efficiently, we employ a spectral decomposition approach, similar to the one used for the mean current. This allows us to express the variance in terms of the eigenvalues and eigenvectors of the rate matrix \( \mathbf{Q} \):
 
 \begin{equation}
-	\overline{\Gamma}_{ij} = \frac{1}{P_{ij}}\sum_{k,n_1,n_2} V_{i n_1} \cdot V^{-1}_{n_1 k} \cdot \gamma_k \cdot V_{k n_2} \cdot V^{-1}_{n_2 j} \cdot E_2(\lambda_{n_1} \cdot t, \lambda_{n_2} \cdot t) 
+	\sigma^2_{\overline{\Gamma}_{i \rightarrow j}} = \frac{1}{P_{i \rightarrow j}^2} \sum_{k, l, n_1, n_2, n_3, n_4} V_{i n_1} V^{-1}_{n_1 k} \gamma_k V_{k n_2} V^{-1}_{n_2 j} \, V_{i n_3} V^{-1}_{n_3 l} \gamma_l V_{l n_4} V^{-1}_{n_4 j} \, E_4(\lambda_{n_1}, \lambda_{n_2}, \lambda_{n_3}, \lambda_{n_4}, t)
 \end{equation}
 
-where $\mathbf{V}$ and $\mathbf{V}^{-1}$ are the matrix of eigenvectors of the $\mathbf{Q}$ matrix and its inverse, $\boldsymbol{\lambda}$ is the vector of eigenvalues of $\mathbf{Q}$, and the function $E_2$ is defined as follows: 
+Here:
+- \( E_4(x_1, x_2, x_3, x_4, t) \) is defined as:
 
 \begin{equation}
-	E_2(x,y)= 
-	\begin{cases}
-		\frac{\exp(x)-\exp(y)}{x-y},& x\neq y\\
-		\exp(x),              & x=y
-	\end{cases}
+	E_4(x_1, x_2, x_3, x_4, t) = \int_0^t d\tau_1 \int_0^t d\tau_2 \, \frac{\exp(x_1 \tau_1 + x_2 (t-\tau_1)) \exp(x_3 \tau_2 + x_4 (t-\tau_2))}{t^2}
 \end{equation}
+
+The integral \( E_4 \) captures the interaction between different exponential modes during the time interval \( t \). For cases where eigenvalues are equal, the expression simplifies using series expansions.
+
+This calculation allows us to incorporate the variability in gating events into the Bayesian model, leading to more accurate estimates of the posterior distribution of the observed current measurements.
 
 
 
