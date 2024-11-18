@@ -1,0 +1,463 @@
+%Version 3 December 2023
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%======================================================%%
+%% to compile with pdflatex/xelatex use pdflatex option %%
+%%======================================================%%
+
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
+%%The option is available for: sn-basic.bst, sn-vancouver.bst, sn-chicago.bst%  
+ 
+%%\documentclass[pdflatex,sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style 
+%%\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}% Math and Physical Sciences Author Year Reference Style
+%%\documentclass[pdflatex,sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[pdflatex,sn-vancouver,Numbered]{sn-jnl}% Vancouver Reference Style
+%%\documentclass[pdflatex,sn-apa]{sn-jnl}% APA Reference Style 
+%%\documentclass[pdflatex,sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{color, colortbl}
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{comment}
+%%%%
+
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}% 
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+	\newtheorem{definition}{Definition}%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Notation}
+We denote specific channel states using subscripts (e.g., \( i, j \)), while superscripts (e.g., "prior", "post", "obs") are used to indicate the type of probability distribution (e.g., prior, posterior, or observed). For instance, \( p_i^{\text{prior}} \) represents the prior probability of being in state \( i \), and \( p_i^{\text{post}} \) represents the posterior probability after an observation.
+
+\subsection{Markov model of single-channel behavior}
+
+Early studies of single-channel recordings revealed that ion channels exhibit stochastic opening and closing at irregular intervals, consistent with the thermal fluctuations that macromolecules experience. Given this stochastic behavior, it is natural to model channel kinetics using a Markov process with a finite set of states \( k \), where each state represents a subset of the channel protein’s conformational landscape. 
+
+A Markov process does not specify the precise conformation of the channel at any given moment; instead, it yields the probability vector \( \boldsymbol{p} \), where each element \( p_i \) represents the likelihood of the channel being in state \( i \). The model assumes a constant transition rate, \( k_{ij} \), for jumps between states \( i \) and \( j \). The time evolution of the probability vector \( \boldsymbol{p}(t) \) is governed by the following first-order differential equation:
+
+\begin{equation}
+	\frac{d \boldsymbol{p}}{dt}(t) = \boldsymbol{p}(t) \cdot \boldsymbol{Q}(t),
+	\label{eq:master_equation}
+\end{equation}
+
+where the off-diagonal elements of the matrix \( \boldsymbol{Q} \) are given by the transition rates \( k_{ij} \). The diagonal elements \( k_{ii} \) are defined to ensure probability conservation:
+
+\begin{align}
+	k_{ii} = -\sum_{j, j \neq i} k_{ij}.
+	\label{eq:Q_diagonal_element}
+\end{align}
+
+This formulation ensures that the total probability remains normalized over time, with the transitions between states governed by the rates encoded in the matrix \( \boldsymbol{Q} \). The Markovian framework thus reduces the complex conformational dynamics of the channel into a tractable probabilistic model, allowing for detailed analysis of the channel gating kinetics.
+
+
+The integration of Eq.~\ref{eq:master_equation} allows us to determine the time evolution of the probability vector \( \boldsymbol{p}(t) \). This integration yields:
+
+\begin{equation}
+	\boldsymbol{p}(t) = \boldsymbol{p}(0) \cdot \exp(\boldsymbol{Q} \cdot t),
+	\label{eq:master_equation_solution}
+\end{equation}
+
+where \( \exp(\boldsymbol{Q} \cdot t) \) is the matrix exponential of \( \boldsymbol{Q} \) multiplied by time \( t \). 
+
+In this context, the actual state of the Markov process remains unobservable; what can be directly measured is the current produced by the channel. Each state \( i \) of the channel generates a specific single-channel current, encoded in the current vector \( \boldsymbol{\gamma} \). The observable current at any given time is thus determined by the probability-weighted sum over all states, which can be expressed as:
+
+\begin{equation}
+	y_{\text{obs}}(t) = \boldsymbol{p}(t) \cdot \boldsymbol{\gamma}.
+	\label{eq:eq3}
+\end{equation}
+
+This relationship links the hidden Markov states to the measurable macroscopic current, allowing us to infer the channel kinetics from experimental recordings.
+
+
+
+\subsection{Bayesian model for instantaneous measurements of single-channel behavior}
+
+Consider the scenario where we perform a single "instantaneous" current measurement, denoted as \( y^{\text{obs}} \). Let the initial state probability distribution be given by \( \boldsymbol{p}^{\text{prior}} \). Suppose the instrumental noise associated with each measurement follows a normal distribution with variance \( \epsilon^2 \). Under these conditions, we can derive the likelihood of the measurement and update the posterior probability distribution accordingly.
+
+The likelihood of observing the current \( y^{\text{obs}} \) is given by:
+
+\begin{equation}
+	L = P(y^{\text{obs}}) = \sum_i \mathcal{N}(p_i \cdot \gamma_i, \epsilon^2),
+	\label{eq:likelihood}
+\end{equation}
+
+where \( \boldsymbol{\gamma} \) is the current vector, with each component \( \gamma_i \) representing the current generated by state \( i \).
+
+The posterior probability distribution, \( \boldsymbol{p}^{\text{post}} \), is then updated using Bayes' rule:
+
+\begin{equation}
+	p^{\text{post}}_i = p_i \cdot \frac{\mathcal{N}(p_i \cdot \gamma_i, \epsilon^2)}{P(y^{\text{obs}})},
+	\label{eq:posterior}
+\end{equation}
+
+where \( p^{\text{post}}_i \) denotes the posterior probability of state \( i \) after observing the measurement.
+
+Now, suppose a second measurement is taken after a time interval \( t \). The prior probability distribution at time \( t \), denoted \( \boldsymbol{p}^{\text{prior}}(t) \), is obtained from the previous posterior distribution and the transition matrix \( \boldsymbol{P} \):
+
+\begin{align}
+	\boldsymbol{p}^{\text{prior}}(t) &= \boldsymbol{p}^{\text{post}}(0) \cdot \boldsymbol{P}, \nonumber \\
+	\boldsymbol{P} &= \exp(\boldsymbol{Q} \cdot t),
+	\label{eq:prior_update}
+\end{align}
+
+where \( \boldsymbol{Q} \) is the rate matrix governing the Markov process.
+
+We can then compute the updated posterior probability and the likelihood for the subsequent measurement in the same manner. The total log-likelihood (\( \log L \)) for a series of measurements is defined as:
+
+\begin{equation}
+	\log L = \sum_i \log (L_i),
+	\label{eq:loglikelihood}
+\end{equation}
+
+where \( L_i \) corresponds to the likelihood of the \( i \)-th measurement.
+
+
+\subsection{Bayesian Model of Time-Averaged Single-Channel Measurements}
+
+We consider a scenario where, instead of instantaneous measurements, we observe the time-averaged current \( \overline{y_t}^{\text{obs}} \) over a specific interval \( t \). Given the prior state probability distribution \( \mathbf{p}^{\text{prior}} \) at the beginning of the interval, we can calculate the joint state probability matrix \( \mathbf{\Pi} \), where the elements \( \Pi_{ij} \) represent the probability of starting in state \( i \) and ending in state \( j \):
+
+\begin{equation}
+	\Pi_{ij}^{\text{prior}} = p^{\text{prior}}_i \cdot P_{i \rightarrow j}
+\end{equation}
+
+Here, \( \mathbf{P} \) is the transition probability matrix, with elements \( P_{i \rightarrow j} \) representing the probability of transitioning from state \( i \) to state \( j \).
+
+Alternatively, in matrix form:
+
+\begin{equation}
+	\mathbf{\Pi}^{\text{prior}} = \mathrm{diag}(\mathbf{p}^{\text{prior}}) \cdot \mathbf{P}
+\end{equation}
+
+The likelihood of an observed average current \( \overline{y}^{\text{obs}} \) is then given by:
+
+\begin{equation}
+	P(\overline{y}^{\text{obs}}) = \sum_{i,j} \Pi_{ij}^{\text{prior}} \cdot \mathcal{N}\left(\overline{y}^{\text{obs}} - \Pi_{ij}^{\text{prior}} \cdot \overline{\Gamma}_{ij}, \epsilon^2 + \sigma^2_{\overline{\Gamma}_{ij}}\right)
+\end{equation}
+
+where \( \mathcal{N}(\mu, \sigma^2) \) denotes the normal distribution with mean \( \mu \) and variance \( \sigma^2 \), and \( \overline{\Gamma}_{ij} \) and \( \sigma^2_{\overline{\Gamma}_{ij}} \) represent the average current and variance of the average current for starting at state \( i \) and ending at state \( j \), respectively.
+
+The posterior distribution of the joint state probability matrix is updated using Bayes' theorem:
+
+\begin{equation}
+	\Pi_{ij}^{\text{post}} = \frac{\Pi_{ij}^{\text{prior}} \cdot \mathcal{N}\left(\overline{y}^{\text{obs}} - \Pi_{ij}^{\text{prior}} \cdot \overline{\Gamma}_{ij}, \epsilon^2 + \sigma^2_{\overline{\Gamma}_{ij}}\right)}{P(\overline{y}^{\text{obs}})}
+\end{equation}
+
+The prior state probability distribution for the next interval is obtained by marginalizing the posterior distribution over the initial state $i$:
+
+\begin{equation}
+	p_j^{\text{prior}}(t_{n+1}) = \sum_i \Pi_{ij}^{\text{post}}(t_n)
+\end{equation}
+
+Since the probability of each observation $\overline{y}_n^{\text{obs}}$ is calculated conditionally on the previous observations $\overline{y}_1^{\text{obs}}, \dots, \overline{y}_{n-1}^{\text{obs}}$, the cumulative log-likelihood of the entire measurement series can be updated as follows:
+
+\begin{equation}
+	\log \mathcal{L}(y_1^{\text{obs}}, \dots, y_{n+1}^{\text{obs}}) = \log \mathcal{L}(y_1^{\text{obs}}, \dots, y_n^{\text{obs}}) + \log P(y_{n+1}^{\text{obs}})
+\end{equation}
+
+
+
+While the exact distribution of the mean current is not strictly normal, we approximate it as such, assuming that instrumental noise dominates gating noise.
+
+
+\subsubsection{Calculation of the Average Current conditional on starting and ending states} 
+
+We calculate the average current $\overline{\Gamma}_{ij}$ and its variance $\sigma^2_{\overline{\Gamma}_{ij}}$ for a transition from state $i$ to state $j$ during a measurement interval $t$.
+
+The average current $\overline{\Gamma}_{ij}$ is calculated as the time-weighted average of the current in each state, weighted by the probability of being in that state during the interval:
+
+\begin{equation}
+	\overline{\Gamma}_{ij} = \frac{1}{t \cdot P_{i \rightarrow j}} \int_0^t \sum_k P_{i \rightarrow k}(\tau) \gamma_k P_{k \rightarrow j}(t-\tau) d\tau
+\end{equation}
+
+where $P_{i \rightarrow j}$ is the probability of transitioning from state $i$ to state $j$ in time $t$, $P_{i \rightarrow k}(\tau)$ is the probability of transitioning from state $i$ to state $k$ in time $\tau$, and $\gamma_k$ is the current associated with state $k$.
+
+After using the spectral approximation of the matrix exponential, this integral can be solved and a closed expression is obtained: 
+
+\begin{equation}
+	\overline{\Gamma}_{ij} = \frac{1}{P_{ij}}\sum_{k,n_1,n_2} V_{i n_1} \cdot V^{-1}_{n_1 k} \cdot \gamma_k \cdot V_{k n_2} \cdot V^{-1}_{n_2 j} \cdot E_2(\lambda_{n_1} \cdot t, \lambda_{n_2} \cdot t) 
+\end{equation}
+
+where $\mathbf{V}$ and $\mathbf{V}^{-1}$ are the matrix of eigenvectors of the $\mathbf{Q}$ matrix and its inverse, $\boldsymbol{\lambda}$ is the vector of eigenvalues of $\mathbf{Q}$, and the function $E_2$ is defined as follows: 
+
+\begin{equation}
+	E_2(x,y)= 
+	\begin{cases}
+		\frac{\exp(x)-\exp(y)}{x-y},& x\neq y\\
+		\exp(x),              & x=y
+	\end{cases}
+\end{equation}
+
+
+
+\subsubsection{Calculation of the Variance of the Average Current Conditional on Starting and Ending States}
+
+The variance of the average current, conditional on starting in state \(i\) and ending in state \(j\), is defined as the difference between the expected square of the average current and the square of the expected current:
+
+\begin{equation}
+	\text{Var}(\overline{\Gamma}_{ij}) = E(\overline{\Gamma}_{ij}^2) - P_{ij} \cdot (E(\overline{\Gamma}_{ij}))^2
+\end{equation}
+
+To calculate the expected square of the average current, we consider the time-weighted average of the product of the currents at each pair of time points within the interval. This involves summing over all possible intermediate states \(k_1\) and \(k_2\) for the first and second currents, respectively. Specifically, we integrate over the full time interval, accounting for all combinations of transition probabilities at each time point:
+
+\begin{equation}
+	E(\overline{\Gamma}_{ij}^2) = \frac{1}{t^2 P_{i \rightarrow j}} \int_0^t \int_0^{t-\tau_1} \sum_{k_1, k_2} P_{i \rightarrow k_1}(\tau_1) \gamma_{k_1} P_{k_1 \rightarrow k_2}(\tau_2) \gamma_{k_2} P_{k_2 \rightarrow j}(t-\tau_1-\tau_2) d\tau_1 d\tau_2
+\end{equation}
+
+Here, \(P_{i \rightarrow k_1}(\tau_1)\) and \(P_{k_1 \rightarrow k_2}(\tau_2)\) represent the transition probabilities between states over the respective time intervals \(\tau_1\) and \(\tau_2\), and \(\gamma_{k_1}\) and \(\gamma_{k_2}\) denote the currents in those states. 
+
+By utilizing the spectral decomposition of the transition rate matrix, we can obtain a closed-form expression for the expected square of the average current. This allows us to express the quantity in terms of matrix products and the eigenvalues of the transition rate matrix, as shown below:
+
+\begin{equation}
+	E(\overline{\Gamma}_{ij}^2) = \frac{1}{P_{i \rightarrow j}} \sum_{k_1, k_2, n_1, n_2, n_3} V_{i n_1} \cdot V^{-1}_{n_1 k_1} \cdot \gamma_{k_1} \cdot V_{k_1 n_2} \cdot V^{-1}_{n_2 k_2} \cdot \gamma_{k_2} \cdot V_{k_2 n_3} \cdot V^{-1}_{n_3 j} E_3(\lambda_{n_1} \cdot t, \lambda_{n_2} \cdot t, \lambda_{n_3} \cdot t)
+\end{equation}
+
+Here, \(E_3\) is a function that depends on the eigenvalues of the transition rate matrix, and is defined as follows:
+
+\begin{equation}
+	E_3(x,y,z)= 
+	\begin{cases}
+		E_{111}(x,y,z) & x\neq y, y\neq z, z\neq x \\
+		E_{12}(x,y) & x\neq y, x\neq z, y = z \\
+		E_{12}(y,z) & y\neq z, y\neq x, z = x \\
+		E_{12}(z,x) & z\neq x, z\neq y, x = y \\
+		\frac{1}{2} \cdot \exp(x) & x=y=z
+	\end{cases}
+\end{equation}
+
+The function \(E_{12}(x, y)\) is defined as:
+
+\begin{equation}
+	E_{12}(x,y) = E_{1,11}(x, y, y) + \frac{\exp(y)}{y - x} \cdot \left(\frac{y - x - 1}{y - x}\right)
+\end{equation}
+
+Finally, \(E_{1,11}(x, y, z)\) is given by:
+
+\begin{equation}
+	E_{1,11}(x, y, z) = \frac{\exp(x)}{(x - y) \cdot (x - z)}
+\end{equation}
+
+These expressions allow us to compute the expected square of the average current in a system where the transitions between states are governed by a Markov process with a known transition rate matrix.
+
+
+
+
+
+
+
+
+\subsection{From Single-Channel Analysis to Ensemble Channel Analysis}
+
+When the only information available about an ensemble of ion channels is the state probability vector—which specifies the likelihood of each individual channel being in a particular state—a multinomial distribution describes the probability of observing each possible distinct state count vector. However, once we gain additional information by measuring the total current produced by the ensemble, we can update the posterior distribution of the ensemble state. This updated distribution not only deviates from a multinomial form but also exhibits inverse correlations between states that generate the same current. Although individual channels remain independent, the information we obtain about the ensemble as a whole introduces correlations, reminiscent of quantum entanglement. Thus, we require a method to characterize the posterior probability distribution of the ensemble state that adequately captures these induced correlations.
+
+A precise yet computationally intensive approach involves constructing a vector—referred to as the \textit{ensemble state vector}—that encompasses all possible combinations of state counts and applying Bayes' rule to each entry individually. This method, which I term the \textit{Microscopic Recursive Algorithm}, was detailed in a previous publication (Moffatt, 2007). However, this approach quickly becomes computationally prohibitive as the system size increases.
+
+A more efficient alternative approximates the ensemble state distribution using a multivariate normal distribution of the state count vector. The covariance matrix serves as a first-order approximation to account for the observation-induced correlations between states. This constitutes the \textit{Macroscopic Approach}, significantly simplifying the representation of the ensemble's state distribution.
+
+
+
+\subsection{Bayesian Framework for Instantaneous Measurements of Channel Ensembles: The MacroR Algorithm}
+
+In the \textit{MacroR algorithm}, we treat measurements as instantaneous and focus solely on the ensemble's instantaneous state. This framework leverages both the mean probability vector and the covariance matrix of the probability state, capturing the ensemble's key statistical properties at any given moment.
+
+After integrating the multivariate gaussian, the likelihood of observing an instantenous current $y_{obs}$ can be obtained:
+
+\begin{equation}
+	L= Normal \left (y^{obs}-y^{pred}, {\sigma^2}_{y^{pred}} \right)
+\end{equation}
+
+where $y^{pred}$ the prediction of the kinetic model for the subsequent observation is given by
+
+\begin{equation}
+	y^{pred} = N_{ch} \cdot \mathbf \mu^{prior} \cdot \mathbf \gamma
+\end{equation}
+
+$\sigma^2_{y^{pred}}$, the variance of this prediction, which is related to what is usually called gating noise is 
+
+\begin{equation}
+	{\sigma^2}_{y^{pred}_{t}}
+	= \epsilon^2 +N_{ch} \cdot {\mathbf \gamma}^{\mathrm{T}} \cdot \mathbf \Sigma^{prior} \cdot \mathbf \gamma
+\end{equation}
+
+
+Similarly we have a closed form for $\mathbf \mu^{post}$, the mean state probability vector, the mean of the multivariate gaussian representing the posterior probability state 
+
+\begin{equation}
+	\mathbf \mu^{post}= \mathbf \mu^{prior} + {\frac {y^{obs} - y^{fit}}{{\sigma^2}_{y^{fit}} }}\cdot {\mathbf \gamma}^\mathrm{T} \cdot \mathbf \Sigma^{prior} 
+\end{equation}
+
+and for $\mathbf \Sigma^{post}$ the Covariance of the state probability vector, the covariance of the same multivariate gaussian. 
+ 
+
+\begin{equation}
+	\mathbf \Sigma^{post} = \mathbf \Sigma^{prior} - {\frac {N}{{\sigma^2}_{y^{fit}}}}\cdot \mathbf \Sigma^{prior} \cdot \mathbf \gamma \cdot {\mathbf \gamma}^\mathrm{T} \cdot \mathbf \Sigma^{prior}
+\end{equation}
+
+
+Next we can calculate using conditional expectation we can calculate the prior probability at time $t_{n+1}= t_n+\Delta t_n$  
+
+
+\begin{equation}
+	\mathbf \mu^{prior}(t_{n+1}) = \mathbf \mu^{post}(t_n) \cdot \mathbf P(\Delta t_n)
+\end{equation}
+and its covariance 
+\begin{equation}
+	\mathbf \Sigma^{prior}(t_{n+1})= \mathrm{diag}(\mathbf \mu^{prior}(t_{n+1}) ) + {\mathbf P(\Delta t_n)}^\mathrm{T} \cdot (\mathbf \Sigma^{post}(t_{n})- \mathbf \mu^{post}(t_{n})) \cdot \mathbf P(\Delta t_n)
+\end{equation}
+
+This completes the recursion step of the Macroscopic Recursive algorithm. 
+
+\subsection{Bayesian Framework for Interval Averaged Measurements of Channel Ensembles: The MacroIR Algorithm}
+
+From the point of view of a Bayesian analysis of averged measyuarkovian process over a succesive time interval, there is only one critical information: the prior ensemble state at the begining of the time interval. From this information it is possible to  
+
+
+The idea is that the description of the state considers now both the initial ensemble state and the final ensemble state during the measuring interval. 
+So 
+
+\begin{equation}
+	(\mu^{prior}_{t, t+ \Delta t})_{(i_t, i_{t+ \Delta t})} = (\mu^{prior}_{t})_{i_t}  \cdot P_{i_t \rightarrow i_{t+ \Delta t}}(\Delta t)
+\end{equation}
+
+\begin{multline}
+	(\Sigma^{prior}_{t,t+ \Delta t})_{(i_t, i_{t+ \Delta t})(j_t, j_{t+ \Delta t})} =
+	P_{i_t \rightarrow i_{t+ \Delta t}} \left((\Sigma^{prior}_{t})_{i_t ,j_t} - \delta_{i_t, j_t} \cdot (\mu^{prior}_t)_{i_t} \right)  \cdot P_{j_t \rightarrow j_{t+ \Delta t}} \\
+	+ \delta_{i_t, j_t} \cdot \delta_{i_{t+ \Delta t}, j_{t+ \Delta t}} \cdot (\mu^{prior}_t)_{i_t}\cdot P_{i_t \rightarrow i_{t+ \Delta t}} 
+\end{multline}
+
+we have the vectors 
+
+\begin{equation}
+	({\overline \gamma}_{t,t+\Delta t })_{(i_t, i_{t+\Delta t})} = {\overline \Gamma}_{i_t,i_{t+\Delta t}}
+\end{equation}
+
+\begin{equation}
+	(\sigma^2{\overline \gamma}_{t,t+\Delta t })_{(i_t, i_{t+\Delta t})} = \sigma^2{\overline \Gamma}_{i_t,i_{t+\Delta t}}
+\end{equation}
+
+Lets now apply the MacroR formulae
+\begin{equation}
+	L_{t, t+\Delta t}= Normal (y^{obs}_{t, t+\Delta t}-y^{fit}_{t, t+\Delta t}, {\sigma^{2}}^{fit}_{t, t+\Delta t})
+\end{equation}
+
+\begin{equation}
+	y^{fit}_{t,t+\Delta t} = N_{ch} \cdot \mathbf \mu^{prior}_{t,t+\Delta t} \cdot \mathbf \gamma_{t,t+\Delta t}
+\end{equation}
+
+\begin{equation}
+	{\sigma^2}^{fit}_{t, t+\Delta t}
+	= \epsilon^2_{t, t+\Delta t} +N_{ch} \cdot {\mathbf \gamma}^{\mathrm{T}}_{t, t+\Delta t} \cdot \mathbf \Sigma^{prior}_{t, t+\Delta t} \cdot \mathbf \gamma_{t, t+\Delta t}
+	+ N_{ch} \cdot \mathbf \mu^{prior}_{t, t+\Delta t} \cdot {\sigma \mathbf  \Gamma}_{t, t+\Delta t}
+\end{equation}
+
+\begin{multline}
+	\mathbf \mu^{prior}_{t,t+\Delta t} \cdot \mathbf \gamma_{t,t+\Delta t} =
+	\sum_{i_t, i_{t+ \Delta t}} {(\mu^{prior}_{t})_{i_t}  \cdot P_{i_t \rightarrow i_{t+ \Delta t}}(\Delta t) \cdot ({\overline \Gamma_{t,t + \Delta t}})_{i_t \rightarrow i_{t+\Delta t}}}\\= \mathbf \mu^{prior}_t \cdot  \overline {\mathbf \gamma}_{t, t+\Delta t}
+\end{multline}
+
+
+
+
+
+
+so, the expected current does not depend on the end state, only on the state at the beginning of the interval and the expected current throughout the interval conditional on starting on a given state. 
+
+\begin{multline}
+	{\mathbf \gamma}^{\mathrm{T}}_{t, t+\Delta t} \cdot \mathbf \Sigma^{prior}_{t, t+\Delta t} \cdot \mathbf \gamma_{t, t+\Delta t}= \\
+	\sum_{i_t, i_{t +\Delta t},j_t, j_{t +\Delta t}}
+	({\overline \Gamma_{t,t + \Delta t}})_{i_t \rightarrow i_{t+\Delta t}} \cdot 
+	P_{i_t \rightarrow i_{t+ \Delta t}} \left((\Sigma^{prior}_{t})_{i_t ,j_t} - \delta_{i_t, j_t} \cdot (\mu^{prior}_t)_{i_t} \right)  \cdot P_{j_t \rightarrow j_{t+ \Delta t}} \\+\delta_{i_t, j_t} \cdot \delta_{i_{t+ \Delta t}, j_{t+ \Delta t}} \cdot (\mu^{prior}_t)_{i_t}\cdot P_{i_t \rightarrow i_{t+ \Delta t}} 
+	\cdot 
+	({\overline \Gamma_{t,t + \Delta t}})_{j_t \rightarrow j_{t+\Delta t}} 
+\end{multline}
+
+\begin{multline}
+	{\mathbf \gamma}^{\mathrm{T}}_{t, t+\Delta t} \cdot \mathbf \Sigma^{prior}_{t, t+\Delta t} \cdot \mathbf \gamma_{t, t+\Delta t}= \\
+	{\overline {\mathbf \gamma}_{t, t+\Delta t}}^\mathrm{T} \cdot 
+	(\mathbf \Sigma^{prior}_{t} -\mathrm{diag}( \mathbf \mu^{prior}_t))\cdot  
+	{\overline {\mathbf \gamma}_{t, t+\Delta t}}+ 
+	\mathbf \mu^{prior}_t \cdot ( \overline {\mathbf \Gamma}_{t, t + \Delta t}  \circ  \overline {\mathbf \Gamma}_{t, t + \Delta t}  \circ \mathbf P ) \cdot \mathbf 1
+\end{multline}
+
+\begin{equation}
+	\mathbf \mu^{post}_{t, t+ \Delta t}= \mathbf \mu^{prior}_{t, t+ \Delta t} + 
+	{\frac {y^{obs}_{t, t+ \Delta t} - y^{fit}_{t, t+ \Delta t}}{{\sigma^2}^{fit}_{t, t+ \Delta t}} }
+	\cdot {\mathbf \gamma}^\mathrm{T}_{t, t+ \Delta t} \cdot \mathbf \Sigma^{prior}_{t, t+ \Delta t} 
+\end{equation}
+
+\begin{equation}
+	( \mu^{prior}_{t+ \Delta t})_{i_{t+\Delta t}} = \sum_{i_t} (\mu^{post}_{t, t+\Delta t})_{(i_t, i_{t+\Delta t)}}
+\end{equation}
+\begin{equation}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
