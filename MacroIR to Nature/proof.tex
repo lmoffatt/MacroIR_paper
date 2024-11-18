@@ -209,21 +209,59 @@ The posterior distribution of the joint state probability matrix is updated usin
 
 \begin{equation}
 	\Pi_{i \rightarrow j}^{\text{post}} = \frac{\Pi_{i \rightarrow j}^{\text{prior}} \cdot \mathcal{N}\left(\overline{y}^{\text{obs}} - \Pi_{i \rightarrow j}^{\text{prior}} \cdot \overline{\Gamma}_{i \rightarrow j}, \epsilon^2 + \sigma^2_{\overline{\Gamma}_{i \rightarrow j}}\right)}{P(\overline{y}^{\text{obs}})}
+	\label{eq:single_channel_integrated_posterior}
 \end{equation}
 
 The prior state probability distribution for the next interval is then obtained by marginalizing over the initial state \( i \):
 
 \begin{equation}
 	p_j^{\text{prior}}(t_{n+1}) = \sum_i \Pi_{i \rightarrow j}^{\text{post}}(t_n)
+	\label{eq:single_channel_integrated_next_prior}
 \end{equation}
 
 Since the probability of each observation \( \overline{y}_n^{\text{obs}} \) is calculated conditionally on the previous observations \( \overline{y}_1^{\text{obs}}, \dots, \overline{y}_{n-1}^{\text{obs}} \), the cumulative log-likelihood of the entire measurement series can be updated using Eq. \ref{eq:total_loglikelihood}:
 
 \begin{equation}
 	\log \mathcal{L}(\overline{y}_1^{\text{obs}}, \dots, \overline{y}_{n+1}^{\text{obs}}) = \log \mathcal{L}(\overline{y}_1^{\text{obs}}, \dots, \overline{y}_n^{\text{obs}}) + \log P(\overline{y}_{n+1}^{\text{obs}})
+	\label{eq:single_channel_integrated_total_likelihood}
 \end{equation}
 
 While the exact distribution of the mean current is not strictly normal, we approximate it as such, assuming that instrumental noise dominates over gating noise.
+
+\subsubsection{Calculation of the Average Current Conditional on Starting and Ending States}
+
+We calculate the average current \( \overline{\Gamma}_{i \rightarrow j} \) and its variance \( \sigma^2_{\overline{\Gamma}_{i \rightarrow j}} \) for transitions from state \( i \) to state \( j \) during a measurement interval \( t \).
+
+The average current \( \overline{\Gamma}_{i \rightarrow j} \) is computed as the time-weighted average of the current in each state, weighted by the probability of being in that state during the interval:
+
+\begin{equation}
+	\overline{\Gamma}_{i \rightarrow j} = \frac{1}{t \cdot P_{i \rightarrow j}} \int_0^t \sum_k P_{i \rightarrow k}(\tau) \, \gamma_k \, P_{k \rightarrow j}(t - \tau) \, d\tau
+	\label{eq:gamma_ij_integral}
+\end{equation}
+
+Here, \( P_{i \rightarrow j} \) is the probability of transitioning from state \( i \) to state \( j \) within time \( t \), \( P_{i \rightarrow k}(\tau) \) denotes the probability of transitioning from state \( i \) to state \( k \) at time \( \tau \), and \( \gamma_k \) is the current associated with state \( k \).
+
+To efficiently evaluate this integral, we use a spectral form of the matrix exponential, yielding a closed-form expression:
+
+\begin{equation}
+	\overline{\Gamma}_{i \rightarrow j} = \frac{1}{P_{i \rightarrow j}} \sum_{k, n_1, n_2} V_{i n_1} \cdot V^{-1}_{n_1 k} \cdot \gamma_k \cdot V_{k n_2} \cdot V^{-1}_{n_2 j} \cdot E_2(\lambda_{n_1} \cdot t, \lambda_{n_2} \cdot t)
+	\label{eq:gamma_ij_formula}
+\end{equation}
+
+where:
+- \( \mathbf{V} \) and \( \mathbf{V}^{-1} \) are the matrices of eigenvectors of the rate matrix \( \mathbf{Q} \) and its inverse, respectively.
+- \( \boldsymbol{\lambda} \) is the vector of eigenvalues of \( \mathbf{Q} \).
+- The function \( E_2(x, y) \) is defined as:
+
+\begin{equation}
+	E_2(x, y) = 
+	\begin{cases}
+		\frac{\exp(x) - \exp(y)}{x - y}, & \text{if } x \neq y \\
+		\exp(x), & \text{if } x = y
+	\end{cases}
+    \label{eq:E_2}
+\end{equation}
+
 
 
 
