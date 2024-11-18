@@ -269,6 +269,7 @@ The variance of the average current, conditional on starting in state \(i\) and 
 
 \begin{equation}
 	\text{Var}(\overline{\Gamma}_{i \rightarrow j}) = E(\overline{\Gamma}_{i \rightarrow j}^2) - P_{i \rightarrow j} \cdot \left( E(\overline{\Gamma}_{i \rightarrow j}) \right)^2
+    \label{eq:sigma_gamma_expression}
 \end{equation}
 
 where \( E(\overline{\Gamma}_{i \rightarrow j}^2) \) is the expected square of the average current, and \( E(\overline{\Gamma}_{i \rightarrow j}) \) is the expected average current.
@@ -278,6 +279,7 @@ To calculate the expected square of the average current, we consider the time-we
 
 \begin{equation}
 	E(\overline{\Gamma}_{i \rightarrow j}^2) = \frac{1}{t^2 P_{i \rightarrow j}} \int_0^t \int_0^{t-\tau_1} \sum_{k_1, k_2} P_{i \rightarrow k_1}(\tau_1) \gamma_{k_1} P_{k_1 \rightarrow k_2}(\tau_2) \gamma_{k_2} P_{k_2 \rightarrow j}(t-\tau_1-\tau_2) d\tau_1 d\tau_2
+    \label{eq:sqr_gamma_integral}
 \end{equation}
 
 Here, \(P_{i \rightarrow k_1}(\tau_1)\) and \(P_{k_1 \rightarrow k_2}(\tau_2)\) represent the transition probabilities between states over the respective time intervals \(\tau_1\) and \(\tau_2\), and \(\gamma_{k_1}\) and \(\gamma_{k_2}\) denote the currents in those states.
@@ -287,6 +289,7 @@ By utilizing the spectral decomposition of the transition rate matrix, we can ob
 
 \begin{equation}
 	E(\overline{\Gamma}_{i \rightarrow j}^2) = \frac{1}{P_{i \rightarrow j}} \sum_{k_1, k_2, n_1, n_2, n_3} V_{i n_1} \cdot V^{-1}_{n_1 k_1} \cdot \gamma_{k_1} \cdot V_{k_1 n_2} \cdot V^{-1}_{n_2 k_2} \cdot \gamma_{k_2} \cdot V_{k_2 n_3} \cdot V^{-1}_{n_3 j} E_3(\lambda_{n_1} \cdot t, \lambda_{n_2} \cdot t, \lambda_{n_3} \cdot t)
+    \label{eq:sqr_gamma_formula}
 \end{equation}
 
 Here, \(E_3\) is a function that acts on the eigenvalues of the transition rate matrix, and is defined as follows:
@@ -300,18 +303,22 @@ Here, \(E_3\) is a function that acts on the eigenvalues of the transition rate 
 		E_{12}(z,x) & z\neq x, z\neq y, x = y \\
 		\frac{1}{2} \cdot \exp(x) & x=y=z
 	\end{cases}
+	\label{eq:E_3}
+	
 \end{equation}
 
 The function \(E_{12}(x, y)\) is defined as:
 
 \begin{equation}
 	E_{12}(x,y) = E_{1,11}(x, y, y) + \frac{\exp(y)}{y - x} \cdot \left(\frac{y - x - 1}{y - x}\right)
+	\label{eq:E_12}
 \end{equation}
 
 Finally, \(E_{1,11}(x, y, z)\) is given by:
 
 \begin{equation}
 	E_{1,11}(x, y, z) = \frac{\exp(x)}{(x - y) \cdot (x - z)}
+	\label{eq:E_1_11}
 \end{equation}
 
 These expressions allow us to compute the expected square of the average current in a system where the transitions between states are governed by a Markov process with a known transition rate matrix.
@@ -338,13 +345,15 @@ In the \textit{MacroR algorithm}, we treat measurements as instantaneous and foc
 After integrating the multivariate gaussian, the likelihood of observing an instantenous current $y_{obs}$ can be obtained:
 
 \begin{equation}
-	L= Normal \left (y^{obs}-y^{pred}, {\sigma^2}_{y^{pred}} \right)
+	\mathcal{L}= Normal \left (y^{obs}-y^{pred}, {\sigma^2}_{y^{pred}} \right)
+	\label{eq:macro_likelihood}
 \end{equation}
 
 where $y^{pred}$ the prediction of the kinetic model for the subsequent observation is given by
 
 \begin{equation}
 	y^{pred} = N_{ch} \cdot \mathbf \mu^{prior} \cdot \mathbf \gamma
+	\label{eq:macro_predicted_y}
 \end{equation}
 
 $\sigma^2_{y^{pred}}$, the variance of this prediction, which is related to what is usually called gating noise is 
@@ -352,13 +361,17 @@ $\sigma^2_{y^{pred}}$, the variance of this prediction, which is related to what
 \begin{equation}
 	{\sigma^2}_{y^{pred}_{t}}
 	= \epsilon^2 +N_{ch} \cdot {\mathbf \gamma}^{\mathrm{T}} \cdot \mathbf \Sigma^{prior} \cdot \mathbf \gamma
+	\label{eq:macro_sigma_pred}
+	
 \end{equation}
 
 
 Similarly we have a closed form for $\mathbf \mu^{post}$, the mean state probability vector, the mean of the multivariate gaussian representing the posterior probability state 
 
 \begin{equation}
-	\mathbf \mu^{post}= \mathbf \mu^{prior} + {\frac {y^{obs} - y^{fit}}{{\sigma^2}_{y^{fit}} }}\cdot {\mathbf \gamma}^\mathrm{T} \cdot \mathbf \Sigma^{prior} 
+	\mathbf \mu^{post}= \mathbf \mu^{prior} + {\frac {y^{obs} - y^{fit}}{{\sigma^2}_{y^{fit}} }}\cdot {\mathbf \gamma}^\mathrm{T} \cdot \mathbf \Sigma^{prior}
+	\label{eq:macro_mean_posterior}
+	 
 \end{equation}
 
 and for $\mathbf \Sigma^{post}$ the Covariance of the state probability vector, the covariance of the same multivariate gaussian. 
@@ -366,6 +379,7 @@ and for $\mathbf \Sigma^{post}$ the Covariance of the state probability vector, 
 
 \begin{equation}
 	\mathbf \Sigma^{post} = \mathbf \Sigma^{prior} - {\frac {N}{{\sigma^2}_{y^{fit}}}}\cdot \mathbf \Sigma^{prior} \cdot \mathbf \gamma \cdot {\mathbf \gamma}^\mathrm{T} \cdot \mathbf \Sigma^{prior}
+	\label{eq:macro_cov_posterior}
 \end{equation}
 
 
@@ -374,10 +388,12 @@ Next we can calculate using conditional expectation we can calculate the prior p
 
 \begin{equation}
 	\mathbf \mu^{prior}(t_{n+1}) = \mathbf \mu^{post}(t_n) \cdot \mathbf P(\Delta t_n)
+	\label{eq:macro_mean_next_prior}
 \end{equation}
 and its covariance 
 \begin{equation}
 	\mathbf \Sigma^{prior}(t_{n+1})= \mathrm{diag}(\mathbf \mu^{prior}(t_{n+1}) ) + {\mathbf P(\Delta t_n)}^\mathrm{T} \cdot (\mathbf \Sigma^{post}(t_{n})- \mathbf \mu^{post}(t_{n})) \cdot \mathbf P(\Delta t_n)
+	\label{eq:macro_mean_next_cov}
 \end{equation}
 
 This completes the recursion step of the Macroscopic Recursive algorithm. 
