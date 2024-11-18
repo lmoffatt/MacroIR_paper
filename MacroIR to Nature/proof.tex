@@ -304,7 +304,6 @@ Here, \(E_3\) is a function that acts on the eigenvalues of the transition rate 
 		\frac{1}{2} \cdot \exp(x) & x=y=z
 	\end{cases}
 	\label{eq:E_3}
-	
 \end{equation}
 
 The function \(E_{12}(x, y)\) is defined as:
@@ -338,65 +337,66 @@ A more efficient alternative approximates the ensemble state distribution using 
 
 
 
+
+
+
+
 \subsection{Bayesian Framework for Instantaneous Measurements of Channel Ensembles: The MacroR Algorithm}
 
-In the \textit{MacroR algorithm}, we treat measurements as instantaneous and focus solely on the ensemble's instantaneous state. This framework leverages both the mean probability vector and the covariance matrix of the probability state, capturing the ensemble's key statistical properties at any given moment.
+In the \textit{MacroR algorithm}, we treat measurements as instantaneous and focus solely on the ensemble's instantaneous state. This framework leverages both the mean probability vector and the covariance matrix of the probability state, capturing the ensemble's key statistical properties at any given moment. The same results can be obtained from a Kalman filter. 
 
-After integrating the multivariate gaussian, the likelihood of observing an instantenous current $y_{obs}$ can be obtained:
+After integrating the multivariate Gaussian, the likelihood of observing an instantaneous current \( y^{\text{obs}} \) can be obtained:
 
 \begin{equation}
-	\mathcal{L}= Normal \left (y^{obs}-y^{pred}, {\sigma^2}_{y^{pred}} \right)
+	\mathcal{L} = \mathcal{N} \left( y^{\text{obs}} - y^{\text{pred}}, \sigma^2_{y^{\text{pred}}} \right)
 	\label{eq:macro_likelihood}
 \end{equation}
 
-where $y^{pred}$ the prediction of the kinetic model for the subsequent observation is given by
+where \( y^{\text{pred}} \), the prediction of the kinetic model for the subsequent observation, is given by:
 
 \begin{equation}
-	y^{pred} = N_{ch} \cdot \mathbf \mu^{prior} \cdot \mathbf \gamma
+	y^{\text{pred}} = N_{\text{ch}} \cdot \boldsymbol{\mu}^{\text{prior}} \cdot \boldsymbol{\gamma}
 	\label{eq:macro_predicted_y}
 \end{equation}
 
-$\sigma^2_{y^{pred}}$, the variance of this prediction, which is related to what is usually called gating noise is 
+Here, \( \sigma^2_{y^{\text{pred}}} \), the variance of this prediction, which is related to what is usually called gating noise, is:
 
 \begin{equation}
-	{\sigma^2}_{y^{pred}_{t}}
-	= \epsilon^2 +N_{ch} \cdot {\mathbf \gamma}^{\mathrm{T}} \cdot \mathbf \Sigma^{prior} \cdot \mathbf \gamma
+	\sigma^2_{y^{\text{pred}}} = \epsilon^2 + N_{\text{ch}} \cdot \boldsymbol{\gamma}^{\mathrm{T}} \cdot \boldsymbol{\Sigma}^{\text{prior}} \cdot \boldsymbol{\gamma}
 	\label{eq:macro_sigma_pred}
-	
 \end{equation}
 
-
-Similarly we have a closed form for $\mathbf \mu^{post}$, the mean state probability vector, the mean of the multivariate gaussian representing the posterior probability state 
+Similarly, we have a closed form for \( \boldsymbol{\mu}^{\text{post}} \), the mean state probability vector, which is the mean of the multivariate Gaussian representing the posterior probability state:
 
 \begin{equation}
-	\mathbf \mu^{post}= \mathbf \mu^{prior} + {\frac {y^{obs} - y^{fit}}{{\sigma^2}_{y^{fit}} }}\cdot {\mathbf \gamma}^\mathrm{T} \cdot \mathbf \Sigma^{prior}
+	\boldsymbol{\mu}^{\text{post}} = \boldsymbol{\mu}^{\text{prior}} + \frac{y^{\text{obs}} - y^{\text{pred}}}{\sigma^2_{y^{\text{pred}}}} \cdot \boldsymbol{\gamma}^{\mathrm{T}} \cdot \boldsymbol{\Sigma}^{\text{prior}}
 	\label{eq:macro_mean_posterior}
-	 
 \end{equation}
 
-and for $\mathbf \Sigma^{post}$ the Covariance of the state probability vector, the covariance of the same multivariate gaussian. 
- 
+And for \( \boldsymbol{\Sigma}^{\text{post}} \), the covariance of the state probability vector, which represents the covariance of the same multivariate Gaussian:
 
 \begin{equation}
-	\mathbf \Sigma^{post} = \mathbf \Sigma^{prior} - {\frac {N}{{\sigma^2}_{y^{fit}}}}\cdot \mathbf \Sigma^{prior} \cdot \mathbf \gamma \cdot {\mathbf \gamma}^\mathrm{T} \cdot \mathbf \Sigma^{prior}
+	\boldsymbol{\Sigma}^{\text{post}} = \boldsymbol{\Sigma}^{\text{prior}} - \frac{N}{\sigma^2_{y^{\text{pred}}}} \cdot \boldsymbol{\Sigma}^{\text{prior}} \cdot \boldsymbol{\gamma} \cdot \boldsymbol{\gamma}^{\mathrm{T}} \cdot \boldsymbol{\Sigma}^{\text{prior}}
 	\label{eq:macro_cov_posterior}
 \end{equation}
 
-
-Next we can calculate using conditional expectation we can calculate the prior probability at time $t_{n+1}= t_n+\Delta t_n$  
-
+Next, we calculate the prior probability at time \( t_{n+1} = t_n + \Delta t_n \) using conditional expectation:
 
 \begin{equation}
-	\mathbf \mu^{prior}(t_{n+1}) = \mathbf \mu^{post}(t_n) \cdot \mathbf P(\Delta t_n)
+	\boldsymbol{\mu}^{\text{prior}}(t_{n+1}) = \boldsymbol{\mu}^{\text{post}}(t_n) \cdot \mathbf{P}(\Delta t_n)
 	\label{eq:macro_mean_next_prior}
 \end{equation}
-and its covariance 
+
+And its covariance:
+
 \begin{equation}
-	\mathbf \Sigma^{prior}(t_{n+1})= \mathrm{diag}(\mathbf \mu^{prior}(t_{n+1}) ) + {\mathbf P(\Delta t_n)}^\mathrm{T} \cdot (\mathbf \Sigma^{post}(t_{n})- \mathbf \mu^{post}(t_{n})) \cdot \mathbf P(\Delta t_n)
+	\boldsymbol{\Sigma}^{\text{prior}}(t_{n+1}) = \mathrm{diag}(\boldsymbol{\mu}^{\text{prior}}(t_{n+1})) + \mathbf{P}(\Delta t_n)^{\mathrm{T}} \cdot \left( \boldsymbol{\Sigma}^{\text{post}}(t_n) - \boldsymbol{\mu}^{\text{post}}(t_n) \right) \cdot \mathbf{P}(\Delta t_n)
 	\label{eq:macro_mean_next_cov}
 \end{equation}
 
-This completes the recursion step of the Macroscopic Recursive algorithm. 
+This completes the recursion step of the Macroscopic Recursive algorithm.
+
+
 
 \subsection{Bayesian Framework for Interval Averaged Measurements of Channel Ensembles: The MacroIR Algorithm}
 
