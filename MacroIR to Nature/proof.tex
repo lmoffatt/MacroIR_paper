@@ -265,62 +265,31 @@ where:
 
 \subsubsection{Calculation of the Variance of the Average Current Conditional on Starting and Ending States}
 
-The variance \( \sigma^2_{\overline{\Gamma}_{i \rightarrow j}} \) of the average current, given that the channel starts in state \( i \) and ends in state \( j \) during an interval \( t \), accounts for the fluctuations in the state transitions within the interval. This variance captures the intrinsic noise due to stochastic gating, as well as the variability in the time spent in each state.
-
-The variance \( \sigma^2_{\overline{\Gamma}_{i \rightarrow j}} \) is computed as follows:
-
-\begin{equation}
-	\sigma^2_{\overline{\Gamma}_{i \rightarrow j}} = \frac{1}{t^2 \cdot P_{i \rightarrow j}^2} \int_0^t d\tau_1 \int_0^t d\tau_2 \, \sum_{k, l} \left[ P_{i \rightarrow k}(\tau_1) \gamma_k P_{k \rightarrow j}(t-\tau_1) \right] \left[ P_{i \rightarrow l}(\tau_2) \gamma_l P_{l \rightarrow j}(t-\tau_2) \right] C(\tau_1, \tau_2)
-\end{equation}
-
-where:
-- \( P_{i \rightarrow j} \) is the probability of transitioning from state \( i \) to state \( j \) within time \( t \).
-- \( \gamma_k \) and \( \gamma_l \) are the currents associated with states \( k \) and \( l \), respectively.
-- \( C(\tau_1, \tau_2) \) is the covariance function representing the correlation between state occupancies at times \( \tau_1 \) and \( \tau_2 \).
-
-#### Spectral Approximation
-To compute this variance efficiently, we employ a spectral decomposition approach, similar to the one used for the mean current. This allows us to express the variance in terms of the eigenvalues and eigenvectors of the rate matrix \( \mathbf{Q} \):
-
-\begin{equation}
-	\sigma^2_{\overline{\Gamma}_{i \rightarrow j}} = \frac{1}{P_{i \rightarrow j}^2} \sum_{k, l, n_1, n_2, n_3, n_4} V_{i n_1} V^{-1}_{n_1 k} \gamma_k V_{k n_2} V^{-1}_{n_2 j} \, V_{i n_3} V^{-1}_{n_3 l} \gamma_l V_{l n_4} V^{-1}_{n_4 j} \, E_4(\lambda_{n_1}, \lambda_{n_2}, \lambda_{n_3}, \lambda_{n_4}, t)
-\end{equation}
-
-Here:
-- \( E_4(x_1, x_2, x_3, x_4, t) \) is defined as:
-
-\begin{equation}
-	E_4(x_1, x_2, x_3, x_4, t) = \int_0^t d\tau_1 \int_0^t d\tau_2 \, \frac{\exp(x_1 \tau_1 + x_2 (t-\tau_1)) \exp(x_3 \tau_2 + x_4 (t-\tau_2))}{t^2}
-\end{equation}
-
-The integral \( E_4 \) captures the interaction between different exponential modes during the time interval \( t \). For cases where eigenvalues are equal, the expression simplifies using series expansions.
-
-This calculation allows us to incorporate the variability in gating events into the Bayesian model, leading to more accurate estimates of the posterior distribution of the observed current measurements.
-
-
-
-\subsubsection{Calculation of the Variance of the Average Current Conditional on Starting and Ending States}
-
 The variance of the average current, conditional on starting in state \(i\) and ending in state \(j\), is defined as the difference between the expected square of the average current and the square of the expected current:
 
 \begin{equation}
-	\text{Var}(\overline{\Gamma}_{ij}) = E(\overline{\Gamma}_{ij}^2) - P_{ij} \cdot (E(\overline{\Gamma}_{ij}))^2
+	\text{Var}(\overline{\Gamma}_{i \rightarrow j}) = E(\overline{\Gamma}_{i \rightarrow j}^2) - P_{i \rightarrow j} \cdot \left( E(\overline{\Gamma}_{i \rightarrow j}) \right)^2
 \end{equation}
+
+where \( E(\overline{\Gamma}_{i \rightarrow j}^2) \) is the expected square of the average current, and \( E(\overline{\Gamma}_{i \rightarrow j}) \) is the expected average current.
+
 
 To calculate the expected square of the average current, we consider the time-weighted average of the product of the currents at each pair of time points within the interval. This involves summing over all possible intermediate states \(k_1\) and \(k_2\) for the first and second currents, respectively. Specifically, we integrate over the full time interval, accounting for all combinations of transition probabilities at each time point:
 
 \begin{equation}
-	E(\overline{\Gamma}_{ij}^2) = \frac{1}{t^2 P_{i \rightarrow j}} \int_0^t \int_0^{t-\tau_1} \sum_{k_1, k_2} P_{i \rightarrow k_1}(\tau_1) \gamma_{k_1} P_{k_1 \rightarrow k_2}(\tau_2) \gamma_{k_2} P_{k_2 \rightarrow j}(t-\tau_1-\tau_2) d\tau_1 d\tau_2
+	E(\overline{\Gamma}_{i \rightarrow j}^2) = \frac{1}{t^2 P_{i \rightarrow j}} \int_0^t \int_0^{t-\tau_1} \sum_{k_1, k_2} P_{i \rightarrow k_1}(\tau_1) \gamma_{k_1} P_{k_1 \rightarrow k_2}(\tau_2) \gamma_{k_2} P_{k_2 \rightarrow j}(t-\tau_1-\tau_2) d\tau_1 d\tau_2
 \end{equation}
 
-Here, \(P_{i \rightarrow k_1}(\tau_1)\) and \(P_{k_1 \rightarrow k_2}(\tau_2)\) represent the transition probabilities between states over the respective time intervals \(\tau_1\) and \(\tau_2\), and \(\gamma_{k_1}\) and \(\gamma_{k_2}\) denote the currents in those states. 
+Here, \(P_{i \rightarrow k_1}(\tau_1)\) and \(P_{k_1 \rightarrow k_2}(\tau_2)\) represent the transition probabilities between states over the respective time intervals \(\tau_1\) and \(\tau_2\), and \(\gamma_{k_1}\) and \(\gamma_{k_2}\) denote the currents in those states.
+
 
 By utilizing the spectral decomposition of the transition rate matrix, we can obtain a closed-form expression for the expected square of the average current. This allows us to express the quantity in terms of matrix products and the eigenvalues of the transition rate matrix, as shown below:
 
 \begin{equation}
-	E(\overline{\Gamma}_{ij}^2) = \frac{1}{P_{i \rightarrow j}} \sum_{k_1, k_2, n_1, n_2, n_3} V_{i n_1} \cdot V^{-1}_{n_1 k_1} \cdot \gamma_{k_1} \cdot V_{k_1 n_2} \cdot V^{-1}_{n_2 k_2} \cdot \gamma_{k_2} \cdot V_{k_2 n_3} \cdot V^{-1}_{n_3 j} E_3(\lambda_{n_1} \cdot t, \lambda_{n_2} \cdot t, \lambda_{n_3} \cdot t)
+	E(\overline{\Gamma}_{i \rightarrow j}^2) = \frac{1}{P_{i \rightarrow j}} \sum_{k_1, k_2, n_1, n_2, n_3} V_{i n_1} \cdot V^{-1}_{n_1 k_1} \cdot \gamma_{k_1} \cdot V_{k_1 n_2} \cdot V^{-1}_{n_2 k_2} \cdot \gamma_{k_2} \cdot V_{k_2 n_3} \cdot V^{-1}_{n_3 j} E_3(\lambda_{n_1} \cdot t, \lambda_{n_2} \cdot t, \lambda_{n_3} \cdot t)
 \end{equation}
 
-Here, \(E_3\) is a function that depends on the eigenvalues of the transition rate matrix, and is defined as follows:
+Here, \(E_3\) is a function that acts on the eigenvalues of the transition rate matrix, and is defined as follows:
 
 \begin{equation}
 	E_3(x,y,z)= 
@@ -346,8 +315,6 @@ Finally, \(E_{1,11}(x, y, z)\) is given by:
 \end{equation}
 
 These expressions allow us to compute the expected square of the average current in a system where the transitions between states are governed by a Markov process with a known transition rate matrix.
-
-
 
 
 
