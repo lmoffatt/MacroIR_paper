@@ -111,11 +111,11 @@ The integration of Eq.~\ref{eq:master_equation} allows us to determine the time 
 
 
 \begin{align}
-	\boldsymbol{p}(t) &= \boldsymbol{p}(0) \cdot \boldsymbol{P}
+	\boldsymbol{p}(t) &= \boldsymbol{p}(0) \cdot \boldsymbol{P}(t)
 	\label{eq:master_equation_solution}
 \end{align}
 \begin{align}
-	\boldsymbol{P} &= \exp(\boldsymbol{Q} \cdot t),
+	\boldsymbol{P} (t) &= \exp(\boldsymbol{Q} \cdot t),
 	\label{eq:Transition_Matrix_definition}
 \end{align}
 
@@ -125,8 +125,8 @@ where \( \exp(\boldsymbol{Q} \cdot t) \) is the matrix exponential of \( \boldsy
 In this context, the actual state of the Markov process remains unobservable; what can be directly measured is the current produced by the channel. Each state \( i \) of the channel generates a specific single-channel current, encoded in the current vector \( \boldsymbol{\gamma} \). The observable current at any given time is thus determined by the probability-weighted sum over all states, which can be expressed as:
 
 \begin{equation}
-	y^{\text{obs}}(t) = \boldsymbol{p}(t) \cdot \boldsymbol{\gamma}.
-	\label{eq:single_channel_current}
+	y^{\text{pred}}(t) = \boldsymbol{p}(t) \cdot \boldsymbol{\gamma}.
+	\label{eq:single_channel_prediction}
 \end{equation}
 
 This relationship links the hidden Markov states to the measurable macroscopic current, allowing us to infer the channel kinetics from experimental recordings.
@@ -137,11 +137,11 @@ This relationship links the hidden Markov states to the measurable macroscopic c
 
 Consider the scenario where we perform a single "instantaneous" current measurement, denoted as \( y^{\text{obs}} \). Let the initial state probability distribution be given by \( \boldsymbol{p}^{\text{prior}} \). Suppose the instrumental noise associated with each measurement follows a normal distribution with variance \( \epsilon^2 \). Under these conditions, we can derive the likelihood of the measurement and update the posterior probability distribution accordingly.
 
-The likelihood of observing the current \( y^{\text{obs}} \) is given by:
+Using the state current $\gamma_i$, the likelihood of observing the current \( y^{\text{obs}} \) is given by:
 
 \begin{equation}
 	\mathcal{L} = P(y^{\text{obs}}) = \sum_i \mathcal{N}(p_i \cdot \gamma_i, \epsilon^2),
-	\label{eq:likelihood}
+	\label{eq:single_channel_likelihood}
 \end{equation}
 
 where \( \mathcal{N}(\mu, \sigma^2) \) denotes the normal distribution with mean \( \mu \) and variance \( \sigma^2 \).
@@ -150,16 +150,15 @@ The posterior probability distribution, \( \boldsymbol{p}^{\text{post}} \), is t
 
 \begin{equation}
 	p^{\text{post}}_i = p_i \cdot \frac{\mathcal{N}(p_i \cdot \gamma_i, \epsilon^2)}{P(y^{\text{obs}})},
-	\label{eq:posterior}
+	\label{eq:single_channel_posterior}
 \end{equation}
 
 where \( p^{\text{post}}_i \) denotes the posterior probability of state \( i \) after observing the measurement.
 
-Now, suppose a second measurement is taken after a time interval \( t \). The prior probability distribution at time \( t \), denoted \( \boldsymbol{p}^{\text{prior}}(t) \), is obtained from the previous posterior distribution and the transition matrix \( \boldsymbol{P} \) apply Eq.~\ref{eq:master_equation_solution}:
+Now, suppose a second measurement is taken after a time interval \( t \). The prior probability distribution at time \( t \), denoted \( \boldsymbol{p}^{\text{prior}}(t) \), is obtained by applying Eq.~\ref{eq:master_equation_solution}:
 
 \begin{align}
-	\boldsymbol{p}^{\text{prior}}(t) &= \boldsymbol{p}^{\text{post}}(0) \cdot \boldsymbol{P}, \nonumber \\
-	\boldsymbol{P} &= \exp(\boldsymbol{Q} \cdot t),
+	\boldsymbol{p}^{\text{prior}}(t) &= \boldsymbol{p}^{\text{post}}(0) \cdot \boldsymbol{P}(t)
 	\label{eq:prior_update}
 \end{align}
 
@@ -168,58 +167,62 @@ where \( \boldsymbol{Q} \) is the rate matrix governing the Markov process.
 We can then compute the updated posterior probability and the likelihood for the subsequent measurement in the same manner. The total log-likelihood (\( \log L \)) for a series of measurements is defined as:
 
 \begin{equation}
-	\log L = \sum_i \log (L_i),
-	\label{eq:loglikelihood}
+	\log \mathcal{L} = \sum_i \log (\mathcal{L}_i),
+	\label{eq:total_loglikelihood}
 \end{equation}
 
-where \( L_i \) corresponds to the likelihood of the \( i \)-th measurement.
+where \( \mathcal{L}_i \) corresponds to the likelihood of the \( i \)-th measurement.
 
 
 \subsection{Bayesian Model of Time-Averaged Single-Channel Measurements}
 
-We consider a scenario where, instead of instantaneous measurements, we observe the time-averaged current \( \overline{y_t}^{\text{obs}} \) over a specific interval \( t \). Given the prior state probability distribution \( \mathbf{p}^{\text{prior}} \) at the beginning of the interval, we can calculate the joint state probability matrix \( \mathbf{\Pi} \), where the elements \( \Pi_{ij} \) represent the probability of starting in state \( i \) and ending in state \( j \):
+We consider a scenario where, instead of instantaneous measurements, we observe the time-averaged current \( \overline{y_t}^{\text{obs}} \) over a specific interval \( t \). During this time interval, the channel state fluctuates continuously, with each specific trajectory representing a point in an infinite-dimensional space—an unwieldy realm for statistical analysis. However, from the perspective of a Bayesian analysis, there is only one crucial piece of information: the prior probability distribution at the beginning of each interval. The state probabilities at all subsequent times within the interval can be computed using Eq.~\ref{eq:master_equation_solution}. 
+
+On the other hand, there is only one piece of information that we gain from the interval: the observed average current. Ideally, we would like to acquire the posterior probability at the end of the interval, allowing us to use it as the prior for the next interval. To correctly compute this posterior distribution, we must account for both the starting and ending states.
+
+Given the prior state probability distribution \( \boldsymbol{p}^{\text{prior}} \) at the start of the interval, we can calculate the joint state probability matrix \( \boldsymbol{\Pi} \), where the elements \( \Pi_{i\rightarrow j} \) represent the probability of starting in state \( i \) and ending in state \( j \):
 
 \begin{equation}
-	\Pi_{ij}^{\text{prior}} = p^{\text{prior}}_i \cdot P_{i \rightarrow j}
+	\Pi_{i\rightarrow j}^{\text{prior}} = p^{\text{prior}}_i \cdot P_{i \rightarrow j}
+	\label{eq:joint_state_probability}
 \end{equation}
 
-Here, \( \mathbf{P} \) is the transition probability matrix, with elements \( P_{i \rightarrow j} \) representing the probability of transitioning from state \( i \) to state \( j \).
+Here, the elements \( P_{i \rightarrow j} \) denoting the probability of transitioning from state \( i \) to state \( j \).
 
 Alternatively, in matrix form:
 
 \begin{equation}
-	\mathbf{\Pi}^{\text{prior}} = \mathrm{diag}(\mathbf{p}^{\text{prior}}) \cdot \mathbf{P}
+	\boldsymbol{\Pi}^{\text{prior}} = \text{diag}(\boldsymbol{p}^{\text{prior}}) \cdot \mathbf{P}
+	\label{eq:joint_state_probability_matrix}
 \end{equation}
 
-The likelihood of an observed average current \( \overline{y}^{\text{obs}} \) is then given by:
+The Probability of an observed average current \( \overline{y}^{\text{obs}} \) is then given by:
 
 \begin{equation}
 	P(\overline{y}^{\text{obs}}) = \sum_{i,j} \Pi_{ij}^{\text{prior}} \cdot \mathcal{N}\left(\overline{y}^{\text{obs}} - \Pi_{ij}^{\text{prior}} \cdot \overline{\Gamma}_{ij}, \epsilon^2 + \sigma^2_{\overline{\Gamma}_{ij}}\right)
 \end{equation}
 
-where \( \overline{\Gamma}_{ij} \) and \( \sigma^2_{\overline{\Gamma}_{ij}} \) represent the average current and variance of the average current for starting at state \( i \) and ending at state \( j \), respectively.
+where \( \overline{\Gamma}_{ij} \) and \( \sigma^2_{\overline{\Gamma}_{ij}} \) represent the average current and its variance for trajectories starting in state \( i \) and ending in state \( j \), respectively and will be calculated below. 
 
 The posterior distribution of the joint state probability matrix is updated using Bayes' theorem:
 
 \begin{equation}
-	\Pi_{ij}^{\text{post}} = \frac{\Pi_{ij}^{\text{prior}} \cdot \mathcal{N}\left(\overline{y}^{\text{obs}} - \Pi_{ij}^{\text{prior}} \cdot \overline{\Gamma}_{ij}, \epsilon^2 + \sigma^2_{\overline{\Gamma}_{ij}}\right)}{P(\overline{y}^{\text{obs}})}
+	\Pi_{ij}^{\text{post}} = \frac{\Pi_{i \rightarrow j}^{\text{prior}} \cdot \mathcal{N}\left(\overline{y}^{\text{obs}} - \Pi_{ij}^{\text{prior}} \cdot \overline{\Gamma}_{ij}, \epsilon^2 + \sigma^2_{\overline{\Gamma}_{ij}}\right)}{P(\overline{y}^{\text{obs}})}
 \end{equation}
 
-The prior state probability distribution for the next interval is obtained by marginalizing the posterior distribution over the initial state $i$:
+The prior state probability distribution for the next interval is then obtained by marginalizing over the initial state \( i \):
 
 \begin{equation}
 	p_j^{\text{prior}}(t_{n+1}) = \sum_i \Pi_{ij}^{\text{post}}(t_n)
 \end{equation}
 
-Since the probability of each observation $\overline{y}_n^{\text{obs}}$ is calculated conditionally on the previous observations $\overline{y}_1^{\text{obs}}, \dots, \overline{y}_{n-1}^{\text{obs}}$, the cumulative log-likelihood of the entire measurement series can be updated as follows:
+Since the probability of each observation \( \overline{y}_n^{\text{obs}} \) is calculated conditionally on the previous observations \( \overline{y}_1^{\text{obs}}, \dots, \overline{y}_{n-1}^{\text{obs}} \), the cumulative log-likelihood of the entire measurement series can be updated as follows:
 
 \begin{equation}
-	\log \mathcal{L}(y_1^{\text{obs}}, \dots, y_{n+1}^{\text{obs}}) = \log \mathcal{L}(y_1^{\text{obs}}, \dots, y_n^{\text{obs}}) + \log P(y_{n+1}^{\text{obs}})
+	\log \mathcal{L}(\overline{y}_1^{\text{obs}}, \dots, \overline{y}_{n+1}^{\text{obs}}) = \log \mathcal{L}(\overline{y}_1^{\text{obs}}, \dots, \overline{y}_n^{\text{obs}}) + \log P(\overline{y}_{n+1}^{\text{obs}})
 \end{equation}
 
-
-
-While the exact distribution of the mean current is not strictly normal, we approximate it as such, assuming that instrumental noise dominates gating noise.
+While the exact distribution of the mean current is not strictly normal, we approximate it as such, assuming that instrumental noise dominates over gating noise.
 
 
 \subsubsection{Calculation of the Average Current conditional on starting and ending states} 
