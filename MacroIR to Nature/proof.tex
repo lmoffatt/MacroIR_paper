@@ -558,6 +558,7 @@ If we expand this expression
 	\label{eq:mu_prior_update_0_to_t}
 \end{equation}
 
+
 we have two terms. Using Eq. \ref{eq:meta_mean_prior}, the first term is just
 
 \begin{equation}
@@ -565,24 +566,28 @@ we have two terms. Using Eq. \ref{eq:meta_mean_prior}, the first term is just
 	\label{eq:mu_prior_update_0_to_t}
 \end{equation}
 
-The second term is pre-multiplied by an scalar whos values are already obtained in Eq. \ref{eq:macro_interval_predicted_y}
-
+The second term is pre-multiplied by an scalar whos values are already obtained in Eq. \ref{eq:macro_interval_predicted_y} and \ref{eq:macro_interval_sigma_pred}. The second factor of the second term is the matrix multiplication of the average current conditional on the meta-state with the covariance probability matrix of the meta-state. 
+This result will still be in the meta-state framework but after we marginalize the start state we obtain an expression that does not involve meta-states: 
 
 \begin{equation}
-	\overline{\boldsymbol{\gamma}}^{\mathrm{T}}_{0 \rightarrow t} \cdot \boldsymbol{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} = 
+	\left(\overline{\boldsymbol{\gamma}}^{\mathrm{T}}_{0 \rightarrow t} \cdot \boldsymbol{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \right)_{. \rightarrow t} =\overline{\boldsymbol{\gamma} \boldsymbol{\Sigma}}= 
 	\overline{\boldsymbol{\gamma}}_{0}^{\mathrm{T}} \cdot 
 	\left( \boldsymbol{\Sigma}^{\mathrm{prior}}_{0} - \mathrm{diag}(\boldsymbol{\mu}^{\mathrm{prior}}_0) \right) \cdot \boldsymbol{P} 
 	+ \boldsymbol{\mu}^{\mathrm{prior}}_0 \cdot \left( \overline{\boldsymbol{\Gamma}}_{0 \rightarrow t} \circ \boldsymbol{P} \right)
-	\label{eq:gamma_sigma_prior_0t}
+	\label{eq:interval_gamma_sigma}
 \end{equation}
+
+In this way we obtain the formula for the posterior at the end of the interval, which for measurements without gaps is the next prior
 
 
 \begin{equation}
 	\boldsymbol{\mu}^{\mathrm{prior}}_{t} = \boldsymbol{\mu}^{\mathrm{post}}_{. \rightarrow t} = \boldsymbol{\mu}^{\mathrm{prior}}_0 \cdot \boldsymbol{P} + 
-	\frac{y^{\mathrm{obs}}_{0 \rightarrow t} - y^{\mathrm{fit}}_{0 \rightarrow t}}{{\sigma^2}^{\mathrm{fit}}_{0 \rightarrow t}} 
-	\cdot \overline{\boldsymbol{\gamma}}^{\mathrm{T}}_{0 \rightarrow t} \cdot \boldsymbol{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t}
-	\label{eq:posterior_mean_update_0t}
+	\frac{y^{\mathrm{obs}}_{0 \rightarrow t} - y^{\mathrm{pred}}_{0 \rightarrow t}}{{\sigma^2}_{\overline{y}^{\mathrm{pred}}_{0 \rightarrow t}}} 
+	\cdot \overline{\boldsymbol{\gamma} \boldsymbol{\Sigma}}
+	\label{eq:macro_interval_posterior_mean}
 \end{equation}
+
+Analogously, using Eq. \ref{eq:macro_cov_posterior} we obtain an expression for the Covariance of the posterior of the meta-state
 
 
 \begin{equation}
@@ -592,11 +597,15 @@ The second term is pre-multiplied by an scalar whos values are already obtained 
 	\label{eq:posterior_covariance_update_0_t}
 \end{equation}
 
+Also, we can disregard the start state component of the meta-state and marginalize it 
+
 
 \begin{equation}
 	(\boldsymbol{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t})_{i_{t}, j_{t}} = \sum_{i_{0}, j_{0}} (\boldsymbol{\Sigma}^{\mathrm{post}}_{0 \rightarrow t})_{(i_{0}, i_{t}), (j_{0}, j_{t})}
 	\label{eq:prior_covariance_marginalization}
 \end{equation}
+
+After expanding using equations \ref{eq:meta_covariance_prior} and \ref{eq:meta_gamma_prior} and 
 
 
 \begin{equation}
