@@ -489,7 +489,7 @@ For calculating the variance of the prediction, we add an extra term to Eq.~\ref
 
 The product $\mathbf{\mu}^{\mathrm{prior}}_{0 \rightarrow t} \cdot {\sigma^2 \mathbf{\Gamma}}_{0 \rightarrow t}$ can be simplified
 \begin{equation}
-	\mathbf{\mu}^{\mathrm{prior}}_{0 \rightarrow t} \cdot {\sigma^2 \mathbf{\Gamma}}_{0 \rightarrow t}= \mathbf{\mu}^{\mathrm{prior}}_{0} \cdot {\sigma^2 \mathbf{\Gamma}}_{0}
+	\mathbf{\mu}^{\mathrm{prior}}_{0 \rightarrow t} \cdot {\sigma^2 \mathbf{\Gamma}}_{0 \rightarrow t}= \mathbf{\mu}^{\mathrm{prior}}_{0} \cdot {\sigma^2 \mathbf{\gamma}}_{0}
 	\label{eq:meta_channel_noise}
 \end{equation}
  
@@ -501,9 +501,10 @@ Here, the variance of the average current conditonal on the start state, \( \ove
 \end{equation}
 
 
-The triple product $\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t}$ result in a scalar. Lets expand it:
+The triple product $\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t}$ result in a scalar. Lets name it and expand it to find a simpler expression that avoids meta-states:
 \begin{multline}
-	\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t} = 
+	\overline{\mathbf{\gamma}^{\mathrm{T}} \mathbf{\Sigma}\mathbf{\gamma}}=
+	\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t} = \\
 	\sum_{i_0, i_t, j_0, j_t} 
 	\left[ (\overline{\Gamma}_{0 \rightarrow t})_{i_0 \rightarrow i_t} \cdot P_{i_0 \rightarrow i_t} \cdot \left( (\Sigma^{\mathrm{prior}}_{0})_{i_0, j_0} - \delta_{i_0, j_0} \cdot (\mu^{\mathrm{prior}}_0)_{i_0} \right) \cdot P_{j_0 \rightarrow j_t} \right] \\
 	+ \delta_{i_0, j_0} \cdot \delta_{i_t, j_t} \cdot (\mu^{\mathrm{prior}}_0)_{i_0} \cdot P_{i_0 \rightarrow i_t} \cdot (\overline{\Gamma}_{0 \rightarrow t})_{j_0 \rightarrow j_t}
@@ -511,27 +512,27 @@ The triple product $\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf
 \end{multline}
 where $\delta_{i, j}$ is the Kronecker delta, equal to $1$ if $i = j$ and $0$ otherwise.
 
-To find simpler expressions for the meta-state matrix multiplications, we proceed as follows:
-\begin{multline}
-	\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t} = 
-	\sum_{i_0, i_t, j_0, j_t}
-	(\overline{\Gamma}_{0 \rightarrow t})_{i_0 \rightarrow i_t} \cdot 
-	P_{i_0 \rightarrow i_t} \left((\Sigma^{\mathrm{prior}}_{0})_{i_0, j_0} - \delta_{i_0, j_0} \cdot (\mu^{\mathrm{prior}}_0)_{i_0} \right)  \cdot P_{j_0 \rightarrow j_t} \\
-	+ \delta_{i_0, j_0} \cdot \delta_{i_t, j_t} \cdot (\mu^{\mathrm{prior}}_0)_{i_0} \cdot P_{i_0 \rightarrow i_t} 
-	\cdot (\overline{\Gamma}_{0, t})_{j_0 \rightarrow j_t}
-	\label{eq:meta_state_expansion}
-\end{multline}
-
 This can be simplified to an expression without meta-states:
 \begin{multline}
-	\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t} = 
+		\overline{\mathbf{\gamma}^{\mathrm{T}} \mathbf{\Sigma}\mathbf{\gamma}}= 
 	\overline{\mathbf{\gamma}}_{0}^{\mathrm{T}} \cdot 
 	\left( \mathbf{\Sigma}^{\mathrm{prior}}_{0} - \mathrm{diag}(\mathbf{\mu}^{\mathrm{prior}}_0) \right) \cdot 
-	\overline{\mathbf{\gamma}}_{0 \rightarrow t} \\
+	\overline{\mathbf{\gamma}}_{0 \rightarrow t} 
 	+ \mathbf{\mu}^{\mathrm{prior}}_0 \cdot \left( \overline{\mathbf{\Gamma}}_{0 \rightarrow t} \circ \overline{\mathbf{\Gamma}}_{0 \rightarrow t} \circ \mathbf{P} \right) \cdot \mathbf{1}
 	\label{eq:simplified_meta_state}
 \end{multline}
 where \( \circ \) denotes the element-wise (Hadamard) product and \( \mathbf{1} \) is a vector of ones.
+
+We can now obtain an expression for the variance of the predictions that does not involve the meta-state: 
+
+\begin{equation}
+	{\sigma^2}_{\overline{y}^{\mathrm{pred}}_{0 \rightarrow t}}
+	= \epsilon^2_{0 \rightarrow t} + N_{\mathrm{ch}} \cdot\overline{\mathbf{\gamma}^{\mathrm{T}} \mathbf{\Sigma}\mathbf{\gamma}}
+	+ N_{\mathrm{ch}} \cdot \mathbf{\mu}^{\mathrm{prior}}_{0} \cdot {\sigma^2 \overline{\mathbf{\gamma}}}_{0}
+	\label{eq:meta_macro_sigma_pred}
+\end{equation}
+
+
 
 Applying Eq.~\ref{eq:macro_mean_posterior}, we update the posterior mean in terms of meta-state,
 \begin{equation}
@@ -541,11 +542,13 @@ Applying Eq.~\ref{eq:macro_mean_posterior}, we update the posterior mean in term
 	\label{eq:meta_posterior_mean_update}
 \end{equation}
 
-The marginal mean at time \( t \) is obtained by summing over all initial states:
+Now, we dont need the meta-state posterior for the likelihood calculations. We only need the next prior state vector which can be obtained marginalizing the meta-state vector over the initial states. The marginal mean at time \( t \) is obtained by summing over all initial states:
 \begin{equation}
-	(\mu^{\mathrm{prior}}_{t})_{i_t} = \sum_{i_0} (\mu^{\mathrm{post}}_{0, t})_{(i_0, i_t)}
+	(\mu^{\mathrm{prior}}_{t})_{i_t} = \sum_{i_0} (\mu^{\mathrm{post}}_{0 \rightarrow t})_{(i_0 \rightarrow i_t)}
 	\label{eq:marginal_prior_mean}
 \end{equation}
+
+Now 
 
 \begin{equation}
 	(\mu^{\mathrm{prior}}_{0 \rightarrow t})_{j_{t}} = 
@@ -555,79 +558,6 @@ The marginal mean at time \( t \) is obtained by summing over all initial states
 	\label{eq:mu_prior_update_0_to_t}
 \end{equation}
 
-
-\subsection{test2}
-
-For calculating the variance of the prediction, we add an extra term to Eq.~\ref{eq:macro_sigma_pred}: the contribution of ${\sigma^2 \mathbf{\Gamma}}_{0 \rightarrow t}$, which represents the variance of the averaged current (i.e., the open channel noise),
-\begin{equation}
-	{\sigma^2}_{\overline{y}^{\mathrm{pred}}_{0 \rightarrow t}}
-	= \epsilon^2_{0 \rightarrow t} + N_{\mathrm{ch}} \cdot \mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t}
-	+ N_{\mathrm{ch}} \cdot \mathbf{\mu}^{\mathrm{prior}}_{0 \rightarrow t} \cdot {\sigma^2 \mathbf{\Gamma}}_{0 \rightarrow t}
-	\label{eq:meta_macro_sigma_pred}
-\end{equation}
-
-To simplify the expression for the meta-state matrix multiplications, consider:
-
-\begin{multline}
-	\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t} = 
-	\sum_{i_0, i_t, j_0, j_t} 
-	\left[ (\overline{\Gamma}_{0 \rightarrow t})_{i_0 \rightarrow i_t} \cdot P_{i_0 \rightarrow i_t} \cdot \left( (\Sigma^{\mathrm{prior}}_{0})_{i_0, j_0} - \delta_{i_0, j_0} \cdot (\mu^{\mathrm{prior}}_0)_{i_0} \right) \cdot P_{j_0 \rightarrow j_t} \right] \\
-	+ \delta_{i_0, j_0} \cdot \delta_{i_t, j_t} \cdot (\mu^{\mathrm{prior}}_0)_{i_0} \cdot P_{i_0 \rightarrow i_t} \cdot (\overline{\Gamma}_{0 \rightarrow t})_{j_0 \rightarrow j_t}
-	\label{eq:meta_state_cov_mult}
-\end{multline}
-where $\delta_{i, j}$ is the Kronecker delta, equal to $1$ if $i = j$ and $0$ otherwise.
-
-To find simpler expressions for the meta-state matrix multiplications, we proceed as follows:
-
-\begin{multline}
-	\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t} = 
-	\sum_{i_0, i_t, j_0, j_t}
-	(\overline{\Gamma}_{0 \rightarrow  t})_{i_0 \rightarrow i_t} \cdot 
-	P_{i_0 \rightarrow i_t} \left((\Sigma^{\mathrm{prior}}_{0})_{i_0, j_0} - \delta_{i_0, j_0} \cdot (\mu^{\mathrm{prior}}_0)_{i_0} \right)  \cdot P_{j_0 \rightarrow j_t} \\
-	+ \delta_{i_0, j_0} \cdot \delta_{i_t, j_t} \cdot (\mu^{\mathrm{prior}}_0)_{i_0} \cdot P_{i_0 \rightarrow i_t} 
-	\cdot (\overline{\Gamma}_{0, t})_{j_0 \rightarrow j_t}
-	\label{eq:meta_state_expansion}
-\end{multline}
-
-This can be simplified to and expression without meta-states either:
-
-\begin{multline}
-	\mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t} = 
-	\overline{\mathbf{\gamma}}_{0}^{\mathrm{T}} \cdot 
-	\left( \mathbf{\Sigma}^{\mathrm{prior}}_{0} - \mathrm{diag}(\mathbf{\mu}^{\mathrm{prior}}_0) \right) \cdot 
-	\overline{\mathbf{\gamma}}_{0 \rightarrow t} \\
-	+ \mathbf{\mu}^{\mathrm{prior}}_0 \cdot \left( \overline{\mathbf{\Gamma}}_{0 \rightarrow t} \circ \overline{\mathbf{\Gamma}}_{0 \rightarrow t} \circ \mathbf{P} \right) \cdot \mathbf{1}
-	\label{eq:simplified_meta_state}
-\end{multline}
-
-where \( \circ \) denotes the element-wise (Hadamard) product and \( \mathbf{1} \) is a vector of ones.
-
-
-Applying Eq. ~\ref{eq:macro_mean_posterior}, we update the posterior mean in terms of meta-state,
-
-\begin{equation}
-	\mathbf{\mu}^{\mathrm{post}}_{0, t} = \mathbf{\mu}^{\mathrm{prior}}_{0, t} + 
-	\frac{y^{\mathrm{obs}}_{0 t} - y^{\mathrm{pred}}_{0, t}}{{\sigma^2}^{\mathrm{fit}}_{0, t}} 
-	\cdot \mathbf{\gamma}^{\mathrm{T}}_{0, t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0, t}
-	\label{eq:meta_posterior_mean_update}
-\end{equation}
-
-The marginal mean at time \( t \) is obtained by summing over all initial states:
-
-\begin{equation}
-	(\mu^{\mathrm{prior}}_{t})_{i_t} = \sum_{i_0} (\mu^{\mathrm{post}}_{0, t})_{(i_0, i_t)}
-	\label{eq:marginal_prior_mean}
-\end{equation}
-
-\begin{equation}
-	(\mu^{\mathrm{prior}}_{0 \rightarrow t})_{j_{t}} = 
-	\sum_{j_0} (\mu^{\mathrm{prior}}_{0 \rightarrow t})_{(j_0, j_{t})} 
-	+ \frac{\overline{y}^{\mathrm{obs}}_{0 \rightarrow t} - \overline{y}^{\mathrm{pred}}_{0 \rightarrow t}}{{\sigma^2}^{\mathrm{fit}}_{0 \rightarrow t}} \cdot 
-	\sum_{j_0, i_0, i_{t}} (\gamma_{0 \rightarrow t})_{(i_0 \rightarrow i_{t})} \cdot (\Sigma^{\mathrm{prior}}_{0 \rightarrow t})_{(i_0 \rightarrow i_{t})(j_0 \rightarrow j_{t})}
-	\label{eq:mu_prior_update_0_to_t}
-\end{equation}
-
-\subsection{testend}
 
 \begin{equation}
 	\overline{\boldsymbol{\gamma}}^{\mathrm{T}}_{0 \rightarrow t} \cdot \boldsymbol{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} = 
