@@ -403,7 +403,6 @@ The theoretical foundation of MacroIR builds upon the combination of the previou
 
 However, direct work with the meta-states would imply an increase in the number of states from $k$ to $k^2$. Since the algorithm involves matrix multiplications that scale as $n^3$, a naive use of meta-states would increase the algorithm time complexity from $k^3$ to $k^6$. However, we are not actually interested in the meta-state per se; it is just a theoretical tool used to derive the equations for the likelihoods and posterior distributions. Fortunately, algebraic manipulations and simplifications allowed us to eliminate the need for explicitly calculating the meta-state probability vector in the data analysis. As a result, the complexity scale is restored to the usual $k^3$.
 
-\subsection{test}
 
 Let's define the meta-state: the goal is to describe both the initial ensemble state and the final ensemble state during the measurement interval \( [0, t] \). For clarity, we adopt the convention that \( 0 \) marks the start of the interval and \( t \) marks its end.
 
@@ -476,7 +475,6 @@ In this way, we derive an expression for the predicted response \( \overline{y}^
 	\label{eq:macro_interval_predicted_y}
 \end{equation}
 
-\subsection{test2}
 
 For calculating the variance of the prediction, we add an extra term to Eq.~\ref{eq:macro_sigma_pred}: the contribution of ${\sigma^2 \mathbf{\Gamma}}_{0 \rightarrow t}$, which represents the variance of the averaged current (i.e., akin to the open channel noise), conditional on $i_0 \rightarrow i_t$, that is starting on state $i_0$ and ending in state $i_t$
 
@@ -605,7 +603,7 @@ Also, we can disregard the start state component of the meta-state and marginali
 	\label{eq:prior_covariance_marginalization}
 \end{equation}
 
-After expanding using equations \ref{eq:meta_covariance_prior} and \ref{eq:meta_gamma_prior} and 
+After expanding using equations \ref{eq:meta_covariance_prior} and \ref{eq:meta_gamma_prior} and \ref{eq:interval_gamma_sigma}, we obtain an expression for the next prior that does involve meta-state dimensionality
 
 
 \begin{equation}
@@ -616,6 +614,9 @@ After expanding using equations \ref{eq:meta_covariance_prior} and \ref{eq:meta_
 	\overline{\boldsymbol{\gamma}^{\mathrm{T}} \boldsymbol{\Sigma}}_{0 \rightarrow t}^{\mathrm{T}} \cdot \overline{\boldsymbol{\gamma}^{\mathrm{T}} \boldsymbol{\Sigma}}_{0 \rightarrow t}
 	\label{eq:prior_covariance_update_0_t}
 \end{equation}
+
+
+With this equation we complete the recursion. 
 
 
 \end{document}
