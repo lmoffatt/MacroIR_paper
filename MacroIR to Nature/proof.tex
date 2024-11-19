@@ -529,7 +529,7 @@ We can now obtain an expression for the variance of the predictions that does no
 	{\sigma^2}_{\overline{y}^{\mathrm{pred}}_{0 \rightarrow t}}
 	= \epsilon^2_{0 \rightarrow t} + N_{\mathrm{ch}} \cdot\overline{\mathbf{\gamma}^{\mathrm{T}} \mathbf{\Sigma}\mathbf{\gamma}}
 	+ N_{\mathrm{ch}} \cdot \mathbf{\mu}^{\mathrm{prior}}_{0} \cdot {\sigma^2 \overline{\mathbf{\gamma}}}_{0}
-	\label{eq:meta_macro_sigma_pred}
+	\label{eq:macro_interval_sigma_pred}
 \end{equation}
 
 
@@ -548,7 +548,7 @@ Now, we dont need the meta-state posterior for the likelihood calculations. We o
 	\label{eq:marginal_prior_mean}
 \end{equation}
 
-Now 
+If we expand this expression
 
 \begin{equation}
 	(\mu^{\mathrm{prior}}_{0 \rightarrow t})_{j_{t}} = 
@@ -557,6 +557,15 @@ Now
 	\sum_{j_0, i_0, i_{t}} (\gamma_{0 \rightarrow t})_{(i_0 \rightarrow i_{t})} \cdot (\Sigma^{\mathrm{prior}}_{0 \rightarrow t})_{(i_0 \rightarrow i_{t})(j_0 \rightarrow j_{t})}
 	\label{eq:mu_prior_update_0_to_t}
 \end{equation}
+
+we have two terms. Using Eq. \ref{eq:meta_mean_prior}, the first term is just
+
+\begin{equation}
+	\sum_{j_0} (\mu^{\mathrm{prior}}_{0 \rightarrow t})_{(j_0, j_{t})}= \sum_{j_0} (\mu^{\text{prior}})_{j_0} \cdot P_{j_0 \rightarrow j_t}(t)
+	\label{eq:mu_prior_update_0_to_t}
+\end{equation}
+
+The second term is pre-multiplied by an scalar whos values are already obtained in Eq. \ref{eq:macro_interval_predicted_y}
 
 
 \begin{equation}
