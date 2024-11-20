@@ -394,6 +394,92 @@ And its covariance:
 This completes the recursion step of the Macroscopic Recursive algorithm.
 
 
+\subsection{MacroIR: A Bayesian Framework for Interval-Averaged Analysis of Channel Ensembles}
+
+We introduce MacroIR (Macroscopic Interval Recursive), a novel Bayesian framework designed for time-averaged Markovian processes over successive intervals. The algorithm is inspired by macropatch recordings, which provide high-fidelity kinetic data with low noise. This approach is versatile, extending to systems such as FRET measurements, molecular motor ensembles, and potentially diffusion analyses.
+
+MacroIR applies the MacroR algorithm to the meta-state described in the MicroIR algorithm, which represents the initial and final states within an interval. Importantly, while the meta-state concept theoretically expands the state space from \( k \) to \( k^2 \), leading to a computational cost scaling from \( k^3 \) to \( k^6 \), algebraic simplifications restore the complexity to \( k^3 \). These simplifications eliminate the need for explicit meta-state calculations, enabling efficient updates of the likelihood and posterior distributions.
+
+The meta-state represents the joint probabilities of starting in state \( i_0 \) and ending in state \( i_t \) over a time interval \( [0, t] \). The prior mean is given by:
+\begin{equation}
+	(\mu^{\text{prior}}_{0 \rightarrow t})_{(i_0 \rightarrow i_t)} = (\mu^{\text{prior}})_{i_0} \cdot P_{i_0 \rightarrow i_t}(t),
+	\label{eq:meta_mean_prior}
+\end{equation}
+where \( P_{i_0 \rightarrow i_t}(t) \) is the transition probability.
+
+Similarly, the prior covariance is:
+\begin{multline}
+	(\Sigma^{\text{prior}}_{0 \rightarrow t})_{(i_0 \rightarrow i_t)(j_0 \rightarrow j_t)} = 
+	P_{i_0 \rightarrow i_t} \big[(\Sigma^{\text{prior}}_0)_{i_0, j_0} - \delta_{i_0, j_0} \cdot (\mu^{\text{prior}}_0)_{i_0} \big] \cdot P_{j_0 \rightarrow j_t} \\
+	+ \delta_{i_0, j_0} \cdot \delta_{i_t, j_t} \cdot (\mu^{\text{prior}}_0)_{i_0} \cdot P_{i_0 \rightarrow i_t},
+	\label{eq:meta_covariance_prior}
+\end{multline}
+where \( \delta_{i, j} \) is the Kronecker delta.
+
+The predicted average current over the interval is:
+\begin{equation}
+	\overline{y}^{\text{pred}}_{0,t} = N_{\text{ch}} \cdot \mathbf{\mu}^{\text{prior}}_{0} \cdot \overline{\gamma}_{0},
+	\label{eq:macro_interval_predicted_y}
+\end{equation}
+where \( \overline{\gamma}_{0} \) is the average current marginalized over end states:
+\begin{equation}
+	(\overline{\mathbf{\gamma}}_{0})_i = \sum_j (\overline{\Gamma})_{i \rightarrow j}.
+\end{equation}
+
+The variance of the predicted current accounts for intrinsic channel noise and state transitions:
+\begin{equation}
+	\sigma^2_{\overline{y}^{\text{pred}}_{0 \rightarrow t}} = \epsilon^2_{0 \rightarrow t} + N_{\text{ch}} \cdot \widetilde{\mathbf{\gamma}^{\mathrm{T}} \mathbf{\Sigma}\mathbf{\gamma}} + 
+	N_{\text{ch}} \cdot \mathbf{\mu}^{\mathrm{prior}}_{0} \cdot {\sigma^2 \overline{\mathbf{\gamma}}}_{0}.
+	\label{eq:macro_interval_sigma_pred}
+\end{equation}
+Here, the variance of the average current conditional on the start state, \( \overline{\mathbf{\gamma}}_{0} \), is obtained by marginalizing over the end state:
+\begin{equation}
+	(\sigma^2_{\overline{\mathbf{\gamma}}_{0}})_i = \sum_j (\sigma^2 \overline{\Gamma})_{i \rightarrow j}.
+	\label{eq:sigma_gamma_i}
+\end{equation}
+
+The expression for \( \widetilde{\mathbf{\gamma}^{\mathrm{T}} \mathbf{\Sigma}\mathbf{\gamma}} \) is given by:
+\begin{multline}
+	\widetilde{\mathbf{\gamma}^{\mathrm{T}} \mathbf{\Sigma}\mathbf{\gamma}}=   \mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} \cdot \mathbf{\gamma}_{0 \rightarrow t} = \\
+	\overline{\mathbf{\gamma}}_{0}^{\mathrm{T}} \cdot 
+	\left( \mathbf{\Sigma}^{\mathrm{prior}}_{0} - \mathrm{diag}(\mathbf{\mu}^{\mathrm{prior}}_0) \right) \cdot 
+	\overline{\mathbf{\gamma}}_{0 \rightarrow t} \\
+	+ \mathbf{\mu}^{\mathrm{prior}}_0 \cdot \left( \overline{\mathbf{\Gamma}}_{0 \rightarrow t} \circ \overline{\mathbf{\Gamma}}_{0 \rightarrow t} \circ \mathbf{P} \right) \cdot \mathbf{1}.
+	\label{eq:simplified_meta_state}
+\end{multline}
+where \( \circ \) denotes the element-wise (Hadamard) product and \( \mathbf{1} \) is a vector of ones.
+
+Posterior updates are efficiently computed without explicitly involving the meta-state:
+\begin{equation}
+	\boldsymbol{\mu}^{\mathrm{prior}}_{t} = 
+	\boldsymbol{1}_0 \cdot 
+	\boldsymbol{\mu}^{\mathrm{post}}_{0 \rightarrow t} = \boldsymbol{\mu}^{\mathrm{prior}}_0 \cdot \boldsymbol{P} + 
+	\frac{y^{\mathrm{obs}}_{0 \rightarrow t} - y^{\mathrm{pred}}_{0 \rightarrow t}}{{\sigma^2}_{\overline{y}^{\mathrm{pred}}_{0 \rightarrow t}}} 
+	\cdot \widetilde{\boldsymbol{\gamma}^{\mathrm{T}} \boldsymbol{\Sigma}}.
+	\label{eq:macro_interval_posterior_mean}
+\end{equation}
+where left-multiplication by \( \mathbf{1}_0 \) represents the marginalization over the start state, and
+\begin{equation}
+	\widetilde{\boldsymbol{\gamma}^{\mathrm{T}} \boldsymbol{\Sigma}} = \mathbf{1}_0 \cdot \mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} =
+	\overline{\boldsymbol{\gamma}}_{0}^{\mathrm{T}} \cdot 
+	\left( \boldsymbol{\Sigma}^{\mathrm{prior}}_{0} - \mathrm{diag}(\boldsymbol{\mu}^{\mathrm{prior}}_0) \right) \cdot \boldsymbol{P} 
+	+ \boldsymbol{\mu}^{\mathrm{prior}}_0 \cdot \left( \overline{\boldsymbol{\Gamma}}_{0 \rightarrow t} \circ \boldsymbol{P} \right).
+	\label{eq:interval_gamma_sigma}
+\end{equation}
+
+The prior covariance for the next interval is derived by marginalizing over initial states:
+\begin{multline}
+	\boldsymbol{\Sigma}^{\mathrm{prior}}_{t} = 
+	\boldsymbol{P}^{\mathrm{T}} \cdot \left( \boldsymbol{\Sigma}^{\mathrm{prior}}_{0} - \mathrm{diag}(\boldsymbol{\mu}^{\mathrm{prior}}_{0}) \right) \cdot \boldsymbol{P} \\
+	+ \mathrm{diag}(\boldsymbol{\mu}^{\mathrm{prior}}_{0} \cdot \boldsymbol{P}) \\
+	- \frac{N}{{\sigma^2}_{\overline{y}^{\mathrm{pred}}_{0 \rightarrow t}}} \cdot
+	\widetilde{\boldsymbol{\gamma}^{\mathrm{T}} \boldsymbol{\Sigma}}^{\mathrm{T}} \cdot \widetilde{\boldsymbol{\gamma}^{\mathrm{T}} \boldsymbol{\Sigma}}.
+	\label{eq:prior_covariance_update_0_t}
+\end{multline}
+
+In summary, MacroIR provides a recursive Bayesian framework that computes the likelihood and posterior distributions for time-averaged measurements without the computational burden of explicitly handling meta-states. This ensures scalability and applicability to diverse experimental datasets.
+
+
 
 \subsection{MacroIR: A Bayesian Framework for Interval-Averaged Analysis of Channel Ensembles}
 

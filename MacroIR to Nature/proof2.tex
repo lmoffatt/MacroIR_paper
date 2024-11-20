@@ -58,7 +58,15 @@
 \usepackage{listings}%
 \usepackage{comment}
 %%%%
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning}
 
+% TikZ styles
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+%%%%
 
 %% as per the requirement new theorem styles can be included as shown below
 \theoremstyle{thmstyleone}%
@@ -132,6 +140,52 @@ In this context, the actual state of the Markov process remains unobservable; wh
 This relationship links the hidden Markov states to the measurable macroscopic current, allowing us to infer the channel kinetics from experimental recordings.
 
 
+\begin{algorithm}
+	\caption{Markov Model of Single-Channel Behavior}\label{algo:markov_model}
+	\begin{algorithmic}[1]
+		\Require Transition rate matrix \( \boldsymbol{Q} \) and initial state probability vector \( \boldsymbol{p}(0) \)
+		\Ensure Time-evolved probability vector \( \boldsymbol{p}(t) \) and predicted current \( y^{\text{pred}}(t) \)
+		\Statex
+		\State \textbf{Initialize:} Set \( \boldsymbol{p}(0) \), define \( \boldsymbol{\gamma} \) (current vector)
+		\State \textbf{Define Transition Rate Matrix:} 
+		\ForAll{states \( i, j \)} 
+		\If{\( i \neq j \)}
+		\State \( Q_{ij} \gets k_{ij} \) \Comment{Transition rate from \( i \) to \( j \)}
+		\EndIf
+		\State \( Q_{ii} \gets -\sum_{j \neq i} Q_{ij} \) \Comment{Ensure probability conservation}
+		\EndFor
+		\State \textbf{Compute Transition Matrix:}
+		\State \( \boldsymbol{P}(t) \gets \exp(\boldsymbol{Q} \cdot t) \) \Comment{Matrix exponential}
+		\State \textbf{Integrate Master Equation:}
+		\State \( \boldsymbol{p}(t) \gets \boldsymbol{p}(0) \cdot \boldsymbol{P}(t) \) \Comment{Time evolution of \( \boldsymbol{p}(t) \)}
+		\State \textbf{Compute Predicted Current:}
+		\State \( y^{\text{pred}}(t) \gets \boldsymbol{p}(t) \cdot \boldsymbol{\gamma} \)
+		\State \textbf{Output:} \( \boldsymbol{p}(t) \), \( y^{\text{pred}}(t) \)
+	\end{algorithmic}
+\end{algorithm}
+
+
+\begin{tikzpicture}[node distance=2cm]
+	
+	% Nodes
+	\node (start) [startstop] {Start: Define initial parameters \( \boldsymbol{p}(0) \), \( \boldsymbol{Q} \), and \( \boldsymbol{\gamma} \)};
+	\node (calculateQ) [process, below of=start] {Construct transition rate matrix \( \boldsymbol{Q} \)};
+	\node (checkDiagonal) [decision, below of=calculateQ, yshift=-0.5cm] {Is \( \sum_j k_{ij} = -k_{ii} \) satisfied?};
+	\node (fixQ) [process, right of=checkDiagonal, xshift=4.5cm] {Adjust diagonal elements};
+	\node (solveODE) [process, below of=checkDiagonal, yshift=-1cm] {Solve \( \frac{d \boldsymbol{p}}{dt} = \boldsymbol{p} \cdot \boldsymbol{Q} \)};
+	\node (current) [process, below of=solveODE] {Compute predicted current \( y^\text{pred}(t) = \boldsymbol{p}(t) \cdot \boldsymbol{\gamma} \)};
+	\node (end) [startstop, below of=current] {End: Output results};
+	
+	% Arrows
+	\draw [arrow] (start) -- (calculateQ);
+	\draw [arrow] (calculateQ) -- (checkDiagonal);
+	\draw [arrow] (checkDiagonal) -- node[anchor=south] {No} (fixQ);
+	\draw [arrow] (fixQ) |- (calculateQ);
+	\draw [arrow] (checkDiagonal) -- node[anchor=east] {Yes} (solveODE);
+	\draw [arrow] (solveODE) -- (current);
+	\draw [arrow] (current) -- (end);
+	
+\end{tikzpicture}
 
 \subsection{MicroR, Bayesian model for instantaneous measurements of single-channel behavior}
 
