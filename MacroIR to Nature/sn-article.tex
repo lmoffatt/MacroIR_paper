@@ -100,6 +100,9 @@
 ESTAMOS 78 PALABRAS ENCIMA DE LO SUGERIDO
 \end{comment}
 
+\abstract{
+		Ligand-gated ion channels are essential for cellular signaling, with ATP-driven P2X2 receptors playing a key role in synaptic transmission. Despite their importance, the kinetic mechanisms underlying P2X2 activation remain unclear. Here, we present a novel kinetic model that incorporates structural dynamics to investigate the relationship between ATP binding and channel gating. By re-analyzing experimental data from a unique outside-out patch preparation, we show that ATP binding reduces the energetic barrier for subunit rotation, stabilizing the open state. This finding provides new insights into how molecular dynamics affect ion channel activation, bridging structural biology and kinetic modeling. Our results suggest that allosteric regulation of the forward and backward rates can modulate the transition between open and closed states, providing a framework for understanding receptor activation in a more mechanistic way. This approach opens the door to further studies that could refine our understanding of ion channel gating across different receptor types.
+}
 
 \abstract{Ligand-activated receptors are essential for cellular signaling and represent significant therapeutic targets. Among these, the P2X receptor family, activated by ATP, plays a crucial role in various physiological processes, yet the molecular mechanisms governing its activation remain inadequately understood, particularly regarding the conformational dynamics between subunit interactions. Here, we demonstrate that ATP binding induces asymmetric conformational changes in the P2X receptor, specifically driving the rotation of the subunit bound by the upper body (UB), while the lower body (LB)-bound subunit remains stationary. We re-analyze previously published data from outside-out patch preparations of rP2X2 in response to ultra-short ATP pulses of varying concentrations (0.2-10 mM) using a novel Bayesian algorithm that leverages kinetic information from response fluctuations. This analysis reveals that agonist binding promotes rotational shifts in the UB subunit 100 to 10,000 times more  than in the LB subunit. UB subunit rotation accelerates agonist binding and delays release, whereas LB subunit rotation slows both processes. Our findings elucidate distinct roles at the subunit interfaces: the UP subunit functions as an anchor, while LB subunit rotation enhances ATP binding energy and stabilizes the receptor in its active state. Once rotated, the UP subunit shields ATP, limiting its exchangeability and further stabilizing the binding site.
 
@@ -659,34 +662,29 @@ For simultaneous rotation of all subunits, this would not make much of a differe
 
 
 \begin{table}[h]
-\caption{Posterior distribution of Scheme X}\label{tab1}%
-\begin{tabular}{c|c|c|c}
-\hline
-\hline
-  parameters & median & CI\_hdi\_low & CI\_hdi\_hi \\ 
-\hline
-\hline
-  \rowcolor[HTML]{efefef} 
-  RB & 632.661 & 0.1441125 & 3.918861 10^{3} \\ 
-  RB_{rot} & 2.454486 10^{4} & 1.260341 & 1.401152 10^{5} \\ 
-  \rowcolor[HTML]{efefef} 
-  RB_{bon} & 6.248909 & 1.933688 10^{-6} & 38.56124 \\ 
-  BR & 1.612385 & 0.2657464 & 1.106451 10^{3} \\ 
-  \rowcolor[HTML]{efefef} 
-  BR_{rot} & 2.241492 & 1.077178 & 3.979711 10^{4} \\ 
-  BR_{bon} & 6.986098 10^{-3} & 9.626552 10^{-7} & 11.16657 \\ 
-\hline
-\hline
-\end{tabular}
-\footnotetext{Source: This is an example of table footnote. This is an example of table footnote.}
-\footnotetext[1]{Example for a first table footnote. This is an example of table footnote.}
-\footnotetext[2]{Example for a second table footnote. This is an example of table footnote.}
+	\caption{Posterior distribution of Scheme X}\label{tab1}%
+	\begin{tabular}{c|c|c|c}
+		\hline
+		\hline
+		parameters & median & CI\_hdi\_low & CI\_hdi\_hi \\ 
+		\hline
+		\hline
+		\rowcolor[HTML]{efefef} 
+		RB & 632.661 & 0.1441125 & $3.918861 \times 10^{3}$ \\ 
+		$RB_{rot}$ & $2.454486 \times 10^{4}$ & 1.260341 & $1.401152 \times 10^{5}$ \\ 
+		\rowcolor[HTML]{efefef} 
+		$RB_{bon}$ & 6.248909 & $1.933688 \times 10^{-6}$ & 38.56124 \\ 
+		BR & 1.612385 & 0.2657464 & $1.106451 \times 10^{3}$ \\ 
+		\rowcolor[HTML]{efefef} 
+		$BR_{rot}$ & 2.241492 & 1.077178 & $3.979711 \times 10^{4}$ \\ 
+		$BR_{bon}$ & $6.986098 \times 10^{-3}$ & $9.626552 \times 10^{-7}$ & 11.16657 \\ 
+		\hline
+		\hline
+	\end{tabular}
 \end{table}
 
 
-
-
-\noindent
+%\noindent
 
 The input format for the above table is as follows:
 
