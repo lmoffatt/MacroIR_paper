@@ -13,21 +13,9 @@
 \begin{document}
 	
 	\maketitle
-	\abstract{Ligand-activated receptors are essential for cellular signaling and represent significant therapeutic targets. Among these, the P2X receptor family, activated by ATP, plays a crucial role in various physiological processes, yet the molecular mechanisms governing its activation remain inadequately understood. Here, we present a novel kinetic model that integrates structural dynamics, revealing that ATP binding induces asymmetric conformational changes in the P2X2 receptor, which lowers the energetic barrier for subunit rotation while leaving the other subunit static. We re-analyze previously published data from outside-out patch preparations of rP2X2 in response to ultra-short ATP pulses of increasing concentrations  using a novel Bayesian algorithm that leverages kinetic information from response fluctuations. This analysis reveals that agonist binding promotes rotational shifts in the UB subunit 100 to 10,000 times more  than in the LB subunit. UB subunit rotation accelerates agonist binding and delays release, whereas LB subunit rotation slows both processes. Our findings elucidate distinct roles at the subunit interfaces: the UP subunit functions as an anchor, while LB subunit rotation enhances ATP binding energy and stabilizes the receptor in its active state. Once rotated, the UP subunit shields ATP, limiting its exchangeability and further stabilizing the binding site.
-		
-		We anticipate that our Bayesian kinetic analysis will be instrumental in validating and refining the activation model presented here. This framework can be extended to investigate mutations, partial agonists, and other subunits. Furthermore, the notion of one subunit acting as an anchor while another serves as an allosterically active component may be applicable to other ligand-activated receptors. These insights could pave the way for developing innovative pharmaceutical agents targeting P2X receptors and related signaling pathways.
+	\abstract{Ligand-activated receptors are essential for cellular signaling and represent significant therapeutic targets. Among these, the P2X receptor family, activated by ATP, plays a crucial role in various physiological processes, yet the molecular mechanisms governing its activation remain inadequately understood. Here, we demonstrate that ATP binding induces asymmetric effects on the subunits of the binding site, significantly lowering the activation barrier for the rotation of the Upper Body-associated subunit while having modest effect on the Lower Body-associated subunit. This rotation exerts distinct influences on the adjacent binding sites: at the Upper Body site, ATP binding energy increases with a pronounced reduction in the unbinding rate, whereas at the Lower Body site, binding energy remains largely unchanged, but the increased activation barrier leads to reduced binding and unbinding rates. We re-analyze previously published data from outside-out patch preparations of rP2X2 in response to ultra-short ATP pulses of increasing concentrations  using a novel Bayesian algorithm that leverages kinetic information from response fluctuations. We anticipate that our Bayesian kinetic analysis will be instrumental in validating and refining the activation model presented here. This framework can be extended to investigate mutations, partial agonists, and other subunits. Furthermore, the notion of one subunit acting as an anchor while another serves as an allosterically active component may be applicable to other ligand-activated receptors. These insights could pave the way for developing innovative pharmaceutical agents targeting P2X receptors and related signaling pathways.
 	}
-	\begin{abstract}
-		Ligand-gated ion channels are essential for cellular signaling, with ATP-driven P2X2 receptors playing a key role in synaptic transmission. Despite their importance, the kinetic mechanisms underlying P2X2 activation remain unclear. Here, we present a novel kinetic model that incorporates structural dynamics to investigate the relationship between ATP binding and channel gating. By re-analyzing experimental data from a unique outside-out patch preparation, we show that ATP binding reduces the energetic barrier for subunit rotation, stabilizing the open state. This finding provides new insights into how molecular dynamics affect ion channel activation, bridging structural biology and kinetic modeling. Our results suggest that allosteric regulation of the forward and backward rates can modulate the transition between open and closed states, providing a framework for understanding receptor activation in a more mechanistic way. This approach opens the door to further studies that could refine our understanding of ion channel gating across different receptor types.
-	\end{abstract}
-	
-	
-	\begin{abstract}
-		\textbf{Comment:} The abstract should provide a concise overview of the main findings, methodology, and significance of the study. 
 		
-		Our study introduces a novel Bayesian framework that bridges the gap between kinetic modeling and structural insights into the activation mechanism of P2X2 receptors. Using a re-analysis of experimental data, we explore the energy landscape of P2X2 activation and demonstrate how the kinetic parameters can be linked to structural mechanisms, offering new insights into ion channel dynamics. By integrating molecular dynamics with kinetic models, we propose a new approach to understanding receptor activation, which has broad implications for drug development and molecular biology.
-	\end{abstract}
-	
 	\section{Introduction}
 	\textbf{Comment:} The introduction should frame the problem, present the current state of knowledge, and emphasize the novelty of your work. Clearly state the gap your study fills and the objectives of your work.
 	
@@ -36,7 +24,9 @@
 	\subsection{Background}
 	\textbf{Comment:} Provide context for the study, introducing the P2X2 receptor, its biological importance, and previous attempts at understanding its activation mechanism.
 	
-	P2X2 receptors are involved in neurotransmission and play a key role in cellular signaling. Previous studies have explored the kinetics of P2X2 activation using experimental techniques such as patch-clamp, but these studies have not directly linked kinetic data to structural information. Understanding the activation mechanism at the molecular level requires not only measuring macroscopic current responses but also considering the underlying structural changes that occur upon ligand binding and channel opening.
+	P2X2 receptors are involved in neurotransmission and play a key role in cellular signaling. Previous studies have explored the kinetics of P2X2 activation using experimental techniques such as patch-clamp, but these studies have not directly linked kinetic data to structural information. Understanding the activation mechanism at the molecular level requires not only measuring macroscopic current responses but also considering the underlying structural changes that occur upon ligand binding and channel opening. 
+	
+	
 	
 	\subsection{Research Question and Objective}
 	\textbf{Comment:} Clearly define the question your study aims to address and the specific objectives.
@@ -45,11 +35,19 @@
 	
 	\section{Methods}
 	\textbf{Comment:} In this section, explain your experimental design, data analysis methods, and the mathematical models used. Be clear about the novelty and how the Bayesian approach contributes to the analysis.
+	How can we 
+	
+	
 	
 	\subsection{Experimental Data Re-analysis}
 	\textbf{Comment:} Describe the experimental data you re-analyzed, including the specific data set from the study you referenced.
 	
-	The experimental data used in this study were obtained from our previous work, which provides a unique dataset for the re-analysis of P2X2 activation. These data are the only published measurements of the response of a ligand-gated ion channel to ATP pulses shorter than the channel's response time, while simultaneously recording the actual time profile of the agonist application on the same patch. This dataset is ideal for testing new kinetic models, as it provides exceptional time-resolved data that allow for accurate model fitting.
+	The experimental data used in this study were obtained from our previous work, which provides a unique dataset for the re-analysis of P2X2 activation. These data are the only published measurements of the response of a ligand-gated ion channel to ATP pulses shorter than the channel's response time, while simultaneously recording the actual time profile of the agonist application on the same patch. This dataset is ideal for testing new kinetic models, as it provides exceptional time-resolved data that allow for accurate model fitting. 
+	The data comprise the response of outside out patch of human embryonic kidney (HEK) 293T cells 393 cell overexpressing P2X2 receptors. Patches were clamped at -60 mV with a DAGAN 3900 patch-clamp amplifier (Dagan). The patch clamp head stage was mounted on a Burleigh Model PCS-1000 with a PCS-250 patch clamp driver (EXFO Life Sciences). ATP (Sigma-Aldrich) was dissolved in the perfusion solution, which contained (in mM) 150 NaCl, 2 KCl, 1.3 MgCl2, 10 HEPES,	pH 7.4. We compensated for the chelation of Mg+2 by ATP by adding MgCl2 to our solutions such that all solutions contained 1 mM free Mg+2, as determined by the program Bound and Determined (Brooks and Storey, 1992). Currents were low-pass filtered at 10 kHz with a four-pole Bessel filter and digitized at 50 kHz (Digidata 1322A, Axon Instruments). All experiments were done at room temperature (22°C).
+	Ultrafast solution exchanges were obtained after calibrating the response of the application pippete as described. 
+	Application of high concentrations of ATP for hundreds of milliseconds resulted in desensitization. Furthermore, the responses of outside-out patches containing P2X2 receptors ran down over time. To deal with these complications, we tested patches no sooner than 1 min after the previous stimulus and sandwiched each test concentration between two normalizing stimuli (1 mM ATP for 10 ms). The amplitude of the test response was then normalized to the average of the two normalizing responses. With this paradigm, the variability in amplitude between successive normalizing responses (spaced 2 min apart) was $<10\% $ in most trials. Trials in which the amplitude of the normalizing responses changed by $>10\%$ were not included in the analysis.
+	
+	
 	
 	\subsection{Bayesian Modeling Framework}
 	\textbf{Comment:} Describe the Bayesian algorithm you used to fit the kinetic model and how it integrates with the structural analysis.
