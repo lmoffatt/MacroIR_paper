@@ -79,9 +79,8 @@
 %%\unnumbered% uncomment this for unnumbered level heads
 
 \begin{document}
-
-\title[Article Title]{Bayesian Evidence of alternative models of P2X2 activation}
-
+%titulo 75 caracteres contando espacios
+\title[Article Title]{Bayesian analysis reveals asymmetry in P2X2 receptor activation}
 \author*[1]{\fnm{Luciano} \sur{Moffatt}}\email{lmoffatt@qi.fcen.uba.ar}
 \author[2]{\fnm{Gustavo} \sur{Pierdominici-Sottile}}\email{gsottile@unq.edu.ar}
 %\equalcont{These authors contributed equally to this work.}
@@ -97,17 +96,268 @@
 %\affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
 
 \begin{comment}
-ESTAMOS 78 PALABRAS ENCIMA DE LO SUGERIDO
+Voy a tratar de expresar mis ideas de lo que el paper debe decir en comentarios como este. 
+
+Estuve usando mucho chatgpt y un problema que esto genera es que tenes miles de variantes del texto desperdigadas en muchos lugares. 
+
+Por lo tanto voy a tratar de centralizar todos las ideas respecto a lo que debe decir el paper aquí en comentarios. 
+
+nota del 23 de diciembre: 
+rehice algunos calculos, 
+
 \end{comment}
 
+
+\begin{comment}
+Cuales son los resultados del paper en orden decreciente de importancia:
+
+
+Combinando registros de alta resolucion temporal, un modelo cinetico basado en mecanismos conformacionales y un algoritmo bayesiano se obtuvo informacion inesperada respecto a la activacion de receptores purinérgicos. 
+
+Hallazgos mecanisticos: 
+
+1. Hay una asimetria en la activacion de ambas subunidades que forman un mismo sitio de union al agonista. 
+
+1. La union del agonista reduce la barrera energetica para la rotacion de una de las subunidades con las que interactua. 
+
+1. La rotación de la subunidad aumenta la barrera energetica para la union del agonista por el otro sitio de union. 
+
+
+
+Presentacion de nuevos algoritmos:
+
+1. una aproximacion a la verosimilitud del promedio temporal de la corriente macroscopica tanto recursiva como no-recursiva. 
+
+2. Un algoritmo de auto-ajuste de los intervalos de temperatura para la intergracion termodinamica que optimiza la convergencia. 
+
+Presentacion de una metodologia para la estimacion efectiva de la evidencia de corrientes macrocópicas. 
+
+
+Validación de metodologia: 
+1. Es posible cuantificar la evidencia de esquemeas cienticos alternativos. Esto permite evaluar hipotesis en forma limpia. 
+
+Cosas que no resuelvo: 
+1: deformacion de la señal por parte de los filtros pasabajos. 
+
+Extensiones de este trabajo: 
+
+1. Comparacion de  modelos cineticos con corrientes de canal unico o de pocos canales o de motores moleculares o de mecanismos de difusion. 
+
+2. Analisis del acoplamiento alosterico de la desensitizacion o de otros receptores. 
+
+
+1. Un novedoso metodo analisis bayesiano compara mecanismos alternativos de activacion de los receptores P2X y demuestra que el mecanismo mas probable dentro de los planteados es un modelo construido a partir de los siguientes supuestos pudimos armar un modelo cinetico que describe la cinetica de activacion de P2X2 
+
+A. Cada subunidad puede rotar sin que las otras necesariamente roten. 
+B. La conductancia del canal depende del numero de subunidades rotadas. 
+C. La union del agonista es un evento que involucra a tres elementos: el propio agonista y las dos subunidades que conforman el sitio de union. La hipotesis es que la union del agonista se acopla alostericamente con la rotacion de cada subunidad en forma independiente y aditiva. 
+
+Estas tres hipotesis implican un modelo alosterico de dos cambios conformacionales (binding y rotation) y dos acoplamientos (BR y RB: segun sea el binding con la subunidad de la izquierda o derecha). 
+Con estos supuestos se encuentra como los cambios conformacionales de una subunidad se propagan por el resto del canal. 
+Usando el algoritmo MacroIR pudimos ajustar los parametros de este modelo a una serie experimental de pulsos de concentracion creciente de ATP. 
+
+    
+
+2. A partir de la distribucion a posteriori de los paramteros de acoplamiento cientico de  este modelo cinetico pudimos ver que los acomplamientos alostericos no solo afectan las constantes de equilibrio sino que tambien modulan fuertemente las barreras energeticas. Corroboramos que la union del agonista desplaza el equilibrio hacia la rotacion de la subunidad y viceversa. Corroboramos que este acoplamiento es mas fuerte con una de las subunidades (que a partir de los datos estructurales suponemos que es la unida por el Upper Body) y para sorpresa nuestra encontramos que 
+A)la union del agonista ademas reduce la barrera energetica para la rotacion de la subunidad UP (de modo que se incrementan tanto la tasa de rotacion ron como su tasa reversa roff). 
+Si la barrera fuera permanentemente baja, el canal responderia igual al agonista sin que se afecte tampoco la conductancia del receptor sin ligando. Solo se verian una mayor frecuencia de rotaciones sin ligando. 
+La reduccion del numero de rotaciones tendria valor adaptativo si cada rotacion, cada paso por la barrera energetica conlleve la posibilidad de entrar en un estado inactivo. 
+
+
+B) la rotacion de la subunidad aumenta la barrera de binding (reduciendo la kon y koff) pero solo de la subunidad LB, la barrera de binding de la otra subunidad no se ve afectada. Esta modulacion explicaria la cooperatividad negativa del binding, donde la afinidad de un sitio disminuye con la union del agonista en el sitio vecino
+
+
+3. A partir de este modelo pudimos estimar la subconductancia para 1, 2 y 3 subunidades rotadas. Vimos que con dos subunidades se ve una conductancia de entre 1/5 y 1/3 de la conductancia con 3 subunidades. La conductancia de 1 subunidad es marginal. Estos resultados explicaría el hecho que un receptor con solo sitios de union funcionales muestra respuesta al ATP. 
+
+
+4. La Evidencia de este esquema cinetico es solo inferior a un esquema cinetico convencional con un flip state que bifurca en  dos estados abiertos que confluyen en un cerrado. Los otros modelos alostericos, entre los que se incluye un sincronico, tienen una evidencia inferior. 
+Esto muestra todavia hay elementos que nuestro modelo no puede describir adecuadamente, posiblemente relacionados en la desensitizacion. Otra posibilidad es que las rotaciones sigan una cinetica continua. 
+
+5. En este trabajo se ponen en valor varios avances metodologicos: 
+
+A. El mas importante son los cuadrantes del grafico f_on vs f_off que permite separar las situaciones donde cambia la barrera energetica y cuando cambia el salto en energia libre, seprarndo la regulacion cinetica de la termodinamica. Estamos impactados por la simplicidad y profundidad conceptual de esta herramienta, que no entendemos del todo aun. 
+
+B. El desarrollo teorico mas trabajoso y demandante fue el del algoritmo MacroIR. Combinando este algoritmo con un afine-invariante parallel tempering con ajuste dinamico de temperaturas, se lograron hacer analisis cineticos de modelos complejos en situaciones experimentales reales. El costo computacional de este combo esta en el reino de lo posible: ocho nucleos durante dos semanas. Todavia hay mucho por hacer en la optimizacion de este algoritmo. 
+Si bien no es necesario calcular la evidencia para obtener la distribucion a posteriori, el metodo de paralel tempering asegura una busqueda exhaustiva en el espacio de parametros, especialmente en situaciones multimodales como todos los modelos medianamente complejos. 
+
+
+C. Se desarrollo un algoritmo para la construccion automatica de modelos alostericos a partir de indicar un conjunto de cambios conformacionales y sus interacciones. La verificacion de este algoritmo y el desarrollo de una interfaz accesible es un buen material para otro paper. Cuanto incluir de esto en el presente paper es materia a discutir. No es intrumental, deberia ir en otro lado. 
+
+D. Una innovacion interesante es la de incluir ruido rosa en la formulacion de la likelihood. En esta formulacion solo tomamos del mismo la dependencia con la duracion de los intervalos de medicion, no incluimos la correlacion temporal del mismo. La idea es que si existen procesos estocasticos correlacionados (como otros canales en el patch o simplemente procesos que no son descriptos por el modelo plateado) este proceso sea modelado internamente como un ruido rosa. No hicimos un estudio sistematico pero la impresion es que la presencia del ruido rosa ascelera la convergencia de la Evidencia. 
+
+
+
+
+
+X. Conclusiones metodologicas. El planteo inicial es hipotetico deductivo: a partir de informacion estructural (hipotesis) armamos un modelo cinetico (deduccion)  sin tener en cuenta la informacion cinetica disponible. 
+Ahora, la parametrizacion del modelo era amplia y algunos valores de los parametros resultaron inesperados para nosotros, en particular los que determinan que las las barreras energeticas cambiasen. En esto seguimos mas un patron inductivo: a partir de la informacion obtenida formulamos nuevas hipotesis no envisionadas inicialmente. 
+La parametrizacion inicial del acoplamiento cinetico alosterico fue extendiendo el concepto de Linear free energy relationship y suponiamos que la pendiente deberia estar entre 0 y 1. No lograrmos buenos ajustes de esta forma y reparametrizamos la relacion extendiendo la parametrizacion de la constante de equilibrio. Esto permitio mejores ajustes, pero no encotrabamos el significado cinetico. Este se hizo claro al graficar las f_on vs f_off y entender   
+\end{comment}
+
+\begin{comment}
+
+Este texto surgio de un momento de lucidez
+
+
+tratemos de ser veridicos
+
+1) pregunta: 
+la pregunta original fue como calcular una buena aproximacion a la funcion de likelihood de una macrocorriente. 
+La respuesta fue el algoritmo MacroIR. 
+
+La siguiente pregunta fue como saber si este algoritmo da nueva informacion. 
+
+La respuesta fue analizar datos experimentales y comparar esquemas alternativos. 
+
+De ahi surgio otra pregunta: como traducir el conocimiento estructural de la estructura abierta y cerrada a un modelo cinetico?
+De alli a una pregunta mas elelemental: como representar en un modelo predictivo la interaccion entre la union al agonista con la apertura del canal? 
+La respuesta a esta pregunta esta en los modelos alostericos donde hay un acople de las constantes de equilibrio. 
+Ahora la formulacion estandard del alosterismo se restringe a la constante de equilibrio, se plantea entonces la pregunta de como se puede modelar la cinetica del acoplamiento alosterico?
+Ahi se extiende la misma idea de los factores alostericos pero a las rates forward y backward (buscar los terminos apropiados). un simple diagrama muestra que en realidad no es que haya alosterismo, sino que el alosterismo es una reparametrizacion de los rates y que se cumple siempre y cuando distingamos los estados como combinacion de los cambios conformacionales. 
+
+Entonces surge la pregunta: como interpreto los factores kineto-alostericos? La primer respuesta a esta pregunta fue usar la analogia con la linear free energy relationship usada para analizar el efecto de mutaciones sobre la cinetica. Pero surgio un problema: se deben permitir exponentes fuera del intervalo 0-1? y ademas fitear en este rango era mas dificil. Se opto por parametrizar contra factores analogos a los del equilibrio tanto sobre los k/r_on como sobre los off. Y esto dio lugar a un resultado que llevo un tiempo interpretar: algunas interacciones asceleraban tanto la kon como la koff y ahi surgio la pregunta: 
+que significa la relacion entre los f_kon y f_koff?
+
+Una forma de verlo es a traves de perfiles de energia: el alto de la barrera es proporcional al logaritmo del kon y la diferencia entre kon y koff es proporcional a la constante de equilibrio. 
+De esta forma wue  los f_on y f_off sean mayores a uno indican que baja la barrera energetica para la rotacion. 
+
+Finalmente en la discusion surge la pregunta: y qué ventaja tendria bajar la barrera energetica en lugar de tenerla siempre baja (ya que en ambos casos la proporcion de tiempo abierto depende de la keq y no de las f-on y f-off)? 
+Una posible respuesta es que el canal podria ser vulnerable durante la rotacion a entrar a un estado irreversible. Y la pregunta aqui es que tipo de configuracion markoviana haria que la entrada a un estado irreversible dependa de la cantidad de cruces? y la respuesta es que la regulacion alosterica seria en la entrada y salida del energetic landscape y no durante la rotacion en si misma. Si la regulacion alosterica afectara a todo el camino, no habria ninguna diferencia en la propension a llegar a un estado irreversible entre una cinetica rapida y una cientica corta. 
+
+Entonces queda la pregunta: y que elementos de la respuesta experimental determinan la caida en la barrera energetica? Respuesta esta en al cinetica del unliganded state: seria relativamente mas lenta que la esperada de no bajar la barrera energetica. 
+Ahora todo esto depende de que la corriente en ausencia de ATP se deba exclusivamente a P2X2, las corrientes que no lo son contribuyen al ruido rosa. Un analisis usando MicroIR permitiría distinguir mucho mejor la corriente debida a unliganded P2X2 de otros canales. 
+
+Qué otras preguntas se hicieron?
+
+1) qué es el flip state? la respuesta propuesta en el esquema es que se trata de la rotacion de subunidades.
+
+2) como representar los cambios de conductancia? la respuesta fue suponer que era instantanea y determinada por el numero de subunidades rotadas. No se represento un cambio adicional de gating. como en esquemas anteriores. Esto permitió ajustar la conductancia parcial de 2 subunidades rotadas, una importante prediccion coherente con el hecho de que canales con solo dos sitios de union al atp activos muestran respuesta al ATP. Tambien esto es coherente con observaciones de canal unico donde se obsrvan subconductancias. 
+
+3) es la activacion sincronica o secuencial? Esta disyuntiva se represento en un tabajo anterior, en este trabajo donde se rehacen los modelos sabiendo que el sitio de union es entre subunidades, solo se debe rehacer la alternativa secuencial ya que la sincronica no cambia entre un sitio de union entre subunidades o dentro. La evidencia del modelo sincronico es inferior y multimodal.
+\end{comment}
+
+
+\begin{comment}
+comentarios del abstract: 
+me llevo el ultimo fin de semana entero pulirlo, siendo asistido por chatgpt. 
+Creo que el exceso de chatgpt es muy malo ya que multiplica los textos comos los espejos de Borges. 
+
+Mi sensacion es que pone demasiado enfasis en lo mas espectacular de los resultados (cambios en las barreras) y no en lo mas robusto (que fiteamos el modelo basandonos en consideraciones estructurales).
+
+\end{comment}
+
+\begin{comment}
+    Corridas que faltarían hacer, preguntas por contestar: 
+1. Cuanta informacion extra se obtiene con MacroIR respecto de MacroINR y cuanto con MacroMR. (scheme_10 vs scheme_9)
+
+2. Concluir las corridas de los esquemas que no confluyeron. 
+logL-> 6, 7
+logEvi->7,8,9,11
+
+3. tema ruido blanco solo: corrida con scheme_10 solo
+
+
+
+3. verificar los requerimientos para el buen comportamiento bayesiano: correr con priors mas amplios en los factores de bayes que me interesen, por ejemplo scheme_10 y 9. 
+luego 11 y 6 y 4. 
+
+
+    
+\end{comment}
+
+
+
+\begin{comment}
+    Table 1 | List of key reporting points for the BARG
+Preamble
+A. Why Bayesian. If the audience requires it, explain what benefits will be gleaned by a Bayesian analysis (as opposed to a frequentist analysis). [] --> introduction, results or discussion
+B. Goals of analysis. Explain the goals of the analysis. This prepares the audience for the type of models to expect and how the results will be described. []-->introduction,methods subsection, results and discussion
+Step 1. Explain the model
+A. Data variables. Explain the dependent (predicted) variables and independent (predictor) variables[]. -->methods subsection
+
+B. L ikelihood function and parameters. For every model, explain the likelihood function and all the parameters, distinguishing clearly between parameters of primary theoretical interest and
+ancillary parameters. If the model is multilevel, be sure that the hierarchical structure is clearly explained, along with any covariance structure if multivariate parameter distributions are
+used.  []--> methods subsection
+C. Prior distribution. For every model, explain and justify the prior distribution of the parameters in the model.[]-->methods subsection
+D. Formal specification. Include a formal specification (mathematical or computer code) of the likelihood and prior, located either in the main text or in in publicly and persistently
+accessible online supplementary material. []-->method subsection
+E. Prior predictive check. Especially when using informed priors but even with broad priors, it is valuable to report a prior predictive check to demonstrate that the prior really generates simulated data consistent with the assumed prior knowledge. [] -->method subsection (the weight of the prior is clear in some posteriors), the prior is non-informative
+
+Step 2. Report details of the computation --> methods subsection
+A. Software. Report the software used, including any specific added packages or plugins. []--> methods subsection
+B. MCMC chain convergence. Report evidence that the chains have converged, using a convergence statistic such as PSRF, for every parameter or derived value. [] --->  results  what the fuck is PSRF? do this. 
+C. MCMC chain resolution. Report evidence that the chains have high resolution, using the ESS, for every parameter or derived value. [] --> results report ESS
+D. If not MCMC. If using some computational procedure other than MCMC, be aware of and report inherently inaccurate approximations, especially for the limits of credible intervals.
+Step 3. Describe the posterior distribution
+A. Posterior predictive check. Provide a posterior predictive check to show that the model usefully mimics the data. []--> averiguar que es esto 
+B. Summarize posterior of variables. For continuous parameters, derived variables and predicted values, report the central tendency and limits of the credible interval. Explicitly state whether you are using density-based values (mode and HDI) or quantile-based values (median and ETI), and state the mass of the credible interval (for example, 95%). -->[] methods subsection 
+
+C. BF and posterior model probabilities. If conducting model comparison or hypothesis testing, report the BF and posterior probabilities of models for a range of prior model probabilities.
+[]--> discutir esto en discusion. 
+
+Step 4. Report decisions (if any) and their criteria
+A. Why decisions? Explain why the decisions are theoretically meaningful and which decision procedure is being used. Regardless of which decision procedure is used, if it addresses null values, it should be able to accept the null value not only reject it.
+[]---> tomamos decisiones? Hipotesis a prueba: 
+1. El flip state esta dado por la rotacion de subunidades. 
+2. Las subunidades rotan sincronicamente o serialmente. 
+3. Las subunidades que comparten un sitio de union responden de manera distinta de acuerdo a como estan unidas al ATP. 
+4. El alosterismo no solo se maniesta como alteracion de las constantes de equilibrio sino tambien como modulacion de las barreras energeticas. 
+5. La cooperatividad negativa en el binding se debe a la oclusion del sitio de union cuando rota una subunidad impulsada por el otro sitio. 
+6. Dos subunidades rotadas alcanzan para generar una corriente medible. 
+7. La modulacion de la barrera para rotar permite disminuir la frecuencia de rotaciones del cerrado. 
+8. Cada rotacion conlleva una probabilidad de entrar en un estado inactivado, por eso se reduce la frecuencia de las mismas. 
+
+9. La rotacion de una subunidad se ve afectada por la rotacion de la subunidad adyacente. 
+
+
+B. Loss function. If utilities and a loss function for a decision rule are defined, these should be explained and reported.---> no es aplicable a este trabajo, no tomamos decisiones 
+
+
+C. ROPE limits. If using a continuous-parameter posterior distribution as the basis for decision, state and justify the limits of the ROPE and the required probability mass.
+D. B
+ F, decision threshold and model probabilities. If using model comparison or hypothesis testing as the basis for a decision, state and justify the decision threshold for the posterior model
+probability, and the minimum prior model probability that would make the posterior model probability exceed the decision threshold.
+E. Estimated values too. If deciding about null values, always also report the estimate of the parameter value (central tendency and credible interval).
+Step 5. Report sensitivity analysis [] --> subsection in methods
+A. For broad priors. If the prior is intended to be vague or only mildly informed so that it has minimal influence on the posterior, show that other vague priors produce similar posterior
+results. []--> aca tengo que hacer correr otra cadena. 
+
+B. For informed priors. If the prior is informed by previous research, show what posterior results from a vague prior or from a range of differently informed priors.
+
+C. For default priors. If using a default prior, show the effect of varying its settings. Be sure that the range of default priors constitutes theoretically meaningful priors, and consider whether
+they mimic plausible empirically informed priors.
+D. B
+ Fs and model probabilites. If the analysis involves model comparison or hypothesis testing, then for each prior report not only the BFs but also the posterior model probabilities for a
+range of prior model probabilities. [] --> tengo que correr otros esquemas tambien. 
+
+E. Decisions. If making decisions, report whether decisions change under different priors. For BFs, report changes in the minimum prior model probability needed to achieve decisive
+posterior model probability.
+
+Step 6. Make it reproducible []--> subsection in methods
+A. Software and installation. Explain all the software that is necessary and where to obtain it. If possible, use non-proprietary software. []--> subsection in methods
+B. Software version details. The posted script should include detailed information about the software version numbers.
+C. S cript and data. Post the complete analysis script (that is, computer code) and data in a stable public repository with persistent URLs, so that anyone can download it and exactly reproduce the analysis. Be sure that it is clear how to navigate the site and find relevant files, for example, with a wiki overview or readme file. If posting data, be sure that it respects privacy and copyright restrictions. If the original data cannot be posted publicly, it may be helpful to post dummy data of the same form so that users can verify the operation of the analysis script.  -->[] aqui con la wiki voy a tener que trabajar, probablmente despues del envio. 
+
+D. R
+ eadable for humans. Make the posted script genuinely readable by human beings. Annotate the code with thorough explanatory comments and spatially arrange the code for human
+readability.
+
+E. All auxiliary files. Check that all the needed auxiliary files (utility scripts, image files, bibliography files, formatting files and so on) are also posted.
+F. Runs as posted. Check that the posted script and accompanying files run as is when downloaded to a different computer. The code should have no lines that load files from personal
+computer directories or non-persistent URLs. [] --> modificando los scripts de dirac quizas pueda hacerlo. 
+
+G. MCMC chains for time-intensive runs. For MCMC runs that take a long time to compute, it is helpful to post an MCMC chain so that people can inspect the MCMC chain without having to
+wait through an entire run duration. [] --> subirlas a github. 
+
+H. Reproducible MCMC. To make MCMC chains exactly reproducible, the pseudo-random number generators should be explicitly seeded.
+\end{comment}
+
+
+
+
+
 \abstract{
-		Ligand-gated ion channels are essential for cellular signaling, with ATP-driven P2X2 receptors playing a key role in synaptic transmission. Despite their importance, the kinetic mechanisms underlying P2X2 activation remain unclear. Here, we present a novel kinetic model that incorporates structural dynamics to investigate the relationship between ATP binding and channel gating. By re-analyzing experimental data from a unique outside-out patch preparation, we show that ATP binding reduces the energetic barrier for subunit rotation, stabilizing the open state. This finding provides new insights into how molecular dynamics affect ion channel activation, bridging structural biology and kinetic modeling. Our results suggest that allosteric regulation of the forward and backward rates can modulate the transition between open and closed states, providing a framework for understanding receptor activation in a more mechanistic way. This approach opens the door to further studies that could refine our understanding of ion channel gating across different receptor types.
-}
-
-\abstract{Ligand-activated receptors are essential for cellular signaling and represent significant therapeutic targets. Among these, the P2X receptor family, activated by ATP, plays a crucial role in various physiological processes, yet the molecular mechanisms governing its activation remain inadequately understood, particularly regarding the conformational dynamics between subunit interactions. Here, we demonstrate that ATP binding induces asymmetric conformational changes in the P2X receptor, specifically driving the rotation of the subunit bound by the upper body (UB), while the lower body (LB)-bound subunit remains stationary. We re-analyze previously published data from outside-out patch preparations of rP2X2 in response to ultra-short ATP pulses of varying concentrations (0.2-10 mM) using a novel Bayesian algorithm that leverages kinetic information from response fluctuations. This analysis reveals that agonist binding promotes rotational shifts in the UB subunit 100 to 10,000 times more  than in the LB subunit. UB subunit rotation accelerates agonist binding and delays release, whereas LB subunit rotation slows both processes. Our findings elucidate distinct roles at the subunit interfaces: the UP subunit functions as an anchor, while LB subunit rotation enhances ATP binding energy and stabilizes the receptor in its active state. Once rotated, the UP subunit shields ATP, limiting its exchangeability and further stabilizing the binding site.
-
-We anticipate that our Bayesian kinetic analysis will be instrumental in validating and refining the activation model presented here. This framework can be extended to investigate mutations, partial agonists, and other subunits. Furthermore, the notion of one subunit acting as an anchor while another serves as an allosterically active component may be applicable to other ligand-activated receptors. These insights could pave the way for developing innovative pharmaceutical agents targeting P2X receptors and related signaling pathways.
-}
+The activation of ligand-gated ion channels is fundamental to cellular signal transduction, impacting diverse processes such as neurotransmission and immune responses. ATP-gated P2X2 receptors, with their structurally simple architecture, provide an accessible model for studying the mechanisms underlying intersubunit allosteric regulation. However, the coordination of ATP-induced conformational transitions in P2X2 remains poorly understood. Here, we demonstrate that the activation kinetics of P2X2 receptors can be accurately reproduced by an asymmetric coupling mechanism, where ATP binding drives the rotation of individual subunits and a saturating increase in conductance as the subunits undergo rotation. Using a novel Bayesian analysis of ultra-short ATP pulse experiments, we demonstrate that ATP binding stabilizes and lowers the energetic barrier for rotation of the left subunit while minimally influencing the right subunit. A second asymmetric coupling explains the negative cooperativity in binding, with ATP binding at one site paradoxically increasing the barrier at the second site. These modulated energy barriers prevent an unliganded rotation that would lead to premature inactivation. Our findings suggest that such tunable activation barriers represent a general strategy for stabilizing ion channels and signaling proteins in dynamic cellular environments. This work provides a mechanistic framework for understanding allosteric regulation in ligand-gated ion channels, with implications for designing therapies targeting P2X receptors in conditions such as chronic pain and inflammation.}
 
 
 
@@ -130,27 +380,122 @@ We anticipate that our Bayesian kinetic analysis will be instrumental in validat
 
 \section{Introduction}
 \label{sec1}
+\begin{comment}
+Leo la introduccion y escribo lo que me genera: 
+The key objective of this study is to bridge kinetic and mechanistic insights by addressing a fundamental inverse problem in receptor activation: how can mechanistic models be inferred from kinetic data? While a given mechanism can predict a kinetic course, the reverse—determining the most plausible mechanism from observed kinetics—requires evaluating multiple hypotheses. Here, we propose and rigorously test alternative models, identifying those that best predict the experimental data. This approach necessitates solving two challenges: first, optimizing model parameters to achieve accurate fits to the data; second, comparing alternative models with differing levels of complexity and parameterization.
+
+To address the first challenge, we introduce a novel likelihood approximation for hidden Markov processes, specifically tailored for systems where observable variables are time-averaged. This innovation significantly reduces the data volume required for analysis, enabling efficient parameter fitting even for complex models. For the second challenge, we employ a parallel tempering algorithm, which not only identifies regions of high posterior probability in multi-modal parameter spaces but also calculates the Bayesian evidence, providing a robust basis for model comparison.
 
 
-Ligand-gated ion channels (LGICs) are multimeric membrane proteins that allow ions to cross the cell membrane in response to ligand binding \cite{p2x_cuerpo_humano}. These channels play critical roles in synaptic transmission, muscle contraction, and other physiological processes (add them), making them important targets in neuropharmacology \cite{p2x_drugs,therapeutic,p2x7_pharmacology}. LGIC families are classified based on their subunit composition and the location of ligand-binding sites. In pentameric Cys-loop receptors, the binding site is located at the interface between adjacent subunits, while in tetrameric glutamate receptors, it is within individual subunits. In trimeric P2X receptors, like Cys-loop receptors, the binding sites are located between subunits.
+\end{comment}
 
-P2X receptors are the only LGICs for which high-resolution structures of both open and closed conformations are available \cite{cerrada_p2x,abierta_p2x}. These structures reveal that ATP binding triggers a rotational movement in all three subunits, leading to the separation of the transmembrane domains that form the pore, allowing ions to pass through. However, the intermediate states between these conformations remain unresolved. Understanding these intermediate states is essential for elucidating the mechanism of channel opening, which could inform the design of drugs that modulate P2X receptor function.
 
-Two types of gating models have been proposed for P2X receptor activation: sequential rotation models, where subunits rotate one at a time to gradually open the pore, and synchronous models, where all subunits rotate together in a concerted motion. In sequential models, a key question arises about potential asymmetry: whether one subunit rotates first, specifically the subunit bound to the ATP by the Upper Body (UB) or the one bound by the Lower Body (LB). Addressing this question is essential for comprehending the complete activation mechanism of P2X receptors, which could pave the way for innovative pharmacological designs.. 
+Ligand-gated ion channels (LGICs) are multimeric membrane proteins that allow ions to cross the cell membrane in response to ligand binding \cite{p2x_cuerpo_humano}. These channels play a critical role in synaptic transmission, muscle contraction, and other physiological processes (add them), making them important targets in neuropharmacology \cite{p2x_drugs,therapeutic,p2x7_pharmacology}. LGIC families are classified on the basis of their subunit composition and the location of ligand-binding sites. In pentameric Cys loop receptors, the binding site is located at the interface between adjacent subunits, while in tetrameric glutamate receptors, it is within individual subunits. In trimeric P2X receptors, such as Cys-loop receptors, the binding sites are located between subunits.
+\begin{comment}
 
-In the case of P2X2 receptors, recordings of macroscopic currents in response to ultrashort (0.2 ms) ATP pulses provide valuable insights into the channel's activation process \cite{Moffatt_hume}. Previous models fitted to these data have proposed both sequential and synchronous gating schemes. However, early models incorrectly assumed intrasubunit binding sites akin to glutamate receptors, and no direct comparison of the evidence for the two gating models has been performed. 
+1er parrafo: Ok
 
-Macrocurrents reflect the collective activity of numerous channels. The fluctuations in these currents contain valuable kinetic information. To analyze these fluctuations, we developed a novel algorithm, MacroIR, which improves the Macroscopic Recursive (MacroR) algorithm by accounting for finite integration times in voltage clamp recordings. MacroIR calculates the mean conductance and its variance over specified time intervals, providing a more accurate approximation of the likelihood function.
+\end{comment}
 
-In this study, we applied MacroIR to our previously published recordings of ultrashort ATP pulses to investigate P2X2 receptor gating. We introduced new sequential gating schemes that take into account the inter-subunit binding sites and implement an affine-invariant Monte Carlo Markov chain (MCMC) algorithm to calculate posterior distributions and model evidence. Our results reveal that a sequential model with asymmetric allosteric coupling has a stronger evidence than either symmetric sequential or synchronous models. Our study provides a novel framework for analyzing gating mechanisms in P2X2 receptors by combining advanced kinetic modeling with the MacroIR algorithm, offering new insights into receptor activation.
 
-\section{Methods}
-\label{sec:methods}
 
-\subsection{Notation}
+P2X receptors are the only LGICs for which high-resolution structures of open and closed conformations are available \cite{cerrada_p2x,abierta_p2x}. These structures reveal that ATP binding triggers a rotational movement in all three subunits, leading to separation of the transmembrane domains that form the pore, allowing ions to pass through. However, the intermediate states between these conformations remain unresolved. Understanding these intermediate states is essential for elucidating the mechanism of channel opening, which could inform the design of drugs that modulate the function of the P2X receptor.
+\begin{comment}
+2do parrafo: falta cita estructure p2x1. 
+se podria hacer enfasis en los sitios inter-subunit y quizas en la asimetria del movimiento generado
+\end{comment}
+
+
+Two types of gating models have been proposed for P2X receptor activation: sequential rotation models, where subunits rotate one at a time to gradually open the pore, and synchronous models, where all subunits rotate together in a concerted motion. In sequential models, a key question arises about potential asymmetry: whether one subunit rotates first, specifically the subunit bound to the ATP by the Upper Body (UB) or the one bound by the Lower Body (LB). Addressing this question is essential for understanding the complete activation mechanism of P2X receptors, which could pave the way for innovative pharmacological designs. 
+
+\begin{comment}
+3er parrafo: secuencial vs sincronicos
+no se los menciona en el abstract, evaluar si mandarlo a discusion
+\end{comment}
+
+In the case of P2X2 receptors, recordings of macroscopic currents in response to ultra-short (0.2 ms) ATP pulses provide valuable insight into the channel activation process \cite{Moffatt_hume}. Previous models fitted to these data have proposed sequential and synchronous gating schemes. However, these early models incorrectly assumed intrasubunit binding sites similar to glutamate receptors, and no direct comparison of the evidence for the two gating models has been made. 
+\begin{comment}
+ 4to parrafo: buen hilo con el anterior al tomar lo de secuencial vs sincronico y ahora introducir los inter-subunit
+\end{comment}
+
+
+The macrocurrents reflect the collective activity of numerous channels. Fluctuations in these currents contain valuable kinetic information. To analyze these fluctuations, we developed a novel algorithm, MacroIR, which improves our Macroscopic Recursive (MacroR) algorithm by working on currents averaged over arbitrary time intervals. This allows us to work on a reduced set of data, by averaging in exponentially longer intervals as after the pulse application, reducing the computational load to a manageable one. MacroIR provides an approximation of the likelihood function by calculating the mean state conductance and the variance of the mean over specified time intervals.
+
+\begin{comment}
+una buena introduccion a MacroIR
+\end{comment}
+
+In this study, we applied MacroIR to our previously published recordings of ultrashort ATP pulses to investigate the gating of the P2X2 receptor. We implemented an affine-invariant Monte Carlo Markov chain (MCMC) algorithm to calculate posterior distributions and model evidences of alternative kinetic schemes build after taking into account the inter-subunit nature of the binding sites and after analyzing the structural difference between the closed and open structure of  P2X4 and considering molecular dynamics performed on it. The comparison between these models allowed us to show that there is an asymmetry in the allosteric coupling with the subunit at left or the right and that there is no tertiary allosteric coupling where binding and rotation of one subunit affects the rotation of the second subunit. We found an striking asymmetry in the kinetics of allosteric coupling: agonist binding reduced the energetic barrier for the rotation of the subunit right of the binding site and the rotation of 
+this subunit increased the energetic barrier for binding on the other site it posseses. Furthermore our results explains the nature of the flip state, the fact that two functional binding sites are enough to trigger channel opening and the negative cooperativity of agonist binding. Our study provides a novel framework for analyzing gating mechanisms in P2X2 receptors by combining advanced kinetic modeling with the MacroIR algorithm, offering new insights into receptor activation.
+
+\begin{comment}
+hay que trabajar sobre este parrafo. 
+alternativas: 
+1) quizas expandir la parte de MCMC y bayesiana a un parrafo
+2)quizas expandir el tema de como se generan nuevos modelos alostericos y dar pie a las barreras energeticas
+3) definitvamente re-escribir teniendo en cuenta cuales son los resultados del trabajo (ver lista antes del abstract)
+\end{comment}
+
+
+\section{Methods}\label{sec:methods}
+We present the experimental data used to evaluate our approach, the kinetic schemes constructed for prediction, the likelihood function quantifying predictive accuracy, and the Evidence determination algorithm for comparing alternative kinetic schemes and inferring posterior parameter distributions.
+
+
+
+\subsection{Experimental data: Outside-out Patch recording}
+
+The experimental data used in this study were previously published in The Journal of General Physiology (\cite{Moffatt_hume}) and are reanalyzed here to develop and validate our approach. These data were recorded from macro outside-out patches containing thousands of P2X2 channels, exposed to 0.2-ms pulses of ATP at concentrations of 0.2, 0.5, 1, 2, and 10 mM every 2 minutes, with interspersed 10-ms pulses of 1 mM ATP. The dataset is well-suited for kinetic analysis due to the precise alignment of stimulus timing with channel responses, which were measured directly from the patch \cite{Moffatt_hume}. For further details on the experimental procedure, including the solution compositions, recording conditions, and data acquisition, please refer to the original publication \cite{Moffatt_hume}.
+In order to analyze the dataset we did the following: we average at regular 
+
+\subsection{Kinetic schemes under test}
+We tested 11 kinetic schemes, including seven previously described by Moffatt and Hume and four new ones developed in this study. The seven established schemes represent progressively complex models of receptor dynamics. Scheme I follows a Monod-Wyman-Changeux (MWC)-like framework with independent binding sites and a single gating transition. Scheme II incorporates an intermediate "flipped" state between the fully bound and open conformations. Scheme III, based on Ding and Sachs (1999), introduces multiple open states converging on a final closed state, while Scheme IV extends this with additional flipping transitions. Schemes V to VII integrate allosteric interactions: Scheme V is an allosteric expansion of the MWC model linking ligand binding to gating, Scheme VI includes a global flipping transition affecting the entire channel, and Scheme VII refines this by allowing flipping to occur independently at each binding site, resulting in a highly interconnected state network. 
+At the time this paper was developed, it was not known that the binding site of purinergic receptors was not intra-subunit as in glutamate receptors but inter-subunit as in cys loop receptors. Therefore no though was put into the complexity of the ternary coupling between the binding molecule and both subunits that form the binding site. 
+Later the structure of closed and open zP2X4 came out. This solidify the concept of an inter-subunit binding site and a possible mechanism of gating was hinted by the comparison of both structures, where agonist binding induces deformations that facilitate the rotation of the subunits in a concerted way. 
+One of the big misteries of the structure was what was the structural correspondence of flipping. Was 
+One of the problematic aspects of Schemes VI and VII was that they not only postulated allosteric coupling between binding and flipping and flipping and gating, which make complete sense with flipping being the mechanism that transport the binding energy from the binding site to the gating site, but they postulate, in order to get good fits, direct coupling between binding and gating, which was of much harder interpretation. 
+My though was: a different coupling between binding and rotation of the left or right subunit would account for the direct binding-gating mechanism, in the sense that it would explain the variability that as simpler mechanism could not. 
+\subsubsection{conductance parametrization}
+For one of the top-performing models (Scheme 10), we hypothesized that the current is proportional to the number of rotated subunits. The relationship was modeled by:
+\[
+i(n) = i_{\text{max}} \cdot \frac{E_n}{E_n + 1}, \quad E_n = E_0 \cdot F_g^n,
+\]
+where \( E_n \) represents the efficacy of the \( n \)-rotated state. This assumption reduced the number of states by half, significantly enhancing computational feasibility.
+A second thought was that we do not have enough computational power to deal with a 48 state model, so we cannot afford a rotation-gating coupling. 
+We solve that by assuming that the gating kinetics was too fast and using scheme VI as model, we considered that each rotated subunit contributes to stabilize the open conformation and therefore the mean conductance was a parametrized function of the number of rotated subunits. This trick allow us to halve the number of states, reducing by more than four the computational load. The other advantage of this approach is that it also models the possibility of not having a pore blocking mechanism, that the conductance of the pore is just a non-linear function of the number of rotated subunits. 
+In this new schemes we did not talk about flipping but of rotation, because we are mapping conformational changes, not hypothetical ones. Also we  consider allosteric couplings where actual physical contact exist: between  binding and subunit rotation. We consider three couplings: RB (rotation of the right subunit forming the binding site and binding), BR (binding and rotation of the subunit left of the binding site) and RBR (the ternary coupling of binding and rotation of both subunits). 
+Four models were built: Scheme VIII, considers only RBR; in Scheme IX and X RBR=1 and they differ in whether RB=BR (IX) or they are independent (X). Scheme XI considers RB, BR and RBR  at the same time. 
+
+\subsubsection{kinetic and equilibrium allosteric factors}
+Our previous paper extended the allosteric framework that is usually applied to equilibrium constants to kinetic rates. We added to the usual allosteric factor for the equilibrium constants (which is the same for both coupled conformationa changes), two new allosteric factors: one for each conformational change. 
+Lets explain this further. Lets suppose we have two conformational changes g and r. In the absence of interaction, they are described by four independent parameters: $b_{on}$,$b_{off}$,$r_{on}$,$r_{off}$. 
+Now suppose we have a BR interaction. Then we will have four new parameters on the activated state: $b^*_{on}$,$b^*_{off}$,$r^*_{on}$,$r^*_{off}$ But, because of microscopic reversibility we know that: 
+$$ b_{on} \cdot r^*_{on} \cdot b^*_{off} \cdot r_{off} = r_{on} \cdot b^*_{on} \cdot r^*_{off} \cdot b_{off} $$
+or 
+$$ \frac {\frac {b_{on}}{b_{off}}}{\frac {b^*_{on}} {b^*_{off}}}     =  \frac {\frac {r_{on}}{r_{off}}}{\frac {r^*_{on}} {r^*_{off}}} =BR_{eq}  $$
+Allosterism equivalence is warranted by microscopic reversibility. 
+So, we need only two extra parameters to determine the coupled kinetic rates. We choose to define them in terms of the forward rates: 
+$$ BR_{b{on}} = \frac{b^*_{on}}{b_{on}}$$
+$$ BR_{r{on}} = \frac{r^*_{on}}{r_{on}}$$
+
+For Evidence determination we only used this parameters. However, it was helpful to consider the converse couplings: 
+$$ BR_{b{off}} = \frac{b^*_{off}}{b_{off}}$$
+$$ BR_{r{off}} = \frac{r^*_{off}}{r_{off}}$$
+
+
+
+
+\subsection{Likelihood function of time averaged macroscopic currents: MacroIR}
+In this section we introduce our new algorithm for the determination of the likelihood of time averaged macroscopic currents. This is the heaviest development and it is somewhat complex and it require some Notation.  
+As we are introducing a new and we think very usefull technique we will try to be pedagogical, so we will first ilustrate the concepts on the case we have only one channel to build from there the complex case of macrocurrents. Also, we are developing techniques that are also relevant for single channel, so it is worth the space.   
+
+\subsubsection{Notation}
 We denote specific channel states using subscripts (e.g., \( i, j \)), while superscripts (e.g., "prior", "post", "obs") are used to indicate the type of probability distribution (e.g., prior, posterior, or observed). For instance, \( p_i^{\text{prior}} \) represents the prior probability of being in state \( i \), and \( p_i^{\text{post}} \) represents the posterior probability after an observation.
+\begin{comment}
+esta incompleta (me parece)
+\end{comment}
 
-\subsection{Markov model of single-channel behavior}
+
+\subsubsection{Markov model of single-channel behavior}
 
 Early studies of single-channel recordings revealed that ion channels exhibit stochastic opening and closing at irregular intervals, consistent with the thermal fluctuations that macromolecules experience. Given this stochastic behavior, it is natural to model channel kinetics using a Markov process with a finite set of states \( k \), where each state represents a subset of the channel protein’s conformational landscape. 
 
@@ -171,7 +516,7 @@ where the off-diagonal elements of the matrix \( \boldsymbol{Q} \) are given by 
 This formulation ensures that the total probability remains normalized over time, with the transitions between states governed by the rates encoded in the matrix \( \boldsymbol{Q} \). The Markovian framework thus reduces the complex conformational dynamics of the channel into a tractable probabilistic model, allowing for detailed analysis of the channel gating kinetics.
 
 
-The integration of Eq.~\ref{eq:master_equation} allows us to determine the time evolution of the probability vector \( \boldsymbol{p}(t) \). This integration yields:
+The integration of Eq.~\ref{eq:master_equation} allows us to determine the time evolution of the probability vector \( \boldsymbol{p}(t) \). This integration yields the following.
 
 
 \begin{align}
@@ -197,7 +542,7 @@ This relationship links the hidden Markov states to the measurable macroscopic c
 
 
 
-\subsection{MicroR, Bayesian model for instantaneous measurements of single-channel behavior}
+\subsubsection{MicroR, Bayesian model for instantaneous measurements of single-channel behavior}
 
 The microscopic recursive term was coined for the exact description of an ensemble of channels, however the equations are the same that for single channels, so we extend the term to cover the classical bayesian analysis fo single channels. 
 Consider the scenario where we perform a single "instantaneous" current measurement, denoted as \( y^{\text{obs}} \). Let the initial state probability distribution be given by \( \boldsymbol{p}^{\text{prior}} \). Suppose the instrumental noise associated with each measurement follows a normal distribution with variance \( \epsilon^2 \). Under these conditions, we can derive the likelihood of the measurement and update the posterior probability distribution accordingly.
@@ -239,7 +584,7 @@ Since the probability of each observation \( {y}_n^{\text{obs}} \) is calculated
 where \( \mathcal{L}_i \) corresponds to the likelihood of the \( i \)-th measurement.
 
 
-\subsection{MicroIR, the Bayesian Model of Time-Averaged Single-Channel Measurements}
+\subsubsection{MicroIR, the Bayesian Model of Time-Averaged Single-Channel Measurements}
 
 This new algorithm allows to analyze hidden markovian processes where the information we gain from them results from a time-weighed averaged response,as opposed as from an instantaneous observation. It is another solution for the missing events problem, but from a different perspective, one that does not intend to idealize the recording but to directly calculate the likelihood. This would allow to compare the evidence of alternative kinetic models, something that is not straightforward when an idealization step is included.  
 We did not actually used this algorithm in this paper, it was necessary conceptual step to present MacroIR. We present it for single channels, but a similar argument can be extended for other single molecule systems, where time averaging is even more compelling (like molecular motors). 
@@ -394,7 +739,7 @@ These expressions allow us to compute the expected square of the average current
 
 
 
-\subsection{From Single-Channel Analysis to Ensemble Channel Analysis}
+\subsubsection{From Single-Channel Analysis to Ensemble Channel Analysis}
 
 When the only information available about an ensemble of ion channels is the state probability vector—which specifies the likelihood of each individual channel being in a particular state—a multinomial distribution describes the probability of observing each possible distinct state count vector. However, once we gain additional information by measuring the total current produced by the ensemble, we can update the posterior distribution of the ensemble state. This updated distribution not only deviates from a multinomial form but also exhibits inverse correlations between states that generate the same current. Although individual channels remain independent, the information we obtain about the ensemble as a whole introduces correlations, reminiscent of quantum entanglement. Thus, we require a method to characterize the posterior probability distribution of the ensemble state that adequately captures these induced correlations.
 
@@ -402,7 +747,7 @@ A precise yet computationally intensive approach involves constructing a vector�
 
 A more efficient alternative approximates the ensemble state distribution using a multivariate normal distribution of the state count vector. The covariance matrix serves as a first-order approximation to account for the observation-induced correlations between states. This constitutes the \textit{Macroscopic Approach}, significantly simplifying the representation of the ensemble's state distribution.
 
-\subsection{MacroR, Bayesian Framework for Instantaneous Measurements of Channel Ensembles}
+\subsubsection{MacroR, Bayesian Framework for Instantaneous Measurements of Channel Ensembles}
 
 In the \textit{MacroR algorithm}, we treat measurements as instantaneous and focus solely on the ensemble's instantaneous state. This framework leverages both the mean probability vector and the covariance matrix of the probability state, capturing the ensemble's key statistical properties at any given moment. The same results can be obtained from a Kalman filter. 
 
@@ -458,7 +803,7 @@ And its covariance:
 This completes the recursion step of the Macroscopic Recursive algorithm.
 
 
-\subsection{MacroIR: A Bayesian Framework for Interval-Averaged Analysis of Channel Ensembles}
+\subsubsection{MacroIR: A Bayesian Framework for Interval-Averaged Analysis of Channel Ensembles}
 
 We introduce MacroIR (Macroscopic Interval Recursive), a novel Bayesian framework designed for time-averaged Markovian processes over successive intervals. The algorithm is inspired by macropatch recordings, which provide high-fidelity kinetic data with low noise. This approach is versatile, extending to systems such as FRET measurements, molecular motor ensembles, and potentially diffusion analyses.
 
@@ -515,16 +860,16 @@ where \( \circ \) denotes the element-wise (Hadamard) product and \( \mathbf{1} 
 
 Posterior updates are efficiently computed without explicitly involving the meta-state:
 \begin{equation}
-	\boldsymbol{\mu}^{\mathrm{prior}}_{t} = 
-	\boldsymbol{1}_0 \cdot 
-	\boldsymbol{\mu}^{\mathrm{post}}_{0 \rightarrow t} = \boldsymbol{\mu}^{\mathrm{prior}}_0 \cdot \boldsymbol{P} + 
+	\mathbf{\mu}^{\mathrm{prior}}_{t} = 
+	\mathbf{1}_0^{\mathrm{T}} \cdot 
+	\mathbf{\mu}^{\mathrm{post}}_{0 \rightarrow t} = \mathbf{\mu}^{\mathrm{prior}}_0 \cdot \boldsymbol{P} + 
 	\frac{y^{\mathrm{obs}}_{0 \rightarrow t} - y^{\mathrm{pred}}_{0 \rightarrow t}}{{\sigma^2}_{\overline{y}^{\mathrm{pred}}_{0 \rightarrow t}}} 
 	\cdot \widetilde{\boldsymbol{\gamma}^{\mathrm{T}} \boldsymbol{\Sigma}}.
 	\label{eq:macro_interval_posterior_mean}
 \end{equation}
-where left-multiplication by \( \mathbf{1}_0 \) represents the marginalization over the start state, and
+where left-multiplication by \( \mathbf{1}_0^{\mathbf{T}} \) represents the marginalization over the start state, and
 \begin{equation}
-	\widetilde{\boldsymbol{\gamma}^{\mathrm{T}} \boldsymbol{\Sigma}} = \mathbf{1}_0 \cdot \mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} =
+	\widetilde{\boldsymbol{\gamma}^{\mathrm{T}} \boldsymbol{\Sigma}} = \mathbf{1}_0^{\mathrm{T}} \cdot \mathbf{\gamma}^{\mathrm{T}}_{0 \rightarrow t} \cdot \mathbf{\Sigma}^{\mathrm{prior}}_{0 \rightarrow t} =
 	\overline{\boldsymbol{\gamma}}_{0}^{\mathrm{T}} \cdot 
 	\left( \boldsymbol{\Sigma}^{\mathrm{prior}}_{0} - \mathrm{diag}(\boldsymbol{\mu}^{\mathrm{prior}}_0) \right) \cdot \boldsymbol{P} 
 	+ \boldsymbol{\mu}^{\mathrm{prior}}_0 \cdot \left( \overline{\boldsymbol{\Gamma}}_{0 \rightarrow t} \circ \boldsymbol{P} \right).
@@ -543,56 +888,743 @@ The prior covariance for the next interval is derived by marginalizing over init
 
 In summary, MacroIR provides a recursive Bayesian framework that computes the likelihood and posterior distributions for time-averaged measurements without the computational burden of explicitly handling meta-states. This ensures scalability and applicability to diverse experimental datasets.
 
+\begin{comment}
+Me llevo mas de una semana escribir esta seccion, la mas tecnica del paper. 
+No la volvi a leer, revisarla, pero esta me parece completa
 
-\section{Results}\label{sec2}
-\subsection{conventional Kinetic schemes}\label{subsec2}
 
-We considered 11 kinetic schemes, 7 from of our previous publication plus four more. 
-\subsubsection{Scheme I} \label{schemeI}
-Scheme I represents the hypothesis that  after all 3 ATPs are bound, the channel opens. 
+\end{comment}
 
-\subsubsection{Scheme II} \label{scheme I}
-Scheme II is as simple as Scheme I plus a flip state, an intermediate step between the binding of the last ATP and channel opening. 
 
-\subsubsection{Scheme III} \label{scheme I}
-Scheme III assumes that the binding of each ATP modifies the affinity of the remaining sites. Also that there are two different open channel states that can access a closed state that cannot loose ATP. This scheme was obtained by finding the connection topology that better fit single channel data. 
+\subsection{Model Comparison Framework}
+We analyzed 11 alternative kinetic schemes representing distinct hypotheses of P2X2 activation. Bayesian evidence for each scheme was calculated using a parallel-tempering affine-invariant MCMC algorithm, which efficiently sampled high-dimensional posterior distributions. This method provided robust evidence values while mitigating the risk of sampling biases.
 
-Scheme IV is scheme III plus a flip state. 
+
+\subsubsection{Bayesian Factor Calculation}
+Bayesian factors (BFs) were computed to quantify the relative plausibility of competing models, focusing on hypotheses involving symmetric vs. asymmetric coupling, ternary interactions, and sequential vs. synchronous subunit rotation.
+
+\newpage
+
+
+
+\section{Figures}
+\begin{comment}
+preguntas y graficos que las responden
+
+1. Como se que la implementacion de MacroIR es correcta?
+MacroR fue ya 
+
+Porque recupero los parametros. 
+
+un grafico al estilo mi paper de biophysical journal ayudaria mucho -->al S1
+
+
+\end{comment}
+\begin{comment}
+    mejor vamos por los resultados
+
+1. esquemas  + Evidencias comparadas de equemas cineticos alternativos. 
+Creo que podría simplicar los esquemas 8,9,10 y 11 con una tablita y agregar los posteriors de cuatro esquemas: 4,10,11 y 9
+Finalmente quedan los esquemas 4, 6, 7, 9, 10 y 11. 
+
+Quizas podria excluir el 4.  
+Y presento el algoritmo DR y SNR
+
+Idea: comparacion 	de hipótesis a nivel de modelos. 
+< 
+
+
+2. esquema ilustracion + posteriors de parametros cineticos. 
+
+La idea de esta figura es explicar la parametrizacion del esquema 10. 
+
+
+Luego tengo que hacer figuras equivalentes para el resto de los esquemas. 
+
+Idea: comparacion de hipotesis a nivel de parametros. 
+
+
+
+3. el tercer grafico seria el de los f_off vs f_on y la energia libre en funcion de la reaction coordinate
+
+Idea: explicar el acoplamiento en terminos de constantes de equilibrio y barreras energeticas. 
+
+
+
+4.  plotear los koff vs kon
+este grafico deberia ser ploteado junto con el esquema expandido del schema 10, con esto tendriamos todos los rates. 
+
+Idea como el acoplamiento resulta en constantes cineticas
+
+5. figura de la evolucion de la probabilidad de los estados: 
+ahi puedo graficar la evolucion temporal para cada estado y la evolucion del heat-map de los estados para algunas concentraciones. 
+Ahi la conclusion es que a la ida va por abajo y a la vuelta por el medio. 
+
+Idea: como los rates derivan en ocupancia de los estados. 
+
+
+6. tengo ahora que presentar el tema de la corriente de 0, 1 , 2 y 3 rotadas 
+
+Idea: como los estados derivan en la corriente producida por el canal
+
+
+7. ruido blanco, rosa y el numero de canales. 
+Esto mas la evolucion de la corriente medida, la esperada, la varianza esperada y la logL parcial.
+
+Idea: como el modelo se compara con la medicion. 
+
+
+///
+
+Me quedan un par de temas: 
+
+1: 
+
+
+\end{comment}
+
+\begin{comment}
+    ranking:
+    S0. el metodo funciona. 
+    recupero los parametros
+    la  
+    3. esquema ilustracion (error aqui)  f_off vs f_on y energia libre 
+    1.  esquemas + evidencias + posterior predictions
+    2. posterior kinetic parameters  + de la current at different number of rotations
+    5. posterior states 
+    4. posterior rates koff vos kons and complete scheme with color code
+
+
+\end{comment}
+
+
+\begin{comment}
+    figura 1
+responde a la pregunta: 
+que resulta de comparar la evidencia de esquemas cienticos alternativos
+    
+    tiene que tener: 
+    1. esquemas de los schemes usados. 
+A convencionales
+B alostericos intrasubunit
+C alostericos inter-subunit--> tabla
+los voy a hacer todos en R []
+--> evidencias []
+--->posterior predictions []
+\end{comment}
+
+\begin{comment}
+   figura 2
+cual es la distribucion a posteriori de los parametros del esquema 10?
+   
+    tiene que tener: 
+A parameters binding y rotation (terminologia precisa [])
+B multimodal allosteric parameters (terminologia precisa [])
+C allosteric parameters sorted out [buscar una terminologia precisa [] ]
+
+D parameters gating
+E current per number of rotated subunits
+\end{comment}
+
+\begin{comment}
+figura 3 
+como actua el acoplamiento alosterico sobre la cinetica de binding y de rotation para la subunidad izquierda y derecha
+
+A acoplamiento entre binding y rotacion de la subunidad izquierda
+B acoplamiento entre binding y rotacion de la subunidad derecha
+C f_off vs F_on plot (buscar nombre con chatgpt[]) : analisis de los cuadrantes
+D f_off vs f_on posteriors
+E  energia libre vs reaction coordinate 
+F delta delta energia libre vs reaction coordinate
+
+\end{comment}
+
+\begin{comment}
+    figure 4. 
+la pregunta que responde este grafico es como se refleja el acomplamiento entre subunidades a nivel del canal ionico
+
+A muestro koff vs kon para distinto acoplamientos
+B grado de acoplamiento para cada  biding transition (buscar mejor wording)
+C muestro roff vs ron
+D grado de acoplamiento de las transiciones de rotacion
+\end{comment}
+
+\begin{comment}
+    figure 5
+la pregunta es la posterior probability of state occupancy
+A trayectoria temporal para cada estado y para cada grado de acoplamiento(buscar mejor termino[])
+B heat map de state probability en funcion del tiempo y la concentracion de ATP
+
+\end{comment}
+
+
+\begin{comment}
+    supplementary figures
+
+    
+    para el supplementario: (*-->imprescindible)
+para scheme 10
+Figure S1
+Dos posibilidades o todos en uno o una figura para cada una de las siguientes cosas: 
+
+1. distintas corrida. 
+
+2 Recupero los valores de los parametros de una simulacion
+
+3. El filtro de bessel no afecta significativamente los parametros
+4. si solo usamos por encima del filtro, solo perdemos resolucion en tal parametro. 
+
+Muestro el posterior de todos los parametros para distintas corridas, para una simulacion, para una simulacion con filtro de bessel y para los datos pero tomando intervalos mayores a la frecuencia de corte del filtro. 
+
+Idea: La Evidencia es robusta, no varia entre replicas 
+
+
+Figura S2
+Para logEvidence vs iter para
+A. Convencionales
+B. Alostericos intrasubunidad
+C Alostericos inter-subunidad
+
+Figura S3 
+logParametro vs iter para scheme 10
+
+
+Figura S4
+beta vs iter para scheme 10
+
+
+
+para cada uno de los esquemas
+figura de losposterior de los parametros
+Table de priors, posteriors y numero de modas
+foff vs fon
+
+koff vs kon | roff vs ron | goff vs gon
+
+conductancias para los inter-subunit
+
+\end{comment}
+\section{Comentarios}
+
+\begin{comment}
+    subtitulos
+    La primer pregunta es: como empiezo?
+
+    una posibilidad es empezar dando razones por las cuales creo que el metodo funciona. 
+    Otra forma es empezar como si el metodo funcionara y luego mostrar que esto es asi. 
+    El test es global y consiste en comprobar si se recuperan los parametros al usar una simulacion. Para ello debemos dar con parametros que tenga sentido probar, entonces mejor primero llegar alli. 
+
+    Un test aun mas exigente consiste en perturbar los parametros obtenidos, y recuperar estos parametros perturbados a partir de una simulacion obtenida a partir de ellos. 
+
+    Entonces, empiezo por la presentacion de los esquemas y sus evidencias, luego analizo el esquema 10 en profundidad y por ultimo hago algunas comparaciones con otros modelos. 
+
+
+    Entonces el primer titulo tiene que ser algo del tipo : Bayesian Evidence of alternative kinetic schemes. 
+    Alli debo en los primeros parrafos indicar cuales preguntas respondo: 
+    1) Como traduzco informacion cinetica en informacion mecanismica? 
+    La respuesta es solucionando el problema inverso: a partir de un mecanismo se puede predecir un curso cinetico, como hago para invertir esta relacion?
+    Bueno, puedo proponer varios mecanismos alternativos y ver de estos cuales predicen mejor los datos. 
+    Para esto debo lograr dos cosas: 1) ajustar los parameteros de los modelos para predecir correctamente los datos
+    2) comparar modelos alternativos con distinto numero de parametros. 
+
+    Ahora para poder ajustar los parametros necesitamos una medida de ajuste de los datos y eso es el modelo de likelihood. En este trabajo presentamos una nueva aproximacion de la likelihood de un proceso markoviano de estados escondidos donde la variable observable se haya integrada en el tiempo. Esto permite hacer una drastica reduccion en el volumen de datos permitiendo ajustar modelos complejos en un tiempo posible. 
+    
+    Teniendo una aproximacion a la likelihood, la solucion de los otros dos problemas (el ajuste de los parametros y la comparacion entre modelos) se soluciona simultaneamente usando un algoritmo de parallel tempering que permite explorar las regiones de alto grado de probabilidad en modelos multimodales y calcular la evidencia. 
+
+    
+        
+    Allosteric Kinetic schemes 
+    Evidence of different schemes
+    Posterior distributions
+    Asymmetry in the allosteric coupling
+    One path for activation another for deactivation
+    White and pink noise
+    partial conductance and opening with two binding sites
+
+
+
+    
+\end{comment}
+
+
+\begin{comment}
+
+ Como organizo los resultados?
+ una posibilidad es a traves de buscar las preguntas respondidas. 
+ La primer parte tiene que ver con que logramos calcular la evidencia de esquemas alternativos. 
+
+ la segunda parte con un analisis detallado del esquema X
+
+ La tercer parte seria un analisis de las diferencias con otros esquemas. 
+ 
+Otra posibilidad es trabajar sobre preguntas. 
+La pregunta general es como hace el canal para acoplar la concentracion de ATP a cambios en conductancia. Atacamos esta pregunta experimentalmente midiendo el curso temporal de la conductancia luego de cambios pulsados en la concetracion de ATP. Ahora como usamos la información cinetica obtenida para entender los mecanismos de activacion? Para esto se desarrollan modelos cineticos. 
+Los modelos cineticos pueden ser planteados en forma generica, suponiendo que existen una serie de conformaciones moleculares caracterizadas por el numero de ATP unidos, la conductancia, la estabilidad y un subconjunto de transiciones de estado permitidas, algunas de ellas dependientes de la concentracion de ATP, las que incrementan en uno el numero de ATPs unidos al canal. 
+De este forma se lograron en trabajos anteriores obtener esquemas cineticos que ajustan muy bien los resultados experimentales. 
+Entonces se plantea la pregunta de como interpretar esos modelos en terminos de mecanismos moleculares. Algunos aspectos de los esquemas tienen una traduccion clara: el numero de ATPs unidos y la conductancia, por ejemplo. Otros aspectos, como el flip state entre el cerrado unido a ligando y el abierto, tienen una interpretación como que existe una etapa intermedia entre la union del agonista y la apertura del poro canal, pero sin mayor precisión. Que la tasa de asociacion y disociación del ATP cambie de acuerdo con el numero de ATPs unidos, indica algun tipo de comunicación entre subunidades, sin mayor detalle en qué naturaleza tendría. Que haya más de un estado abierto, tambien indica que hay más de una estructura que tiene alta conductancia, sin mayor detalle. 
+
+Existe otro camino y este es el de construir los modelos cinéticos no a partir de la exploración de la topología de conexión de abiertos y cerrados de constantes cinéticas arbitrarias, sino a partir de la formulación de cambios conformacionales acoplados alostéricamente. 
+Un esquema alosterico mínimo de la activación conlleva solo dos cambios conformacionales, la union del agonista en cada subunidad y la apertura del poro y el acoplamiento alostérico entre ellos. Este modelo es equivalente a un modelo convencional de estados cerrados y abiertos con 0-3 subunidades unidas a ATP, es decir un modelo de 8 estados y 10 conexiones. Dos estados estarían conectados entre sí solo si tienen el mismo numero de ATPs y difieren en la apertura del poro o si comparten el estado del poro y solo difieren en 1 unidad el numero de ATPs unidos. Un esquema convencional con esta conectividad tendría 17 grados de libertad, 7 debidos a la diferencia de energia entre estados y 10 debidos a las barreras energéticas entre estados. El esquema alostérico solo tiene 7 grados de libertad, 4 por los 2 cambios de conformacion y 3 por las componentes del acoplamiento alosterico: el acoplamiento de equilibrio y el acoplamiento de cada una de las dos barrera de transicion.  
+De esta forma se expande el numero de estados, con lo que aumenta el costo computacional de calculo pero se reduce el numero de parámetros, reduciendo el espacio de busqueda. 
+Ahora, de la misma forma en que se plantean estados hipoteticos en un esquema convencional, para ajustar los datos experimentales,  se pueden  plantear cambios conformacionales hipotéticos sin tener en claro cual es su correlato estructural. Tal es el caso del flipping, el cual puede ser planteado como un cambio conformacional que ocurre a nivel del receptor entero o cada subunidad por separado. 
+Pero existe otra posibilidad y esta es la de plantear los cambios conformacionales y sus acoplamientos solo en base a el conocimiento que se tiene de la estructura. Este camino se planteo en este trabajo donde solo se plantean  dos cambios conformacionales la union del agonista y la rotacion de cada subunidad y dado que cada sitio de union involucra a dos subunidades (y el reverso cada subunidad esta involucrada en dos sitios de union), cada union del agonista se acopla a la rotacion de ambas subunidades. Y aquí se plantean dos posibilidades, que el acoplamiento, a pesar de involucrar difrentes residuos, sea identico con ambas subunidades o que los acoplamientos sean diferentes, asimétricos. 
+También se planteó otra alternativa: la de que el acoplamiento sea ternario, es decir que la rotación conjunta de ambas subunidades sea estructuralmente favorecida. El acoplamiento ternario puede ser visto matematicamente como una parametrización de un esquema convencional en tres dimensiones, la rotacion de la subunidad izquierda, la rotación de la subunidad de la derecha y unión del agonista. Este parametrización alostérica define las constantes del siguiente modo: 
+\end{comment}
+
+
+
+
+\begin{comment}
+Se planteó un esquema donde el unico acoplamiento alostérico era este acoplamiento ternario y se lograron reproducir los resultados aunque con una menor evidencia. 
+   
+Algunos cambios se dan a nivel de la subunidad, como la unión del agonista o la rotación de una subunidad, mientras que otros cambios tienen sentido a nivel de todo el canal, como el gating. 
+
+\end{comment}
+
+
+\begin{comment}
+
+    
+
+
+
+La primer pregunta es como traducir el conocimiento acerca de los mecanismos moleculares a  un esquema cientico y vice-versa. 
+La segunda pregunta es como aproximar la likelihood de un proceso markoviano
+  
+ 
+ En estos resultados vamos a primero      
+
+
+    
+\end{comment}
+\begin{comment}
+    Resultados en orden conceptual
+
+    
+1. Una herramienta muy poderosa es la traduccion de hipotesis en modelos matemeticos predictivos parametricos. Con una distribucion a priori de dichos parametros y modelo matematico estadistico del error, se puede traducir una idea cientifica en un modelo parametrico ajustable a los datos experimentales. 
+En el caso particular de las corrientes macroscopicas de canales ionicos, el modelo matematico consiste en una cadena de markov de estados discretos que representan configuraciones de canal que no se pueden distinguir experimentalmente, transiciones permitidas ente estados y entre los parametros a ajustar se encuentran las tasas de cambio de estado. Luego se asume que cada estado tiene una corriente característica (otro paramatro a ajustar) y usando la ecuacion maestra se puede determinar como es la evolucion esperada en la macrocorriente para un conjunto de parámetros determinados. -->Discusion
+
+Deberiamos empezar los resultados con We
+
+Evidencia de modelos alternativos
+Comparamos la evidencia bayesiana de un conjunto de experimentos de 11 esquemas cineticos alternativos. Los experimentos analizados consistieron la corriente de activacion de preparaciones outside out patch de celulas HEK 293 que hiperexpresan rP2X2. La serie de datos experimental consiste en la respuesta ante pulsos de 0.2 ms  de 0.2, 0.5,1, 2 y 10 mM MgATP entre pulsos de 10 ms 1 mM MgATP.  Se calculó mediante corridas de affine invariant parallel tempering la evidencia de todos los esquemas analizados. En la figura 1 se ilustran los esquemas analizados, el calculo de sus evidencias y se representan muestras a posteriori de la corriente predicha para niveles equivalentes de evidencia. 
+
+
+
+Esquema de mayor evidencia con interpretación conformacional
+El esquema de mayor evidencia es uno convencional de difícil interpretación mecanistica. El esquema siguiente en grado de evidencia, usa 4 grados de libertad menos y es ya sí construido a partir de puras consideraciones mecanísticas: es el esquema 10, siendo este un esquema derivado a partir de interacciones conformacionales locales. Es decir que el comportamiento global del canal se construye a partir de la suma de cambios e interacciones locales. Solo se suponen dos cambios conformacionales: la union del agonista y la rotacion de cada subunidad. La corriente que pasa a traves del canal se supone que es función del número de subunidades rotadas. Esta formula se obtuvo a partir del siguiente supuesto. Se supuso que en realidad habria un tercer cambio conformacional, el gating y que este estaría acoplado alostéricamente a la rotacion de subunidades, cada subunidad estabilizando más el canal abierto. 
+La idea es que esta cambio conformacional sería mucho más rapido que la resolución temporal del experimento, por lo que lo que se vería es una corriente promedio que depende del numero de subunidades rotadas y la cinetica de gating no se veria modelada. La formula entonces es la siguiente: 
+\end{comment}
+
+\begin{comment}
+
+Este texto surgio de un momento de lucidez
+
+
+tratemos de ser veridicos
+
+1) pregunta: 
+la pregunta original fue como calcular una buena aproximacion a la funcion de likelihood de una macrocorriente. 
+La respuesta fue el algoritmo MacroIR. 
+
+La siguiente pregunta fue como saber si este algoritmo da nueva informacion. 
+
+La respuesta fue analizar datos experimentales y comparar esquemas alternativos. 
+
+De ahi surgio otra pregunta: como traducir el conocimiento estructural de la estructura abierta y cerrada a un modelo cinetico?
+De alli a una pregunta mas elelemental: como representar en un modelo predictivo la interaccion entre la union al agonista con la apertura del canal? 
+La respuesta a esta pregunta esta en los modelos alostericos donde hay un acople de las constantes de equilibrio. 
+Ahora la formulacion estandard del alosterismo se restringe a la constante de equilibrio, se plantea entonces la pregunta de como se puede modelar la cinetica del acoplamiento alosterico?
+Ahi se extiende la misma idea de los factores alostericos pero a las rates forward y backward (buscar los terminos apropiados). un simple diagrama muestra que en realidad no es que haya alosterismo, sino que el alosterismo es una reparametrizacion de los rates y que se cumple siempre y cuando distingamos los estados como combinacion de los cambios conformacionales. 
+
+Entonces surge la pregunta: como interpreto los factores kineto-alostericos? La primer respuesta a esta pregunta fue usar la analogia con la linear free energy relationship usada para analizar el efecto de mutaciones sobre la cinetica. Pero surgio un problema: se deben permitir exponentes fuera del intervalo 0-1? y ademas fitear en este rango era mas dificil. Se opto por parametrizar contra factores analogos a los del equilibrio tanto sobre los k/r_on como sobre los off. Y esto dio lugar a un resultado que llevo un tiempo interpretar: algunas interacciones asceleraban tanto la kon como la koff y ahi surgio la pregunta: 
+que significa la relacion entre los f_kon y f_koff?
+
+Una forma de verlo es a traves de perfiles de energia: el alto de la barrera es proporcional al logaritmo del kon y la diferencia entre kon y koff es proporcional a la constante de equilibrio. 
+De esta forma wue  los f_on y f_off sean mayores a uno indican que baja la barrera energetica para la rotacion. 
+
+Finalmente en la discusion surge la pregunta: y qué ventaja tendria bajar la barrera energetica en lugar de tenerla siempre baja (ya que en ambos casos la proporcion de tiempo abierto depende de la keq y no de las f-on y f-off)? 
+Una posible respuesta es que el canal podria ser vulnerable durante la rotacion a entrar a un estado irreversible. Y la pregunta aqui es que tipo de configuracion markoviana haria que la entrada a un estado irreversible dependa de la cantidad de cruces? y la respuesta es que la regulacion alosterica seria en la entrada y salida del energetic landscape y no durante la rotacion en si misma. Si la regulacion alosterica afectara a todo el camino, no habria ninguna diferencia en la propension a llegar a un estado irreversible entre una cinetica rapida y una cientica corta. 
+
+Entonces queda la pregunta: y que elementos de la respuesta experimental determinan la caida en la barrera energetica? Respuesta esta en al cinetica del unliganded state: seria relativamente mas lenta que la esperada de no bajar la barrera energetica. 
+Ahora todo esto depende de que la corriente en ausencia de ATP se deba exclusivamente a P2X2, las corrientes que no lo son contribuyen al ruido rosa. Un analisis usando MicroIR permitiría distinguir mucho mejor la corriente debida a unliganded P2X2 de otros canales. 
+
+Qué otras preguntas se hicieron?
+
+1) qué es el flip state? la respuesta propuesta en el esquema es que se trata de la rotacion de subunidades.
+
+2) como representar los cambios de conductancia? la respuesta fue suponer que era instantanea y determinada por el numero de subunidades rotadas. No se represento un cambio adicional de gating. como en esquemas anteriores. Esto permitió ajustar la conductancia parcial de 2 subunidades rotadas, una importante prediccion coherente con el hecho de que canales con solo dos sitios de union al atp activos muestran respuesta al ATP. Tambien esto es coherente con observaciones de canal unico donde se obsrvan subconductancias. 
+
+3) es la activacion sincronica o secuencial? Esta disyuntiva se represento en un tabajo anterior, en este trabajo donde se rehacen los modelos sabiendo que el sitio de union es entre subunidades, solo se debe rehacer la alternativa secuencial ya que la sincronica no cambia entre un sitio de union entre subunidades o dentro. La evidencia del modelo sincronico es inferior y multimodal.
+\end{comment}
+
+\begin{equation}
+    i(n)= i_{max} \cdot \frac{E_n}{E_n+1}
+	\label{eq:current_rotated_units}
+\end{equation}
+\begin{equation}
+     E_n= E_0 \cdot F_g ^n
+	\label{eq:efficacy_rotated}
+\end{equation}
+
+\begin{comment}
+    Esta parametrizacion permite reducir el numero de estados a la mitad y llevar el tiempo de calculo al terreno de lo posible. Por otro lado tambien representa otra posibilidad la de que el tamaño del poro aumente con el numero de subunidades rotadas. 
+
+Mecanismos similares con una menor Evidencia
+La comparación de evidencias de esquemas similares permite evaluar los odds de diferentes hipótesis. La hipótesis de que el acoplamiento es simetrico (mismo a derecha o izquierda) es representado por el esquema 9. La hipótesis de que el acoplamiento es asimétrico aumenta xx veces a partir de este análisis (Factor de Bayes). La hipótesis de que hay un acoplamiento ternario entre la rotación de ambas subunidades que forman el sitio de unión y la unión del agonista (esquema XI) disminuye su credibilidad xx veces.  
+
+Otros esquemas suponen otros conjuntos de hipótesis. 
+El esquema Vi representa un mecanismo donde hay una sincronicidad en la rotación de todas las subunidades y donde hay un triangulo de acoplamientos alostericos: entre binding y rotation, rotation- gating y binding-gating. Este último acoplamiento a distancia podria estar mediado por un grado de rotación dependiente del numero de sitios de unión ocupados. La credibilidad global de este esquema es xx veces inferior a nuestro equema favorito. 
+El esquema VII es analogo al VI pero suponiendo secuencialidad en la rotación de subunidades. Una forma de interpretar este esquema es como si no hubiese interacción alostérica con la segunda subunidad que forma el sitio de union al agonista y que el gatillado supondría un cambio conformacional acoplado alostéricamente a la rotación. 
+
+Esquemas convencionales, la mayor evidencia pero dificil de interpretar 
+El esquema de mayor evidencia es un esquema convencional, el esquema 4, que ya fue presentado en un trabajo anterior. Este esquema cuenta con un estado flip, intermedio entre el cerrado unido a agonista y el abierto, y dos estados abiertos que confluyen con un cerrado no comunicado con otros estados.
+Mecanisiticamente, este esquema supone que la tasa de binding depende del estado global del canal, supone que hay un estado intermedio entre entre que unen tres ATPs y el canal se abre; que hay dos formas que el canal se puede abrir y que hay un estado cerrado al cual se accede despues de pasar por el estado abierto. Es dificil correlacionar estos mecanismos cinéticos con cambios conformacionales. 
+La existencia del estado flip es ampliamente soportada por Factores de Bayes sobre pares de esquemas que solo difirien en la presencia del estado flip: 4 vs 3 (BF:  ) y 2 vs 1 (BF:  ). 
+De forma similar la hipotesis de una compleja cinética de gating es soportada por la comparacion del esquema 4 vs 2  (BF:  ) y el 3 vs 1 (BF: ). 
+
+
+
+. Encontramos un Factor de Bayes de xx al comparar el esquema 4 contra
+
+Un esquema similar al 4 pero sin el estado flip, el esquema 3,  tiene  xx menos credibilidad. Otro esquema con estado flip y con un único estado abierto tiene xx menos credibilidad. 
+
+
+que el gatillado del canal
+credibilidad x veces o asimétrico. de la unión del agonista con la s
+permite ver los odds de que el 
+Comparando la evidencia con otros esquemas se obtiene 
+Encontramos menor evidencia para otros esquemas. 
+que representan variaciones sobre el mecanismo del esquema 10 
+Otros esquemas mostraron una menor evidencia
+
+    
+\end{comment}
+
+\begin{comment}
+
+
+Cuales son los resultados del paper en orden decreciente de importancia:
+1. A partir de los siguientes supuestos pudimos armar un modelo cinetico que describe la cinetica de activacion de P2X2 
+A. Cada subunidad puede rotar sin que las otras necesariamente roten. 
+B. La conductancia del canal depende del numero de subunidades rotadas. 
+C. La union del agonista es un evento que involucra a tres elementos: el propio agonista y las dos subunidades que conforman el sitio de union. La hipotesis es que la union del agonista se acopla alostericamente con la rotacion de cada subunidad en forma independiente y aditiva. 
+
+Estas tres hipotesis implican un modelo alosterico de dos cambios conformacionales (binding y rotation) y dos acoplamientos (BR y RB: segun sea el binding con la subunidad de la izquierda o derecha). 
+Con estos supuestos se encuentra como los cambios conformacionales de una subunidad se propagan por el resto del canal. 
+Usando el algoritmo MacroIR pudimos ajustar los parametros de este modelo a una serie experimental de pulsos de concentracion creciente de ATP. 
+
+Un juego de barreras y equilibrios energeticos explica la cinetica de activacion de P2X2. 
+
+Activacion asimetrica de subunidades identicas en P2X2
+
+Activacion asimetrica de sitios de 
+
+ctivacion cinetica asimetica en un sitio de union formado por dos subunidades. 
+
+L
+
+Union del ATP a un sitio iter-subunidad genera una activacion 
+
+Activacion por ATP es distinta segundiferenciada de las subunidades del que forman el sitio de union al ATP 
+
+Asimetría en la activación de ambas subunidades que forma 
+identicas en P2X2
+
+Asimetrias en la activación de las 
+
+Asimetria en la activacion 
+La unión 
+del ATP a la interfase entre subunidades genera una activació
+
+
+
+
+2. A partir de la distribucion a posteriori de los paramteros de acoplamiento cientico de  este modelo cinetico pudimos ver que los acomplamientos alostericos no solo afectan las constantes de equilibrio sino que tambien modulan fuertemente las barreras energeticas. Corroboramos que la union del agonista desplaza el equilibrio hacia la rotacion de la subunidad y viceversa. Corroboramos que este acoplamiento es mas fuerte con una de las subunidades (que a partir de los datos estructurales suponemos que es la unida por el Upper Body) y para sorpresa nuestra encontramos que 
+A)la union del agonista ademas reduce la barrera energetica para la rotacion de la subunidad UP (de modo que se incrementan tanto la tasa de rotacion ron como su tasa reversa roff). 
+Si la barrera fuera permanentemente baja, el canal responderia igual al agonista sin que se afecte tampoco la conductancia del receptor sin ligando. Solo se verian una mayor frecuencia de rotaciones sin ligando. 
+La reduccion del numero de rotaciones tendria valor adaptativo si cada rotacion, cada paso por la barrera energetica conlleve la posibilidad de entrar en un estado inactivo. 
+
+
+B) la rotacion de la subunidad aumenta la barrera de binding (reduciendo la kon y koff) pero solo de la subunidad LB, la barrera de binding de la otra subunidad no se ve afectada. Esta modulacion explicaria la cooperatividad negativa del binding, donde la afinidad de un sitio disminuye con la union del agonista en el sitio vecino
+
+
+3. A partir de este modelo pudimos estimar la subconductancia para 1, 2 y 3 subunidades rotadas. Vimos que con dos subunidades se ve una conductancia de entre 1/5 y 1/3 de la conductancia con 3 subunidades. La conductancia de 1 subunidad es marginal. Estos resultados explicaría el hecho que un receptor con solo sitios de union funcionales muestra respuesta al ATP. 
+
+
+4. La Evidencia de este esquema cinetico es solo inferior a un esquema cinetico convencional con un flip state que bifurca en  dos estados abiertos que confluyen en un cerrado. Los otros modelos alostericos, entre los que se incluye un sincronico, tienen una evidencia inferior. 
+Esto muestra todavia hay elementos que nuestro modelo no puede describir adecuadamente, posiblemente relacionados en la desensitizacion. Otra posibilidad es que las rotaciones sigan una cinetica continua. 
+
+5. En este trabajo se ponen en valor varios avances metodologicos: 
+
+A. El mas importante son los cuadrantes del grafico f_on vs f_off que permite separar las situaciones donde cambia la barrera energetica y cuando cambia el salto en energia libre, seprarndo la regulacion cinetica de la termodinamica. Estamos impactados por la simplicidad y profundidad conceptual de esta herramienta, que no entendemos del todo aun. 
+
+B. El desarrollo teorico mas trabajoso y demandante fue el del algoritmo MacroIR. Combinando este algoritmo con un afine-invariante parallel tempering con ajuste dinamico de temperaturas, se lograron hacer analisis cineticos de modelos complejos en situaciones experimentales reales. El costo computacional de este combo esta en el reino de lo posible: ocho nucleos durante dos semanas. Todavia hay mucho por hacer en la optimizacion de este algoritmo. 
+Si bien no es necesario calcular la evidencia para obtener la distribucion a posteriori, el metodo de paralel tempering asegura una busqueda exhaustiva en el espacio de parametros, especialmente en situaciones multimodales como todos los modelos medianamente complejos. 
+
+
+C. Se desarrollo un algoritmo para la construccion automatica de modelos alostericos a partir de indicar un conjunto de cambios conformacionales y sus interacciones. La verificacion de este algoritmo y el desarrollo de una interfaz accesible es un buen material para otro paper. Cuanto incluir de esto en el presente paper es materia a discutir. No es intrumental, deberia ir en otro lado. 
+
+D. Una innovacion interesante es la de incluir ruido rosa en la formulacion de la likelihood. En esta formulacion solo tomamos del mismo la dependencia con la duracion de los intervalos de medicion, no incluimos la correlacion temporal del mismo. La idea es que si existen procesos estocasticos correlacionados (como otros canales en el patch o simplemente procesos que no son descriptos por el modelo plateado) este proceso sea modelado internamente como un ruido rosa. No hicimos un estudio sistematico pero la impresion es que la presencia del ruido rosa ascelera la convergencia de la Evidencia. 
+
+
+
+
+
+X. Conclusiones metodologicas. El planteo inicial es hipotetico deductivo: a partir de informacion estructural (hipotesis) armamos un modelo cinetico (deduccion)  sin tener en cuenta la informacion cinetica disponible. 
+Ahora, la parametrizacion del modelo era amplia y algunos valores de los parametros resultaron inesperados para nosotros, en particular los que determinan que las las barreras energeticas cambiasen. En esto seguimos mas un patron inductivo: a partir de la informacion obtenida formulamos nuevas hipotesis no envisionadas inicialmente. 
+La parametrizacion inicial del acoplamiento cinetico alosterico fue extendiendo el concepto de Linear free energy relationship y suponiamos que la pendiente deberia estar entre 0 y 1. No lograrmos buenos ajustes de esta forma y reparametrizamos la relacion extendiendo la parametrizacion de la constante de equilibrio. Esto permitio mejores ajustes, pero no encotrabamos el significado cinetico. Este se hizo claro al graficar las f_on vs f_off y entender   
+\end{comment}
+
+\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
+
+To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data obtained from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were elicited by 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
+
+For clarity, we classify kinetic models into three categories. \textbf{Regular models} describe channel kinetics solely in terms of state transitions, without explicitly incorporating allosteric interactions. \textbf{Allosteric models} extend this framework by incorporating modulatory interactions, even when the underlying structural basis remains unspecified. \textbf{Conformational models} represent a refined subclass of allosteric models in which the allosteric interactions are directly mapped onto specific structural changes.
+
+Figure~1 displays Bayesian evidence for two allosteric models and one regular model—selected based on prior fitting performance—along with three new conformational models motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couples to independent rotational movements of each subunit. Two distinct secondary couplings—one on the left and one on the right—are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
+
+Within this framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII (Extended Data Fig.~1) features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
+
+In parallel, we evaluated Scheme~IV, a regular model derived by incorporating an intermediate flip state into a previously preferred single-channel scheme. This model comprises closed states with 0--4 bound ATP molecules, followed by a flip state that bifurcates into two open states, which subsequently converge into a final closed state—thus capturing the dynamics of receptor activation and deactivation. Two allosteric models, Schemes~VI and~VII, extend this framework by coupling three conformational transitions—binding, flipping, and gating—via all pairwise interactions. The sole difference between them is that Scheme~VI assumes concerted flipping across the entire channel, whereas Scheme~VII permits subunit-specific flipping.
+
+Model performance was assessed using two likelihood approximations: MacroIR, a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and MacroINR, a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
+
+Among the tested models, Scheme~X—featuring independent left and right couplings without ternary interactions—achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and~XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated using MacroIR within the available computational time, and the regular Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
+
+Extended Data Figure~1 presents an analysis of five additional schemes: three Regular models (Schemes~I, II, and III), one Allosteric model (Scheme~V), and one new Conformational model (Scheme~VIII). Evidence comparisons reveal that incorporating a flip state substantially enhances model performance (Scheme~II vs I; IV vs III and VI and VII vs V) and that complex kinetic schemes outperform simpler models featuring a single open state (Scheme~IV vs II and III vs I). Moreover, a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and XI.
+
+Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework adequately accounts for the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating, thereby reinforcing the validity of conformational models. We further interpret the flip state as the kinetic manifestation of individual subunit rotation.
+
+
+\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
+
+To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were measured in response to 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
+
+For clarity, we classify kinetic models into three categories. \textbf{Regular models} describe channel kinetics solely in terms of state transitions without explicitly incorporating allosteric interactions. \textbf{Allosteric models} extend this framework by including modulatory interactions, even if the structural basis for these effects is not specified. \textbf{Conformational models} represent a refined subclass of allosteric models, in which the allosteric interactions are directly mapped onto specific structural changes. 
+
+Figure~1 displays Bayesian evidence for two Allosteric models and a Regular model—selected based on prior fitting performance along with three new Conformational models, motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couple to independent rotational movements of each subunit. Two distinct secondary couplings---one on the left and one on the right---are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
+
+Within this framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII (Extended Data fig 1) features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
+
+In parallel, we evaluated Scheme~IV, a Regular model derived by incorporating an intermediate flip state into a previously preferred single-channel scheme. This model includes closed states with 0--4 bound ATP molecules, followed by a flip state that bifurcates into two open states which converge into a final closed state, thereby capturing the dynamics of receptor activation and deactivation. Two Allosteric Models, Schemes~VI and~VII, extend this framework by coupling three conformational transitions---binding, flipping, and gating---via all pairwise interactions. The only difference between them is that Scheme~VI assumes concerted flipping across the entire channel, whereas Scheme~VII allows for subunit-specific flipping.
+
+Model performance was assessed using two likelihood approximations: MacroIR, a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and MacroINR, a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
+
+Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and~XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated for MacroIR within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
+
+Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and~VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and~XI.
+
+Collectively, these findings support a four-part hypothesis based Conformational Model: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating. We interpret the flip state as the kinetic manifestation of individual subunit rotation.
+
+----------
+
+
+Model performance was assessed using two likelihood approximations: MacroIR, a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and MacroINR, a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
+
+Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and~XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated for MacroIR within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
+
+Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and~VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and~XI.
+
+Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating. We interpret the flip state as the kinetic manifestation of individual subunit rotation.
+
+
+
+
+
+\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
+
+To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were measured in response to 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
+
+Figure~1 displays Bayesian evidence for three primary models—selected based on prior fitting performance—and three new schemes motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couple to independent rotational movements of each subunit. Two distinct secondary couplings---one on the left and one on the right---are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
+
+For clarity, we classify kinetic models into three categories. \textbf{Regular models} describe channel kinetics solely in terms of state transitions without explicitly incorporating allosteric interactions. \textbf{Allosteric models} extend this framework by including modulatory interactions, even if the structural basis for these effects is not specified. \textbf{Conformational models} represent a refined subclass of allosteric models, in which the allosteric interactions are directly mapped onto specific structural changes. In our analysis, the new schemes derived from structural insights (Schemes~VIII, IX, X, and XI) are classified as conformational models, whereas Scheme~IV—with its intermediate flip state—exemplifies an allosteric model. Scheme~V, although providing clear definitions for binding and gating, lacks an explicit structural mechanism for its allosteric coupling and is thus not considered conformational.
+
+Within this framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
+
+In parallel, we evaluated Scheme~IV, a non-allosteric model derived by incorporating an intermediate flip state into a previously preferred single-channel scheme. This model includes closed states with 0--4 bound ATP molecules, followed by a flip state that bifurcates into two open states which converge into a final closed state, thereby capturing the dynamics of receptor activation and deactivation. Schemes~VI and~VII extend this framework by coupling three conformational transitions---binding, flipping, and gating---via all pairwise interactions. The only difference between them is that Scheme~VI assumes concerted flipping across the entire channel, whereas Scheme~VII allows for subunit-specific flipping.
+
+Model performance was assessed using two likelihood approximations: MacroIR, a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and MacroINR, a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
+
+Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and~XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated for MacroIR within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
+
+Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and~VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and~XI.
+
+Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating. We interpret the flip state as the kinetic manifestation of individual subunit rotation.
+
+
+
+\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
+
+To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were measured in response to 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
+
+Figure~1 displays Bayesian evidence for a subset of models, including both previously preferred schemes and new variants motivated by structural insights from P2X4. In these models, receptor activation is driven by ATP binding at intersubunit interfaces, which couples to rotational movements of individual subunits. Two distinct secondary couplings---one on the left and one on the right---are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
+
+We introduce a subclass of kinetic schemes termed \emph{conformational models}, in which allosteric interactions are directly linked to defined structural changes. In our study, Schemes~VIII, IX, X, and XI are conformational because their allosteric couplings derive from structural correlates observed in the P2X4 crystal structure—explicitly involving left subunit rotation, agonist binding, and right subunit rotation. In contrast, although Scheme~V incorporates clear transitions in binding and gating, it lacks a structurally based mechanism for the allosteric coupling between these processes, and thus it is not classified as conformational. We believe that this classification is attractive for readers and beneficial for the ion channel community, as it delineates models grounded in structure-function relationships from those based on more hypothetical interactions.
+
+Within the conformational framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
+
+In parallel, we evaluated Scheme~IV, a non-allosteric model derived by incorporating an intermediate flip state into a previously preferred single-channel scheme. This model includes closed states with 0--4 bound ATP molecules, followed by a flip state that bifurcates into two open states which converge into a final closed state, thereby capturing the dynamics of receptor activation and deactivation. Schemes~VI and VII extend this framework by coupling three conformational transitions---binding, flipping, and gating---via all pairwise interactions. The only difference between them is that Scheme~VI assumes concerted flipping across the entire channel, whereas Scheme~VII allows for subunit-specific flipping.
+
+Model performance was assessed using two likelihood approximations: a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
+
+Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
+
+Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and XI.
+
+Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. Importantly, we identified a structural correlate to the flip state, further validating its interpretation as the kinetic manifestation of individual subunit rotation. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating.
+
+
+\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
+
+To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were measured in response to 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
+
+Figure~1 displays Bayesian evidence for three primary models—selected based on prior fitting performance—and three new schemes motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couple to independent rotational movements of each subunit. Two distinct secondary couplings---one on the left and one on the right---are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
+
+Within this framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
+
+In parallel, we evaluated Scheme~IV, a non-allosteric model derived by incorporating an intermediate flip state into a previously preferred single-channel scheme. This model includes closed states with 0--4 bound ATP molecules, followed by a flip state that bifurcates into two open states which converge into a final closed state, thereby capturing the dynamics of receptor activation and deactivation. Schemes~VI and VII extend this framework by coupling three conformational transitions---binding, flipping, and gating---via all pairwise interactions. The only difference between them is that Scheme~VI assumes concerted flipping across the entire channel, whereas Scheme~VII allows for subunit-specific flipping.
+
+Model performance was assessed using two likelihood approximations: MacroIR, a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and MacorINR, a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
+
+Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated for MacroINR, within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
+
+Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and XI.
+
+Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating. We interpret the flip state as the kinetic manifestation of individual subunit rotation.
+
+
+
+\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
+
+Our analysis compares multiple kinetic schemes to elucidate the mechanism underlying purinergic receptor opening. Figure 1 presents Bayesian evidence for six primary models selected on the basis of previous fitting performance and three new schemes postulated after structural insights from P2X4. In these new schemes, receptor activation is driven by ATP binding at intersubunit interfaces, which couples to independent rotational movements of each subunit. Two distinct secondary couplings—one on the left and one on the right—are assumed, transmitting allosteric signals across the channel. Channel conductance is modeled as a function of the number of rotated subunits, with maximal activity when all three are engaged.
+
+From this structural framework, we derived four variants: one with distinct left and right couplings (scheme X), a second with symmetric couplings (scheme IX), a third (scheme VIII) featuring a ternary coupling (left rotation, binding, and right rotation), and a fourth (scheme XI) combining both independent and ternary interactions. Ternary coupling requires the presence of any two of the three changes before the third can be either favored or disfavored, and it is interpreted as favoring a concerted opening mechanism.
+
+In parallel, we evaluated Scheme IV a non-allosteric model derived by adding an intermediate flip state to a previously preferred scheme from a single-channel study. It includes closed states with 0-4 ATP molecules bound, with a flip state that diverges into two open states. These open states then converge into a final closed state, capturing the dynamics of receptor activation and deactivation.
+Schemes VI and VII resulted by coupling three conformational transitions (binding, flipping, and gating) through all pairwise interactions; they differ only in that Scheme 6 assumes concerted flipping across the entire channel, whereas Scheme 7 allows subunit-specific flipping.
+
+To assess model performance, we compared two likelihood approximations: a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
+
+Among the schemes, Scheme X—which assumes independent left and right couplings without ternary interactions—achieves the highest evidence. Scheme 6, with synchronous flipping, follows closely, while a significant valleys factor between Scheme X and Schemes IX and XI highlights pronounced asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme 7 (with an expanded state space of ~40 states) could not be reliably estimated, and the non-allosteric Scheme 4 exhibits markedly lower evidence under the recursive method despite appearing more favorable in the non-recursive analysis.
+
+Extended Data analyses further reveal that inclusion of a flipping state markedly improves model performance, and that complex kinetic schemes outperform simpler models with a single open state. Moreover, three conformational adjustments are required to account for the data when comparing Schemes 6 and 7 against a lower-evidence Scheme 5, while a model relying solely on ternary coupling (Scheme 8) underperforms relative to Schemes 10 and 11.
+
+Collectively, these findings show that a four hypothesis: that individual subunit rotation is possible, that ATP binding is allosterically coupled to rotation of the left and right subunit, that these couplings are of different magnitude and that the conductance of the channel is a function of the number of rotated subunits, fully explains the activation kinetics of P2X2, whithout the need of a difficult to explain allosteric coupling between binding and gating. 
+We interpret that the flip state is the kinetic projection of individual subunit rotation. 
+
+
+\section{Analysis of the Posterior Distribution of Scheme X Parameters}
+
+The posterior distributions of parameters in Kinetic Scheme X (Fig.~X) reveal three distinct behavioral patterns. First, parameters governing kinetic rates, conductance, noise, inactivation constants, and baseline currents exhibit narrow, unimodal posteriors, indicating robust identifiability and strong data constraints. Second, two parameters describing the relationship between conductance and the number of rotated subunits---namely, the current leakage of the closed channel and the current-rotation coupling---show limited but consistent divergence from their priors, suggesting that the data confine their values to specific ranges. Finally, the parameters related to binding-rotation coupling display bimodal distributions, as anticipated given that kinetic data alone cannot resolve the inherent left-right symmetry of the allosteric coupling. Although weakly informative priors were employed to favor one pathway, the affine Monte Carlo sampling recovered both modes in proportions consistent with the prior, reflecting this symmetry.
+
+To address this multimodality, we segregated the posterior samples into two subpopulations based on the dominant pathway (BR~$>$~RB or RB~$>$~BR) and reparameterized the system in terms of the difference in coupling energies, \(\Delta G = G_{BR} - G_{RB}\). This transformation collapsed the bimodal distribution into a unimodal one (e.g., \(\Delta G = 1.2 \, [0.8, 1.6]\)), ensuring practical identifiability without compromising the model's predictive power. This approach underscores how mechanistic symmetries can manifest as multimodality in Bayesian inference, necessitating targeted post-sampling analyses to extract interpretable parameters.
+
+
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_3_scheme_10.pdf}
+	\caption{\textbf{From Kinetics to Structure: Interpreting Allosteric Couplings in Scheme 10.} (a) Schematic illustration of our structural interpretation of the kinetic states in Scheme~10. Adopting the iconographic style of previous work on the open-channel structure of P2X4, the figure depicts how conformational changes—specifically, ATP binding and subsequent subunit rotation—are coupled. In the lower vertex of the cube, the ATP binding site is occupied and both adjacent subunits (left and right) are rotated, whereas in the upper left (posterior) vertex the channel is in its resting state with both subunits unrotated and no ATP bound. (b) Kinetic analysis of state transitions. Four clusters of data points represent the binding (and unbinding) rate constants when the subunits surrounding the ATP binding site are (i) both in the resting state, (ii) only the left subunit rotated, (iii) only the right subunit rotated, or (iv) both subunits rotated. The overlaid lines indicate the logarithmic magnitude of the coupling constants, highlighting how the kinetic parameters correlate with the underlying structural changes. }
+	\label{fig:structure_kinetics}
+\end{figure}
+
+
+
+In Figure 1, we present the Bayesian Evidence for six alternative kinetic schemes that describe the ATP-driven activation of P2X2 receptors. Five of these models incorporate allosteric interactions, while one follows a common non-allosteric gating mechanism. These models were selected based on two criteria: (1) they exhibited the highest fitting power in a previous study, which serves as the foundation for this work, and (2) they include three newly developed schemes based on structural insights.
+
+The three newly introduced models aim to reflect the actual conformational changes observed in the crystal structures of the homologous P2X4 receptor. In particular, comparison of the closed and open structures of P2X4 suggests that channel activation involves a rotational movement of individual subunits. We hypothesize that, rather than occurring synchronously, this rotation can proceed independently in each of the three subunits. Moreover, the rotation is proposed to be allosterically coupled to ATP binding.
+
+Since ATP binds at inter-subunit interfaces, our model accounts for two distinct allosteric couplings: (i) between ATP and the subunit to its left and (ii) between ATP and the subunit to its right. Each subunit, in turn, is subject to both types of interactions due to its two neighboring ATP binding sites. This reciprocal arrangement propagates allosteric interactions throughout the entire receptor complex.
+
+In our kinetic scheme, we assume that subunit rotation occurs independently for each of the three subunits, with two types of allosteric coupling (left and right). We further model channel conductance as a function of the number of rotated subunits, reaching a maximum when all three subunits are rotated. This relationship is described by an analytical expression derived under the assumption of a fast equilibrium between open and closed states, dependent on the number of rotated subunits. The precise functional form of this dependence will be introduced in a later section.
+
+
+Figure 1 displays the Bayesian evidence for six kinetic schemes of ATP-driven P2X2 receptor activation. Five schemes include allosteric interactions, while one follows a traditional non-allosteric mechanism. These were selected for their strong fit in previous studies (\cite{Moffatt_hume}) and for introducing three new schemes based on structural insights from P2X4.
+
+The new models reflect the observed subunit rotations in P2X4’s open and closed states, suggesting that each of the three subunits can rotate independently rather than synchronously. This rotation is hypothesized to be allosterically linked to ATP binding, which occurs at the interfaces between subunits. Each binding site couples with both adjacent subunits, thereby distributing allosteric effects across the receptor.
+
+Accordingly, we model channel conductance as a function of the number of rotated subunits, with maximum conductance achieved when all three subunits have rotated. This relationship is described by an analytical expression derived under the assumption of a rapid open–closed equilibrium.
+\begin{comment}
+    la pregunta aca es como planteo el paper. 
+
+lo puedo plantear de varias maneras.
+
+1) hago foco en la herramienta evidencia, entonces planteo diferentes modelos y me quedo con algunos. 
+
+2) hago foco tambien en la evidencia, pero teniendo en cuenta la interpretacion de que los modelos son la traduccion del conocimiento biologico. Cual es el conocimiento biologico? El conocimiento es la estructura del receptor cerrado y abierto y que la diferencia se da en gran parte por una rotacion de las subunidades. De esta forma, planteo un modelo cinetico conformacional con una relacion uno a uno entre estado conformacional del canal y estado del modelo markoviano. 
+
+3) si hago esto, traduzco el los posibles mecanismos estructurales en modelos cineticos. Luego, trato de ajustar estos modelos a los datos experimentales y comparo este ajuste con otros modelos planteados anteriormente. La idea es ver si estas consideraciones son suficientes para explicar la cinetica de apertura y compararlo con otros modelos para tener una idea de qué tan bueno es el ajuste. 
+
+Entonces en el caso
+
+
+
+
+
+
+    
+\end{comment}
+
+
+
+We estimated the Bayesian evidence of 11 alternative kinetic schemes using experimental data obtained from outside-out patch recordings of rP2X2 receptors expressed in HEK 293 cells. The experiments involved measuring activation currents in response to 0.2 ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10 mM, interspersed with 10 ms pulses of 1 mM MgATP. Bayesian evidence for each scheme was computed using affine-invariant parallel tempering, a technique that facilitates the exploration of complex, multimodal posterior distributions. The likelihood function was approximated using the recursive method MacroIR or the non-recursive MacroINR. 
+The ranking of the schemes was some
+
+Among the models tested, Scheme X was found to have the 
+a conventional kinetic scheme comprising three binding steps, a flip state, and two open states that transition to an isolated closed state was found to have the highest Bayesian evidence. Although this model provides the best fit, its mechanistic interpretation remains challenging. Slightly lower in evidence, Scheme 10 is a more mechanistically constrained model with four fewer degrees of freedom. It was developed based on a simplified view of the activation mechanism, suggesting that mechanistic simplicity does not always equate to a poor fit.
+
+The preferred model, Scheme X, is derived from local conformational interactions between subunits, where the channel's global behavior arises from the summation of these localized transitions. This model assumes two primary conformational changes: agonist binding and subunit rotation. The current is modeled as a function of the number of rotated subunits, reflecting the cumulative effect of these transitions. An additional assumption of allosteric coupling between subunit rotation and gating leads to a reduced state space, simplifying the model and reducing computational load by four degrees of freedom.
+
+\subsection{Bayesian Evidence Comparison of Kinetic Schemes}
+
+Bayesian evidence comparison between kinetic schemes allowed us to evaluate different hypotheses regarding the mechanism of receptor activation. One key hypothesis tested was whether allosteric coupling is symmetric, with coupling strengths being identical in both directions. This hypothesis is represented by Scheme IX, but our analysis indicates that an asymmetric allosteric coupling model, represented by Scheme X, is significantly more probable, with a Bayes factor of \textit{xx} supporting this hypothesis. This strongly favors the idea that the coupling strengths in the two directions are distinct.
+
+In contrast, Scheme XI, which posits ternary coupling between the rotation of both subunits and agonist binding, was found to be much less likely, with a Bayes factor of \textit{xx} indicating a substantial decrease in credibility for this hypothesis. This suggests that the complex ternary interaction is unnecessary for explaining the observed data.
+
+\subsection{Evaluation of Synchronous and Sequential Models}
+
+Other kinetic schemes tested alternative hypotheses of synchronization and sequence of subunit rotation. Scheme VI assumes synchronized rotation of all subunits in a triangular allosteric network, involving binding-rotation, rotation-gating, and binding-gating interactions. The final interaction, binding-gating, is hypothesized to be mediated by subunit rotation dependent on the number of occupied binding sites. However, this model’s global evidence was \textit{xx} times lower than that of our preferred Scheme X, suggesting that synchronization of all subunits does not provide a better explanation of the data.
+
+Scheme VII, which posits sequential rotation of subunits, was also considered. This model assumes that agonist binding involves a single subunit at a time, which, although mathematically identical to a model where two subunits interact but only one is involved, is tested via the Bayes factor between Scheme X and Scheme VII. The result strongly rejects the hypothesis that interactions with the right subunit are minimal compared to those involving gating, binding, and rotation.
+
+\subsection{Conventional Flip-State Model as a Reference}
+
+Among the tested models, Scheme IV, which incorporates a conventional flip state between the closed agonist-bound state and the open state, achieved the highest Bayesian evidence. This model also includes two open states that converge to a closed state disconnected from other states in the mechanism. Mechanistically, it assumes that the binding rate depends on the global state of the channel, includes an intermediate state before the channel opens, and supports two opening pathways. However, it lacks a clear mechanistic interpretation in terms of structural changes.
+
+The flip state's inclusion is robustly supported by Bayes factors when comparing schemes that differ only in the presence of the flip state, such as Scheme IV versus Scheme III (BF: \textit{xx}) and Scheme II versus Scheme I (BF: \textit{xx}). Furthermore, the hypothesis of complex binding and gating kinetics is reinforced by comparisons such as Scheme IV versus Scheme II (BF: \textit{xx}) and Scheme III versus Scheme I (BF: \textit{xx}). These results highlight the critical role of intermediate states in explaining the complex kinetics of receptor activation.
+
+\subsection{Implications for Receptor Mechanisms}
+
+The comparison of Bayesian evidence across the various models underscores the importance of asymmetry and sequential interactions in receptor kinetics. Although the conventional flip-state model (Scheme IV) provides a strong fit, our novel Scheme X, which accounts for asymmetric subunit interactions and reduces the state space, offers compelling mechanistic insights that are more consistent with structural data. Future work should explore the potential for continuous kinetic models or additional conformational states to refine our understanding of receptor activation.
+
+Bayesian evidence comparisons with variations of Scheme X further tested various hypotheses. Scheme X outperformed Scheme IX, supporting the idea of asymmetric subunit interactions (BF: \textit{xx}). In contrast, Scheme XI, which includes ternary coupling, was less plausible (BF: \textit{xx}).
+
+Sequential rotation (Scheme VII) showed higher evidence than synchronized rotation (Scheme VI), but it remained less plausible than Scheme 10 (BF: \textit{xx}).
+
+\subsection{Conventional Models with High Evidence}
+
+Scheme IV, with its complex kinetics—such as flip states and multiple open states—showed the highest Bayesian evidence. While it fits the data well, its mechanistic interpretability is limited. Bayes factors support the inclusion of the flip state (BF: \textit{xx}) and the complexity of gating mechanisms (BF: \textit{xx}).
+
+\subsection{Bayesian Evidence of alternative kinetic schemes}\label{sec2}
+
+
+
+    
+    
+
+
+
+
+Using a novel method, we approximated the Bayesian evidence of 11 schemes to predict the response to 0.2 ms ATP pulses across concentrations ranging from 0.1 to 10 mM. Our analysis considered four conventional previously published kinetic schemes. 
+
+Scheme I represents the hypothesis that  after all 3 ATPs are bound, the channel opens. Binding and unbinding rates are the same at subunit level, so at channel level they are multiplied by the number of subunits undergoing the transition. Scheme II is as simple as Scheme I plus a flip state, an intermediate step between the binding of the last ATP and channel opening. Scheme III assumes that the binding of each ATP modifies the affinity of the remaining sites and that there are two different open channel states that can access a closed state that cannot loose ATP. This scheme was obtained by finding the connection topology that better fit single channel data (Ding and Sachs). Scheme IV is scheme III with a flip state inserted. 
+We also tested 3 other previously published allosteric schemes. 
+
 
 We obtain the evidence of all these four schemes. Inclusion of the flip state resulted in higher evidence and there was strong evidence for interaction in binding and complex gating. 
 However it is difficult to associate these complex gating to any particular conformational change in the receptor. It is for the later that we used allosteric schemes. 
 
-\subsection{Allosteric Kinetic schemes}
-\label{subsec2}
-
-One of the key questions in LGIC activation is how the binding of the agonist molecule triggers the opening of the pore. Schemes I-IV, simply assume that binding of the 3 ATP is a necessary condition for that, without any further consideration. 
-However, if we analyze both binding and gating as separate but coupled conformational changes, we see that in these schemes gating can only occur on bound states and that open states cannot loose the ATP. So these schemes assume an "infinite" coupling between binding and gating. Now we can relax this assumption and allow for the coupling to be big but not infinite and see if this relaxation can account for some of the complex gating that is described by schemes III-IV. 
-
-\subsubsection{Scheme V} 
-\label{scheme V}
-Scheme V does exactly that. It assumes as scheme I that each ATP binds to each closed subunit with the same rate, but now we allow for partially bound states to also open. Opening can occur even for unbounded states, although with a very low probability. Binding of each ATP increases the binding rate by a fixed factor and decreases the closing rate by another fixed factor. 
-
-
-\subsubsection{Schemes VI and VII} 
-\label{scheme67}
-
-Scheme V does not explain what the flip state might be. There are two possibilities. Either, flip state is a global state that comprises a change in the conformation of the whole protein or is a change that occurs at each subunit separately. Or in other words, flipping could happen synchronously on the whole receptor or sequentially at each subunit. 
-Scheme VI represents the former, Scheme VII the later. In both cases we assume three conformational changes: binding at each subunit, flipping either the whole receptor or at each subunit  and gating at the whole receptor. We assume also three allosteric couplings: BF (binding-flipping), FG (flipping-gating) and BG (binding-gating). 
-
-\subsubsection{Schemes VIII-XI} 
-\label{scheme811}
-
-Schemes I-VII were proposed before it became clear that purinergic binding site was inter-subunit and not intrasubunit. Also it became clear that subunit rotation is a good candidate as a conformational counterpart of flipping. We could now hypothesize another conformational change: rotation of each subunit. Now each rotated subunit would contribute to change the opening of the pore, so we |could reduce the number of states by modeling the single state current as a parametric function of the number of rotated subunits. 
-Then, a distinction arises from the subunit left or right of the binding site, so we could consider two different allosteric couplings: RB, rotation-binding; and BR, binding-rotation, depending on wether the subunit left or right of the binding is considered. Also a ternary interaction RBR rotation-binding-rotation might be consider as well. We considered the following schemes:
-
-\begin{enumerate}
-\item Scheme VIII, only one ternary allosteric interaction RBR.
-\item Scheme IX considers that the binary interaction binding rotation is symmetric, being the same with the left and right subunit. 
-\item Scheme X considers two binary interactions: RB and BR.
-\item Scheme XI considers all three interactions RB BR and RBR. 
-\end{enumerate}
-
-\subsection{Evidence of different schemes: what does it mean?}
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{Figure_1.eps}
@@ -607,6 +1639,8 @@ Also, there is strong evidence that supports this sequential asymmetric gating m
 However, a more sophisticated (and computationally prohibitive) synchronous diffusive process (where rotation is a continuous and possibly contagious process) cannot be discarded, so there is still some chance for a synchronous model. 
 
 
+  
+\subsection{Asymmetric allosteric modulation of equilibrium constants and energetic barriers}
 
 
 \subsection{Posterior distribution of parameters of Scheme X: why is it bimodal}
@@ -619,7 +1653,7 @@ However, a more sophisticated (and computationally prohibitive) synchronous diff
 \end{figure}
 
 
-Schemes cannot mathematically differentiate between interaction with the left subunit or the right subunit, there is no left-right information in the macrocurrents. Therefore it is not surprising that the posterior distribution of the allosteric parameters of scheme 10 are all bimodal. As a way to break such symmetry in the priors we arbitrarily set BR to be 10 times RB. However, as the prior standard deviation of the $log10$ of both parameters (and all the remaining ones) was set to be 2, there was enough exploration at low thermodynamic temperatures to jump from one minimum to the other, so both values appear, although at different frequencies. 
+Schemes cannot mathematically differentiate between interaction with the left subunit or the right subunit, there is no left-right information in the macrocurrents. Therefore it is not surprising that the posterior distribution of the allosteric parameters of Scheme X are all bimodal. As a way to break such symmetry in the priors we arbitrarily set BR to be 10 times RB. However, as the prior standard deviation of the $log10$ of both parameters (and all the remaining ones) was set to be 2, there was enough exploration at low thermodynamic temperatures to jump from one minimum to the other, so both values appear, although at different frequencies. 
 This bimodality can be removed by determining which is greater if RB or BR, and if the former if the case, swap all the remaining parameters. In this was unimodal distribution were recovered for all allosteric parameters. 
 
 \subsection{Asymmetry in the allosteric coupling. analysis of parameters, rates and states}
@@ -658,33 +1692,64 @@ For simultaneous rotation of all subunits, this would not make much of a differe
 
 
 
+\section{Discussion}\label{discussion}
+\subsection{Mechanistic Significance of Scheme 10}
+The mechanistic insights from Scheme 10 suggest that global channel behavior can emerge from local conformational changes and their interactions. This aligns with structural studies proposing that subunit rotation is a key gating determinant in ligand-gated ion channels.
+
+The novel modeling of current as a function of rotated subunits offers two interpretations:
+\begin{enumerate}
+    \item \textbf{Ultrafast Gating:} The gating process is faster than the experiment’s resolution, resulting in an average current.
+    \item \textbf{Dynamic Pore Size:} The pore’s conductance might increase with the number of rotated subunits.
+\end{enumerate}
+
+These interpretations provide a mechanistic link between observed macroscopic currents and hypothesized structural transitions.
+
+\subsection{Comparison to Conventional Models}
+Although Scheme 4 achieved the highest evidence, its complex state transitions (e.g., flip states and disconnected closed states) remain challenging to correlate with structural changes. In contrast, Scheme 10 offers a parsimonious explanation with clear mechanistic relevance.
+
+\subsection{Broader Implications}
+The ability to test hypotheses of symmetric vs. asymmetric coupling and synchronous vs. sequential subunit rotation highlights the value of Bayesian evidence for model comparison. These findings suggest that asymmetric and sequential mechanisms are likely key features of P2X2 activation.
+
+\newpage
+
+
+
+
+\begin{comment}
+
+    
 \section{Tables}\label{sec5}
 
 
 \begin{table}[h]
-	\caption{Posterior distribution of Scheme X}\label{tab1}%
-	\begin{tabular}{c|c|c|c}
-		\hline
-		\hline
-		parameters & median & CI\_hdi\_low & CI\_hdi\_hi \\ 
-		\hline
-		\hline
-		\rowcolor[HTML]{efefef} 
-		RB & 632.661 & 0.1441125 & $3.918861 \times 10^{3}$ \\ 
-		$RB_{rot}$ & $2.454486 \times 10^{4}$ & 1.260341 & $1.401152 \times 10^{5}$ \\ 
-		\rowcolor[HTML]{efefef} 
-		$RB_{bon}$ & 6.248909 & $1.933688 \times 10^{-6}$ & 38.56124 \\ 
-		BR & 1.612385 & 0.2657464 & $1.106451 \times 10^{3}$ \\ 
-		\rowcolor[HTML]{efefef} 
-		$BR_{rot}$ & 2.241492 & 1.077178 & $3.979711 \times 10^{4}$ \\ 
-		$BR_{bon}$ & $6.986098 \times 10^{-3}$ & $9.626552 \times 10^{-7}$ & 11.16657 \\ 
-		\hline
-		\hline
-	\end{tabular}
+\caption{Posterior distribution of Scheme X}\label{tab1}%
+\begin{tabular}{c|c|c|c}
+\hline
+\hline
+  parameters & median & CI\_hdi\_low & CI\_hdi\_hi \\ 
+\hline
+\hline
+  \rowcolor[HTML]{efefef} 
+  RB & 632.661 & 0.1441125 & 3.918861 10^{3} \\ 
+  RB_{rot} & 2.454486 10^{4} & 1.260341 & 1.401152 10^{5} \\ 
+  \rowcolor[HTML]{efefef} 
+  RB_{bon} & 6.248909 & 1.933688 10^{-6} & 38.56124 \\ 
+  BR & 1.612385 & 0.2657464 & 1.106451 10^{3} \\ 
+  \rowcolor[HTML]{efefef} 
+  BR_{rot} & 2.241492 & 1.077178 & 3.979711 10^{4} \\ 
+  BR_{bon} & 6.986098 10^{-3} & 9.626552 10^{-7} & 11.16657 \\ 
+\hline
+\hline
+\end{tabular}
+\footnotetext{Source: This is an example of table footnote. This is an example of table footnote.}
+\footnotetext[1]{Example for a first table footnote. This is an example of table footnote.}
+\footnotetext[2]{Example for a second table footnote. This is an example of table footnote.}
 \end{table}
 
 
-%\noindent
+
+
+\noindent
 
 The input format for the above table is as follows:
 
@@ -850,6 +1915,7 @@ Write('Pascal keywords.');
 \end{lstlisting}
 \end{minipage}
 
+\end{comment}
 
 \section{Discussion}
 \label{dis}
@@ -918,6 +1984,43 @@ BMC journals: \url{https://www.biomedcentral.com/getpublished/editorial-policies
 \begin{appendices}
 
 \section{Section title of first appendix}\label{secA1}
+\section{Supplementary Material}
+
+\subsection{Detailed Kinetic Schemes}
+Figure S1 and Table S1 provide detailed descriptions of all 11 kinetic schemes, including their state diagrams, parameterizations, and mechanistic assumptions.
+
+\subsection{Bayesian Evidence and Posterior Distributions}
+Figures S2-S5 present the Bayesian evidence and posterior distributions for all models, allowing readers to evaluate their relative plausibility.
+
+\subsection{Equations for Current Modeling}
+The derivation of the current equation \( i(n) = i_{\text{max}} \cdot \frac{E_n}{E_n + 1} \) and its implications for state-space reduction are detailed in Section S2.
+
+\subsection{Alternative Hypotheses}
+Comparative evidence for symmetric coupling (Scheme 9), ternary interactions (Scheme XI), and synchronous rotation (Scheme VI) are discussed in Section S3, providing a deeper understanding of their limitations.
+
+\begin{equation}
+    r^{on}_{.BR}= r^{on} \cdot RBR^{on}_{.BR} 
+	\label{eq:ron_BR}
+\end{equation}
+\begin{equation}
+    r^{on}_{R.R}= r^{on} \cdot RBR^{on}_{R.R} 
+	\label{eq:ronR_R}
+\end{equation}
+\begin{equation}
+    r^{on}_{RB.}= r^{on} \cdot RBR^{on}_{RB.} 
+	\label{eq:ronRB_}
+\end{equation}
+las constantes reversas se obtienen 
+\begin{equation}
+    r^{off}_{.BR}= r^{off} \cdot RBR^{off}_{.BR} 
+	\label{eq:roff_BR}
+\end{equation}
+\begin{equation}
+    RBR^{off}_{.BR} = \frac{RBR^{on}_{.BR}}{RBR}  \label{eq:RBRoff_BR}
+\end{equation}
+
+
+
 
 An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
 
