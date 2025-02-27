@@ -1381,8 +1381,25 @@ La parametrizacion inicial del acoplamiento cinetico alosterico fue extendiendo 
 To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data obtained from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were elicited by 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
 
 For clarity, we classify kinetic models into three categories. \textbf{Regular models} describe channel kinetics solely in terms of state transitions, without explicitly incorporating allosteric interactions. \textbf{Allosteric models} extend this framework by incorporating modulatory interactions, even when the underlying structural basis remains unspecified. \textbf{Conformational models} represent a refined subclass of allosteric models in which the allosteric interactions are directly mapped onto specific structural changes.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_1.pdf}
+	\caption{\textbf{Bayesian Evidence for Conformational, Allosteric, and Regular Models.}  
+		(\textbf{a}) Schematic representation of the newly proposed Conformational models. R: resting; F: flipped; RA: agonist-bound; RB, BR: rotation-binding and binding-rotation allosteric couplings, indicating interactions with the left or right subunit; RBR: rotation-binding-rotation ternary allosteric coupling. Dotted lines indicate sections that are repeated three times, as specified by the subscript. In Scheme~IX, RB is equal to BR, in Scheme~X they differ, and in Scheme~XI ternary coupling is also present.  
+		(\textbf{b}) Regular Scheme~IV. C: closed state; CA$_n$: closed state with $n$ agonists bound; F: flipped state; O$_n$: $n$th alternative open state; D: a potentially desensitized closed state where unbinding is restricted.  
+		(\textbf{c}) Allosteric Schemes~VI and VII. C: closed channel; O: open channel; A, B, C: allosteric couplings; subscripts indicate the number of repetitions.  
+		(\textbf{d--e}) Bayesian evidence for each illustrated scheme, computed using the recursive MacroIR algorithm (\textbf{d}) and the non-recursive MacroINR algorithm (\textbf{e}). Color coding is used to facilitate scheme ranking comparisons. Gray rectangles indicate the standard error of the log-evidence.  
+	}
+	\label{fig:figure1}
+\end{figure}
 
 Figure~1 displays Bayesian evidence for two allosteric models and one regular model—selected based on prior fitting performance—along with three new conformational models motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couples to independent rotational movements of each subunit. Two distinct secondary couplings—one on the left and one on the right—are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
+\begin{comment}
+The three newly introduced models aim to reflect the actual conformational changes observed in the crystal structures of the homologous P2X4 receptor. In particular, comparison of the closed and open structures of P2X4 suggests that channel activation involves a rotational movement of individual subunits. We hypothesize that, rather than occurring synchronously, this rotation can proceed independently in each of the three subunits. Moreover, the rotation is proposed to be allosterically coupled to ATP binding.
+
+Since ATP binds at inter-subunit interfaces, our model accounts for two distinct allosteric couplings: (i) between ATP and the subunit to its left and (ii) between ATP and the subunit to its right. Each subunit, in turn, is subject to both types of interactions due to its two neighboring ATP binding sites. This reciprocal arrangement propagates allosteric interactions throughout the entire receptor complex.
+\end{comment}
+
 
 Within this framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII (Extended Data Fig.~1) features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
 
@@ -1397,128 +1414,38 @@ Extended Data Figure~1 presents an analysis of five additional schemes: three Re
 Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework adequately accounts for the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating, thereby reinforcing the validity of conformational models. We further interpret the flip state as the kinetic manifestation of individual subunit rotation.
 
 
-\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
-
-To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were measured in response to 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
-
-For clarity, we classify kinetic models into three categories. \textbf{Regular models} describe channel kinetics solely in terms of state transitions without explicitly incorporating allosteric interactions. \textbf{Allosteric models} extend this framework by including modulatory interactions, even if the structural basis for these effects is not specified. \textbf{Conformational models} represent a refined subclass of allosteric models, in which the allosteric interactions are directly mapped onto specific structural changes. 
-
-Figure~1 displays Bayesian evidence for two Allosteric models and a Regular model—selected based on prior fitting performance along with three new Conformational models, motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couple to independent rotational movements of each subunit. Two distinct secondary couplings---one on the left and one on the right---are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
-
-Within this framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII (Extended Data fig 1) features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
-
-In parallel, we evaluated Scheme~IV, a Regular model derived by incorporating an intermediate flip state into a previously preferred single-channel scheme. This model includes closed states with 0--4 bound ATP molecules, followed by a flip state that bifurcates into two open states which converge into a final closed state, thereby capturing the dynamics of receptor activation and deactivation. Two Allosteric Models, Schemes~VI and~VII, extend this framework by coupling three conformational transitions---binding, flipping, and gating---via all pairwise interactions. The only difference between them is that Scheme~VI assumes concerted flipping across the entire channel, whereas Scheme~VII allows for subunit-specific flipping.
-
-Model performance was assessed using two likelihood approximations: MacroIR, a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and MacroINR, a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
-
-Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and~XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated for MacroIR within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
-
-Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and~VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and~XI.
-
-Collectively, these findings support a four-part hypothesis based Conformational Model: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating. We interpret the flip state as the kinetic manifestation of individual subunit rotation.
-
-----------
-
-
-Model performance was assessed using two likelihood approximations: MacroIR, a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and MacroINR, a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
-
-Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and~XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated for MacroIR within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
-
-Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and~VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and~XI.
-
-Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating. We interpret the flip state as the kinetic manifestation of individual subunit rotation.
-
-
-
-
-
-\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
-
-To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were measured in response to 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
-
-Figure~1 displays Bayesian evidence for three primary models—selected based on prior fitting performance—and three new schemes motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couple to independent rotational movements of each subunit. Two distinct secondary couplings---one on the left and one on the right---are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
-
-For clarity, we classify kinetic models into three categories. \textbf{Regular models} describe channel kinetics solely in terms of state transitions without explicitly incorporating allosteric interactions. \textbf{Allosteric models} extend this framework by including modulatory interactions, even if the structural basis for these effects is not specified. \textbf{Conformational models} represent a refined subclass of allosteric models, in which the allosteric interactions are directly mapped onto specific structural changes. In our analysis, the new schemes derived from structural insights (Schemes~VIII, IX, X, and XI) are classified as conformational models, whereas Scheme~IV—with its intermediate flip state—exemplifies an allosteric model. Scheme~V, although providing clear definitions for binding and gating, lacks an explicit structural mechanism for its allosteric coupling and is thus not considered conformational.
-
-Within this framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
-
-In parallel, we evaluated Scheme~IV, a non-allosteric model derived by incorporating an intermediate flip state into a previously preferred single-channel scheme. This model includes closed states with 0--4 bound ATP molecules, followed by a flip state that bifurcates into two open states which converge into a final closed state, thereby capturing the dynamics of receptor activation and deactivation. Schemes~VI and~VII extend this framework by coupling three conformational transitions---binding, flipping, and gating---via all pairwise interactions. The only difference between them is that Scheme~VI assumes concerted flipping across the entire channel, whereas Scheme~VII allows for subunit-specific flipping.
-
-Model performance was assessed using two likelihood approximations: MacroIR, a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and MacroINR, a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
-
-Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and~XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated for MacroIR within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
-
-Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and~VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and~XI.
-
-Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating. We interpret the flip state as the kinetic manifestation of individual subunit rotation.
-
-
-
-\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
-
-To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were measured in response to 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
-
-Figure~1 displays Bayesian evidence for a subset of models, including both previously preferred schemes and new variants motivated by structural insights from P2X4. In these models, receptor activation is driven by ATP binding at intersubunit interfaces, which couples to rotational movements of individual subunits. Two distinct secondary couplings---one on the left and one on the right---are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
-
-We introduce a subclass of kinetic schemes termed \emph{conformational models}, in which allosteric interactions are directly linked to defined structural changes. In our study, Schemes~VIII, IX, X, and XI are conformational because their allosteric couplings derive from structural correlates observed in the P2X4 crystal structure—explicitly involving left subunit rotation, agonist binding, and right subunit rotation. In contrast, although Scheme~V incorporates clear transitions in binding and gating, it lacks a structurally based mechanism for the allosteric coupling between these processes, and thus it is not classified as conformational. We believe that this classification is attractive for readers and beneficial for the ion channel community, as it delineates models grounded in structure-function relationships from those based on more hypothetical interactions.
-
-Within the conformational framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
-
-In parallel, we evaluated Scheme~IV, a non-allosteric model derived by incorporating an intermediate flip state into a previously preferred single-channel scheme. This model includes closed states with 0--4 bound ATP molecules, followed by a flip state that bifurcates into two open states which converge into a final closed state, thereby capturing the dynamics of receptor activation and deactivation. Schemes~VI and VII extend this framework by coupling three conformational transitions---binding, flipping, and gating---via all pairwise interactions. The only difference between them is that Scheme~VI assumes concerted flipping across the entire channel, whereas Scheme~VII allows for subunit-specific flipping.
-
-Model performance was assessed using two likelihood approximations: a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
-
-Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
-
-Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and XI.
-
-Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. Importantly, we identified a structural correlate to the flip state, further validating its interpretation as the kinetic manifestation of individual subunit rotation. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating.
-
-
-\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
-
-To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were measured in response to 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or the non-recursive MacroINR method.
-
-Figure~1 displays Bayesian evidence for three primary models—selected based on prior fitting performance—and three new schemes motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couple to independent rotational movements of each subunit. Two distinct secondary couplings---one on the left and one on the right---are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
-
-Within this framework, we derived four variants: Scheme~X incorporates distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII features a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines both independent and ternary interactions. In the ternary coupling paradigm, the presence of any two of the three conformational changes is required before the third is modulated, favoring a concerted opening mechanism.
-
-In parallel, we evaluated Scheme~IV, a non-allosteric model derived by incorporating an intermediate flip state into a previously preferred single-channel scheme. This model includes closed states with 0--4 bound ATP molecules, followed by a flip state that bifurcates into two open states which converge into a final closed state, thereby capturing the dynamics of receptor activation and deactivation. Schemes~VI and VII extend this framework by coupling three conformational transitions---binding, flipping, and gating---via all pairwise interactions. The only difference between them is that Scheme~VI assumes concerted flipping across the entire channel, whereas Scheme~VII allows for subunit-specific flipping.
-
-Model performance was assessed using two likelihood approximations: MacroIR, a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and MacorINR, a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
-
-Among the tested models, Scheme~X---featuring independent left and right couplings without ternary interactions---achieved the highest Bayesian evidence, with Scheme~VI (synchronous flipping) following closely. A pronounced evidence gap between Scheme~X and Schemes~IX and XI highlights significant asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme~VII, which comprises an expanded state space of approximately 40 states (compared to 24 or fewer in other schemes), could not be reliably estimated for MacroINR, within the available computational time, and the non-allosteric Scheme~IV exhibited markedly lower evidence under the recursive method despite appearing more favorable under the non-recursive analysis.
-
-Extended Data analyses further indicate that incorporating a flip state substantially enhances model performance, and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, when comparing Schemes~VI and VII to a lower-evidence Scheme~V, three conformational adjustments are necessary to account for the data, whereas a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and XI.
-
-Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both the left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance is a function of the number of rotated subunits. This framework fully explains the activation kinetics of P2X2 without invoking an additional, difficult-to-justify allosteric coupling between binding and gating. We interpret the flip state as the kinetic manifestation of individual subunit rotation.
-
-
-
-\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
-
-Our analysis compares multiple kinetic schemes to elucidate the mechanism underlying purinergic receptor opening. Figure 1 presents Bayesian evidence for six primary models selected on the basis of previous fitting performance and three new schemes postulated after structural insights from P2X4. In these new schemes, receptor activation is driven by ATP binding at intersubunit interfaces, which couples to independent rotational movements of each subunit. Two distinct secondary couplings—one on the left and one on the right—are assumed, transmitting allosteric signals across the channel. Channel conductance is modeled as a function of the number of rotated subunits, with maximal activity when all three are engaged.
-
-From this structural framework, we derived four variants: one with distinct left and right couplings (scheme X), a second with symmetric couplings (scheme IX), a third (scheme VIII) featuring a ternary coupling (left rotation, binding, and right rotation), and a fourth (scheme XI) combining both independent and ternary interactions. Ternary coupling requires the presence of any two of the three changes before the third can be either favored or disfavored, and it is interpreted as favoring a concerted opening mechanism.
-
-In parallel, we evaluated Scheme IV a non-allosteric model derived by adding an intermediate flip state to a previously preferred scheme from a single-channel study. It includes closed states with 0-4 ATP molecules bound, with a flip state that diverges into two open states. These open states then converge into a final closed state, capturing the dynamics of receptor activation and deactivation.
-Schemes VI and VII resulted by coupling three conformational transitions (binding, flipping, and gating) through all pairwise interactions; they differ only in that Scheme 6 assumes concerted flipping across the entire channel, whereas Scheme 7 allows subunit-specific flipping.
-
-To assess model performance, we compared two likelihood approximations: a statistically robust recursive macroscopic interval integration method that accounts for temporal correlations, and a non-recursive variant that does not. Our results indicate that the non-recursive approximation yields a different evidence ranking, underscoring its inadequacy.
-
-Among the schemes, Scheme X—which assumes independent left and right couplings without ternary interactions—achieves the highest evidence. Scheme 6, with synchronous flipping, follows closely, while a significant valleys factor between Scheme X and Schemes IX and XI highlights pronounced asymmetry, with the data favoring independent secondary couplings over ternary interactions. Notably, the evidence for Scheme 7 (with an expanded state space of ~40 states) could not be reliably estimated, and the non-allosteric Scheme 4 exhibits markedly lower evidence under the recursive method despite appearing more favorable in the non-recursive analysis.
-
-Extended Data analyses further reveal that inclusion of a flipping state markedly improves model performance, and that complex kinetic schemes outperform simpler models with a single open state. Moreover, three conformational adjustments are required to account for the data when comparing Schemes 6 and 7 against a lower-evidence Scheme 5, while a model relying solely on ternary coupling (Scheme 8) underperforms relative to Schemes 10 and 11.
-
-Collectively, these findings show that a four hypothesis: that individual subunit rotation is possible, that ATP binding is allosterically coupled to rotation of the left and right subunit, that these couplings are of different magnitude and that the conductance of the channel is a function of the number of rotated subunits, fully explains the activation kinetics of P2X2, whithout the need of a difficult to explain allosteric coupling between binding and gating. 
-We interpret that the flip state is the kinetic projection of individual subunit rotation. 
-
-
 \section{Analysis of the Posterior Distribution of Scheme X Parameters}
+\begin{comment}
+	Schemes cannot mathematically differentiate between interaction with the left subunit or the right subunit, there is no left-right information in the macrocurrents. Therefore it is not surprising that the posterior distribution of the allosteric parameters of Scheme X are all bimodal. As a way to break such symmetry in the priors we arbitrarily set BR to be 10 times RB. However, as the prior standard deviation of the $log10$ of both parameters (and all the remaining ones) was set to be 2, there was enough exploration at low thermodynamic temperatures to jump from one minimum to the other, so both values appear, although at different frequencies. 
+	This bimodality can be removed by determining which is greater if RB or BR, and if the former if the case, swap all the remaining parameters. In this was unimodal distribution were recovered for all allosteric parameters. 
+	
+\end{comment}
+
 
 The posterior distributions of parameters in Kinetic Scheme X (Fig.~X) reveal three distinct behavioral patterns. First, parameters governing kinetic rates, conductance, noise, inactivation constants, and baseline currents exhibit narrow, unimodal posteriors, indicating robust identifiability and strong data constraints. Second, two parameters describing the relationship between conductance and the number of rotated subunits---namely, the current leakage of the closed channel and the current-rotation coupling---show limited but consistent divergence from their priors, suggesting that the data confine their values to specific ranges. Finally, the parameters related to binding-rotation coupling display bimodal distributions, as anticipated given that kinetic data alone cannot resolve the inherent left-right symmetry of the allosteric coupling. Although weakly informative priors were employed to favor one pathway, the affine Monte Carlo sampling recovered both modes in proportions consistent with the prior, reflecting this symmetry.
 
 To address this multimodality, we segregated the posterior samples into two subpopulations based on the dominant pathway (BR~$>$~RB or RB~$>$~BR) and reparameterized the system in terms of the difference in coupling energies, \(\Delta G = G_{BR} - G_{RB}\). This transformation collapsed the bimodal distribution into a unimodal one (e.g., \(\Delta G = 1.2 \, [0.8, 1.6]\)), ensuring practical identifiability without compromising the model's predictive power. This approach underscores how mechanistic symmetries can manifest as multimodality in Bayesian inference, necessitating targeted post-sampling analyses to extract interpretable parameters.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_2.pdf}
+	\caption{\textbf{Posterior distributions of model parameters for Scheme X.}  
+		(\textbf{a}) Kinetic rate constants: \(r_{\text{on}}\) (rotation), \(r_{\text{off}}\) (return to resting state), and \(b_{\text{off}}\) (unbinding).  
+		(\textbf{b}) Association rate: \(b_{\text{on}}\) (binding).  
+		(\textbf{c}) Rotation-conductance coupling factor (\(R\gamma\)).  
+		(\textbf{d}) Closed-channel leakage ratio (\(\rho_{\text{leak}}\)).  
+		(\textbf{e}) Allosteric coupling factor affecting the binding rate (\(BR_{b_{\text{on}}}, RB_{b_{\text{on}}}\)).  
+		(\textbf{f}) Single-channel current of the fully rotated channel (\(\gamma\)).  
+		(\textbf{g}) Baseline current (\(i_0\)).  
+		(\textbf{h}) White noise power (\(\epsilon^2\)).  
+		(\textbf{i}) Pink noise power (\(\nu^2\)).  
+		(\textbf{j}) Equilibrium allosteric coupling factors (\(BR, RB\)).  
+		(\textbf{k}) Allosteric coupling factors affecting the rotation rate (\(BR_{r_{\text{on}}}, RB_{r_{\text{on}}}\)).  
+		(\textbf{l}) Number of active channels (\(N_{\text{ch}}\)).  
+		(\textbf{m}) Inactivation rate (\(k_{\text{inact}}\)).  
+		The gray line represents the prior distribution, while the solid line indicates the posterior distribution. The probability density is normalized to its maximum value for each parameter.
+	}
+	\label{fig:posterior_SchemeX}
+\end{figure}
 
 
 
@@ -1531,40 +1458,8 @@ To address this multimodality, we segregated the posterior samples into two subp
 
 
 
-In Figure 1, we present the Bayesian Evidence for six alternative kinetic schemes that describe the ATP-driven activation of P2X2 receptors. Five of these models incorporate allosteric interactions, while one follows a common non-allosteric gating mechanism. These models were selected based on two criteria: (1) they exhibited the highest fitting power in a previous study, which serves as the foundation for this work, and (2) they include three newly developed schemes based on structural insights.
-
-The three newly introduced models aim to reflect the actual conformational changes observed in the crystal structures of the homologous P2X4 receptor. In particular, comparison of the closed and open structures of P2X4 suggests that channel activation involves a rotational movement of individual subunits. We hypothesize that, rather than occurring synchronously, this rotation can proceed independently in each of the three subunits. Moreover, the rotation is proposed to be allosterically coupled to ATP binding.
-
-Since ATP binds at inter-subunit interfaces, our model accounts for two distinct allosteric couplings: (i) between ATP and the subunit to its left and (ii) between ATP and the subunit to its right. Each subunit, in turn, is subject to both types of interactions due to its two neighboring ATP binding sites. This reciprocal arrangement propagates allosteric interactions throughout the entire receptor complex.
-
-In our kinetic scheme, we assume that subunit rotation occurs independently for each of the three subunits, with two types of allosteric coupling (left and right). We further model channel conductance as a function of the number of rotated subunits, reaching a maximum when all three subunits are rotated. This relationship is described by an analytical expression derived under the assumption of a fast equilibrium between open and closed states, dependent on the number of rotated subunits. The precise functional form of this dependence will be introduced in a later section.
 
 
-Figure 1 displays the Bayesian evidence for six kinetic schemes of ATP-driven P2X2 receptor activation. Five schemes include allosteric interactions, while one follows a traditional non-allosteric mechanism. These were selected for their strong fit in previous studies (\cite{Moffatt_hume}) and for introducing three new schemes based on structural insights from P2X4.
-
-The new models reflect the observed subunit rotations in P2X4’s open and closed states, suggesting that each of the three subunits can rotate independently rather than synchronously. This rotation is hypothesized to be allosterically linked to ATP binding, which occurs at the interfaces between subunits. Each binding site couples with both adjacent subunits, thereby distributing allosteric effects across the receptor.
-
-Accordingly, we model channel conductance as a function of the number of rotated subunits, with maximum conductance achieved when all three subunits have rotated. This relationship is described by an analytical expression derived under the assumption of a rapid open–closed equilibrium.
-\begin{comment}
-    la pregunta aca es como planteo el paper. 
-
-lo puedo plantear de varias maneras.
-
-1) hago foco en la herramienta evidencia, entonces planteo diferentes modelos y me quedo con algunos. 
-
-2) hago foco tambien en la evidencia, pero teniendo en cuenta la interpretacion de que los modelos son la traduccion del conocimiento biologico. Cual es el conocimiento biologico? El conocimiento es la estructura del receptor cerrado y abierto y que la diferencia se da en gran parte por una rotacion de las subunidades. De esta forma, planteo un modelo cinetico conformacional con una relacion uno a uno entre estado conformacional del canal y estado del modelo markoviano. 
-
-3) si hago esto, traduzco el los posibles mecanismos estructurales en modelos cineticos. Luego, trato de ajustar estos modelos a los datos experimentales y comparo este ajuste con otros modelos planteados anteriormente. La idea es ver si estas consideraciones son suficientes para explicar la cinetica de apertura y compararlo con otros modelos para tener una idea de qué tan bueno es el ajuste. 
-
-Entonces en el caso
-
-
-
-
-
-
-    
-\end{comment}
 
 
 
@@ -1576,102 +1471,10 @@ a conventional kinetic scheme comprising three binding steps, a flip state, and 
 
 The preferred model, Scheme X, is derived from local conformational interactions between subunits, where the channel's global behavior arises from the summation of these localized transitions. This model assumes two primary conformational changes: agonist binding and subunit rotation. The current is modeled as a function of the number of rotated subunits, reflecting the cumulative effect of these transitions. An additional assumption of allosteric coupling between subunit rotation and gating leads to a reduced state space, simplifying the model and reducing computational load by four degrees of freedom.
 
-\subsection{Bayesian Evidence Comparison of Kinetic Schemes}
 
-Bayesian evidence comparison between kinetic schemes allowed us to evaluate different hypotheses regarding the mechanism of receptor activation. One key hypothesis tested was whether allosteric coupling is symmetric, with coupling strengths being identical in both directions. This hypothesis is represented by Scheme IX, but our analysis indicates that an asymmetric allosteric coupling model, represented by Scheme X, is significantly more probable, with a Bayes factor of \textit{xx} supporting this hypothesis. This strongly favors the idea that the coupling strengths in the two directions are distinct.
-
-In contrast, Scheme XI, which posits ternary coupling between the rotation of both subunits and agonist binding, was found to be much less likely, with a Bayes factor of \textit{xx} indicating a substantial decrease in credibility for this hypothesis. This suggests that the complex ternary interaction is unnecessary for explaining the observed data.
-
-\subsection{Evaluation of Synchronous and Sequential Models}
-
-Other kinetic schemes tested alternative hypotheses of synchronization and sequence of subunit rotation. Scheme VI assumes synchronized rotation of all subunits in a triangular allosteric network, involving binding-rotation, rotation-gating, and binding-gating interactions. The final interaction, binding-gating, is hypothesized to be mediated by subunit rotation dependent on the number of occupied binding sites. However, this model’s global evidence was \textit{xx} times lower than that of our preferred Scheme X, suggesting that synchronization of all subunits does not provide a better explanation of the data.
-
-Scheme VII, which posits sequential rotation of subunits, was also considered. This model assumes that agonist binding involves a single subunit at a time, which, although mathematically identical to a model where two subunits interact but only one is involved, is tested via the Bayes factor between Scheme X and Scheme VII. The result strongly rejects the hypothesis that interactions with the right subunit are minimal compared to those involving gating, binding, and rotation.
-
-\subsection{Conventional Flip-State Model as a Reference}
-
-Among the tested models, Scheme IV, which incorporates a conventional flip state between the closed agonist-bound state and the open state, achieved the highest Bayesian evidence. This model also includes two open states that converge to a closed state disconnected from other states in the mechanism. Mechanistically, it assumes that the binding rate depends on the global state of the channel, includes an intermediate state before the channel opens, and supports two opening pathways. However, it lacks a clear mechanistic interpretation in terms of structural changes.
-
-The flip state's inclusion is robustly supported by Bayes factors when comparing schemes that differ only in the presence of the flip state, such as Scheme IV versus Scheme III (BF: \textit{xx}) and Scheme II versus Scheme I (BF: \textit{xx}). Furthermore, the hypothesis of complex binding and gating kinetics is reinforced by comparisons such as Scheme IV versus Scheme II (BF: \textit{xx}) and Scheme III versus Scheme I (BF: \textit{xx}). These results highlight the critical role of intermediate states in explaining the complex kinetics of receptor activation.
-
-\subsection{Implications for Receptor Mechanisms}
-
-The comparison of Bayesian evidence across the various models underscores the importance of asymmetry and sequential interactions in receptor kinetics. Although the conventional flip-state model (Scheme IV) provides a strong fit, our novel Scheme X, which accounts for asymmetric subunit interactions and reduces the state space, offers compelling mechanistic insights that are more consistent with structural data. Future work should explore the potential for continuous kinetic models or additional conformational states to refine our understanding of receptor activation.
-
-Bayesian evidence comparisons with variations of Scheme X further tested various hypotheses. Scheme X outperformed Scheme IX, supporting the idea of asymmetric subunit interactions (BF: \textit{xx}). In contrast, Scheme XI, which includes ternary coupling, was less plausible (BF: \textit{xx}).
-
-Sequential rotation (Scheme VII) showed higher evidence than synchronized rotation (Scheme VI), but it remained less plausible than Scheme 10 (BF: \textit{xx}).
-
-\subsection{Conventional Models with High Evidence}
-
-Scheme IV, with its complex kinetics—such as flip states and multiple open states—showed the highest Bayesian evidence. While it fits the data well, its mechanistic interpretability is limited. Bayes factors support the inclusion of the flip state (BF: \textit{xx}) and the complexity of gating mechanisms (BF: \textit{xx}).
-
-\subsection{Bayesian Evidence of alternative kinetic schemes}\label{sec2}
-
-
-
-    
-    
-
-
-
-
-Using a novel method, we approximated the Bayesian evidence of 11 schemes to predict the response to 0.2 ms ATP pulses across concentrations ranging from 0.1 to 10 mM. Our analysis considered four conventional previously published kinetic schemes. 
-
-Scheme I represents the hypothesis that  after all 3 ATPs are bound, the channel opens. Binding and unbinding rates are the same at subunit level, so at channel level they are multiplied by the number of subunits undergoing the transition. Scheme II is as simple as Scheme I plus a flip state, an intermediate step between the binding of the last ATP and channel opening. Scheme III assumes that the binding of each ATP modifies the affinity of the remaining sites and that there are two different open channel states that can access a closed state that cannot loose ATP. This scheme was obtained by finding the connection topology that better fit single channel data (Ding and Sachs). Scheme IV is scheme III with a flip state inserted. 
-We also tested 3 other previously published allosteric schemes. 
-
-
-We obtain the evidence of all these four schemes. Inclusion of the flip state resulted in higher evidence and there was strong evidence for interaction in binding and complex gating. 
-However it is difficult to associate these complex gating to any particular conformational change in the receptor. It is for the later that we used allosteric schemes. 
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1.0\textwidth]{Figure_1.eps}
-\caption{Bayesian analysis of the tested kinetic schemes. For each tested kinetic scheme, the natural logarithm of the Evidence and posterior likelihood are indicated by the left end of the blue and green bars. Standard deviation of the samples are shown in light gray. Schemes are sorted according to their evidence, the highest at the top. Numbers in brackets next to the name of the schemes indicates the number of parameters. The length of the blue bar indicates the Kullback–Leibler divergence. }\label{fig_evidences}
-\end{figure}
-
-
-
-Highest Evidence was found for Scheme IV (\ref{fig_evidences}). That means that there still information in the kinetic responses that remains to be explained, Scheme IV does not explain it until we found a reasonable mechanistic counterpart. 
-Then, all all the remaining schemes the one with the highest evidence is Scheme X. This tell us that sequential asymmetric gating is the most likely mechanism. There is strong evidence against a symmetrical gating (X vs IX) and there is evidence against a tertiary interaction with the other rotating subunit (X vs XI). All the gating mechanism is explained by an asymmetric binding induced conformational change. No inter-subunit interaction is detected by the models. 
-Also, there is strong evidence that supports this sequential asymmetric gating model against a synchronous gating model (scheme VI). 
-However, a more sophisticated (and computationally prohibitive) synchronous diffusive process (where rotation is a continuous and possibly contagious process) cannot be discarded, so there is still some chance for a synchronous model. 
-
-
-  
-\subsection{Asymmetric allosteric modulation of equilibrium constants and energetic barriers}
-
-
-\subsection{Posterior distribution of parameters of Scheme X: why is it bimodal}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1.0\textwidth]{Figure_2_ABC.eps}
-\caption{Posterior distribution of allosteric parameters}
-\label{fig_bimodal}
-\end{figure}
-
-
-Schemes cannot mathematically differentiate between interaction with the left subunit or the right subunit, there is no left-right information in the macrocurrents. Therefore it is not surprising that the posterior distribution of the allosteric parameters of Scheme X are all bimodal. As a way to break such symmetry in the priors we arbitrarily set BR to be 10 times RB. However, as the prior standard deviation of the $log10$ of both parameters (and all the remaining ones) was set to be 2, there was enough exploration at low thermodynamic temperatures to jump from one minimum to the other, so both values appear, although at different frequencies. 
-This bimodality can be removed by determining which is greater if RB or BR, and if the former if the case, swap all the remaining parameters. In this was unimodal distribution were recovered for all allosteric parameters. 
-
-\subsection{Asymmetry in the allosteric coupling. analysis of parameters, rates and states}
 
 Once we correct for the bimodality we find that whereas one interaction is considerable (100-10$^4$ times), the other is much smaller(0-2 times). So, upon binding, there is a strong allosteric interaction with one subunit and a weak interaction with the other. This second subunit will have strong interaction at the other binding site that it is forming. 
 If we then look at the decomposition of the allosteric interaction we see the following.
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1.0\textwidth]{Figure_3_definitive.pdf}
-\caption{Posterior distribution of allosteric parameters}
-\label{fig_bimodal}
-\end{figure}
-
-
-First, binding 
-
 
 
 
