@@ -1509,7 +1509,48 @@ Ahora, excelente no es un concepto cientifico, necesitamos algo mejor, una likel
 
 Finalmente con la varianza y la corriente esperada podemos calcular la likelihood de cada medicion, es decir una medida precisa de qué tan bueno es el modelo para predecir los datos. También se puede calcular la esperanza de la likelihood y compararla con la likelihood obtenida. Un modelo deficiente, que no modele bien la distribución y correlación de los errores mostraría una gran divergencia entre la likelihood esperada y la observada y como se ve en la figura este no es el caso. Salvo algunos outliers, la mayoria de las observaciones tienen una likeilihood cercana a la esperada. 
 
- 
+\section{Discussion}
+
+\subsection*{Integrating structure and kinetics}
+The dynamic behavior of ion channels has long been interpreted through equilibrium-driven allosteric models or phenomenological kinetic schemes divorced from structural insights. Here, we resolve this divide by introducing a conformational kinetic framework that directly links discrete structural transitions to experimentally observed macro-currents. Our findings not only validate the predictive power of kinetic-conformational modeling but also redefine principles of allosteric regulation, emphasizing kinetic coupling as a critical evolutionary driver. 
+
+Central to our approach is the \textit{conformational model}, which posits that kinetic rate constants ($k_{\text{on}}$, $k_{\text{off}}$) and their couplings correspond to precise structural rearrangements (e.g., domain rotations). This contrasts with classical allostery, where ligand-binding equilibria dominate interpretations. As shown in Fig.~\ref{fig:model}, inhibitory couplings observed in our two-effector system suggest conformational transitions are actively suppressed unless specific energetic thresholds are met—a mechanism we term \textit{kinetic gating}.
+
+\subsection*{Evolutionary optimization through kinetic coupling}
+\begin{itemize}
+	\item Reduced transition frequencies: Data clustering in inhibitory quadrants (Fig.~\ref{fig:quadrants}) implies evolutionary selection against high-frequency conformational changes. 
+	\item Kinetic stability: Modulating energy barriers (e.g., $\Delta G^{\ddagger}_{\text{rot}}$) minimizes exposure of vulnerable residues to oxidative damage while preserving functional flexibility.
+\end{itemize}
+
+\subsection*{Beyond classical allostery}
+Our framework extends allostery to non-equilibrium regimes. Traditional models (Eq.~1):
+
+\begin{equation}
+	K_{\text{eq}} = \frac{[C_{\text{open}}]}{[C_{\text{closed}}]}
+\end{equation}
+
+neglect transition-state regulation. In contrast, kinetic coupling (Eq.~2):
+
+\begin{equation}
+	\kappa = \frac{k_{\text{cat}}^{\text{effector\ bound}}}{k_{\text{cat}}^{\text{apo}}}
+\end{equation}
+
+reveals how evolution optimizes \textit{transition paths} rather than just equilibrium states. Lowering rotational barriers (Fig.~\ref{fig:barriers}) implements "kinetic proofreading" against spurious activation.
+
+\subsection*{Limitations and future directions}
+\begin{enumerate}
+	\item Scalability to multimeric systems
+	\item Continuous vs. discrete conformational states
+	\item Role of lipid interactions (see Supplementary Fig.~7)
+\end{enumerate}
+
+\subsection*{Broader implications}
+\begin{itemize}
+	\item Precision pharmacology: Targeting kinetic couplings ($\kappa$) over binding affinities ($K_d$)
+	\item Oxidative resilience: Engineered proteins with optimized $\Delta G^{\ddagger}$ landscapes
+\end{itemize}
+
+\paragraph*{Conclusion} We establish kinetic coupling as a fundamental mechanism balancing functional dynamics with structural resilience. This paradigm shift—from equilibrium to kinetic control—reconciles discrepancies between structural and functional studies while opening new avenues for understanding allostery and disease 
 
 
 \section{Discussion}\label{discussion}
