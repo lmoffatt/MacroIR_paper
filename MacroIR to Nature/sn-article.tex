@@ -352,11 +352,24 @@ wait through an entire run duration. [] --> subirlas a github.
 H. Reproducible MCMC. To make MCMC chains exactly reproducible, the pseudo-random number generators should be explicitly seeded.
 \end{comment}
 
+\abstract{The activation of ligand-gated ion channels is fundamental to cellular signal transduction, impacting diverse processes such as neurotransmission and immune responses. ATP‐gated P2X receptors, with their relatively simple trimeric structure, offer an attractive model for probing the mechanisms of allosteric regulation. Although structural studies have defined the closed and open states of these channels, the precise sequence of ATP‐induced conformational changes and the role of subunit‐specific dynamics remain unresolved. Here, we demonstrate that the activation kinetics of P2X2 receptors can be accurately reproduced by an asymmetric coupling mechanism, where ATP binding drives the rotation of individual subunits and a saturating increase in conductance as the subunits undergo rotation. Using a novel Bayesian analysis tailored to time-averaged macroscopic currents, we demonstrate that ATP binding stabilizes and lowers the energetic barrier for rotation of the left subunit while minimally influencing the right subunit. A second asymmetric coupling explains the negative cooperativity in binding, with ATP binding at one site paradoxically increasing the barrier at the second site. These modulated energy barriers prevent an unliganded rotation that would lead to premature inactivation. Our findings suggest that such tunable activation barriers represent a general strategy for stabilizing ion channels and signaling proteins in dynamic cellular environments. This work provides a mechanistic framework for understanding allosteric regulation in ligand-gated ion channels, with implications for designing therapies targeting P2X receptors in conditions such as chronic pain and inflammation. \\\\%}
 
 
-
-
-\abstract{
+%\abstract{
+		Ligand-gated ion channels translate chemical signals into electrical activity, a process central to physiology and disease. Among these, ATP-activated P2X receptors exhibit a unique trimeric architecture where intersubunit ligand binding triggers pore opening, yet the dynamic coordination of subunit motions during activation remains unknown. This gap limits mechanistic understanding and therapeutic targeting of P2X receptors in conditions like chronic pain. Here, we resolve this coordination by developing \textit{MacroIR}, a Bayesian framework that extracts subunit-specific kinetic parameters from macroscopic currents. Applying \textit{MacroIR} to sub-millisecond ATP pulses, we show that ATP binding induces \textit{asymmetric subunit rotation}, preferentially lowering the activation barrier of one subunit while increasing it in its neighbor. This kinetic asymmetry explains longstanding paradoxes: how two ATP-binding sites suffice for activation, why ligand binding exhibits negative cooperativity, and how unliganded pore opening is suppressed. Crucially, ATP acts catalytically, accelerating both forward and reverse transitions to minimize futile conformational cycles—a "kinetic stability" mechanism that prioritizes transition-state regulation over equilibrium shifts. Unlike classical allostery, which focuses on endpoint stabilization, our results demonstrate that proteins dynamically optimize energy landscapes to avoid structural vulnerabilities. The \textit{MacroIR} framework generalizes to dynamic macromolecules, bridging structural snapshots with functional kinetics. By redefining allostery as a kinetic phenomenon, this work opens avenues for therapeutics targeting energy barriers rather than ligand-binding sites, offering precision in modulating P2X receptors and related molecular machines.\\\\\\\\\ %}
+%\abstract{
+%	\begin{abstract}
+		Ligand‐gated ion channels are essential mediators of rapid cellular communication, underpinning diverse processes from synaptic transmission to immune responses. ATP‐gated P2X receptors, with their relatively simple trimeric structure, offer an attractive model for probing the mechanisms of allosteric regulation. Although structural studies have defined the closed and open states of these channels, the precise sequence of ATP‐induced conformational changes and the role of subunit‐specific dynamics remain unresolved.  
+		
+		Here we show that the activation kinetics of P2X2 receptors are governed by an asymmetric allosteric coupling mechanism. Using a Bayesian analysis tailored to time-averaged macroscopic currents, we reveal that ATP binding selectively lowers the energetic barrier for rotation of one subunit—predominantly the left—while exerting minimal influence on the right. This asymmetry underpins negative cooperativity in ligand binding and explains why the engagement of just two binding sites is sufficient for channel opening, preventing unliganded rotations that would lead to premature inactivation.  
+		
+		Our findings challenge traditional symmetric models of receptor activation by directly linking structural dynamics to kinetic modulation. The uncovered tunable activation barriers not only refine our understanding of P2X receptor gating but also provide a mechanistic framework that may extend to other ligand-gated ion channels. In a broader context, these insights open new avenues for the rational design of therapeutic agents targeting allosteric sites in conditions such as chronic pain and inflammation.
+	\\\\\Ligand‐gated ion channels are essential mediators of rapid cellular communication, underpinning diverse processes from synaptic transmission to immune responses. ATP‐gated P2X receptors, with their relatively simple trimeric structure, offer an attractive model for probing the mechanisms of allosteric regulation. Although structural studies have defined the closed and open states of these channels, the precise sequence of ATP‐induced conformational changes and the role of subunit‐specific dynamics remain unresolved.
+	
+	Here we show that the activation kinetics of P2X2 receptors are governed by an asymmetric allosteric coupling mechanism. Using a novel Bayesian analysis of ultra-short ATP pulse experiments, we reveal that ATP binding selectively lowers the energetic barrier for rotation of one subunit—predominantly the left—while exerting minimal influence on the right. This asymmetry underpins negative cooperativity in ligand binding and explains why the engagement of just two binding sites is sufficient for channel opening, preventing unliganded rotations that would lead to premature inactivation.
+	
+	Our findings challenge traditional symmetric models of receptor activation by directly linking structural dynamics to kinetic modulation. The uncovered tunable activation barriers not only refine our understanding of P2X receptor gating but also provide a mechanistic framework that may extend to other ligand-gated ion channels. In a broader context, these insights open new avenues for the rational design of therapeutic agents targeting allosteric sites in conditions such as chronic pain and inflammation.
+\\\\	
 The activation of ligand-gated ion channels is fundamental to cellular signal transduction, impacting diverse processes such as neurotransmission and immune responses. ATP-gated P2X2 receptors, with their structurally simple architecture, provide an accessible model for studying the mechanisms underlying intersubunit allosteric regulation. However, the coordination of ATP-induced conformational transitions in P2X2 remains poorly understood. Here, we demonstrate that the activation kinetics of P2X2 receptors can be accurately reproduced by an asymmetric coupling mechanism, where ATP binding drives the rotation of individual subunits and a saturating increase in conductance as the subunits undergo rotation. Using a novel Bayesian analysis of ultra-short ATP pulse experiments, we demonstrate that ATP binding stabilizes and lowers the energetic barrier for rotation of the left subunit while minimally influencing the right subunit. A second asymmetric coupling explains the negative cooperativity in binding, with ATP binding at one site paradoxically increasing the barrier at the second site. These modulated energy barriers prevent an unliganded rotation that would lead to premature inactivation. Our findings suggest that such tunable activation barriers represent a general strategy for stabilizing ion channels and signaling proteins in dynamic cellular environments. This work provides a mechanistic framework for understanding allosteric regulation in ligand-gated ion channels, with implications for designing therapies targeting P2X receptors in conditions such as chronic pain and inflammation.}
 
 
@@ -377,6 +390,45 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 \keywords{Bayesian Analysis, P2X receptors, Cellular Signaling}
 
 \maketitle
+
+
+\section{Introduction}
+\label{sec1}
+
+Ligand-gated ion channels (LGICs) mediate rapid signal transduction by coupling ligand binding to ion flux, underpinning processes ranging from neurotransmission to immune responses \cite{p2x_cuerpo_humano,p2x_drugs}. Among LGICs, ATP-gated P2X receptors are unique: their trimeric architecture and intersubunit ATP-binding sites enable intricate allosteric regulation, yet the structural dynamics driving pore opening remain unresolved \cite{cerrada_p2x,abierta_p2x}. High-resolution structures of closed and open P2X receptors \cite{estructura_p2x1} reveal ATP-induced subunit rotation, but how these motions are coordinated—and whether asymmetry governs activation—has persisted as a central question. Addressing this gap is critical for rational drug design, as P2X receptors are therapeutic targets in pain and inflammation \cite{therapeutic,p2x7_pharmacology}.
+
+Two competing models dominate the field. \textit{Synchronous activation} posits concerted subunit rotation, while \textit{sequential models} propose staggered transitions. However, existing kinetic schemes remain contentious, relying on intrasubunit binding assumptions incompatible with structural data \cite{Moffatt_hume} or neglecting Bayesian model comparison. Crucially, no framework has linked observed macroscopic currents to subunit-specific structural rearrangements, leaving key phenomena unexplained: negative cooperativity in ATP binding, sufficiency of two occupied sites for pore opening, and prevention of unliganded activation.
+
+Here, we bridge this divide through three advances. First, we develop \textit{MacroIR}, a Bayesian method that extracts kinetic parameters from time-averaged macroscopic currents while preserving temporal correlations—overcoming computational barriers that limited prior analyses. Second, we introduce \textit{conformational models}, which map kinetic transitions to physical subunit rotations, ensuring mechanistic interpretability. Third, by combining ultrashort ATP-pulse electrophysiology \cite{Moffatt_hume} with molecular dynamics-informed priors, we resolve asymmetric activation: ATP binding preferentially lowers the rotational barrier of one subunit while kinetically suppressing its neighbor. This asymmetry, undetectable by equilibrium models, explains why partial binding suffices for activation and how receptors avoid spurious opening.
+
+Our results establish kinetic asymmetry as a core principle of P2X2 gating, with broader implications for allosteric regulation. By demonstrating that ATP modulates transition-state barriers—not merely endpoint stability—we redefine ligand efficacy in energetic terms. The \textit{MacroIR} framework, applicable to diverse macromolecular systems, provides a blueprint for uniting kinetic data with structural mechanisms, advancing the goal of dynamic structural biology.
+
+
+\section{Introduction}
+\label{sec1}
+
+Ligand-gated ion channels (LGICs) convert chemical signals into electrical responses, enabling rapid cellular communication. Among LGICs, ATP-activated P2X receptors stand out: their trimeric architecture and intersubunit ligand-binding sites permit complex allosteric regulation, yet the structural dynamics driving pore opening remain unresolved. While high-resolution structures of closed and open states reveal ATP-induced subunit rotations \cite{cerrada_p2x,abierta_p2x}, how these motions are coordinated—and whether asymmetry governs activation—remains unknown. Resolving this mechanism is critical for targeting P2X receptors in pain and inflammation \cite{therapeutic,p2x7_pharmacology}.
+
+Two competing models exist: \textit{synchronous activation} (concerted subunit rotation) and \textit{sequential transitions} (staggered motions). However, prior studies relied on intrasubunit binding assumptions incompatible with structural data \cite{Moffatt_hume} or lacked Bayesian model comparisons. A key gap persists: linking macroscopic currents to subunit-specific structural rearrangements to explain paradoxical phenomena like negative cooperativity and activation by two ATP molecules.
+
+Here, we introduce \textit{MacroIR}, a Bayesian framework that extracts kinetic parameters from time-averaged macroscopic currents while preserving temporal correlations. Combined with \textit{conformational models}—which map transitions to physical subunit rotations—we resolve P2X2 activation at molecular resolution. Ultrashort ATP-pulse electrophysiology \cite{Moffatt_hume} and molecular dynamics-informed priors reveal asymmetric coupling: ATP binding preferentially lowers one subunit’s rotational barrier while kinetically suppressing its neighbor. This asymmetry explains partial-site activation and unliganded noise reduction. 
+
+Our results redefine ligand efficacy: ATP modulates transition-state barriers, not just endpoint stability. The \textit{MacroIR} framework generalizes to dynamic proteins, advancing the integration of kinetic data with structural mechanisms. By prioritizing kinetic asymmetry over equilibrium shifts, we establish a paradigm for allosteric regulation in ion channels and beyond.
+\begin{comment}
+	no es bueno, tiene errores 
+	\end{comment}}
+
+
+\section{Introduction}
+\label{sec1}
+
+Ligand-gated ion channels (LGICs) mediate rapid signal transduction by coupling ligand binding to ion flux, underpinning processes ranging from neurotransmission to immune responses \cite{p2x_cuerpo_humano,p2x_drugs}. Among LGICs, ATP-gated P2X receptors are unique: their trimeric architecture and intersubunit ATP-binding sites enable intricate allosteric regulation, yet the structural dynamics driving pore opening remain unresolved \cite{cerrada_p2x,abierta_p2x}. High-resolution structures of closed and open P2X receptors \cite{estructura_p2x1} reveal ATP-induced subunit rotation, but how these motions are coordinated—and whether asymmetry governs activation—has persisted as a central question. Addressing this gap is critical for rational drug design, as P2X receptors are therapeutic targets in pain and inflammation \cite{therapeutic,p2x7_pharmacology}.
+
+Two competing models dominate the field. \textit{Synchronous activation} posits concerted subunit rotation, while \textit{sequential models} propose staggered transitions. However, existing kinetic schemes remain contentious, relying on intrasubunit binding assumptions incompatible with structural data \cite{Moffatt_hume} or neglecting Bayesian model comparison. Crucially, no framework has linked observed macroscopic currents to subunit-specific structural rearrangements, leaving key phenomena unexplained: negative cooperativity in ATP binding, sufficiency of two occupied sites for pore opening, and prevention of unliganded activation.
+
+Here, we bridge this divide through three advances. First, we develop \textit{MacroIR}, a Bayesian method that extracts kinetic parameters from time-averaged macroscopic currents while preserving temporal correlations—overcoming computational barriers that limited prior analyses. Second, we introduce \textit{conformational models}, which map kinetic transitions to physical subunit rotations, ensuring mechanistic interpretability. Third, by combining ultrashort ATP-pulse electrophysiology \cite{Moffatt_hume} with molecular dynamics-informed priors, we resolve asymmetric activation: ATP binding preferentially lowers the rotational barrier of one subunit while kinetically suppressing its neighbor. This asymmetry, undetectable by equilibrium models, explains why partial binding suffices for activation and how receptors avoid spurious opening.
+
+Our results establish kinetic asymmetry as a core principle of P2X2 gating, with broader implications for allosteric regulation. By demonstrating that ATP modulates transition-state barriers—not merely endpoint stability—we redefine ligand efficacy in energetic terms. The \textit{MacroIR} framework, applicable to diverse macromolecular systems, provides a blueprint for uniting kinetic data with structural mechanisms, advancing the goal of dynamic structural biology.
 
 
 \section{Introduction}
@@ -1574,9 +1626,90 @@ Finalmente con la varianza y la corriente esperada podemos calcular la likelihoo
 
 que cosas debo discutir aqui?
 
+Demos
 
-1. El peso de la Evidencia. 
-2. Modelos Conformacionales
+Cual es el resultado más importante?
+Les pregunte a los tres AI y medio queda que es la activacion asimétrica. 
+
+chatgpt: After re‐reading your manuscript, the central finding appears to be that the activation kinetics of P2X2 receptors are best explained by an asymmetric allosteric coupling mechanism. In other words, your Bayesian analysis reveals that ATP binding does not simply trigger a concerted, symmetric subunit rotation but instead modulates the energy barriers for rotation in a subunit-specific manner. Specifically, ATP binding lowers the energetic barrier for rotation of one subunit (often the left) while having a minimal—or even opposing—effect on the other (the right). This asymmetry accounts for several previously puzzling experimental observations, such as the "flip state," the sufficiency of two binding sites for channel opening, and the negative cooperativity in agonist binding.
+
+deepseek:The study redefines the mechanistic understanding of ligand-gated ion channels by bridging structural dynamics with kinetic modeling. The discovery of asymmetric subunit rotation in P2X2 receptors resolves long-standing questions about ATP-induced gating, particularly how negative cooperativity and partial activation arise. By demonstrating that ATP binding stabilizes distinct energy landscapes for left versus right subunits, we provide a structural rationale for the observed kinetic asymmetry—a paradigm shift from classical equilibrium-based allostery.
+
+The MacroIR algorithm represents a methodological leap, enabling precise Bayesian inference of kinetic schemes from macroscopic currents. Its recursive framework captures stochastic fluctuations often discarded in conventional analyses, revealing hidden correlations in channel behavior. This tool has broad applicability, from ion channels to molecular motors, and addresses a critical gap in linking structural snapshots to functional dynamics.
+
+Biologically, our findings suggest that P2X receptors exploit kinetic coupling to balance functional flexibility with structural resilience. The prevalence of "kinetic proofreading" (suppressing unproductive transitions) underscores evolutionary optimization of energy landscapes rather than mere state stabilization. This principle extends beyond ion channels, offering a universal strategy for proteins operating in dynamic environments.
+
+Translational Implications:
+
+Drug Design: Targeting kinetic couplings (e.g., modulating rotational barriers) could yield P2X2-selective therapeutics for chronic pain or inflammation, avoiding off-target effects associated with equilibrium-focused drugs.
+
+Protein Engineering: Redesigning energy landscapes to enhance kinetic stability may improve enzyme robustness in industrial applications.
+
+Limitations and Future Directions:
+
+While the model excels in single-channel systems, cooperative effects in multimeric assemblies warrant further study.
+
+Time-resolved structural techniques (e.g., cryo-EM with millisecond resolution) could validate discrete versus continuous conformational states.
+
+Lipid interactions and post-translational modifications, excluded here, likely modulate kinetic couplings in vivo.
+
+By unifying structural biology with kinetic principles, this work establishes a new framework for studying allosteric regulation—one where evolution sculpts transition pathways, not just endpoints. This paradigm opens avenues for precision pharmacology and protein engineering, heralding a new era of dynamic structural biology.
+
+
+grok: The paper "Bayesian analysis reveals asymmetry in P2X2 receptor activation" by Luciano Moffatt and Gustavo Pierdominici-Sottile presents multiple notable contributions to the study of P2X2 receptors, which are ATP-gated ion channels critical for processes like neurotransmission, pain signaling, and inflammation. Among the findings, the most significant one that would impact the scientific community the most and should be discussed first is the discovery of an asymmetric coupling mechanism in the activation of P2X2 receptors. This mechanism reveals how ATP binding differentially influences the conformational changes of the receptor's subunits, providing a groundbreaking explanation for several key experimental observations and resolving long-standing questions in the field.
+What is the Asymmetric Coupling Mechanism?
+
+P2X2 receptors are trimeric ion channels, meaning they consist of three subunits, each capable of binding ATP at inter-subunit interfaces. The paper demonstrates that ATP binding does not affect all subunits uniformly:
+
+Asymmetry in Subunit Rotation: When ATP binds to a site between two subunits, it significantly lowers the energetic barrier for rotation of the "left" subunit (the subunit to the left of the binding site) while having minimal impact on the "right" subunit. This differential effect drives the channel's opening by facilitating sequential subunit rotations rather than a synchronous movement of all three subunits.
+Negative Cooperativity: A second layer of asymmetry emerges where the rotation of a subunit increases the energetic barrier for ATP binding at an adjacent site. This results in negative cooperativity, meaning that binding of ATP to one site reduces the likelihood of binding at another, preventing premature or excessive activation.
+Prevention of Unliganded Rotation: The asymmetric coupling ensures that subunit rotation—and thus channel opening—occurs only when ATP is bound, avoiding unliganded rotations that could lead to premature inactivation. This fine-tunes the receptor’s response to ATP concentrations in the cellular environment.
+
+This mechanism was uncovered through a novel Bayesian analysis of ultra-short ATP pulse experiments, supported by the development of the MacroIR algorithm, which allowed precise modeling of macroscopic currents and comparison of various kinetic schemes. The best-performing model (Scheme X) incorporates these asymmetric couplings, outperforming symmetric or synchronous alternatives.
+Why is This the Most Significant Finding?
+
+The asymmetric coupling mechanism stands out as the most impactful finding for several reasons:
+
+Mechanistic Insight into P2X2 Activation:
+It provides a detailed, structurally grounded explanation of how ATP binding translates into channel opening. Unlike previous models that assumed symmetry or synchronous subunit movement, this finding highlights a sequential, asymmetric process that aligns with high-resolution structural data of P2X receptors in open and closed states.
+Resolution of Long-Standing Paradoxes:
+The field has puzzled over why only two ATP binding sites are sufficient to activate a trimeric channel. The paper shows that partial rotation (e.g., two rotated subunits) generates significant conductance (48% of maximal current), amplified by stochastic pre-activation even in the absence of ATP. This resolves the paradox by demonstrating that the asymmetric mechanism enables efficient activation with submaximal ligand binding.
+Explanation of Key Phenomena:
+The finding accounts for:
+Negative cooperativity: A regulatory mechanism to prevent overstimulation.
+The flip state: An intermediate conformational change tied to subunit rotation.
+Hysteresis: Different activation and deactivation pathways observed in P2X2 responses, driven by the asymmetry in coupling.
+Broad Scientific Impact:
+Therapeutic Potential: P2X2 receptors are implicated in chronic pain and inflammation. Understanding their activation at this level of detail could guide the design of drugs that modulate specific kinetic steps (e.g., targeting the energetic barriers) rather than just binding affinity, offering greater specificity.
+Influence on Other Channels: The discovery challenges the assumption of symmetry in multimeric proteins, potentially reshaping how other trimeric or oligomeric ion channels (e.g., P2X family members or beyond) are studied.
+Evolutionary Implications: The tunable energy barriers suggest an evolutionary strategy to balance responsiveness with stability, a concept that could apply to a wide range of signaling proteins.
+Methodological Reinforcement:
+While the development of MacroIR and the introduction of kinetic allosteric coupling are significant, they serve as tools and frameworks that enable this central discovery. The asymmetric coupling mechanism is the primary result that ties the paper’s innovations together, validated by rigorous Bayesian model comparison.
+
+Why Discuss This First?
+
+Discussing the asymmetric coupling mechanism first sets the stage for understanding the paper’s broader contributions. It is the linchpin that:
+
+Connects structural data (e.g., subunit rotations observed in P2X4 structures) with functional outcomes (e.g., macroscopic currents).
+Highlights the novelty of the work by contrasting it with prior symmetric or synchronous models.
+Frames the relevance to the scientific community, from basic research (ion channel biophysics) to applied fields (drug development for pain management).
+
+Other findings, such as the MacroIR algorithm or the concept of kinetic allosteric coupling, while innovative, are supporting players. MacroIR is a methodological advancement that facilitates the analysis, and kinetic allosteric coupling provides a conceptual lens, but the asymmetric coupling mechanism is the concrete, experimentally validated result with the most immediate and far-reaching implications.
+Conclusion
+
+The asymmetric coupling mechanism in P2X2 receptor activation, where ATP binding differentially modulates subunit rotation and binding affinity, is the most significant finding of this paper. It offers a transformative understanding of how these receptors function, resolves critical questions in the field, and has the potential to influence both fundamental science and therapeutic strategies. As such, it deserves to be the focal point of discussion, providing a compelling entry into the paper’s contributions to the study of ligand-gated ion channels.
+
+
+Empiezo diciendo que los dos resultados mas claros son la comparacion de evidencias y la regulacion alosterica de las barreras energeticas. 
+
+Para llegar a 
+
+
+1. MacroIR: key concept start-end state: mathematicaly synthesizes both bayesian rule and markovian step in a single step. 
+2. Modelos Conformacionales by kinetic coupling: complex kinetic schemes that represent simple rules with few parameters. 
+
+1. Parallel tempering using affine invariant ensamble MCMC: effectively explores multimodal landscapes at a huge computational cost. 
+4. Clear cut hypothesis testing in a single conceptual go several hypothesis are effectively compared. 
 3. MacroIR
 4. Unliganded gating, partially liganded gating y negative cooperativity.
 5. Why to reduce the energetic barrier for rotation? Is there an evolutionary advantage?
@@ -1646,6 +1779,28 @@ Allosteric quadrants (AQs) were defined using the $\kappa$-normalized $k_{\text{
 
 
 \end{comment}
+\section{Discussion}
+Deepseek
+Asymmetric Kinetic Coupling in P2X2 Activation
+ATP binding to P2X2 receptors triggers asymmetric subunit rotation, a mechanism resolved through conformational kinetic modeling and the Bayesian framework MacroIR. By analyzing macroscopic currents with MacroIR—which retains kinetic information in time-averaged data—we identified ligand-induced stabilization of rotational transitions in one subunit and kinetic suppression in another. This asymmetry explains why two ATP-binding sites suffice for activation and how negative cooperativity arises. Unexpectedly, ATP also acts catalytically, lowering energy barriers for both forward ($k_on$) and reverse ($k_off$) transitions. This dual action minimizes unliganded rotation frequency (not equilibrium occupancy), suggesting a biological strategy to avoid vulnerable transition states while permitting rapid ligand-driven gating.
+Kinetic Stability: A Design Principle for Dynamic Proteins
+Our findings imply that proteins optimize kinetic stability by suppressing unnecessary transitions, not just stabilizing endpoints. For P2X2, this prevents futile conformational cycles that could expose reactive residues. Such a principle may generalize to other molecular machines where transition states pose risks (e.g., oxidative damage).
+Methodological and Translational Implications
+MacroIR bridges macroscopic recordings with structural dynamics, offering a template for studying conformational energy landscapes. Therapeutically, targeting kinetic asymmetry—rather than equilibrium binding—could yield P2X2-selective modulators for pain or inflammation.
+\section*{Discussion}
+In this study, we integrated MacroIR with Conformational Modelling to gain unprecedented kinetic insights into the activation dynamics of the P2X2 receptor. By averaging macrocurrents over exponentially increasing time intervals, MacroIR enabled us to resolve multiple time constants corresponding directly to discrete structural transitions. This methodology allowed us to map kinetic data onto specific conformational changes and to decipher the energetic underpinnings of pore opening—achievements that had remained elusive with more traditional approaches.
+
+Our findings reveal that ATP binding induces asymmetric conformational changes among the receptor’s subunits, highlighting differences in the responses of the hemi-binding sites. While such asymmetry was moderately anticipated, its impact on channel function and regulation is profound. Importantly, our kinetic analysis shows that allosteric modulation in the P2X2 receptor extends beyond simple shifts in state equilibrium. Instead of merely stabilizing the activated state, the allosteric effect manifests as a simultaneous increase in both the activation rate ($\mathrm{ron}$) and the deactivation rate ($\mathrm{roff}$), with a more pronounced enhancement of $\mathrm{ron}$. In the unliganded state, the basal rotation rate, $\mathrm{ron}_0$, determines the frequency of spontaneous conformational transitions, such that the probability of the receptor being in the rotated state is governed by
+\[
+P_{\text{rotated}} \propto \frac{\mathrm{ron}_0}{\mathrm{roff}_0}.
+\]
+Thus, by modulating these rates, the receptor effectively reduces the frequency of unnecessary transitions, a strategy that may serve to minimize the vulnerabilities associated with the transition state itself.
+
+This “catalytic” allosteric behavior contrasts with the classical model, in which an increase in $\mathrm{ron}$ is typically accompanied by a decrease in $\mathrm{roff}$. A purely catalytic effect would increase both rates equally; however, our data indicate that the enhancement of $\mathrm{ron}$ exceeds that of $\mathrm{roff}$. These observations prompt us to consider alternative nomenclatures for different allosteric regimes—for example, an allosterism that reduces both $\mathrm{ron}$ and $\mathrm{roff}$ (with a larger reduction in $\mathrm{ron}$) might be termed “anti-catalytic” or “inhibitory.” Such distinctions underscore the need to reexamine and refine our understanding of allosteric modulation in ion channels.
+
+Beyond the specific case of the P2X2 receptor, our results suggest a broader principle: biological systems may regulate function not merely by altering the stability of distinct states, but by fine-tuning the frequency of transitions between them. This strategy—minimizing the rate of unnecessary transitions—could represent a general mechanism by which cells balance responsiveness with structural integrity, ensuring that transient, potentially vulnerable states are encountered only as needed.
+
+In summary, the synergistic application of MacroIR and Conformational Modelling has not only clarified long-standing questions about P2X2 receptor activation but has also provided a new framework for understanding allosteric regulation. These insights open avenues for further investigation into the kinetic and energetic landscapes of ion channels and offer a refined perspective on the design principles that underlie biological signal transduction.
 
 
 \section{Discussion}
