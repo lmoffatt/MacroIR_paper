@@ -1425,3 +1425,123 @@ journal = {Journal of Neuroscience}
 	doi = {10.1085/jgp.200810008},
 	pmid = {18625850},
 }
+
+@article{94ba4853508d727abca9291e79f9c228a3dde316,
+	title = {Approaches for unveiling the kinetic mechanisms of voltage gated ion channels in neurons},
+	year = {2019},
+	url = {https://www.semanticscholar.org/paper/94ba4853508d727abca9291e79f9c228a3dde316},
+	abstract = {Voltage-gated ion channels play a key role in action potential generation and propagation, in neurons and other excitable cells. Different types of neurons display unique patterns of cellular excitability and assemble into brain circuits with distinct network properties. The firing properties of individual neurons and neuronal circuits, and ultimately the function of the entire nervous system, are largely determined by the kinetic properties of voltage-gated Na channels. In this chapter, I discuss how to investigate these properties (state transitions, rate constants, voltage sensitivity, etc.) by generating ion channel models and testing them in live neurons using the dynamic-clamp technique. We focus on deriving biophysically realistic models from macroscopic currents obtained in whole-cell voltage-clamp experiments, using the Markov formalism. Nevertheless, the topics covered in this chapter are also useful for investigators interested in building Hodgkin-Huxley-type models or in understanding what information can be extracted from other types of electrophysiological data. Lastly, we discuss the technical},
+	author = {Marco A Navarro},
+}
+
+@article{446a50d67e90a7bc449f70c35a8a657c680ef932,
+	title = {Bayesian inference of kinetic schemes for ion channels by Kalman filtering},
+	year = {2020},
+	url = {https://www.semanticscholar.org/paper/446a50d67e90a7bc449f70c35a8a657c680ef932},
+	abstract = {Inferring adequate kinetic schemes for ion channel gating from ensemble currents is a daunting task due to limited information in the data. We address this problem by using a parallelized Bayesian filter to specify hidden Markov models for current and fluorescence data. We demonstrate the flexibility of this algorithm by including different noise distributions. Our generalized Kalman filter outperforms both a classical Kalman filter and a rate equation approach when applied to patch-clamp data exhibiting realistic open-channel noise. The derived generalization also enables inclusion of orthogonal fluorescence data, making unidentifiable parameters identifiable and increasing the accuracy of the parameter estimates by an order of magnitude. By using Bayesian highest credibility volumes, we found that our approach, in contrast to the rate equation approach, yields a realistic quantification of uncertainty. Furthermore, the Bayesian filter delivers unbiased estimates for a wider range of data quality and identifies parameters which the rate equation approach does not identify. These results also demonstrate the power of assessing the validity of algorithms by Bayesian credibility volumes in general. Finally, we show that our Bayesian filter is more robust against errors induced by either analog filtering before analog-to-digital conversion or by limited time resolution of fluorescence data than a rate equation approach.},
+	author = {Jan L. Münch and Fabian Paul and Ralf Schmauder and K. Benndorf},
+	journal = {eLife},
+	volume = {11},
+	pages = {null},
+	doi = {10.1101/2020.04.27.029207},
+	pmid = {35506659},
+}
+
+@article{6fa1c17e41db55acd0735b977c51295ba51e7e94,
+	title = {Minimally and vaguely informative priors to combat practical parameter non-identifiability of hidden Markov models exemplified by ion channel data},
+	year = {2024},
+	url = {https://www.semanticscholar.org/paper/6fa1c17e41db55acd0735b977c51295ba51e7e94},
+	abstract = {Hidden Markov Model (HMM) inference for time-series data from ion channels or other biomolecules is challenging. We argue that inference on partially observed chemical reaction networks (CRNs) suffers from practical parameter non-identifiability (non-PI) that often goes unnoticed in maximum likelihood (ML) inferences. Limitations in the signal bandwidth and a poor signal-to-noise ratio only add to the non-PI problem. We study the role of the prior distribution in the face of non-PI. In particular, we advocate using minimally informative (MI) priors and additional restrictions on the parameter space that can be derived from physical considerations. Using patch clamp (PC) ion-channel measurements as a prototypical time series, we demonstrate Bayesian strategies for alleviating non-PI problems with sharpened prior information. In Bayesian statistics, the prior can substantially modulate the posterior. We demonstrate that non-PI can be severely harmful when using uniform priors on the rate matrix of HMMs, which are implicitly assumed in ML. We show that MI priors enable meaningful HMM inference with data whose quality can be one to two orders of magnitude worse than required to reach the same accuracy with uniform priors. However, we also demonstrate that non-PI pathologies can persist even with a prior MI. In this case, the MI prior alleviates but does not entirely resolve the problem of improper posteriors. For complex HMMs, stronger prior assumptions are needed to render the posterior proper. We propose to confine the parameters to a sampling box whose limits are physically reasonable and derived from theory. This fusion of data and physical information allows for meaningful inferences even for the most complex HMM with data of the lowest quality that we tested. However, hard theoretical limits, such as diffusion-limited binding rates, are rarely available. As an alternative, we test a vague prior on the ratios of each pair of binding rates and additionally unbinding rates, thereby softly linking them. This implicitly assumes finite cooperativity and introduces a bias towards non-cooperativity. However, in contrast to the standard practice of choosing equal chemical rates, which supposes strict non-cooperativity, this additional prior still allows for cooperativity. Despite its vagueness, our prior renders the posterior either proper in a strict sense or sufficiently proper for all data sets we considered without imposing the assumption of non-cooperativity. Hence, our approach can infer how likely different degrees of cooperativity are. Combining theoretical upper limits and vague finite cooperativity assumptions dramatically improves inferences.},
+	author = {Jan L. Münch and Ralf Schmauder and Fabian Paul and Michael Habeck},
+	journal = {bioRxiv},
+	volume = {null},
+	pages = {null},
+	doi = {10.1101/2024.04.20.590387},
+}
+
+@article{ee0bf41409cd4596cc16facf8195e5c3dc6db8bc,
+	title = {Parameter Optimization for Ion Channel Models: Integrating New Data with Known Channel Properties.},
+	year = {2021},
+	url = {https://www.semanticscholar.org/paper/ee0bf41409cd4596cc16facf8195e5c3dc6db8bc},
+	abstract = {S2 TL;DR: The reader is introduced to the QuB software, which implements a comprehensive formalism for estimating kinetic parameters subject to a variety of explicit and implicit constraints that define quantitative relationships between parameters and describe specific mechanism properties.},
+	author = {Marco A Navarro and Marzie Amirshenava and Autoosa Salari and Mirela Milescu and L. Milescu},
+	journal = {Methods in molecular biology},
+	volume = {2385},
+	pages = {
+	353-375
+	},
+	doi = {10.1007/978-1-0716-1767-0_17},
+	pmid = {34888729},
+}
+
+@article{362efbaf2330e965f48b748302e97768e14e7403,
+	title = {Bayesian selection of Hidden Markov 1 models for multi-dimensional ion 2 channel data 3},
+	year = {2020},
+	url = {https://www.semanticscholar.org/paper/362efbaf2330e965f48b748302e97768e14e7403},
+	abstract = {.},
+	author = {Jan L. Münch and Fabian Paul and Ralf Schmauder and K. Benndorf},
+}
+
+@article{a1a021af298a96c5ea54e8bead4a8e15a4f54270,
+	title = {SOLVING ION CHANNEL KINETICS WITH THE QuB SOFTWARE},
+	year = {2013},
+	url = {https://www.semanticscholar.org/paper/a1a021af298a96c5ea54e8bead4a8e15a4f54270},
+	abstract = {The ability to record the currents from single ion channels led to the need to extract the underlying kinetic model from such data. This inverse hidden Markov problem is difficult but led to the creation of a software suite called QuB utilizing likelihood optimization. This review presents the software. The software is open source and, in addition to solving kinetic models, has many generic database operations including report generation with publishable graphics, function fitting and scripting for new and repeated processing and AD/DA I/O. The core algorithms allow for constraints such as fixed rates or maintaining detailed balance in the model. All rate constants can be driven by a stimulus and the system can analyze nonstationary data. QuB also can analyze the kinetics of multichannel data where individual events cannot be discriminated, but the fitting algorithms utilize the signal variance as well as the mean to fit models. QuB can be applied to any data appropriately modeled with Markov kinetics and has been utilized to solve ion channels but also the movement of motor proteins, the sleep cycles in mice, and physics processes. Special Issue Comment: This is a review about the software QuB that can extract a model from the trajectory. It is connected with the review about treatments when solving single molecules,60 and the reviews about enzymes.61,62},
+	author = {Chris Nicolai and F. Sachs},
+	journal = {Biophysical Reviews and Letters},
+	volume = {08},
+	pages = {191-211},
+	doi = {10.1142/S1793048013300053},
+}
+
+@article{ce856050ab5f06f95888ba3ab69b59dde08beb7a,
+	title = {Computing rates of Markov models of voltage-gated ion channels by inverting partial differential equations governing the probability density functions of the conducting and non-conducting states.},
+	year = {2016},
+	url = {https://www.semanticscholar.org/paper/ce856050ab5f06f95888ba3ab69b59dde08beb7a},
+	abstract = {S2 TL;DR: The inversion is based on tuning the rates of the Markov models used in the deterministic system of partial differential equations such that the solution mimics the properties of the probability density function gathered from (pseudo) experimental data as well as possible.},
+	author = {A. Tveito and G. Lines and A. Edwards and A. McCulloch},
+	journal = {Mathematical biosciences},
+	volume = {277},
+	pages = {
+	126-35
+	},
+	doi = {10.1016/j.mbs.2016.04.011},
+	pmid = {27154008},
+}
+
+@article{0e9f1dcbf841df7c808e24057f42a2e1b709ca6b,
+	title = {Real-time kinetic modeling of voltage-gated ion channels using dynamic clamp.},
+	year = {2008},
+	url = {https://www.semanticscholar.org/paper/0e9f1dcbf841df7c808e24057f42a2e1b709ca6b},
+	abstract = {We propose what to our knowledge is a new technique for modeling the kinetics of voltage-gated ion channels in a functional context, in neurons or other excitable cells. The principle is to pharmacologically block the studied channel type, and to functionally replace it with dynamic clamp, on the basis of a computational model. Then, the parameters of the model are modified in real time (manually or automatically), with the objective of matching the dynamical behavior of the cell (e.g., action potential shape and spiking frequency), but also the transient and steady-state properties of the model (e.g., those derived from voltage-clamp recordings). Through this approach, one may find a model and parameter values that explain both the observed cellular dynamics and the biophysical properties of the channel. We extensively tested the method, focusing on Na(v) models. Complex Markov models (10-12 states or more) could be accurately integrated in real time at >50 kHz using the transition probability matrix, but not the explicit Euler method. The practicality of the technique was tested with experiments in raphe pacemaker neurons. Through automated real-time fitting, a Hodgkin-Huxley model could be found that reproduced well the action potential shape and the spiking frequency. Adding a virtual axonal compartment with a high density of Na(v) channels further improved the action potential shape. The computational procedure was implemented in the free QuB software, running under Microsoft Windows and featuring a friendly graphical user interface.},
+	author = {L. Milescu and T. Yamanishi and K. Ptak and Murtaza Z Mogri and Jeffrey C. Smith},
+	journal = {Biophysical journal},
+	volume = {95 1},
+	pages = {
+	66-87
+	},
+	doi = {10.1529/biophysj.107.118190},
+	pmid = {18375511},
+}
+
+@article{f682d342d9c3eb37d990d0ba9ca1408b5aadcc7b,
+	title = {Permissive and nonpermissive channel closings in CFTR revealed by a factor graph inference algorithm},
+	year = {2022},
+	url = {https://www.semanticscholar.org/paper/f682d342d9c3eb37d990d0ba9ca1408b5aadcc7b},
+	abstract = {S2 TL;DR: For single-channel patch-clamp traces, it is shown that the type of the closing can be accurately determined by an inference algorithm implemented on a factor graph, which is demonstrated using both simulated and lab-obtained patch-Clamp traces.},
+	author = {Alexander S. Moffett and G. Cui and P. J. Thomas and W. Hunt and N. McCarty and R. Westafer and A. Eckford},
+	journal = {Biophysical Reports},
+	volume = {2},
+	pages = {null},
+	doi = {10.1016/j.bpr.2022.100083},
+	pmid = {36425670},
+}
+
+@article{e9fc302e1c71578ac132998f542f9600f333cc28,
+	title = {A factor graph EM algorithm for inference of kinetic microstates from patch clamp measurements},
+	year = {2021},
+	url = {https://www.semanticscholar.org/paper/e9fc302e1c71578ac132998f542f9600f333cc28},
+	abstract = {We derive a factor graph EM (FGEM) algorithm, a technique that permits combined parameter estimation and statistical inference, to determine hidden kinetic microstates from patch clamp measurements. Using the cystic fibrosis transmembrane conductance regulator (CFTR) and nicotinic acetylcholine receptor (nAChR) as examples, we perform {\em Monte Carlo} simulations to demonstrate the performance of the algorithm. We show that the performance, measured in terms of the probability of estimation error, approaches the theoretical performance limit of maximum {\em a posteriori} estimation. Moreover, the algorithm provides a reliability score for its estimates, and we demonstrate that the score can be used to further improve the performance of estimation. We use the algorithm to estimate hidden kinetic states in lab-obtained CFTR single channel patch clamp traces.},
+	author = {Alexander S. Moffett and G. Cui and P. Thomas and W. Hunt and N. McCarty and R. Westafer and A. Eckford},
+	arxivid = {2106.09594},
+}
