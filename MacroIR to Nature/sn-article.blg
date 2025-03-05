@@ -1,0 +1,79 @@
+This is BibTeX, Version 0.99d (TeX Live 2025/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: sn-article.aux
+The style file: sn-mathphys-num.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: biblio.bib
+Warning--I didn't find a database entry for ""
+Warning--I didn't find a database entry for "estructura_p2x1"
+Warning--I didn't find a database entry for "Samways2021"
+Warning--I didn't find a database entry for "Changeux2008"
+Warning--I didn't find a database entry for "Traynelis2010"
+Warning--I didn't find a database entry for "North2006"
+Warning--I didn't find a database entry for "Bartlett2014"
+Warning--I didn't find a database entry for "Hattori2012"
+Warning--I didn't find a database entry for "Kasuya2017"
+Warning--I didn't find a database entry for "Mansoor2016"
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 30 entries,
+            7480 wiz_defined-function locations,
+            1413 strings with 16567 characters,
+and the built_in function-call counts, 117917 in all, are:
+= -- 14325
+> -- 1183
+< -- 580
++ -- 2743
+- -- 254
+* -- 7835
+:= -- 23198
+add.period$ -- 31
+call.type$ -- 30
+change.case$ -- 167
+chr.to.int$ -- 1587
+cite$ -- 30
+duplicate$ -- 1576
+empty$ -- 7502
+format.name$ -- 803
+if$ -- 27471
+int.to.chr$ -- 1
+int.to.str$ -- 48
+missing$ -- 0
+newline$ -- 481
+num.names$ -- 150
+pop$ -- 719
+preamble$ -- 1
+purify$ -- 137
+quote$ -- 0
+skip$ -- 8075
+stack$ -- 0
+substring$ -- 14879
+swap$ -- 933
+text.length$ -- 334
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1270
+warning$ -- 0
+while$ -- 915
+width$ -- 0
+write$ -- 659
+(There were 10 warnings)
