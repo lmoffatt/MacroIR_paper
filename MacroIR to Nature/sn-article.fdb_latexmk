@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex sn-article"] 1741205359.08952 "sn-article.aux" "sn-article.bbl" "sn-article" 1741205360.96905 0
+["bibtex sn-article"] 1741207886.83993 "sn-article.aux" "sn-article.bbl" "sn-article" 1741207888.6319 0
   "./biblio.bib" 1741189463.59076 39839 b50efacb6f8798e302a1df7a0137ce1f ""
   "./sn-mathphys-num.bst" 1740590504 64141 2560fd4f8e8321a304f732d035eb1b51 ""
-  "sn-article.aux" 1741205360.48011 38101 a765d1f94a676f446f916c37c7579795 "pdflatex"
+  "sn-article.aux" 1741207888.13622 38109 d5067a8dcbc891e5209c63159391b52d "pdflatex"
   (generated)
   "sn-article.bbl"
   "sn-article.blg"
   (rewritten before read)
-["pdflatex"] 1741205359.24227 "sn-article.tex" "sn-article.pdf" "sn-article" 1741205360.9693 0
+["pdflatex"] 1741207886.9953 "sn-article.tex" "sn-article.pdf" "sn-article" 1741207888.63227 0
   "/etc/texmf/web2c/texmf.cnf" 1666290182.67132 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1422827479 2083 60e36f8eac802fcaf19eabe2633b406e ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -215,10 +215,10 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1739672567 3352592 58186a4d8954dcf9b1fc0aa19120942e ""
   "Figure_1.pdf" 1740590504 15820 b866bd90b5f693efb50616cebaa427f1 ""
   "Figure_2.pdf" 1740590506 31964 651dc7b1289c4d61b205a6e6f5ff7412 ""
-  "sn-article.aux" 1741205360.48011 38101 a765d1f94a676f446f916c37c7579795 "pdflatex"
-  "sn-article.bbl" 1741205359.23209 9206 1d5c7037dca457adf4e310f1927e0bb6 "bibtex sn-article"
-  "sn-article.out" 1741205360.48011 22992 7a1065e051c6e7b11c6485b35b82c70e "pdflatex"
-  "sn-article.tex" 1741205357.35607 256246 897a660426b24862af1cd8be0cf64152 ""
+  "sn-article.aux" 1741207888.13622 38109 d5067a8dcbc891e5209c63159391b52d "pdflatex"
+  "sn-article.bbl" 1741207886.98421 9206 1d5c7037dca457adf4e310f1927e0bb6 "bibtex sn-article"
+  "sn-article.out" 1741207888.13622 22234 6f34f83bd03ad92a94c2bf1d59d2da45 "pdflatex"
+  "sn-article.tex" 1741207885.05618 250835 5af8059c0e1102d698216afa08d477f5 ""
   "sn-jnl.cls" 1740590504 55331 d7cf5cb282c5c6c90059534004dcdf13 ""
   (generated)
   "sn-article.aux"
