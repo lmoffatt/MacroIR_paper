@@ -416,17 +416,41 @@ By combining ultrashort ATP-pulse electrophysiology with our MacroIR approach an
 In redefining ligand efficacy in energetic terms—through modulation of transition-state barriers rather than merely endpoint stability—this work establishes kinetic asymmetry as a core principle of P2X2 gating. The MacroIR framework, with its broad applicability to complex macromolecular systems, provides a powerful blueprint for uniting kinetic data with structural mechanisms, advancing the field of dynamic structural biology and informing the rational design of therapeutics.
 
 
-
 \section{Methods}\label{sec:methods}
-We present the experimental data used to evaluate our approach, the kinetic schemes constructed for prediction, the likelihood function quantifying predictive accuracy, and the Evidence determination algorithm for comparing alternative kinetic schemes and inferring posterior parameter distributions.
 
+We describe here the experimental data used to evaluate our approach, the kinetic schemes constructed for prediction, the likelihood function quantifying predictive accuracy, and the algorithm for determining Bayesian evidence to compare alternative kinetic schemes and infer posterior parameter distributions.
 
+\subsection{Experimental Data: Outside-out Patch Recording}
 
-\subsection{Experimental data: Outside-out Patch recording}
+The experimental dataset analyzed in this study was previously published in \textit{The Journal of General Physiology} \cite{Moffatt_hume} and is reexamined here to develop and validate our approach. Recordings were obtained from macro outside-out patches containing hundreds to thousands of P2X2 channels. These patches were exposed to 0.2-ms ATP pulses at concentrations of 0.2, 0.5, 1, 2, and 10 mM delivered every 2 minutes, interspersed with 10-ms pulses of 1 mM ATP. The dataset is ideally suited for kinetic analysis due to the precise alignment of stimulus timing with channel responses, which were recorded directly from the patch. For complete experimental details—including solution compositions, recording conditions, and data acquisition protocols—please refer to the original publication \cite{Moffatt_hume}.
 
-The experimental data used in this study were previously published in The Journal of General Physiology (\cite{Moffatt_hume}) and are reanalyzed here to develop and validate our approach. These data were recorded from macro outside-out patches containing thousands of P2X2 channels, exposed to 0.2-ms pulses of ATP at concentrations of 0.2, 0.5, 1, 2, and 10 mM every 2 minutes, with interspersed 10-ms pulses of 1 mM ATP. The dataset is well-suited for kinetic analysis due to the precise alignment of stimulus timing with channel responses, which were measured directly from the patch \cite{Moffatt_hume}. For further details on the experimental procedure, including the solution compositions, recording conditions, and data acquisition, please refer to the original publication \cite{Moffatt_hume}.
-In order to analyze the dataset we did the following: we average at regular 
+For kinetic analysis, we segmented the data as follows. The 1-s pre-pulse period was divided into 72 intervals of equal duration. During the ATP pulse, the algorithm processed the raw data, whereas after the pulse the data were averaged over exponentially spaced intervals (approximately 10 points per decade). Additionally, for each 10-ms ATP pulse, one sample was retained from the second half of the pulse, corresponding to the equilibrium current.
+\subsection{Kinetic Models Under Test}
 
+We evaluated 11 kinetic models, including seven previously described by Moffatt and Hume \cite{Moffatt_hume} and four new models introduced in this study. These models can be classified into three distinct categories: \textbf{state models}, which describe receptor kinetics without explicitly incorporating allosteric interactions; \textbf{allosteric models}, which introduce modulations between specific transitions without an explicit structural correspondence; and \textbf{conformational models}, which explicitly map kinetic transitions onto physical structural rearrangements.
+
+\subsubsection{Previously Established Models}
+
+The seven previously established models represent progressively complex descriptions of receptor activation:
+
+\textbf{State Models:}  
+- \textit{Scheme I}: A Monod–Wyman–Changeux (MWC)-like model with independent binding sites and a single gating transition.  
+- \textit{Scheme II}: Incorporates an intermediate "flipped" state between the fully bound and open conformations.  
+- \textit{Scheme III}: Based on Ding and Sachs (1999), introduces multiple open states converging into a final closed state.  
+- \textit{Scheme IV}: Extends Scheme III by adding flipping transitions.
+
+\textbf{Allosteric Models:}  
+- \textit{Scheme V}: An allosteric expansion of the MWC model linking ligand binding to gating.  
+- \textit{Scheme VI}: Introduces a global flipping transition affecting the entire channel.  
+- \textit{Scheme VII}: Extends Scheme VI by allowing flipping to occur independently at each binding site, resulting in a highly interconnected state network.
+
+At the time these models were developed, it was not yet known that the ATP-binding site of P2X receptors was inter-subunit, as in Cys-loop receptors, rather than intra-subunit, as in glutamate receptors. Consequently, these models did not account for the complexity of ternary coupling between the ligand and the two subunits forming the binding site. Later, the resolution of closed and open structures of zP2X4 \cite{cerrada_p2x, abierta_p2x} confirmed the inter-subunit nature of the ATP-binding site and suggested that agonist binding promotes subunit rotation, hinting at a potential structural mechanism for gating.
+
+A major limitation of the allosteric models (Schemes VI and VII) was that they not only postulated allosteric coupling between binding and flipping (and between flipping and gating)—which could be justified if flipping were the structural mechanism transmitting binding energy to the pore—but also required a direct binding–gating interaction to achieve a good fit. The latter was harder to interpret mechanistically.
+
+\subsubsection{New Conformational Models}
+
+Motivated by structural insights from P2X4, we developed four new models that replace the hypothetical "flipping" state with a well-defined \textbf{subunit rotation} and
 \subsection{Kinetic schemes under test}
 We tested 11 kinetic schemes, including seven previously described by Moffatt and Hume and four new ones developed in this study. The seven established schemes represent progressively complex models of receptor dynamics. Scheme I follows a Monod-Wyman-Changeux (MWC)-like framework with independent binding sites and a single gating transition. Scheme II incorporates an intermediate "flipped" state between the fully bound and open conformations. Scheme III, based on Ding and Sachs (1999), introduces multiple open states converging on a final closed state, while Scheme IV extends this with additional flipping transitions. Schemes V to VII integrate allosteric interactions: Scheme V is an allosteric expansion of the MWC model linking ligand binding to gating, Scheme VI includes a global flipping transition affecting the entire channel, and Scheme VII refines this by allowing flipping to occur independently at each binding site, resulting in a highly interconnected state network. 
 At the time this paper was developed, it was not known that the binding site of purinergic receptors was not intra-subunit as in glutamate receptors but inter-subunit as in cys loop receptors. Therefore no though was put into the complexity of the ternary coupling between the binding molecule and both subunits that form the binding site. 
