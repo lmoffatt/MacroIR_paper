@@ -1009,6 +1009,39 @@ Since the probability of each observation \( {y}_n^{\text{obs}} \) is calculated
 where \( \mathcal{L}_i \) corresponds to the likelihood of the \( i \)-th measurement.
 
 
+\subsubsection{MicroIR: Bayesian Model for Time-Averaged Single-Channel Measurements}
+
+MicroIR extends classical Bayesian analysis to time-averaged measurements, offering an alternative solution to the missing events problem (see, e.g., Colquhoun \textit{et al.}). Instead of instantaneous observations, we record the time-averaged current \(\overline{y}^{\text{obs}}\) over an interval \(t\). Although the channel state fluctuates continuously during \(t\), the analysis relies solely on the initial state probability \(\boldsymbol{p}^{\text{prior}}\) and its evolution via \(\mathbf{P}(t)\) (Eq.~\ref{eq:master_equation_solution}).
+
+The joint probability of starting in state \(i\) and ending in state \(j\) is defined as
+\begin{equation}
+	\Pi_{i\rightarrow j}^{\text{prior}} = p_i^{\text{prior}}\,P_{i\rightarrow j},
+	\label{eq:joint_state_probability_short}
+\end{equation}
+or equivalently, in matrix form, \(\boldsymbol{\Pi}^{\text{prior}} = \mathrm{diag}(\boldsymbol{p}^{\text{prior}})\,\mathbf{P}\).
+
+The likelihood of observing \(\overline{y}^{\text{obs}}\) is then given by
+\begin{equation}
+	\mathcal{L} = \sum_{i,j} \Pi_{i\rightarrow j}^{\text{prior}}\,\mathcal{N}\!\Bigl(\overline{y}^{\text{obs}} - \Pi_{i\rightarrow j}^{\text{prior}}\,\overline{\Gamma}_{i\rightarrow j},\, \epsilon^2 + \sigma^2_{\overline{\Gamma}_{i\rightarrow j}}\Bigr),
+	\label{eq:integrated_likelihood_short}
+\end{equation}
+where \(\overline{\Gamma}_{i\rightarrow j}\) and \(\sigma^2_{\overline{\Gamma}_{i\rightarrow j}}\) denote the mean and variance of the current for transitions from \(i\) to \(j\).
+
+Using Bayes' rule, the posterior joint probability becomes
+\begin{equation}
+	\Pi_{i\rightarrow j}^{\text{post}} = \frac{\Pi_{i\rightarrow j}^{\text{prior}}\,\mathcal{N}\!\Bigl(\overline{y}^{\text{obs}} - \Pi_{i\rightarrow j}^{\text{prior}}\,\overline{\Gamma}_{i\rightarrow j},\, \epsilon^2 + \sigma^2_{\overline{\Gamma}_{i\rightarrow j}}\Bigr)}{P(\overline{y}^{\text{obs}})}.
+	\label{eq:integrated_posterior_short}
+\end{equation}
+Marginalization over the initial state yields the prior for the next interval:
+\begin{equation}
+	p_j^{\text{prior}}(t_{n+1}) = \sum_i \Pi_{i\rightarrow j}^{\text{post}}.
+	\label{eq:next_prior_short}
+\end{equation}
+Cumulative log-likelihood is then updated additively over successive intervals. Although the exact distribution of the mean current is not strictly normal, we approximate it as such, assuming instrumental noise dominates over gating noise.
+
+This approach, while not applied in the present work, provides a conceptual basis for MacroIR and can be generalized to other single-molecule systems, such as molecular motors.
+
+
 \subsubsection{MicroIR, the Bayesian Model of Time-Averaged Single-Channel Measurements}
 
 This new algorithm allows to analyze hidden markovian processes where the information we gain from them results from a time-weighed averaged response,as opposed as from an instantaneous observation. It is another solution for the missing events problem, but from a different perspective, one that does not intend to idealize the recording but to directly calculate the likelihood. This would allow to compare the evidence of alternative kinetic models, something that is not straightforward when an idealization step is included.  
@@ -1064,6 +1097,31 @@ Since the probability of each observation \( \overline{y}_n^{\text{obs}} \) is c
 \end{equation}
 
 While the exact distribution of the mean current is not strictly normal, we approximate it as such, assuming that instrumental noise dominates over gating noise.
+
+\subsubsection{Calculation of the Average Current Conditional on Starting and Ending States}
+
+The time-averaged current for transitions from state \(i\) to state \(j\) over an interval \(t\) is defined as
+\begin{equation}
+	\overline{\Gamma}_{i \rightarrow j} = \frac{1}{t\,P_{i\rightarrow j}} \int_0^t \sum_k P_{i\rightarrow k}(\tau)\,\gamma_k\,P_{k\rightarrow j}(t-\tau)\,d\tau,
+	\label{eq:gamma_ij_integral_short}
+\end{equation}
+where \(P_{i\rightarrow j}\) is the overall transition probability and \(\gamma_k\) is the current associated with state \(k\).
+
+Employing the spectral decomposition of the rate matrix \(\mathbf{Q}\), this expression can be recast in closed form:
+\begin{equation}
+	\overline{\Gamma}_{i \rightarrow j} = \frac{1}{P_{i\rightarrow j}} \sum_{k, n_1, n_2} V_{i n_1}\,V^{-1}_{n_1 k}\,\gamma_k\,V_{k n_2}\,V^{-1}_{n_2 j}\,E_2(\lambda_{n_1}t,\lambda_{n_2}t),
+	\label{eq:gamma_ij_formula_short}
+\end{equation}
+where \(\mathbf{V}\) and \(\mathbf{V}^{-1}\) are the eigenvector matrix of \(\mathbf{Q}\) and its inverse, \(\lambda_{n}\) are the corresponding eigenvalues, and
+\begin{equation}
+	E_2(x,y)=
+	\begin{cases}
+		\frac{e^x-e^y}{x-y}, & x\neq y, \\
+		e^x, & x=y.
+	\end{cases}
+	\label{eq:E2_short}
+\end{equation}
+
 
 \subsubsection{Calculation of the Average Current Conditional on Starting and Ending States}
 
