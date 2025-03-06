@@ -784,7 +784,7 @@ To elucidate the mechanism underlying purinergic receptor activation, we employe
 
 For clarity, kinetic models are classified into three categories: \textbf{state models} describe channel kinetics solely in terms of state transitions; \textbf{allosteric models} incorporate modulatory interactions without specifying the structural basis; and \textbf{conformational models} map these interactions onto explicit structural changes.
 
-Figure~1 displays Bayesian evidence for selected schemes—two allosteric models and one state model—along with three new conformational models inspired by structural insights from P2X4. In the new conformational models, ATP binding at intersubunit interfaces drives receptor activation through independent rotational movements of each subunit, with distinct left and right secondary couplings mediating allosteric signaling and channel conductance determined by the number of rotated subunits.
+Figure \ref{fig:figure1} displays Bayesian evidence for selected schemes—two allosteric models (Fig. \ref{fig:figure1}c) and one state model (Fig. \ref{fig:figure1}b)—along with three new conformational models inspired by structural insights from P2X4 (Fig. \ref{fig:figure1}a). In the new conformational models, ATP binding at intersubunit interfaces drives receptor activation through independent rotational movements of each subunit, with distinct left and right secondary couplings mediating allosteric signaling and channel conductance determined by the number of rotated subunits.
 
 Within this framework, we derived four conformational variants: Scheme~X features distinct left and right couplings; Scheme~IX employs symmetric couplings; Scheme~VIII (Extended Data Fig.~1) introduces a ternary coupling mechanism (involving left rotation, binding, and right rotation); and Scheme~XI combines independent and ternary interactions. In the ternary paradigm, modulation requires the presence of any two of the three conformational changes, favoring a concerted opening mechanism.
 
@@ -809,12 +809,25 @@ For clarity, we classify kinetic models into three categories. \textbf{State mod
 	\includegraphics[width=\linewidth]{Figure_1.pdf}
 	\caption{\textbf{Bayesian Evidence for Conformational, Allosteric, and State models.}  
 		(\textbf{a}) Schematic representation of the newly proposed Conformational models. R: resting; F: flipped; RA: agonist-bound; RB, BR: rotation-binding and binding-rotation allosteric couplings, indicating interactions with the left or right subunit; RBR: rotation-binding-rotation ternary allosteric coupling. Dotted lines indicate sections that are repeated three times, as specified by the subscript. In Scheme~IX, RB is equal to BR, in Scheme~X they differ, and in Scheme~XI ternary coupling is also present.  
-		(\textbf{b}) Regular Scheme~IV. C: closed state; CA$_n$: closed state with $n$ agonists bound; F: flipped state; O$_n$: $n$th alternative open state; D: a potentially desensitized closed state where unbinding is restricted.  
+		(\textbf{b}) State Scheme~IV. C: closed state; CA$_n$: closed state with $n$ agonists bound; F: flipped state; O$_n$: $n$th alternative open state; D: a potentially desensitized closed state where unbinding is restricted.  
 		(\textbf{c}) Allosteric Schemes~VI and VII. C: closed channel; O: open channel; A, B, C: allosteric couplings; subscripts indicate the number of repetitions.  
 		(\textbf{d--e}) Bayesian evidence for each illustrated scheme, computed using the recursive MacroIR algorithm (\textbf{d}) and the non-recursive MacroINR algorithm (\textbf{e}). Color coding is used to facilitate scheme ranking comparisons. Gray rectangles indicate the standard error of the log-evidence.  
 	}
 	\label{fig:figure1}
 \end{figure}
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Supplementary_Figure_1.pdf}
+	\caption{\textbf{Bayesian Evidence for all Conformational, Allosteric, and State models.}  
+		(\textbf{a}) Schematic representation of newly proposed Conformational models. R: resting; F: flipped; RA: agonist-bound; RBR: rotation-binding-rotation ternary allosteric coupling. Dotted lines indicate sections that are repeated three times, as specified by the subscript.  
+		(\textbf{b}) Regular Scheme~I. C: closed state; CA$_n$: closed state with $n$ agonists bound; F: flipped state; O$_n$: $n$th alternative open state; D: a potentially desensitized closed state where unbinding is restricted.  
+		(\textbf{c}) Allosteric Schemes~VI and VII. C: closed channel; O: open channel; A, B, C: allosteric couplings; subscripts indicate the number of repetitions.  
+		(\textbf{d--e}) Bayesian evidence for each illustrated scheme, computed using the recursive MacroIR algorithm (\textbf{d}) and the non-recursive MacroINR algorithm (\textbf{e}). Color coding is used to facilitate scheme ranking comparisons. Gray rectangles indicate the standard error of the log-evidence.  
+	}
+	\label{fig:figure1}
+\end{figure}
+
 
 Figure~1 displays Bayesian evidence for two allosteric models and one state model—selected based on prior fitting performance—along with three new conformational models motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couples to independent rotational movements of each subunit. Two distinct secondary couplings—one on the left and one on the right—are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
 \begin{comment}
