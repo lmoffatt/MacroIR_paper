@@ -797,13 +797,6 @@ Among the tested models, Scheme~X—featuring independent left and right couplin
 Extended Data Fig.~1 presents an analysis of five additional schemes: three state models (Schemes~I, II, and III), one allosteric model (Scheme~V), and one conformational model (Scheme~VIII). Comparisons reveal that incorporating a flip state substantially enhances performance and that complex kinetic schemes outperform simpler models featuring a single open state. Moreover, a model relying solely on ternary coupling (Scheme~VIII) underperforms relative to Schemes~X and XI.
 
 Collectively, these findings support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to the rotation of both left and right subunits; (iii) these couplings differ in magnitude; and (iv) channel conductance depends on the number of rotated subunits. This framework accounts for P2X2 activation kinetics without invoking an additional, difficult-to-justify binding–gating interaction, thereby reinforcing the validity of conformational models. We further interpret the flip state as the kinetic manifestation of individual subunit rotation.
-
-
-\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
-
-To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data obtained from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were elicited by 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or, its  non-recursive variant, MacroINR method.
-
-For clarity, we classify kinetic models into three categories. \textbf{State models} describe channel kinetics solely in terms of state transitions, without explicitly incorporating allosteric interactions. \textbf{Allosteric models} extend this framework by incorporating modulatory interactions, even when the underlying structural basis remains unspecified. \textbf{Conformational models} represent a refined subclass of allosteric models in which the allosteric interactions are directly mapped onto specific structural changes.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=\linewidth]{Figure_1.pdf}
@@ -828,6 +821,13 @@ For clarity, we classify kinetic models into three categories. \textbf{State mod
 	\label{fig:figure1}
 \end{figure}
 
+
+
+\section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
+
+To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using experimental data obtained from outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were elicited by 0.2\,ms pulses of MgATP at concentrations of 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, which efficiently explores complex, multimodal posterior distributions, with the likelihood approximated using either the recursive MacroIR or, its  non-recursive variant, MacroINR method.
+
+For clarity, we classify kinetic models into three categories. \textbf{State models} describe channel kinetics solely in terms of state transitions, without explicitly incorporating allosteric interactions. \textbf{Allosteric models} extend this framework by incorporating modulatory interactions, even when the underlying structural basis remains unspecified. \textbf{Conformational models} represent a refined subclass of allosteric models in which the allosteric interactions are directly mapped onto specific structural changes.
 
 Figure~1 displays Bayesian evidence for two allosteric models and one state model—selected based on prior fitting performance—along with three new conformational models motivated by structural insights from P2X4. In these new models, receptor activation is driven by ATP binding at intersubunit interfaces that couples to independent rotational movements of each subunit. Two distinct secondary couplings—one on the left and one on the right—are proposed to mediate allosteric signaling, with channel conductance modeled as a function of the number of rotated subunits (maximal when all three are engaged).
 \begin{comment}
