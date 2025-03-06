@@ -871,8 +871,12 @@ To address this multimodality, we segregated the posterior samples into two subp
 \end{figure}
 
 \section{Structural Basis of Kinetic Rate Modulation}
-
-
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_3_scheme_10.pdf}
+	\caption{Kinetic scheme for allosteric modulation in purinergic receptors. (a) Cubic schematic illustrating three coupled transitions---agonist (ATP) binding, left subunit rotation, and right subunit rotation---with each vertex representing a distinct receptor state and each edge labeled with its corresponding kinetic expression. $r_{on}$ and $r_{off}$ denote the rotation and unrotation rates, respectively; $b_{on}$ and $b_{off}$ denote the binding and unbinding rates; $BR_{b_{on}}$ represents the Binding-Rotation coupling for binding, and L is the ligand concentration. Posterior distributions for the rate constants of binding ($b_{\text{on}}/b_{\text{off}}$) and rotation ($r_{\text{on}}/r_{\text{off}}$) segregate into four clusters reflecting the receptor's structural states (both subunits resting, left rotated, right rotated, and both rotated for binding; both binding sites free, right occupied, left occupied, both occupied for rotation); colored lines denote the magnitude of the logarithm of the allosteric coupling factors for the on and off transitions. (d) Logarithmic plot of the on versus off rate coupling factors that captures how ATP binding or subunit rotations differentially accelerate or decelerate the kinetic transitions---highlighting a stronger coupling at the right subunit compared to the left. Insets illustrate the allosteric modulation of the energetic barriers for binding and rotation, calculated with an exponential prefactor of $10^{-6}$~s (light blue and yellow: RB for binding and rotation; dark blue and red: BR for binding and rotation).}
+	\label{fig:rates_SchemeX}
+\end{figure}
 
 Our kinetic schemes propose two distinct allosteric couplings, depending on whether modulation involves the subunit to the left or to the right of the ATP binding site. Figure~3a illustrates this concept, adapted from the original schematic that determined the open-channel structure of a purinergic receptor \cite{abierta_p2x}, where ATP binding is accompanied by the rotation of both ligand-contacting subunits. We extend that view by positing that subunits can rotate independently rather than synchronously, with ATP binding modulating these subtle conformational changes.
 
@@ -887,16 +891,20 @@ A clear asymmetry emerges between the left and right couplings. Specifically, th
 Figure~\ref{fig:rates_SchemeX}d further elucidates the kinetic allosteric coupling by plotting the logarithm of the \textit{on} rate coupling against that of the \textit{off} rate. A positive \textit{on} log factor indicates that the active state of the allosteric partner accelerates the transition, while a negative value denotes deceleration. Since the equilibrium constant is the ratio of the \textit{on} and \textit{off} rates, the overall allosteric effect is determined by the difference between these kinetic contributions. For example, if the mechanism solely stabilized the active state, one would expect a highly positive \textit{on} factor and a moderately negative \textit{off} factor; if it destabilized the resting state, the reverse would be true. When both mechanisms operate, the \textit{on} and \textit{off} factors should be of similar magnitude but opposite in sign—a pattern observed for $BR_{b_{\text{on}}}$, which appears to stabilize the bound state while only modestly destabilizing the free state.
 
 Interestingly, two kinetic couplings deviate from these expectations. In one case, ATP binding at the left site increases both the \textit{on} and \textit{off} rates, suggesting a catalytic effect that lowers the energetic barrier for rotation while stabilizing the rotated state. Conversely, rotation of the left subunit reduces both binding and unbinding rates, yielding only a minor change in equilibrium but a substantial reduction in the \texttt{b\_on} rate. This observation implies an altered energetic barrier, possibly due to steric hindrance of the binding site upon rotation. By assuming a preexponential factor of $10^{-6}$, we calculated the posterior distributions of the corresponding energetic barriers, which illustrate the deduced changes in energy.
-  \begin{figure}[t]
-	\centering
-	\includegraphics[width=\linewidth]{Figure_3_scheme_10.pdf}
-	\caption{}
-	\label{fig:rates_SchemeX}
-  \end{figure}
 
+  
 
 \section{From subunit cooperativity to emergent channel dynamics}
 \label{sec:collective}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_4_m.pdf}
+	\caption{Kinetic scheme for allosteric modulation in purinergic receptors. (a) Cubic schematic illustrating three coupled transitions---agonist (ATP) binding, left subunit rotation, and right subunit rotation---with each vertex representing a distinct receptor state and each edge labeled with its corresponding kinetic expression. $r_{on}$ and $r_{off}$ denote the rotation and unrotation rates, respectively; $b_{on}$ and $b_{off}$ denote the binding and unbinding rates; $BR_{b_{on}}$ represents the Binding-Rotation coupling for binding, and L is the ligand concentration. Posterior distributions for the rate constants of binding ($b_{\text{on}}/b_{\text{off}}$) and rotation ($r_{\text{on}}/r_{\text{off}}$) segregate into four clusters reflecting the receptor's structural states (both subunits resting, left rotated, right rotated, and both rotated for binding; both binding sites free, right occupied, left occupied, both occupied for rotation); colored lines denote the magnitude of the logarithm of the allosteric coupling factors for the on and off transitions. (d) Logarithmic plot of the on versus off rate coupling factors that captures how ATP binding or subunit rotations differentially accelerate or decelerate the kinetic transitions---highlighting a stronger coupling at the right subunit compared to the left. Insets illustrate the allosteric modulation of the energetic barriers for binding and rotation, calculated with an exponential prefactor of $10^{-6}$~s (light blue and yellow: RB for binding and rotation; dark blue and red: BR for binding and rotation).}
+	\label{fig:SchemeX_full}
+\end{figure}
+
+
 
 Building upon our analysis of kinetic coupling effects at individual subunits (Figs. 1-3), we developed a comprehensive Markov model to understand how these molecular interactions scale to determine whole-channel behavior (Fig. 4). The model represents each subunit as a major elliptical state containing nested binding sites, with filled and empty ellipses distinguishing activated (rotated/bound) from resting (unrotated/free) states. Transition dynamics are encoded through a color scheme where: gray indicates baseline non-interacting states; orange marks strong BR-type interactions; light blue denotes moderate RB-type interactions; and purple represents combined interaction states (additive orange + light blue). Vertical transitions correspond to subunit rotations while horizontal transitions reflect ligand binding/unbinding events.
 
