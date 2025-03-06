@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex sn-article"] 1741207886.83993 "sn-article.aux" "sn-article.bbl" "sn-article" 1741207888.6319 0
+["bibtex sn-article"] 1741208700.31245 "sn-article.aux" "sn-article.bbl" "sn-article" 1741208701.919 0
   "./biblio.bib" 1741189463.59076 39839 b50efacb6f8798e302a1df7a0137ce1f ""
   "./sn-mathphys-num.bst" 1740590504 64141 2560fd4f8e8321a304f732d035eb1b51 ""
-  "sn-article.aux" 1741207888.13622 38109 d5067a8dcbc891e5209c63159391b52d "pdflatex"
+  "sn-article.aux" 1741208701.42539 21834 33e90447a8bed0c65e21551bd3cfee9e "pdflatex"
   (generated)
   "sn-article.bbl"
   "sn-article.blg"
   (rewritten before read)
-["pdflatex"] 1741207886.9953 "sn-article.tex" "sn-article.pdf" "sn-article" 1741207888.63227 0
+["pdflatex"] 1741208700.47025 "sn-article.tex" "sn-article.pdf" "sn-article" 1741208701.91921 0
   "/etc/texmf/web2c/texmf.cnf" 1666290182.67132 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1422827479 2083 60e36f8eac802fcaf19eabe2633b406e ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -18,7 +18,6 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1246382020 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/NewTXBMI.tfm" 1572128992 1392 a17207635f5e84ce99b1f3136dfb1ea1 ""
-  "/usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/NewTXBMI7.tfm" 1572128992 1524 6195c1436f64c9e41cd1667195ff3671 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/NewTXMI.tfm" 1572128992 1408 ef71a9098da4d5a1a85b5920860b6731 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/NewTXMI5.tfm" 1572128992 1608 3b4f5db1bef3c1dab5d5687ad287108b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/NewTXMI7.tfm" 1572128992 1556 4df22ac3e5cc03ff0898d83d8817c6cf ""
@@ -66,7 +65,6 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm" 1229303445 692 1b6510779f0f05e9cbf03e0f6c8361e6 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txtt.tfm" 1136768653 1200 1032be7d597a4dce33bcda3c08fc1be0 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb" 1572128992 32541 18cc6d4a67e7278b3acd3373acd68025 ""
-  "/usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXBMI7.pfb" 1572128992 35056 1183a6e094e4bf21484cb11978b3bb53 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb" 1724614892 32409 aee30089ce2d804d7327a2f8ccff0462 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb" 1572128992 35776 3cf3205badc1a3a38b65b34f4cef78d9 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb" 1572128992 34733 61fa3c01fac511e451670c1b454ff211 ""
@@ -85,7 +83,6 @@
   "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntx-Italic-tlf-ot1.vf" 1572470264 956 2e470d34f6c84588eb717201f2f99e2d ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntx-Regular-tlf-ot1.vf" 1583272976 956 44be8e0aea9c6d145fc21c9948a6b4b5 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxbmi.vf" 1724614892 2732 4217cf4aec8ce87253b05a240d750bc5 ""
-  "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxbmi7.vf" 1622581641 2700 60089fa1371a90c88d0c38466c3363e0 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxbmia.vf" 1724614892 2056 7ca1756c0b48e9ef58fdcba7051e3e0b ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxexa.vf" 1487028062 576 6ffe6b42c20f7fbf4391e66fec9eda3f ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxexx.vf" 1699567298 1716 73c8d39d4c3ace9ec98a8f066bb3b494 ""
@@ -215,10 +212,10 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1739672567 3352592 58186a4d8954dcf9b1fc0aa19120942e ""
   "Figure_1.pdf" 1740590504 15820 b866bd90b5f693efb50616cebaa427f1 ""
   "Figure_2.pdf" 1740590506 31964 651dc7b1289c4d61b205a6e6f5ff7412 ""
-  "sn-article.aux" 1741207888.13622 38109 d5067a8dcbc891e5209c63159391b52d "pdflatex"
-  "sn-article.bbl" 1741207886.98421 9206 1d5c7037dca457adf4e310f1927e0bb6 "bibtex sn-article"
-  "sn-article.out" 1741207888.13622 22234 6f34f83bd03ad92a94c2bf1d59d2da45 "pdflatex"
-  "sn-article.tex" 1741207885.05618 250835 5af8059c0e1102d698216afa08d477f5 ""
+  "sn-article.aux" 1741208701.42539 21834 33e90447a8bed0c65e21551bd3cfee9e "pdflatex"
+  "sn-article.bbl" 1741208700.46138 9206 1d5c7037dca457adf4e310f1927e0bb6 "bibtex sn-article"
+  "sn-article.out" 1741208701.42939 13843 66a70ae2f0be6f6cdd94203dad52adf9 "pdflatex"
+  "sn-article.tex" 1741208691.48528 196013 b08314063e37dfbc287ab64dd3ac8581 ""
   "sn-jnl.cls" 1740590504 55331 d7cf5cb282c5c6c90059534004dcdf13 ""
   (generated)
   "sn-article.aux"
