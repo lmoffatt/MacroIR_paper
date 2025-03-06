@@ -428,24 +428,24 @@ For kinetic analysis, we segmented the data as follows. The 1-s pre-pulse period
 
 \subsection{Kinetic Models Under Test}
 
-We evaluated 11 kinetic models, including seven previously described by Moffatt and Hume \cite{Moffatt_hume} and four new models introduced in this study. These models can be classified into three distinct categories: \textbf{state models}, which describe receptor kinetics without explicitly incorporating allosteric interactions; \textbf{allosteric models}, which introduce modulations between specific transitions without an explicit structural correspondence; and \textbf{conformational models}, which explicitly map kinetic transitions onto physical structural rearrangements.
+We evaluated 11 kinetic models, including seven previously described by Moffatt and Hume \cite{Moffatt_hume} and four new models introduced in this study. These models can be classified  into three distinct categories: \textbf{state models}, which describe receptor kinetics without explicitly incorporating allosteric interactions; \textbf{allosteric models}, which introduce modulations between specific transitions without an explicit structural correspondence; and \textbf{conformational models}, which explicitly map kinetic transitions onto physical structural rearrangements.
 
 \subsubsection{Previously Established Models}
 
 The seven previously established models represent progressively complex descriptions of receptor activation:
 
 \textbf{State Models:}  
-- \textit{Scheme I}: A \textbf{Katz–Castillo} model featuring independent ligand-binding sites and a single gating transition, with no explicit allosteric interactions.  
+- \textit{Scheme I}: A Minimal linear scheme for a homotrimeric channel in which all binding sites must be occupied before channel opening can occur.  
 - \textit{Scheme II}: Extends Scheme I by introducing an intermediate "flipped" state between the fully bound and open conformations, allowing for a sequential activation process.  
-- \textit{Scheme III}: Based on Ding and Sachs (1999), this scheme introduces multiple open states converging into a final closed state, refining receptor deactivation pathways.  
-- \textit{Scheme IV}: Builds upon Scheme III by incorporating additional flipping transitions, enhancing the model’s ability to capture intermediate activation states.  
+- \textit{Scheme III}: Preferred scheme on a single channel study \cite{properties_single_channe}, this scheme introduces multiple open states converging into a final closed state, refining receptor deactivation pathways.  
+- \textit{Scheme IV}: Builds upon Scheme III by incorporating a flipped state.  
 
 \textbf{Allosteric Models:}  
 - \textit{Scheme V}: A \textbf{Monod-Wyman-Changeux (MWC)} model for a trimeric receptor, in which ligand binding promotes a concerted gating transition through an allosteric mechanism.  
 - \textit{Scheme VI}: Introduces an explicit \textbf{flipping transition} that can be allosterically modulated. In this scheme, binding increases the probability of flipping, which in turn increases the probability of opening.  
 - \textit{Scheme VII}: Extends Scheme VI by allowing flipping to occur independently at each binding site, creating a highly interconnected state network in which binding, flipping, and gating are coupled.  
 
-At the time these models were developed, it was not yet known that the ATP-binding site of P2X receptors was inter-subunit, as in Cys-loop receptors, rather than intra-subunit, as in glutamate receptors. Consequently, these models did not account for the complexity of ternary coupling between the ligand and the two subunits forming the binding site. Later, the resolution of closed and open structures of zP2X4 \cite{cerrada_p2x, abierta_p2x} confirmed the inter-subunit nature of the ATP-binding site and suggested that agonist binding promotes subunit rotation, hinting at a potential structural mechanism for gating.
+At the time these models were developed, it was not yet known that the ATP-binding site of P2X receptors was inter-subunit, as in Cys-loop receptors, rather than intra-subunit, as in glutamate receptors. Consequently, these models did not account for the complexity of ternary coupling. Later, the resolution of closed and open structures of zP2X4 \cite{cerrada_p2x, abierta_p2x} confirmed the inter-subunit nature of the ATP-binding site and suggested that agonist binding promotes subunit rotation, hinting at a potential structural mechanism for gating.
 
 A major limitation of the allosteric models (Schemes VI and VII) was that they not only postulated allosteric coupling between binding and flipping (and between flipping and gating)—which could be justified if flipping were the structural mechanism transmitting binding energy to the pore—but also required a direct binding–gating interaction to achieve a good fit. The latter was harder to interpret mechanistically. 
 
@@ -515,144 +515,6 @@ BR_{b_{\text{off}}} = \frac{b^*_{\text{off}}}{b_{\text{off}}},
 \[
 BR_{r_{\text{off}}} = \frac{r^*_{\text{off}}}{r_{\text{off}}}.
 \]
-
-
-\subsection{Kinetic Schemes Under Test}
-
-We evaluated 11 kinetic schemes to understand the receptor dynamics, comprising seven previously described by Moffatt and Hume and four novel models developed in this study. These schemes are categorized based on their underlying assumptions and structural features into state models, allosteric models, and conformational models.
-
-\subsubsection{State Models}
-
-\textbf{Scheme I} is a classical \textit{Katz–Castillo} model, featuring independent binding sites and a single gating transition. This model does not incorporate allosteric interactions between binding sites.
-
-\textbf{Scheme II} introduces an intermediate "flipped" state between the fully bound and open conformations, providing an additional layer to the receptor's activation pathway.
-
-\textbf{Scheme III}, inspired by Ding and Sachs (1999), proposes multiple open states converging on a final closed state, capturing the complexity of receptor deactivation.
-
-\textbf{Scheme IV} extends Scheme III by incorporating additional flipping transitions, offering a more detailed representation of the receptor's kinetic behavior.
-
-\subsubsection{Allosteric Models}
-
-\textbf{Scheme V} is an application of the \textit{Monod-Wyman-Changeux (MWC)} model tailored for trimeric receptors, linking ligand binding to gating through allosteric interactions.
-
-\textbf{Scheme VI} includes a global flipping transition affecting the entire channel, introducing a concerted mechanism of receptor activation.
-
-\textbf{Scheme VII} refines Scheme VI by allowing flipping to occur independently at each binding site, resulting in a highly interconnected state network.
-
-\subsubsection{Conformational Models}
-
-Advancements in structural biology have revealed that the binding site of purinergic receptors is inter-subunit, similar to cys-loop receptors, rather than intra-subunit as in glutamate receptors. This insight necessitated the development of new models that account for the ternary coupling between the ligand and the two subunits forming the binding site.
-
-\textbf{Scheme VIII} considers only the ternary coupling (RBR) between ligand binding and the rotation of both subunits forming the binding site.
-
-\textbf{Scheme IX} assumes the ternary coupling factor (RBR) equals one and that the coupling between ligand binding and subunit rotation is symmetric (i.e., RB = BR).
-
-\textbf{Scheme X} also sets RBR to one but allows for independent coupling parameters for the rotation of each subunit (i.e., RB and BR are independent).
-
-\textbf{Scheme XI} incorporates all three couplings (RB, BR, and RBR) simultaneously, providing a comprehensive model of the receptor's conformational changes upon ligand binding.
-
-\subsubsection{Conductance Parameterization}
-
-For one of the top-performing models (Scheme X), we hypothesized that the current is proportional to the number of rotated subunits. The relationship was modeled by:
-
-\[
-i(n) = i_{\text{max}} \cdot \frac{E_n}{E_n + 1}, \quad E_n = E_0 \cdot F_g^n,
-\]
-
-where \( E_n \) represents the efficacy of the \( n \)-rotated state. This assumption reduced the number of states by half, significantly enhancing computational feasibility.
-
-\subsubsection{Kinetic and Equilibrium Allosteric Factors}
-
-Building upon our previous work, we extended the allosteric framework, traditionally applied to equilibrium constants, to kinetic rates. In the absence of interaction, two conformational changes, \( g \) and \( r \), are described by four independent parameters: \( b_{\text{on}} \), \( b_{\text{off}} \), \( r_{\text{on}} \), and \( r_{\text{off}} \). Introducing a BR interaction yields four new parameters in the activated state: \( b^*_{\text{on}} \), \( b^*_{\text{off}} \), \( r^*_{\text{on}} \), and \( r^*_{\text{off}} \). Microscopic reversibility imposes the constraint:
-
-\[
-b_{\text{on}} \cdot r^*_{\text{on}} \cdot b^*_{\text{off}} \cdot r_{\text{off}} = r_{\text{on}} \cdot b^*_{\text{on}} \cdot r^*_{\text{off}} \cdot b_{\text{off}},
-\]
-
-leading to:
-
-\[
-\frac {\frac {b_{\text{on}}}{b_{\text{off}}}}{\frac {b^*_{\text{on}}} {b^*_{\text{off}}}} = \frac {\frac {r_{\text{on}}}{r_{\text{off}}}}{\frac {r^*_{\text{on}}} {r^*_{\text{off}}}} = BR_{\text{eq}}.
-\]
-
-Thus, only two extra parameters are needed to determine the coupled kinetic rates, defined in terms of the forward rates:
-
-\[
-BR_{b_{\text{on}}} = \frac{b^*_{\text{on}}}{b_{\text{on}}},
-\]
-\[
-BR_{r_{\text{on}}} = \frac{r^*_{\text{on}}}{r_{\text{on}}}.
-\]
-
-For evidence determination, we utilized these parameters. Additionally, considering the converse couplings proved helpful:
-
-\[
-BR_{b_{\text{off}}} = \frac{b^*_{\text{off}}}{b_{\text{off}}},
-\]
-\[
-BR_{r_{\text{off}}} = \frac{r^*_{\text{off}}}{r_{\text{off}}}.
-\]
-
-
-\subsection{Kinetic Models Under Test}
-
-We evaluated 11 kinetic models, including seven previously described by Moffatt and Hume \cite{Moffatt_hume} and four new models introduced in this study. These models can be classified into three distinct categories: \textbf{state models}, which describe receptor kinetics without explicitly incorporating allosteric interactions; \textbf{allosteric models}, which introduce modulations between specific transitions without an explicit structural correspondence; and \textbf{conformational models}, which explicitly map kinetic transitions onto physical structural rearrangements.
-
-\subsubsection{Previously Established Models}
-
-The seven previously established models represent progressively complex descriptions of receptor activation:
-
-\textbf{State Models:}  
-- \textit{Scheme I}: A Monod–Wyman–Changeux (MWC)-like model with independent binding sites and a single gating transition.  
-- \textit{Scheme II}: Incorporates an intermediate "flipped" state between the fully bound and open conformations.  
-- \textit{Scheme III}: Based on Ding and Sachs (1999), introduces multiple open states converging into a final closed state.  
-- \textit{Scheme IV}: Extends Scheme III by adding flipping transitions.
-
-\textbf{Allosteric Models:}  
-- \textit{Scheme V}: An allosteric expansion of the MWC model linking ligand binding to gating.  
-- \textit{Scheme VI}: Introduces a global flipping transition affecting the entire channel.  
-- \textit{Scheme VII}: Extends Scheme VI by allowing flipping to occur independently at each binding site, resulting in a highly interconnected state network.
-
-At the time these models were developed, it was not yet known that the ATP-binding site of P2X receptors was inter-subunit, as in Cys-loop receptors, rather than intra-subunit, as in glutamate receptors. Consequently, these models did not account for the complexity of ternary coupling between the ligand and the two subunits forming the binding site. Later, the resolution of closed and open structures of zP2X4 \cite{cerrada_p2x, abierta_p2x} confirmed the inter-subunit nature of the ATP-binding site and suggested that agonist binding promotes subunit rotation, hinting at a potential structural mechanism for gating.
-
-A major limitation of the allosteric models (Schemes VI and VII) was that they not only postulated allosteric coupling between binding and flipping (and between flipping and gating)—which could be justified if flipping were the structural mechanism transmitting binding energy to the pore—but also required a direct binding–gating interaction to achieve a good fit. The latter was harder to interpret mechanistically.
-
-\subsubsection{New Conformational Models}
-
-Motivated by structural insights from P2X4, we developed four new models that replace the hypothetical "flipping" state with a well-defined \textbf{subunit rotation} and
-\subsection{Kinetic schemes under test}
-We tested 11 kinetic schemes, including seven previously described by Moffatt and Hume and four new ones developed in this study. The seven established schemes represent progressively complex models of receptor dynamics. Scheme I follows a Monod-Wyman-Changeux (MWC)-like framework with independent binding sites and a single gating transition. Scheme II incorporates an intermediate "flipped" state between the fully bound and open conformations. Scheme III, based on Ding and Sachs (1999), introduces multiple open states converging on a final closed state, while Scheme IV extends this with additional flipping transitions. Schemes V to VII integrate allosteric interactions: Scheme V is an allosteric expansion of the MWC model linking ligand binding to gating, Scheme VI includes a global flipping transition affecting the entire channel, and Scheme VII refines this by allowing flipping to occur independently at each binding site, resulting in a highly interconnected state network. 
-At the time this paper was developed, it was not known that the binding site of purinergic receptors was not intra-subunit as in glutamate receptors but inter-subunit as in cys loop receptors. Therefore no though was put into the complexity of the ternary coupling between the binding molecule and both subunits that form the binding site. 
-Later the structure of closed and open zP2X4 came out. This solidify the concept of an inter-subunit binding site and a possible mechanism of gating was hinted by the comparison of both structures, where agonist binding induces deformations that facilitate the rotation of the subunits in a concerted way. 
-One of the big misteries of the structure was what was the structural correspondence of flipping. Was 
-One of the problematic aspects of Schemes VI and VII was that they not only postulated allosteric coupling between binding and flipping and flipping and gating, which make complete sense with flipping being the mechanism that transport the binding energy from the binding site to the gating site, but they postulate, in order to get good fits, direct coupling between binding and gating, which was of much harder interpretation. 
-My though was: a different coupling between binding and rotation of the left or right subunit would account for the direct binding-gating mechanism, in the sense that it would explain the variability that as simpler mechanism could not. 
-\subsubsection{conductance parametrization}
-For one of the top-performing models (Scheme 10), we hypothesized that the current is proportional to the number of rotated subunits. The relationship was modeled by:
-\[
-i(n) = i_{\text{max}} \cdot \frac{E_n}{E_n + 1}, \quad E_n = E_0 \cdot F_g^n,
-\]
-where \( E_n \) represents the efficacy of the \( n \)-rotated state. This assumption reduced the number of states by half, significantly enhancing computational feasibility.
-A second thought was that we do not have enough computational power to deal with a 48 state model, so we cannot afford a rotation-gating coupling. 
-We solve that by assuming that the gating kinetics was too fast and using scheme VI as model, we considered that each rotated subunit contributes to stabilize the open conformation and therefore the mean conductance was a parametrized function of the number of rotated subunits. This trick allow us to halve the number of states, reducing by more than four the computational load. The other advantage of this approach is that it also models the possibility of not having a pore blocking mechanism, that the conductance of the pore is just a non-linear function of the number of rotated subunits. 
-In this new schemes we did not talk about flipping but of rotation, because we are mapping conformational changes, not hypothetical ones. Also we  consider allosteric couplings where actual physical contact exist: between  binding and subunit rotation. We consider three couplings: RB (rotation of the right subunit forming the binding site and binding), BR (binding and rotation of the subunit left of the binding site) and RBR (the ternary coupling of binding and rotation of both subunits). 
-Four models were built: Scheme VIII, considers only RBR; in Scheme IX and X RBR=1 and they differ in whether RB=BR (IX) or they are independent (X). Scheme XI considers RB, BR and RBR  at the same time. 
-
-\subsubsection{kinetic and equilibrium allosteric factors}
-Our previous paper extended the allosteric framework that is usually applied to equilibrium constants to kinetic rates. We added to the usual allosteric factor for the equilibrium constants (which is the same for both coupled conformationa changes), two new allosteric factors: one for each conformational change. 
-Lets explain this further. Lets suppose we have two conformational changes g and r. In the absence of interaction, they are described by four independent parameters: $b_{on}$,$b_{off}$,$r_{on}$,$r_{off}$. 
-Now suppose we have a BR interaction. Then we will have four new parameters on the activated state: $b^*_{on}$,$b^*_{off}$,$r^*_{on}$,$r^*_{off}$ But, because of microscopic reversibility we know that: 
-$$ b_{on} \cdot r^*_{on} \cdot b^*_{off} \cdot r_{off} = r_{on} \cdot b^*_{on} \cdot r^*_{off} \cdot b_{off} $$
-or 
-$$ \frac {\frac {b_{on}}{b_{off}}}{\frac {b^*_{on}} {b^*_{off}}}     =  \frac {\frac {r_{on}}{r_{off}}}{\frac {r^*_{on}} {r^*_{off}}} =BR_{eq}  $$
-Allosterism equivalence is warranted by microscopic reversibility. 
-So, we need only two extra parameters to determine the coupled kinetic rates. We choose to define them in terms of the forward rates: 
-$$ BR_{b{on}} = \frac{b^*_{on}}{b_{on}}$$
-$$ BR_{r{on}} = \frac{r^*_{on}}{r_{on}}$$
-
-For Evidence determination we only used this parameters. However, it was helpful to consider the converse couplings: 
-$$ BR_{b{off}} = \frac{b^*_{off}}{b_{off}}$$
-$$ BR_{r{off}} = \frac{r^*_{off}}{r_{off}}$$
 
 \subsection{Likelihood function of time averaged macroscopic currents: MacroIR}
 In this section we introduce our new algorithm for the determination of the likelihood of time averaged macroscopic currents. We will first ilustrate the concepts on the case we have only one channel to build from there the complex case of macrocurrents. Also, we are developing techniques that are also relevant for single channel.   
