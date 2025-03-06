@@ -59,6 +59,14 @@
 \usepackage{comment}
 \usepackage{newtxtext,newtxmath}
 \usepackage[utf8]{inputenc}
+\usepackage{newfloat}
+
+% Define a new floating environment for Extended Data Figures
+\DeclareFloatingEnvironment[
+fileext=loe,
+placement={!ht},
+name={Extended Data Fig.}
+]{extfigure}
 \DeclareUnicodeCharacter{2009}{\,}
 
 %% as per the requirement new theorem styles can be included as shown below
