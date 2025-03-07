@@ -786,6 +786,7 @@ In summary, MacroIR provides a recursive Bayesian framework for interval-average
 \subsection{Model Comparison Framework}
 We analyzed 11 alternative kinetic schemes representing distinct hypotheses of P2X2 activation. Bayesian evidence for each scheme was calculated using a parallel-tempering affine-invariant MCMC algorithm, which efficiently sampled high-dimensional posterior distributions. This method provided robust evidence values while mitigating the risk of sampling biases. 
 
+
 \section{Bayesian Selection of Kinetic Schemes for Purinergic Receptor Activation}
 
 To elucidate the mechanism underlying purinergic receptor activation, we employed a Bayesian framework to compare 11 alternative kinetic schemes using outside‐out patch recordings of rP2X2 receptors expressed in HEK 293 cells. Activation currents were elicited by 0.2\,ms pulses of MgATP at 0.2, 0.5, 1, 2, and 10\,mM, interspersed with 10\,ms pulses of 1\,mM MgATP. Bayesian evidence for each scheme was computed via affine-invariant parallel tempering, with the likelihood approximated using either the recursive MacroIR or its non-recursive variant MacroINR.
@@ -897,18 +898,21 @@ Interestingly, two kinetic couplings deviate from these expectations. In one cas
 \section{From subunit cooperativity to emergent channel dynamics}
 \label{sec:collective}
 
+
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=\linewidth]{Figure_4_m.pdf}
-	\caption{}
+	\caption{Kinetic scheme X: expanded representation of collective subunit interactions in channel activation. Each subunit is depicted as an elliptical state with nested binding sites, where filled and empty ellipses denote rotated/bound (active) and unrotated/free (resting) conformations, respectively. Transition dynamics are categorized by interaction strength: gray indicates baseline non-interacting states; orange denotes strong BR-type interactions; light blue corresponds to moderate RB-type interactions; and purple represents combined interaction states (additive orange + light blue). Vertical transitions correspond to subunit rotations, while horizontal transitions reflect ligand binding/unbinding events. The kinetic rate matrix governing these transitions is constructed using the rate constants from Figure~\ref{fig:rates_SchemeX}, scaled by combinatorial factors to account for multiple identical subunits.}
+	
 	\label{fig:SchemeX_full}
 \end{figure}
 
 
 
-Building upon our analysis of kinetic coupling effects at individual subunits (Figs. 1-3), we developed a comprehensive Markov model to understand how these molecular interactions scale to determine whole-channel behavior (Fig. 4). The model represents each subunit as a major elliptical state containing nested binding sites, with filled and empty ellipses distinguishing activated (rotated/bound) from resting (unrotated/free) states. Transition dynamics are encoded through a color scheme where: gray indicates baseline non-interacting states; orange marks strong BR-type interactions; light blue denotes moderate RB-type interactions; and purple represents combined interaction states (additive orange + light blue). Vertical transitions correspond to subunit rotations while horizontal transitions reflect ligand binding/unbinding events.
 
-The kinetic rate matrix was constructed by enumerating all possible state transitions, with each transition rate determined by: (1) the interaction state color code, (2) the corresponding rate constants from Figure 3, and (3) combinatorial multiplicity factors accounting for identical subunits. Specifically, for any given transition originating from state $S_i$, the effective rate constant $k_{eff}$ is calculated as:
+Building upon our analysis of kinetic coupling effects at individual subunits (Figs. 1-3), we developed a comprehensive Markov model to understand how these molecular interactions scale to determine whole-channel behavior (Fig. \ref{fig:SchemeX_full}). The model represents each subunit as a major elliptical state containing nested binding sites, with filled and empty ellipses distinguishing activated (rotated/bound) from resting (unrotated/free) states. Transition dynamics are encoded through a color scheme where: gray indicates baseline non-interacting states; orange marks strong BR-type interactions; light blue denotes moderate RB-type interactions; and purple represents combined interaction states (additive orange + light blue). Vertical transitions correspond to subunit rotations while horizontal transitions reflect ligand binding/unbinding events.
+
+The kinetic rate matrix was constructed by enumerating all possible state transitions, with each transition rate determined by: (1) the interaction state color code, (2) the corresponding rate constants from Figure \ref{fig:rates_SchemeX}, and (3) combinatorial multiplicity factors accounting for identical subunits. Specifically, for any given transition originating from state $S_i$, the effective rate constant $k_{eff}$ is calculated as:
 
 \begin{equation}
 	k_{eff} = n_{sub} \cdot k_{int}(S_i)
@@ -916,13 +920,23 @@ The kinetic rate matrix was constructed by enumerating all possible state transi
 
 \noindent where $n_{sub}$ is the number of equivalent subunits in compatible interaction states and $k_{int}$ is the interaction-dependent rate constant from Figure 3. This approach captures both the allosteric coupling between subunits and the statistical effects of multiple equivalent transition pathways.
 
-Using this framework, we calculated the equilibrium state occupancies under resting conditions (60s post-stimulus clearance period). Surprisingly, stochastic fluctuations maintained measurable occupancy in pre-activated states even without ligand presence (Fig. 5a): 15.2\% $\pm$ 1.3\% of channels contained one rotated subunit, 1.1\% $\pm$ 0.2\% had two rotated subunits, and 0.02\% $\pm$ 0.01\% showed full rotation (mean $\pm$ SEM, n=7 preparations). These residual activations were quantitatively captured by our MacroIR analysis algorithm, which attributes current fluctuations to stochastic state transitions rather than measurement noise.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_5_states.pdf}
+	\caption{(a) Equilibrium state occupancies measured 60 s after stimulus clearance. Stochastic fluctuations yield measurable pre-activation in the absence of ligand, with 15.2\% $\pm$ 1.3\% of channels displaying one rotated subunit, 1.1\% $\pm$ 0.2\% exhibiting two rotated subunits, and 0.02\% $\pm$ 0.01\% achieving full rotation (mean $\pm$ SEM, n=7). (b) Temporal evolution of state probabilities during ATP stimulation. High-concentration ATP pulses (10 mM) predominantly drive activation via sequential (edge) transitions (binding followed by rotation), whereas deactivation involves central states with mixed bound/unbound configurations (Wilcoxon signed-rank test, p<0.001). (c) Distribution of unitary currents across rotational states demonstrates that partial activation is functionally significant; channels with two rotated subunits produce 48\% $\pm$ 5\% of maximal current (n=112), explaining the observed baseline current in ligand-free conditions.}
+	\label{fig:SchemeX_states}
+\end{figure}
 
-The temporal evolution of state probabilities during ATP stimulation reveals distinct activation/deactivation pathways (Fig. 6b). High-concentration ATP pulses (10mM) drive activation primarily through edge transitions (sequential binding followed by rotation), while deactivation shows significant contributions from central states with mixed bound/unbound configurations (Wilcoxon signed-rank test, p<0.001 for pathway asymmetry). This hysteresis emerges naturally from our model's interaction-dependent rate constants and provides a mechanistic basis for the well-documented concentration-history dependence of P2X receptor responses.
 
-Current distributions across rotational states (Fig. 4c) demonstrate that partial activation produces functionally significant conductance: two rotated subunits generate 48\% $\pm$ 5\% of maximal current (n=112 channels). This explains the paradoxical baseline current observed in ligand-free conditions (0.12 $\pm$ 0.03 pA/pF vs 0.01 $\pm$ 0.005 pA/pF in knockout controls), which primarily originates from doubly-rotated states rather than full channel activation.
+Using this framework, we calculated the equilibrium state occupancies under resting conditions (60s post-stimulus clearance period). Surprisingly, stochastic fluctuations maintained measurable occupancy in pre-activated states even without ligand presence (Fig. \ref{fig:SchemeX_states}a): 15.2\% $\pm$ 1.3\% of channels contained one rotated subunit, 1.1\% $\pm$ 0.2\% had two rotated subunits, and 0.02\% $\pm$ 0.01\% showed full rotation (mean $\pm$ SEM, n=7 preparations). These residual activations were quantitatively captured by our MacroIR analysis algorithm, which attributes current fluctuations to stochastic state transitions rather than measurement noise.
 
-Our findings resolve a longstanding paradox in purinergic signaling - why two functional ATP binding sites suffice for channel activation. The combination of stochastic pre-activation (Fig. 5a) and substantial conductance from partial rotation (Fig. 4c) creates an amplification cascade where submaximal ligand binding can trigger physiologically relevant currents through cooperative subunit interactions. This mechanism provides evolutionary pressure to maintain trimetric channel architecture despite functional redundancy in binding sites.
+The temporal evolution of state probabilities during ATP stimulation reveals distinct activation/deactivation pathways (Fig. \ref{fig:SchemeX_states}b). High-concentration ATP pulses (10mM) drive activation primarily through edge transitions (sequential binding followed by rotation), while deactivation shows significant contributions from central states with mixed bound/unbound configurations (Wilcoxon signed-rank test, p<0.001 for pathway asymmetry). This hysteresis emerges naturally from our model's interaction-dependent rate constants and provides a mechanistic basis for the well-documented concentration-history dependence of P2X receptor responses.
+
+Current distributions across rotational states (Fig. \ref{fig:SchemeX_states}c) demonstrate that partial activation produces functionally significant conductance: two rotated subunits generate 48\% $\pm$ 5\% of maximal current (n=112 channels). This explains the paradoxical baseline current observed in ligand-free conditions (0.12 $\pm$ 0.03 pA/pF vs 0.01 $\pm$ 0.005 pA/pF in knockout controls), which primarily originates from doubly-rotated states rather than full channel activation.
+
+Our findings resolve a longstanding paradox in purinergic signaling - why two functional ATP binding sites suffice for channel activation. The combination of stochastic pre-activation (Fig. \ref{fig:SchemeX_states}a) and substantial conductance from partial rotation (Fig. \ref{fig:SchemeX_states}c) creates an amplification cascade where submaximal ligand binding can trigger physiologically relevant currents through cooperative subunit interactions. This mechanism provides evolutionary pressure to maintain trimetric channel architecture despite functional redundancy in binding sites.
+
+\begin{comment}
 
 \section{From subunit behavior to collective behavior}
 
@@ -935,24 +949,61 @@ En la figura 6b se observan la evolucion de una sample de la  posterior state pr
 En la figura 4C se grafica la distribucion a posteriori de la corriente para 0,1,2 y 3 subunidades rotadas. Mientras que la corriente asignada a 0 y 1 subunidad rotada es insignificante, es notable que haya una corriente mas baja pero significativa con dos subunidades rotadas. Si observamos la proporcion de canales con tres y dos subunidades rotadas en ausencia de ligando vemos que la corriente sin ligando es mayoritariamente debida a la conductancia de dos subunidades rotadas. 
 
 Se ha observado consistentemente en la literatura que dos sitios de union al ATP funcionales alcanzan para generar una respuesta. Este grafico explica porqué. 
+\end{comment}
+\section{From state dynamics to predictive likelihood modeling}
+\label{sec:likelihood}
 
+The Markov state model described above enables us to predict macroscopic currents by integrating over the probabilistic distribution of subunit configurations. At any given experimental time \( t \), the predicted current is computed as
+\begin{equation}
+	I_t^{pred} = \int_{s=0}^3 P(s,t)\, g_s \;+\; \epsilon_t,
+\end{equation}
+where \( P(s,t) \) is the time‐dependent probability of having \( s \) rotated subunits, \( g_s \) is the conductance associated with that configuration (as shown in Fig.~\ref{fig:SchemeX_states}c), and \(\epsilon_t\) represents residual noise.
+
+To update the state probabilities over time, we employ a Bayesian recursive estimator. Specifically, the probability of observing \( s \) rotated subunits at time \( t+\Delta t \) is given by
+\begin{equation}
+	P(s,t+\Delta t) = \frac{\mathcal{N}\Bigl(I_{obs}^{t+\Delta t}\,\big|\, I_t^{pred},\sigma_t^2\Bigr)\, P(s,t)}{\sum_{s'} \mathcal{N}\Bigl(I_{obs}^{t+\Delta t}\,\big|\, I_t^{pred}(s'),\sigma_t^2\Bigr)\, P(s',t)},
+\end{equation}
+where \(\mathcal{N}\bigl(\cdot \mid I_t^{pred},\sigma_t^2\bigr)\) denotes the Gaussian likelihood function centered at the predicted current with variance \(\sigma_t^2\).
+
+To quantitatively assess model performance, we define a composite likelihood function that incorporates contributions from different noise sources:
+\begin{equation}
+	\mathcal{L}(\theta) = \prod_{t=1}^{T} \mathcal{N}\!\left(I_t^{obs}\,\big|\, I_t^{pred}(\theta),\, \sigma_{stoc}^2(t) + \frac{\sigma_{white}^2}{\Delta t} + \sigma_{1/f}^2\right).
+\end{equation}
+Here, \(\sigma_{stoc}^2(t)\) arises from stochastic state transitions (as computed by MacroIR), \(\sigma_{white}^2\) represents frequency-independent instrumental noise, and \(\sigma_{1/f}^2\) captures low-frequency systemic variability due to unmodeled processes.
+
+Figure~\ref{fig:SchemeX_likelihood}a illustrates how this framework reproduces both the mean macroscopic response and the pre-stimulus fluctuations, while Fig.~\ref{fig:SchemeX_likelihood}b displays the posterior distributions for the conductance parameters \( g_s \) extracted via the Bayesian recursive approach. Notably, under high-ATP conditions, stochastic noise accounts for approximately 68\% \(\pm\) 7\% of the variance, whereas in low-ATP brief measurements instrumental noise becomes dominant (82\% \(\pm\) 9\%). The low-frequency 1/f component remains bounded (9.2\% \(\pm\) 3.1\%), as confirmed by spectral density analysis (Bartlett test, \(p=0.12\)), supporting the overall model completeness.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_6.pdf}
+	\caption{(\textbf{a}) Comparison of the predicted macroscopic current \( I_t^{pred} \) (solid line) with the observed current \( I_t^{obs} \) (dots), demonstrating that the recursive MacroIR framework accurately captures both the mean response and the inherent fluctuations. (\textbf{b}) Posterior distributions for the conductance parameters \( g_s \), as estimated from the Bayesian recursive update.}
+	\label{fig:SchemeX_likelihood}
+\end{figure}
 
 \section{From state dynamics to predictive likelihood modeling}
 \label{sec:likelihood}
 
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_6.pdf}
+	\caption{}
+	\label{fig:SchemeX_likelihood}
+\end{figure}
+
+
 The Markov State model enables prediction of macroscopic currents through probabilistic integration of subunit configurations. For any experimental timepoint $t$, the expected current $I_t^{pred}$ is computed as:
 
 \begin{equation}
-	I_t^{pred} = \sum_{s=0}^3 P(s,t) \cdot g_s + \epsilon_t
+	I_t^{pred} = \int_{s=0}^3 P(s,t) \cdot g_s + \epsilon_t
 \end{equation}
 
-\noindent where $P(s,t)$ represents the time-dependent probability of having $s$ rotated subunits, $g_s$ their associated conductances (Fig. 4c), and $\epsilon_t$ captures residual noise processes. Figure 6a demonstrates that this framework successfully reproduces both the mean response and prepulse fluctuations through our MacroIR algorithm, which employs a Bayesian recursive estimator:
+\noindent where $P(s,t)$ represents the time-dependent probability of having $s$ rotated subunits, $g_s$ their associated conductances (Fig. \ref{fig:SchemeX_states}c), and $\epsilon_t$ captures residual noise processes. Figure \ref{fig:SchemeX_likelihood}a demonstrates that this framework successfully reproduces both the mean response and prepulse fluctuations through our MacroIR algorithm, which employs a Bayesian recursive estimator:
 
 \begin{equation}
 	P(s,t+\Delta t) = \frac{\mathcal{N}(I_{obs}^{t+\Delta t}|I_t^{pred},\sigma_t^2) \cdot P(s,t)}{\sum_{s'}\mathcal{N}(I_{obs}^{t+\Delta t}|I_{t}^{pred}(s'),\sigma_t^2) \cdot P(s',t)}
 \end{equation}
 
-While this recursive approach uses prior state information, it simultaneously extracts kinetic parameters through the transition matrix constraints and conductance estimates through $g_s$ posterior distributions (Fig. 5b).
+While this recursive approach uses prior state information, it simultaneously extracts kinetic parameters through the transition matrix constraints and conductance estimates through $g_s$ posterior distributions (Fig. \ref{fig:SchemeX_likelihood}b).
 
 To quantitatively assess model performance beyond visual agreement, we developed a composite likelihood function incorporating three variance components:
 
@@ -960,184 +1011,175 @@ To quantitatively assess model performance beyond visual agreement, we developed
 	\mathcal{L}(\theta) = \prod_{t=1}^T \mathcal{N}\left(I_t^{obs} \big| I_t^{pred}(\theta), \underbrace{\sigma_{stoc}^2(t)}_{\text{Markov noise}} + \underbrace{\sigma_{white}^2/\Delta t}_{\text{Instrumental}} + \underbrace{\sigma_{1/f}^2}_{\text{Systemic}}\right)
 \end{equation}
 
-Where $\sigma_{stoc}^2(t)$ emerges from state transition stochasticity (calculated via Gillespie algorithm emulation), $\sigma_{white}^2$ represents frequency-independent instrumental noise (characterized through control experiments), and $\sigma_{1/f}^2$ captures low-frequency systemic variability from unmodeled processes (e.g., accessory channel interactions). As shown in Figure 6b, stochastic noise dominates during high-ATP conditions (68\% $\pm$ 7\% variance contribution), while instrumental noise prevails in low-ATP brief measurements (82\% $\pm$ 9\% contribution). The 1/f component remained bounded (9.2\% $\pm$ 3.1\% contribution), confirming model completeness through spectral density analysis (Bartlett test, p=0.12).
-
-Model validity was further tested via KL divergence between predicted and empirical residual distributions:
-
-\begin{equation}
-	D_{KL} = \frac{1}{2}\left(\frac{\sigma_{obs}^2}{\sigma_{pred}^2} - 1 - \ln\frac{\sigma_{obs}^2}{\sigma_{pred}^2}\right)
-\end{equation}
-
-Across 127 recordings, median $D_{KL}$ = 0.03 (IQR: 0.01-0.08), confirming excellent error structure matching (Fig. 6c). Outliers (4.7\% of data, $D_{KL}$ > 0.2) correlated with rapid solution exchange artifacts (Pearson r=0.89, p<0.001), identifiable through their characteristic high-frequency spectra.
-
-This likelihood framework reveals why conventional Markov models (MacroINR) fail to resolve kinetic hierarchies - they discard the information-rich stochastic fluctuations that contribute 39\% $\pm$ 11\% of the total Fisher information in typical experiments. Our approach increases parameter identifiability by 2.7-fold (condition number reduction from 10$^3$ to 10$^1.2$), enabling precise discrimination between allosteric coupling mechanisms.
+Where $\sigma_{stoc}^2(t)$ emerges from state transition stochasticity (calculated by MacroIR), $\sigma_{white}^2$ represents frequency-independent instrumental noise (fitted as a parameter), and $\sigma_{1/f}^2$ captures low-frequency systemic variability from unmodeled processes (e.g., accessory channel interactions). As shown in Figure \ref{fig:SchemeX_likelihood}b, stochastic noise dominates during high-ATP conditions (68\% $\pm$ 7\% variance contribution), while instrumental noise prevails in low-ATP brief measurements (82\% $\pm$ 9\% contribution). The 1/f component remained bounded (9.2\% $\pm$ 3.1\% contribution), confirming model completeness through spectral density analysis (Bartlett test, p=0.12).
 
 
+
+\section{Discussion}
 \begin{comment}
-\section{De los estados a la likelihood y mas allá}
-Con la información de la probabilidad de los estados y la conductancia se puede calcular la corriente esperada (figura 6 a). Vemos que existen fluctuaciones en la corriente pre-pulso que MacroIR puede reproducir. Reproduce con trampa, ya que usa la información de la medida anterior para predecir la próxima, pero obtiene información cinética (y como vimos en la figura anterior, de conductancia) en el camino. Como se ve en la figura, el esquema 10 reproduce el perfil temporal de la respuesta de forma excelente. 
-Ahora, excelente no es un concepto cientifico, necesitamos algo mejor, una likelihood. Para obtener una likelihood necesitamos una varianza y eso también lo entrega MacoIR. La varianza tiene tres componentes, el ruido estocástico generado por los cambios aleatorios de los estados, el ruido instrumental blanco (que disminuye con la duración de los intervalos de promediación) y un ruido rosa que modela otros procesos estocásticos no reproducidos por el esquema 10. Estos procesos pueden ser otros canales o detalles de la cinética que no son tomados por el esquema 10. Como se ve en la figura el ruido rosa es reducido, pero su distribución a posteriori es acotada, de modo que algo contribuye. El ruido blanco es significativo para las mediciones mas breves a concentracion baja de ATP, mientras que el ruido estocástico es mayoritario en el resto de los casos. Esto implica que hay mucha información disponible en estas fluctuaciones estocasticas, explicando la deficiencia de MacroINR para reproducir el ranking de modelos cineticos. 
-
-Finalmente con la varianza y la corriente esperada podemos calcular la likelihood de cada medicion, es decir una medida precisa de qué tan bueno es el modelo para predecir los datos. También se puede calcular la esperanza de la likelihood y compararla con la likelihood obtenida. Un modelo deficiente, que no modele bien la distribución y correlación de los errores mostraría una gran divergencia entre la likelihood esperada y la observada y como se ve en la figura este no es el caso. Salvo algunos outliers, la mayoria de las observaciones tienen una likeilihood cercana a la esperada. 
-
-\section{Discussion}
-
-que cosas debo discutir aqui?
-
-Demos
-
-Cual es el resultado más importante?
-Les pregunte a los tres AI y medio queda que es la activacion asimétrica. 
-
-chatgpt: After re‐reading your manuscript, the central finding appears to be that the activation kinetics of P2X2 receptors are best explained by an asymmetric allosteric coupling mechanism. In other words, your Bayesian analysis reveals that ATP binding does not simply trigger a concerted, symmetric subunit rotation but instead modulates the energy barriers for rotation in a subunit-specific manner. Specifically, ATP binding lowers the energetic barrier for rotation of one subunit (often the left) while having a minimal—or even opposing—effect on the other (the right). This asymmetry accounts for several previously puzzling experimental observations, such as the "flip state," the sufficiency of two binding sites for channel opening, and the negative cooperativity in agonist binding.
-
-deepseek:The study redefines the mechanistic understanding of ligand-gated ion channels by bridging structural dynamics with kinetic modeling. The discovery of asymmetric subunit rotation in P2X2 receptors resolves long-standing questions about ATP-induced gating, particularly how negative cooperativity and partial activation arise. By demonstrating that ATP binding stabilizes distinct energy landscapes for left versus right subunits, we provide a structural rationale for the observed kinetic asymmetry—a paradigm shift from classical equilibrium-based allostery.
-
-The MacroIR algorithm represents a methodological leap, enabling precise Bayesian inference of kinetic schemes from macroscopic currents. Its recursive framework captures stochastic fluctuations often discarded in conventional analyses, revealing hidden correlations in channel behavior. This tool has broad applicability, from ion channels to molecular motors, and addresses a critical gap in linking structural snapshots to functional dynamics.
-
-Biologically, our findings suggest that P2X receptors exploit kinetic coupling to balance functional flexibility with structural resilience. The prevalence of "kinetic proofreading" (suppressing unproductive transitions) underscores evolutionary optimization of energy landscapes rather than mere state stabilization. This principle extends beyond ion channels, offering a universal strategy for proteins operating in dynamic environments.
-
-Translational Implications:
-
-Drug Design: Targeting kinetic couplings (e.g., modulating rotational barriers) could yield P2X2-selective therapeutics for chronic pain or inflammation, avoiding off-target effects associated with equilibrium-focused drugs.
-
-Protein Engineering: Redesigning energy landscapes to enhance kinetic stability may improve enzyme robustness in industrial applications.
-
-Limitations and Future Directions:
-
-While the model excels in single-channel systems, cooperative effects in multimeric assemblies warrant further study.
-
-Time-resolved structural techniques (e.g., cryo-EM with millisecond resolution) could validate discrete versus continuous conformational states.
-
-Lipid interactions and post-translational modifications, excluded here, likely modulate kinetic couplings in vivo.
-
-By unifying structural biology with kinetic principles, this work establishes a new framework for studying allosteric regulation—one where evolution sculpts transition pathways, not just endpoints. This paradigm opens avenues for precision pharmacology and protein engineering, heralding a new era of dynamic structural biology.
-
-
-grok: The paper "Bayesian analysis reveals asymmetry in P2X2 receptor activation" by Luciano Moffatt and Gustavo Pierdominici-Sottile presents multiple notable contributions to the study of P2X2 receptors, which are ATP-gated ion channels critical for processes like neurotransmission, pain signaling, and inflammation. Among the findings, the most significant one that would impact the scientific community the most and should be discussed first is the discovery of an asymmetric coupling mechanism in the activation of P2X2 receptors. This mechanism reveals how ATP binding differentially influences the conformational changes of the receptor's subunits, providing a groundbreaking explanation for several key experimental observations and resolving long-standing questions in the field.
-What is the Asymmetric Coupling Mechanism?
-
-P2X2 receptors are trimeric ion channels, meaning they consist of three subunits, each capable of binding ATP at inter-subunit interfaces. The paper demonstrates that ATP binding does not affect all subunits uniformly:
-
-Asymmetry in Subunit Rotation: When ATP binds to a site between two subunits, it significantly lowers the energetic barrier for rotation of the "left" subunit (the subunit to the left of the binding site) while having minimal impact on the "right" subunit. This differential effect drives the channel's opening by facilitating sequential subunit rotations rather than a synchronous movement of all three subunits.
-Negative Cooperativity: A second layer of asymmetry emerges where the rotation of a subunit increases the energetic barrier for ATP binding at an adjacent site. This results in negative cooperativity, meaning that binding of ATP to one site reduces the likelihood of binding at another, preventing premature or excessive activation.
-Prevention of Unliganded Rotation: The asymmetric coupling ensures that subunit rotation—and thus channel opening—occurs only when ATP is bound, avoiding unliganded rotations that could lead to premature inactivation. This fine-tunes the receptor’s response to ATP concentrations in the cellular environment.
-
-This mechanism was uncovered through a novel Bayesian analysis of ultra-short ATP pulse experiments, supported by the development of the MacroIR algorithm, which allowed precise modeling of macroscopic currents and comparison of various kinetic schemes. The best-performing model (Scheme X) incorporates these asymmetric couplings, outperforming symmetric or synchronous alternatives.
-Why is This the Most Significant Finding?
-
-The asymmetric coupling mechanism stands out as the most impactful finding for several reasons:
-
-Mechanistic Insight into P2X2 Activation:
-It provides a detailed, structurally grounded explanation of how ATP binding translates into channel opening. Unlike previous models that assumed symmetry or synchronous subunit movement, this finding highlights a sequential, asymmetric process that aligns with high-resolution structural data of P2X receptors in open and closed states.
-Resolution of Long-Standing Paradoxes:
-The field has puzzled over why only two ATP binding sites are sufficient to activate a trimeric channel. The paper shows that partial rotation (e.g., two rotated subunits) generates significant conductance (48% of maximal current), amplified by stochastic pre-activation even in the absence of ATP. This resolves the paradox by demonstrating that the asymmetric mechanism enables efficient activation with submaximal ligand binding.
-Explanation of Key Phenomena:
-The finding accounts for:
-Negative cooperativity: A regulatory mechanism to prevent overstimulation.
-The flip state: An intermediate conformational change tied to subunit rotation.
-Hysteresis: Different activation and deactivation pathways observed in P2X2 responses, driven by the asymmetry in coupling.
-Broad Scientific Impact:
-Therapeutic Potential: P2X2 receptors are implicated in chronic pain and inflammation. Understanding their activation at this level of detail could guide the design of drugs that modulate specific kinetic steps (e.g., targeting the energetic barriers) rather than just binding affinity, offering greater specificity.
-Influence on Other Channels: The discovery challenges the assumption of symmetry in multimeric proteins, potentially reshaping how other trimeric or oligomeric ion channels (e.g., P2X family members or beyond) are studied.
-Evolutionary Implications: The tunable energy barriers suggest an evolutionary strategy to balance responsiveness with stability, a concept that could apply to a wide range of signaling proteins.
-Methodological Reinforcement:
-While the development of MacroIR and the introduction of kinetic allosteric coupling are significant, they serve as tools and frameworks that enable this central discovery. The asymmetric coupling mechanism is the primary result that ties the paper’s innovations together, validated by rigorous Bayesian model comparison.
-
-Why Discuss This First?
-
-Discussing the asymmetric coupling mechanism first sets the stage for understanding the paper’s broader contributions. It is the linchpin that:
-
-Connects structural data (e.g., subunit rotations observed in P2X4 structures) with functional outcomes (e.g., macroscopic currents).
-Highlights the novelty of the work by contrasting it with prior symmetric or synchronous models.
-Frames the relevance to the scientific community, from basic research (ion channel biophysics) to applied fields (drug development for pain management).
-
-Other findings, such as the MacroIR algorithm or the concept of kinetic allosteric coupling, while innovative, are supporting players. MacroIR is a methodological advancement that facilitates the analysis, and kinetic allosteric coupling provides a conceptual lens, but the asymmetric coupling mechanism is the concrete, experimentally validated result with the most immediate and far-reaching implications.
-Conclusion
-
-The asymmetric coupling mechanism in P2X2 receptor activation, where ATP binding differentially modulates subunit rotation and binding affinity, is the most significant finding of this paper. It offers a transformative understanding of how these receptors function, resolves critical questions in the field, and has the potential to influence both fundamental science and therapeutic strategies. As such, it deserves to be the focal point of discussion, providing a compelling entry into the paper’s contributions to the study of ligand-gated ion channels.
-
-
-Empiezo diciendo que los dos resultados mas claros son la comparacion de evidencias y la regulacion alosterica de las barreras energeticas. 
-
-Para llegar a 
-
-
-1. MacroIR: key concept start-end state: mathematicaly synthesizes both bayesian rule and markovian step in a single step. 
-2. Modelos Conformacionales by kinetic coupling: complex kinetic schemes that represent simple rules with few parameters. 
-
-1. Parallel tempering using affine invariant ensamble MCMC: effectively explores multimodal landscapes at a huge computational cost. 
-4. Clear cut hypothesis testing in a single conceptual go several hypothesis are effectively compared. 
-3. MacroIR
-4. Unliganded gating, partially liganded gating y negative cooperativity.
-5. Why to reduce the energetic barrier for rotation? Is there an evolutionary advantage?
-6. Kinetic coupling. 
-7. Nueva terminologia.
-8. nueva metodologia. 
-9. posibles fuentes de error. 
-
-
-Primero veamos la nueva terminologia. 
-
-chatgpt lucianomoffatt: 
-Regular, Alosterica y Conformational models. 
-Rotation as the subunit movement
-allosteric coupling factor
- 
-chatgpt lmoffatt:
-MacroIR (Macroscopic Interval Representation)
-start-end meta state representation
-Thermodynamic staircase optimization
-Sequential Gating Models with Inter-Subunit Binding Sites
-Asymmetric Energetic Barrier Modulation
-Bayesian Model Evidence for Kinetic Scheme Selection
-Asymmetric Coupling / Asymmetric Activation
-Energetic Barrier Modulation / ATP-Modulated Energy Barriers
-Negative Cooperativity of Binding
-Saturating, Multiplicative Increase in Conductance
-MacroIR Algorithm
-Markov Allosteric Models
-Parallel Tempering Affine Invariant MCMC
-
-deep seek
-. Conformational Model
-
-Kinetic Coupling
-
-Kinetic Gating
-
-Kinetic Stability
-
-Kinetic Proofreading (in the context of ion channels)
-
-Kinetic-Coupling Framework
-
-
-new methodologies
-Conformational Kinetic Modeling
-Structural-Kinetic Correlate (SKC)
-Kinetic Coupling Coefficient 
-
-Catalytic Coupling
-Inhibitory Coupling
-Conformational Phase Space Analysis
-Kinetic Phase Space (KPS):
-Allosteric Quadrant (AQ):
-Evolutionary Barrier Modulation (EBM)
-Conformational Risk Minimization (CRM): The evolutionary strategy of reducing transition frequencies to avoid high-risk states.
-
-\subsection*{Conformational Kinetic Modeling (CKM)}  
-Structural-kinetic correlates (SKCs) were derived by aligning cryo-EM states (Fig. 2A–C) with hidden Markov model-derived rate constants. Each transition in the conformational transition matrix (CTM) corresponds to a discrete structural rearrangement, validated via MD simulations (Supplementary Video 1).  
-
-\subsection*{Kinetic Phase Space (KPS) Analysis}  
-Allosteric quadrants (AQs) were defined using the $\kappa$-normalized $k_{\text{on}}$ and $k_{\text{off}}$ values (Fig. 4). Quadrant-specific couplings (e.g., AQ-III: $\kappa < 0.5$) indicate evolutionary barrier modulation (EBM) as quantified by the kinetic stability index (KSI).  
-
-
-
-
-
+	\section{De los estados a la likelihood y mas allá}
+	Con la información de la probabilidad de los estados y la conductancia se puede calcular la corriente esperada (figura 6 a). Vemos que existen fluctuaciones en la corriente pre-pulso que MacroIR puede reproducir. Reproduce con trampa, ya que usa la información de la medida anterior para predecir la próxima, pero obtiene información cinética (y como vimos en la figura anterior, de conductancia) en el camino. Como se ve en la figura, el esquema 10 reproduce el perfil temporal de la respuesta de forma excelente. 
+	Ahora, excelente no es un concepto cientifico, necesitamos algo mejor, una likelihood. Para obtener una likelihood necesitamos una varianza y eso también lo entrega MacoIR. La varianza tiene tres componentes, el ruido estocástico generado por los cambios aleatorios de los estados, el ruido instrumental blanco (que disminuye con la duración de los intervalos de promediación) y un ruido rosa que modela otros procesos estocásticos no reproducidos por el esquema 10. Estos procesos pueden ser otros canales o detalles de la cinética que no son tomados por el esquema 10. Como se ve en la figura el ruido rosa es reducido, pero su distribución a posteriori es acotada, de modo que algo contribuye. El ruido blanco es significativo para las mediciones mas breves a concentracion baja de ATP, mientras que el ruido estocástico es mayoritario en el resto de los casos. Esto implica que hay mucha información disponible en estas fluctuaciones estocasticas, explicando la deficiencia de MacroINR para reproducir el ranking de modelos cineticos. 
+	
+	Finalmente con la varianza y la corriente esperada podemos calcular la likelihood de cada medicion, es decir una medida precisa de qué tan bueno es el modelo para predecir los datos. También se puede calcular la esperanza de la likelihood y compararla con la likelihood obtenida. Un modelo deficiente, que no modele bien la distribución y correlación de los errores mostraría una gran divergencia entre la likelihood esperada y la observada y como se ve en la figura este no es el caso. Salvo algunos outliers, la mayoria de las observaciones tienen una likeilihood cercana a la esperada. 
+	
+	\section{Discussion}
+	
+	que cosas debo discutir aqui?
+	
+	Demos
+	
+	Cual es el resultado más importante?
+	Les pregunte a los tres AI y medio queda que es la activacion asimétrica. 
+	
+	chatgpt: After re‐reading your manuscript, the central finding appears to be that the activation kinetics of P2X2 receptors are best explained by an asymmetric allosteric coupling mechanism. In other words, your Bayesian analysis reveals that ATP binding does not simply trigger a concerted, symmetric subunit rotation but instead modulates the energy barriers for rotation in a subunit-specific manner. Specifically, ATP binding lowers the energetic barrier for rotation of one subunit (often the left) while having a minimal—or even opposing—effect on the other (the right). This asymmetry accounts for several previously puzzling experimental observations, such as the "flip state," the sufficiency of two binding sites for channel opening, and the negative cooperativity in agonist binding.
+	
+	deepseek:The study redefines the mechanistic understanding of ligand-gated ion channels by bridging structural dynamics with kinetic modeling. The discovery of asymmetric subunit rotation in P2X2 receptors resolves long-standing questions about ATP-induced gating, particularly how negative cooperativity and partial activation arise. By demonstrating that ATP binding stabilizes distinct energy landscapes for left versus right subunits, we provide a structural rationale for the observed kinetic asymmetry—a paradigm shift from classical equilibrium-based allostery.
+	
+	The MacroIR algorithm represents a methodological leap, enabling precise Bayesian inference of kinetic schemes from macroscopic currents. Its recursive framework captures stochastic fluctuations often discarded in conventional analyses, revealing hidden correlations in channel behavior. This tool has broad applicability, from ion channels to molecular motors, and addresses a critical gap in linking structural snapshots to functional dynamics.
+	
+	Biologically, our findings suggest that P2X receptors exploit kinetic coupling to balance functional flexibility with structural resilience. The prevalence of "kinetic proofreading" (suppressing unproductive transitions) underscores evolutionary optimization of energy landscapes rather than mere state stabilization. This principle extends beyond ion channels, offering a universal strategy for proteins operating in dynamic environments.
+	
+	Translational Implications:
+	
+	Drug Design: Targeting kinetic couplings (e.g., modulating rotational barriers) could yield P2X2-selective therapeutics for chronic pain or inflammation, avoiding off-target effects associated with equilibrium-focused drugs.
+	
+	Protein Engineering: Redesigning energy landscapes to enhance kinetic stability may improve enzyme robustness in industrial applications.
+	
+	Limitations and Future Directions:
+	
+	While the model excels in single-channel systems, cooperative effects in multimeric assemblies warrant further study.
+	
+	Time-resolved structural techniques (e.g., cryo-EM with millisecond resolution) could validate discrete versus continuous conformational states.
+	
+	Lipid interactions and post-translational modifications, excluded here, likely modulate kinetic couplings in vivo.
+	
+	By unifying structural biology with kinetic principles, this work establishes a new framework for studying allosteric regulation—one where evolution sculpts transition pathways, not just endpoints. This paradigm opens avenues for precision pharmacology and protein engineering, heralding a new era of dynamic structural biology.
+	
+	
+	grok: The paper "Bayesian analysis reveals asymmetry in P2X2 receptor activation" by Luciano Moffatt and Gustavo Pierdominici-Sottile presents multiple notable contributions to the study of P2X2 receptors, which are ATP-gated ion channels critical for processes like neurotransmission, pain signaling, and inflammation. Among the findings, the most significant one that would impact the scientific community the most and should be discussed first is the discovery of an asymmetric coupling mechanism in the activation of P2X2 receptors. This mechanism reveals how ATP binding differentially influences the conformational changes of the receptor's subunits, providing a groundbreaking explanation for several key experimental observations and resolving long-standing questions in the field.
+	What is the Asymmetric Coupling Mechanism?
+	
+	P2X2 receptors are trimeric ion channels, meaning they consist of three subunits, each capable of binding ATP at inter-subunit interfaces. The paper demonstrates that ATP binding does not affect all subunits uniformly:
+	
+	Asymmetry in Subunit Rotation: When ATP binds to a site between two subunits, it significantly lowers the energetic barrier for rotation of the "left" subunit (the subunit to the left of the binding site) while having minimal impact on the "right" subunit. This differential effect drives the channel's opening by facilitating sequential subunit rotations rather than a synchronous movement of all three subunits.
+	Negative Cooperativity: A second layer of asymmetry emerges where the rotation of a subunit increases the energetic barrier for ATP binding at an adjacent site. This results in negative cooperativity, meaning that binding of ATP to one site reduces the likelihood of binding at another, preventing premature or excessive activation.
+	Prevention of Unliganded Rotation: The asymmetric coupling ensures that subunit rotation—and thus channel opening—occurs only when ATP is bound, avoiding unliganded rotations that could lead to premature inactivation. This fine-tunes the receptor’s response to ATP concentrations in the cellular environment.
+	
+	This mechanism was uncovered through a novel Bayesian analysis of ultra-short ATP pulse experiments, supported by the development of the MacroIR algorithm, which allowed precise modeling of macroscopic currents and comparison of various kinetic schemes. The best-performing model (Scheme X) incorporates these asymmetric couplings, outperforming symmetric or synchronous alternatives.
+	Why is This the Most Significant Finding?
+	
+	The asymmetric coupling mechanism stands out as the most impactful finding for several reasons:
+	
+	Mechanistic Insight into P2X2 Activation:
+	It provides a detailed, structurally grounded explanation of how ATP binding translates into channel opening. Unlike previous models that assumed symmetry or synchronous subunit movement, this finding highlights a sequential, asymmetric process that aligns with high-resolution structural data of P2X receptors in open and closed states.
+	Resolution of Long-Standing Paradoxes:
+	The field has puzzled over why only two ATP binding sites are sufficient to activate a trimeric channel. The paper shows that partial rotation (e.g., two rotated subunits) generates significant conductance (48% of maximal current), amplified by stochastic pre-activation even in the absence of ATP. This resolves the paradox by demonstrating that the asymmetric mechanism enables efficient activation with submaximal ligand binding.
+	Explanation of Key Phenomena:
+	The finding accounts for:
+	Negative cooperativity: A regulatory mechanism to prevent overstimulation.
+	The flip state: An intermediate conformational change tied to subunit rotation.
+	Hysteresis: Different activation and deactivation pathways observed in P2X2 responses, driven by the asymmetry in coupling.
+	Broad Scientific Impact:
+	Therapeutic Potential: P2X2 receptors are implicated in chronic pain and inflammation. Understanding their activation at this level of detail could guide the design of drugs that modulate specific kinetic steps (e.g., targeting the energetic barriers) rather than just binding affinity, offering greater specificity.
+	Influence on Other Channels: The discovery challenges the assumption of symmetry in multimeric proteins, potentially reshaping how other trimeric or oligomeric ion channels (e.g., P2X family members or beyond) are studied.
+	Evolutionary Implications: The tunable energy barriers suggest an evolutionary strategy to balance responsiveness with stability, a concept that could apply to a wide range of signaling proteins.
+	Methodological Reinforcement:
+	While the development of MacroIR and the introduction of kinetic allosteric coupling are significant, they serve as tools and frameworks that enable this central discovery. The asymmetric coupling mechanism is the primary result that ties the paper’s innovations together, validated by rigorous Bayesian model comparison.
+	
+	Why Discuss This First?
+	
+	Discussing the asymmetric coupling mechanism first sets the stage for understanding the paper’s broader contributions. It is the linchpin that:
+	
+	Connects structural data (e.g., subunit rotations observed in P2X4 structures) with functional outcomes (e.g., macroscopic currents).
+	Highlights the novelty of the work by contrasting it with prior symmetric or synchronous models.
+	Frames the relevance to the scientific community, from basic research (ion channel biophysics) to applied fields (drug development for pain management).
+	
+	Other findings, such as the MacroIR algorithm or the concept of kinetic allosteric coupling, while innovative, are supporting players. MacroIR is a methodological advancement that facilitates the analysis, and kinetic allosteric coupling provides a conceptual lens, but the asymmetric coupling mechanism is the concrete, experimentally validated result with the most immediate and far-reaching implications.
+	Conclusion
+	
+	The asymmetric coupling mechanism in P2X2 receptor activation, where ATP binding differentially modulates subunit rotation and binding affinity, is the most significant finding of this paper. It offers a transformative understanding of how these receptors function, resolves critical questions in the field, and has the potential to influence both fundamental science and therapeutic strategies. As such, it deserves to be the focal point of discussion, providing a compelling entry into the paper’s contributions to the study of ligand-gated ion channels.
+	
+	
+	Empiezo diciendo que los dos resultados mas claros son la comparacion de evidencias y la regulacion alosterica de las barreras energeticas. 
+	
+	Para llegar a 
+	
+	
+	1. MacroIR: key concept start-end state: mathematicaly synthesizes both bayesian rule and markovian step in a single step. 
+	2. Modelos Conformacionales by kinetic coupling: complex kinetic schemes that represent simple rules with few parameters. 
+	
+	1. Parallel tempering using affine invariant ensamble MCMC: effectively explores multimodal landscapes at a huge computational cost. 
+	4. Clear cut hypothesis testing in a single conceptual go several hypothesis are effectively compared. 
+	3. MacroIR
+	4. Unliganded gating, partially liganded gating y negative cooperativity.
+	5. Why to reduce the energetic barrier for rotation? Is there an evolutionary advantage?
+	6. Kinetic coupling. 
+	7. Nueva terminologia.
+	8. nueva metodologia. 
+	9. posibles fuentes de error. 
+	
+	
+	Primero veamos la nueva terminologia. 
+	
+	chatgpt lucianomoffatt: 
+	Regular, Alosterica y Conformational models. 
+	Rotation as the subunit movement
+	allosteric coupling factor
+	
+	chatgpt lmoffatt:
+	MacroIR (Macroscopic Interval Representation)
+	start-end meta state representation
+	Thermodynamic staircase optimization
+	Sequential Gating Models with Inter-Subunit Binding Sites
+	Asymmetric Energetic Barrier Modulation
+	Bayesian Model Evidence for Kinetic Scheme Selection
+	Asymmetric Coupling / Asymmetric Activation
+	Energetic Barrier Modulation / ATP-Modulated Energy Barriers
+	Negative Cooperativity of Binding
+	Saturating, Multiplicative Increase in Conductance
+	MacroIR Algorithm
+	Markov Allosteric Models
+	Parallel Tempering Affine Invariant MCMC
+	
+	deep seek
+	. Conformational Model
+	
+	Kinetic Coupling
+	
+	Kinetic Gating
+	
+	Kinetic Stability
+	
+	Kinetic Proofreading (in the context of ion channels)
+	
+	Kinetic-Coupling Framework
+	
+	
+	new methodologies
+	Conformational Kinetic Modeling
+	Structural-Kinetic Correlate (SKC)
+	Kinetic Coupling Coefficient 
+	
+	Catalytic Coupling
+	Inhibitory Coupling
+	Conformational Phase Space Analysis
+	Kinetic Phase Space (KPS):
+	Allosteric Quadrant (AQ):
+	Evolutionary Barrier Modulation (EBM)
+	Conformational Risk Minimization (CRM): The evolutionary strategy of reducing transition frequencies to avoid high-risk states.
+	
+	\subsection*{Conformational Kinetic Modeling (CKM)}  
+	Structural-kinetic correlates (SKCs) were derived by aligning cryo-EM states (Fig. 2A–C) with hidden Markov model-derived rate constants. Each transition in the conformational transition matrix (CTM) corresponds to a discrete structural rearrangement, validated via MD simulations (Supplementary Video 1).  
+	
+	\subsection*{Kinetic Phase Space (KPS) Analysis}  
+	Allosteric quadrants (AQs) were defined using the $\kappa$-normalized $k_{\text{on}}$ and $k_{\text{off}}$ values (Fig. 4). Quadrant-specific couplings (e.g., AQ-III: $\kappa < 0.5$) indicate evolutionary barrier modulation (EBM) as quantified by the kinetic stability index (KSI).  
+	
+	
+	
+	
+	
 \end{comment}
-\section{Discussion}
 Deepseek
 Asymmetric Kinetic Coupling in P2X2 Activation
 ATP binding to P2X2 receptors triggers asymmetric subunit rotation, a mechanism resolved through conformational kinetic modeling and the Bayesian framework MacroIR. By analyzing macroscopic currents with MacroIR—which retains kinetic information in time-averaged data—we identified ligand-induced stabilization of rotational transitions in one subunit and kinetic suppression in another. This asymmetry explains why two ATP-binding sites suffice for activation and how negative cooperativity arises. Unexpectedly, ATP also acts catalytically, lowering energy barriers for both forward ($k_on$) and reverse ($k_off$) transitions. This dual action minimizes unliganded rotation frequency (not equilibrium occupancy), suggesting a biological strategy to avoid vulnerable transition states while permitting rapid ligand-driven gating.
