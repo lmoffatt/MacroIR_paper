@@ -950,70 +950,49 @@ En la figura 4C se grafica la distribucion a posteriori de la corriente para 0,1
 
 Se ha observado consistentemente en la literatura que dos sitios de union al ATP funcionales alcanzan para generar una respuesta. Este grafico explica porqué. 
 \end{comment}
-\section{From state dynamics to predictive likelihood modeling}
-\label{sec:likelihood}
-
-The Markov state model described above enables us to predict macroscopic currents by integrating over the probabilistic distribution of subunit configurations. At any given experimental time \( t \), the predicted current is computed as
-\begin{equation}
-	I_t^{pred} = \int_{s=0}^3 P(s,t)\, g_s \;+\; \epsilon_t,
-\end{equation}
-where \( P(s,t) \) is the time‐dependent probability of having \( s \) rotated subunits, \( g_s \) is the conductance associated with that configuration (as shown in Fig.~\ref{fig:SchemeX_states}c), and \(\epsilon_t\) represents residual noise.
-
-To update the state probabilities over time, we employ a Bayesian recursive estimator. Specifically, the probability of observing \( s \) rotated subunits at time \( t+\Delta t \) is given by
-\begin{equation}
-	P(s,t+\Delta t) = \frac{\mathcal{N}\Bigl(I_{obs}^{t+\Delta t}\,\big|\, I_t^{pred},\sigma_t^2\Bigr)\, P(s,t)}{\sum_{s'} \mathcal{N}\Bigl(I_{obs}^{t+\Delta t}\,\big|\, I_t^{pred}(s'),\sigma_t^2\Bigr)\, P(s',t)},
-\end{equation}
-where \(\mathcal{N}\bigl(\cdot \mid I_t^{pred},\sigma_t^2\bigr)\) denotes the Gaussian likelihood function centered at the predicted current with variance \(\sigma_t^2\).
-
-To quantitatively assess model performance, we define a composite likelihood function that incorporates contributions from different noise sources:
-\begin{equation}
-	\mathcal{L}(\theta) = \prod_{t=1}^{T} \mathcal{N}\!\left(I_t^{obs}\,\big|\, I_t^{pred}(\theta),\, \sigma_{stoc}^2(t) + \frac{\sigma_{white}^2}{\Delta t} + \sigma_{1/f}^2\right).
-\end{equation}
-Here, \(\sigma_{stoc}^2(t)\) arises from stochastic state transitions (as computed by MacroIR), \(\sigma_{white}^2\) represents frequency-independent instrumental noise, and \(\sigma_{1/f}^2\) captures low-frequency systemic variability due to unmodeled processes.
-
-Figure~\ref{fig:SchemeX_likelihood}a illustrates how this framework reproduces both the mean macroscopic response and the pre-stimulus fluctuations, while Fig.~\ref{fig:SchemeX_likelihood}b displays the posterior distributions for the conductance parameters \( g_s \) extracted via the Bayesian recursive approach. Notably, under high-ATP conditions, stochastic noise accounts for approximately 68\% \(\pm\) 7\% of the variance, whereas in low-ATP brief measurements instrumental noise becomes dominant (82\% \(\pm\) 9\%). The low-frequency 1/f component remains bounded (9.2\% \(\pm\) 3.1\%), as confirmed by spectral density analysis (Bartlett test, \(p=0.12\)), supporting the overall model completeness.
-
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=\linewidth]{Figure_6.pdf}
-	\caption{(\textbf{a}) Comparison of the predicted macroscopic current \( I_t^{pred} \) (solid line) with the observed current \( I_t^{obs} \) (dots), demonstrating that the recursive MacroIR framework accurately captures both the mean response and the inherent fluctuations. (\textbf{b}) Posterior distributions for the conductance parameters \( g_s \), as estimated from the Bayesian recursive update.}
-	\label{fig:SchemeX_likelihood}
-\end{figure}
-
-\section{From state dynamics to predictive likelihood modeling}
+\section{From State Dynamics to Predictive Likelihood Modeling}
 \label{sec:likelihood}
 
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=\linewidth]{Figure_6.pdf}
-	\caption{}
+	\caption{\textbf{Predictive likelihood modeling from state dynamics.} (a) A sample from the posterior distribution of the predicted macroscopic current (blue) closely matches the measured current (black). (b) The total variance of the predicted current is shown, with insets highlighting the contributions of white (red) and pink (green) noise. At maximum time resolution and over ATP concentrations from 0.2 to 10 mM, white noise dominates during the ATP pulse while pink noise is significant during the pre-pulse period. (c) Comparison of the expected (lines) and observed likelihoods computed using a Normal distribution for each measurement.}
 	\label{fig:SchemeX_likelihood}
 \end{figure}
 
+MacroIR leverages the state distribution illustrated in Fig. \ref{fig:SchemeX_states}a and \ref{fig:SchemeX_states}b, along with the expected current for each state as shown in Fig. \ref{fig:SchemeX_states}c, to compare the predicted macroscopic current with experimental measurements. As depicted in Fig. \ref{fig:SchemeX_likelihood}a, the sample from the posterior distribution of the predicted current closely aligns with the actual data. 
 
-The Markov State model enables prediction of macroscopic currents through probabilistic integration of subunit configurations. For any experimental timepoint $t$, the expected current $I_t^{pred}$ is computed as:
+Moreover, MacroIR computes the total variance of the predicted current (Fig. \ref{fig:SchemeX_likelihood}b) by decomposing the contributions from both white and pink noise. The analysis reveals that, at maximum time resolution and over ATP concentrations ranging from 0.2 to 10 mM, white noise is the predominant source during the ATP pulse, whereas pink noise is more pronounced during the pre-pulse period.
 
-\begin{equation}
-	I_t^{pred} = \int_{s=0}^3 P(s,t) \cdot g_s + \epsilon_t
-\end{equation}
-
-\noindent where $P(s,t)$ represents the time-dependent probability of having $s$ rotated subunits, $g_s$ their associated conductances (Fig. \ref{fig:SchemeX_states}c), and $\epsilon_t$ captures residual noise processes. Figure \ref{fig:SchemeX_likelihood}a demonstrates that this framework successfully reproduces both the mean response and prepulse fluctuations through our MacroIR algorithm, which employs a Bayesian recursive estimator:
-
-\begin{equation}
-	P(s,t+\Delta t) = \frac{\mathcal{N}(I_{obs}^{t+\Delta t}|I_t^{pred},\sigma_t^2) \cdot P(s,t)}{\sum_{s'}\mathcal{N}(I_{obs}^{t+\Delta t}|I_{t}^{pred}(s'),\sigma_t^2) \cdot P(s',t)}
-\end{equation}
-
-While this recursive approach uses prior state information, it simultaneously extracts kinetic parameters through the transition matrix constraints and conductance estimates through $g_s$ posterior distributions (Fig. \ref{fig:SchemeX_likelihood}b).
-
-To quantitatively assess model performance beyond visual agreement, we developed a composite likelihood function incorporating three variance components:
-
-\begin{equation}
-	\mathcal{L}(\theta) = \prod_{t=1}^T \mathcal{N}\left(I_t^{obs} \big| I_t^{pred}(\theta), \underbrace{\sigma_{stoc}^2(t)}_{\text{Markov noise}} + \underbrace{\sigma_{white}^2/\Delta t}_{\text{Instrumental}} + \underbrace{\sigma_{1/f}^2}_{\text{Systemic}}\right)
-\end{equation}
-
-Where $\sigma_{stoc}^2(t)$ emerges from state transition stochasticity (calculated by MacroIR), $\sigma_{white}^2$ represents frequency-independent instrumental noise (fitted as a parameter), and $\sigma_{1/f}^2$ captures low-frequency systemic variability from unmodeled processes (e.g., accessory channel interactions). As shown in Figure \ref{fig:SchemeX_likelihood}b, stochastic noise dominates during high-ATP conditions (68\% $\pm$ 7\% variance contribution), while instrumental noise prevails in low-ATP brief measurements (82\% $\pm$ 9\% contribution). The 1/f component remained bounded (9.2\% $\pm$ 3.1\% contribution), confirming model completeness through spectral density analysis (Bartlett test, p=0.12).
+Utilizing the expected current and its variance, the partial log-likelihood for each measurement is determined using a Normal distribution. Figure \ref{fig:SchemeX_likelihood}c illustrates a comparison between the expected (lines) and observed likelihoods, thereby validating the model's accuracy.
 
 
+\section{Discussion}
+
+Our study bridges the longstanding gap between equilibrium-based allosteric models and phenomenological kinetic schemes by introducing a conformational kinetic framework that directly links discrete structural transitions to macroscopic channel function. By leveraging the MacroIR algorithm in tandem with conformational modeling, we have been able to resolve multiple time constants that correspond to specific structural rearrangements during P2X2 receptor activation. This approach not only captures the evolution of state probabilities but also unveils the kinetic underpinnings of pore opening—a feat that eluded conventional analyses.
+
+A central finding is that ATP binding triggers an asymmetric conformational change among the receptor’s subunits. Rather than a uniform, concerted transition, our data reveal that ATP binding lowers the energetic barrier for rotation in one subunit more than in its neighbor. This asymmetric kinetic coupling explains several puzzling observations: it clarifies why two ATP-binding sites can be sufficient for channel activation, provides a rationale for negative cooperativity, and elucidates the so-called “flip state” observed in P2X receptors. Notably, our analysis indicates that ATP acts in a dual manner, enhancing both the forward (activation) and reverse (deactivation) rates, although the effect on activation is more pronounced. This differential modulation minimizes the occurrence of unliganded transitions, thereby reducing exposure to potentially vulnerable intermediate states.
+
+The concept of \textit{kinetic stability} emerges as a key design principle from our work. By elevating energy barriers for non-productive transitions, the receptor minimizes the frequency with which it occupies high-risk conformations. This strategy not only preserves structural integrity—protecting sensitive residues from oxidative damage—but also ensures rapid, ligand-driven responses when needed. Such a mechanism, which fine-tunes the transition frequency rather than solely shifting equilibrium populations, may represent a general strategy employed by dynamic proteins to balance functional responsiveness with resilience.
+
+Beyond its mechanistic implications, our work has significant methodological and translational ramifications. The MacroIR framework provides a powerful tool for extracting kinetic information from time-averaged macroscopic currents, and its integration with structural data paves the way for a new era of dynamic structural biology. From a therapeutic standpoint, targeting kinetic couplings (quantified by the ratio $\kappa = k_{\text{cat}}^{\text{bound}}/k_{\text{cat}}^{\text{apo}}$) rather than equilibrium constants may yield next-generation modulators with improved specificity for conditions such as chronic pain and inflammation.
+
+Despite these advances, several limitations warrant further investigation. First, while our model accurately describes single-channel behavior, cooperative effects in multimeric assemblies might introduce additional kinetic complexities. Second, the assumption of discrete conformational states, though supported by current cryo-EM and MD data, may oversimplify the continuous nature of structural fluctuations. Finally, lipid-protein interactions, which are known to modulate energetic barriers in physiological membranes, were not considered in our in vitro system.
+
+In summary, by unifying structural dynamics with kinetic principles, our study redefines allosteric regulation as an evolutionarily optimized modulation of transition pathways rather than mere state stabilization. This kinetic-conformational paradigm not only resolves long-standing discrepancies between structural snapshots and functional measurements but also opens new avenues for protein engineering and targeted drug design.
+
+
+\section{Discussion}
+
+This study resolves long-standing questions about P2X\textsubscript{2} receptor activation by integrating structural dynamics with kinetic modeling through Bayesian inference. The asymmetric kinetic coupling mechanism we identify—where ATP binding selectively lowers rotational energy barriers in specific subunits—provides a unifying explanation for experimentally observed phenomena including negative cooperativity, partial agonist efficacy, and ligand-free "flip" states. By analyzing macroscopic current fluctuations with the MacroIR algorithm, we demonstrate that ATP binding acts catalytically rather than through equilibrium stabilization, accelerating both activation and deactivation rates while maintaining low transition probabilities in unliganded states. This kinetic asymmetry prevents futile conformational cycles that could expose vulnerable structural elements, suggesting an evolutionary strategy prioritizing kinetic stability over thermodynamic optimization.
+
+The methodological advance of MacroIR enabled this mechanistic insight by extracting hidden kinetic correlations from temporally averaged currents. Unlike traditional approaches that discard stochastic fluctuations, our framework reveals how sequential subunit rotations—not synchronous movements—underlie macroscopic responses. This explains why two ATP-binding sites suffice for channel activation: partial subunit rotation generates intermediate conductance states amplified by stochastic pre-activation, a feature absent in symmetric models. The prevalence of inhibitory couplings across P2X subtypes further implies evolutionary conservation of kinetic proofreading mechanisms to avoid unproductive transitions.
+
+Our findings challenge classical allosteric paradigms that equate regulation with population shifts between pre-existing states. Instead, ligand binding emerges as a dynamic modulator of transition path probabilities between structurally defined conformations. This kinetic-conformational framework reconciles discrepancies between cryo-EM snapshots and functional measurements, particularly the disconnect between ATP-binding stoichiometry and activation thresholds. The asymmetric energy landscape we propose—where bound ATP stabilizes distinct rotational potentials in adjacent subunits—accounts for experimental observations ranging from single-channel flickering to whole-cell desensitization patterns.
+
+Several open questions remain, including cooperative effects in trimeric assemblies and lipid microenvironment influences on barrier heights. Future studies coupling time-resolved structural techniques with multiscale kinetic modeling could clarify whether discrete states represent true energetic minima or sampling artifacts. Nevertheless, our results establish kinetic coupling as a design principle for biological nanomachines, balancing functional flexibility with structural resilience.
+
+Beyond ion channels, this work provides a blueprint for studying dynamic allostery in molecular motors and enzymes. Therapeutic strategies targeting kinetic asymmetry—rather than binding pockets—could yield next-generation P2X\textsubscript{2} modulators with enhanced specificity. More broadly, evolutionary optimization of energy landscapes emerges as a universal strategy for proteins operating in noisy cellular environments, where minimizing transition state exposure outweighs the benefits of rapid conformational cycling.
 
 \section{Discussion}
 \begin{comment}
@@ -1332,7 +1311,7 @@ The ability to test hypotheses of symmetric vs. asymmetric coupling and synchron
 \newpage
 
 
-
+\end{comment}
 
 \begin{comment}
 
