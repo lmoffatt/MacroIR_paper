@@ -501,6 +501,31 @@ Within the conformational framework, we developed four variants (Fig.~\ref{fig:f
 Model performance was assessed using two likelihood approximations. The recursive MacroIR method—which accounts for temporal correlations—generally provided more reliable evidence rankings than the non-recursive MacroINR approach (Fig.~\ref{fig:figure1}d–e). Notably, Scheme~X (with independent left and right couplings) achieved the highest Bayesian evidence, closely followed by Scheme~VI. The clear evidence gap between Scheme~X and the ternary-coupling variants (Schemes~IX and XI) underscores a preference for independent secondary couplings. Moreover, the lower evidence for Scheme~VII and Scheme~IV further support our emphasis on conformational models.
 
 Extended Data Fig.~\ref{extfig:1} compares five additional schemes—including three state models (Schemes~I–III), one allosteric model (Scheme~V), and one conformational model (Scheme~VIII)—revealing that incorporating a flip state enhances performance and that complex kinetic schemes outperform simpler models with a single open state. Collectively, these results support a four-part hypothesis: (i) individual subunit rotation is feasible; (ii) ATP binding is allosterically coupled to both left and right subunit rotations; (iii) these couplings differ in magnitude; and (iv) channel conductance is determined by the number of rotated subunits. In this framework, the flip state emerges as the kinetic manifestation of individual subunit rotation, obviating the need for an ad hoc binding–gating interaction.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_1.pdf}
+	\caption{\textbf{Bayesian Evidence for Conformational, Allosteric, and State models.}  
+		(\textbf{a}) Schematic representation of the newly proposed Conformational models. R: resting; F: flipped; RA: agonist-bound; RB, BR: rotation-binding and binding-rotation allosteric couplings, indicating interactions with the left or right subunit; RBR: rotation-binding-rotation ternary allosteric coupling. Dotted lines indicate sections that are repeated three times, as specified by the subscript. In Scheme~IX, RB is equal to BR, in Scheme~X they differ, and in Scheme~XI ternary coupling is also present.  
+		(\textbf{b}) State Scheme~IV. C: closed state; CA$_n$: closed state with $n$ agonists bound; F: flipped state; O$_n$: $n$th alternative open state; D: a potentially desensitized closed state where unbinding is restricted.  
+		(\textbf{c}) Allosteric Schemes~VI and VII. C: closed channel; O: open channel; A, B, C: allosteric couplings; subscripts indicate the number of repetitions.  
+		(\textbf{d--e}) Bayesian evidence for each illustrated scheme, computed using the recursive MacroIR algorithm (\textbf{d}) and the non-recursive MacroINR algorithm (\textbf{e}). Color coding is used to facilitate scheme ranking comparisons. Gray rectangles indicate the standard error of the $log_e(Evidence)$.  
+	}
+	\label{fig:figure1}
+\end{figure}
+
+\begin{extfigure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Supplementary_Figure_1.pdf}
+	\caption{\textbf{Bayesian Evidence for all Conformational, Allosteric, and State models.}  
+		(\textbf{a}) Schematic representation of newly proposed Conformational models. R: resting; F: flipped; RA: agonist-bound; RBR: rotation-binding-rotation ternary allosteric coupling. Dotted lines indicate sections that are repeated three times, as specified by the subscript.  
+		(\textbf{b}) Regular Scheme~I, II and III. C: closed state; CA$_n$: closed state with $n$ agonists bound; F: flipped state; O$_n$: $n$th alternative open state; D: a potentially desensitized closed state where unbinding is restricted.  
+		(\textbf{c}) Allosteric Schemes~V. C: closed channel; O: open channel; A: allosteric couplings; subscripts indicate the number of repetitions.  
+		(\textbf{d--e}) Bayesian evidence for each tested scheme, computed using the recursive MacroIR algorithm (\textbf{d}) and the non-recursive MacroINR algorithm (\textbf{e}). Color coding is used to facilitate scheme ranking comparisons. Gray rectangles indicate the standard error of the $log_e(Evidence)$.  
+	}
+	\label{extfig:1}
+\end{extfigure}
+
+
 
 \section{Analysis of the Posterior Distribution of Scheme X Parameters}
 The posterior distributions of parameters in Kinetic Scheme X (Fig.~\ref{fig:posterior_SchemeX}) reveal three distinct behavioral patterns. First, parameters governing kinetic rates, conductance, noise, inactivation constants, and baseline currents exhibit narrow, unimodal posteriors, indicating robust identifiability and strong data constraints. Second, two parameters describing the relationship between conductance and the number of rotated subunits---namely, the current leakage of the closed channel and the current-rotation coupling---show limited but consistent divergence from their priors, suggesting that the data confine their values to specific ranges, that is there is no information in the data to put a lower limit in the leakeage current. 
