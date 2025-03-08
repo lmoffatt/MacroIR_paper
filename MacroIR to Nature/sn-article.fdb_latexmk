@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex sn-article"] 1741351360.50745 "sn-article.aux" "sn-article.bbl" "sn-article" 1741351362.08414 0
-  "./biblio.bib" 1741189463.59076 39839 b50efacb6f8798e302a1df7a0137ce1f ""
-  "./sn-mathphys-num.bst" 1740590504 64141 2560fd4f8e8321a304f732d035eb1b51 ""
-  "sn-article.aux" 1741351361.65107 27467 5f0318aeb6b0eeb7b113da1a352a30ec "pdflatex"
+["bibtex sn-article"] 1741448776.0805 "sn-article.aux" "sn-article.bbl" "sn-article" 1741448777.55849 0
+  "./biblio.bib" 1741445131.06791 40415 446e2e52bbed2ca6b380fceda6716dbd ""
+  "./sn-nature.bst" 1740590504 38349 442dafdf9f5aeb65ccddf1255f87db23 ""
+  "sn-article.aux" 1741448777.16457 28461 9231a691e66ef9a6e07c874a52ff861a "pdflatex"
   (generated)
   "sn-article.bbl"
   "sn-article.blg"
   (rewritten before read)
-["pdflatex"] 1741351360.65432 "sn-article.tex" "sn-article.pdf" "sn-article" 1741351362.08436 0
+["pdflatex"] 1741448776.23704 "sn-article.tex" "sn-article.pdf" "sn-article" 1741448777.55869 0
   "/etc/texmf/web2c/texmf.cnf" 1666290182.67132 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc" 1422827479 2083 60e36f8eac802fcaf19eabe2633b406e ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -207,10 +207,10 @@
   "Figure_5_states.pdf" 1741301960.91883 3951149 da43fd701a40013dff2f3cb030958c1d ""
   "Figure_6.pdf" 1740590506 5752354 d8e5568d4d12cc30ee40597832a77cff ""
   "Supplementary_Figure_1.pdf" 1741288345.07505 19413 23e06f051dd3bdf0385558c7028c7b90 ""
-  "sn-article.aux" 1741351361.65107 27467 5f0318aeb6b0eeb7b113da1a352a30ec "pdflatex"
-  "sn-article.bbl" 1741351360.63906 9206 1d5c7037dca457adf4e310f1927e0bb6 "bibtex sn-article"
-  "sn-article.out" 1741351361.65107 7381 21da5fbb8718cb99f47f67b00f83b9e4 "pdflatex"
-  "sn-article.tex" 1741351358.98705 107305 28461ec3405bf6efc7483a4f8796d9f4 ""
+  "sn-article.aux" 1741448777.16457 28461 9231a691e66ef9a6e07c874a52ff861a "pdflatex"
+  "sn-article.bbl" 1741448776.22857 8653 7d15449150406faf941eef1e7b031181 "bibtex sn-article"
+  "sn-article.out" 1741448777.16857 7484 6e2306910006e984d91030e3dcc04aad "pdflatex"
+  "sn-article.tex" 1741448773.10455 72501 75ff8127d3f2f4c2b98ba66d2dcb76f9 ""
   "sn-jnl.cls" 1740590504 55331 d7cf5cb282c5c6c90059534004dcdf13 ""
   (generated)
   "sn-article.aux"

@@ -1,290 +1,193 @@
-%% BioMed_Central_Bib_Style_v1.01
-
-\begin{thebibliography}{16}
-% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
-\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
-\ifx \binits  \undefined \def \binits#1{#1}\fi
-\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
-\ifx \batitle  \undefined \def \batitle#1{#1}\fi
-\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
-\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
-\ifx \byear  \undefined \def \byear#1{#1}\fi
-\ifx \bissue  \undefined \def \bissue#1{#1}\fi
-\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
-\ifx \blpage  \undefined \def \blpage #1{#1}\fi
-\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
-\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
-\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
-\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
-\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
-\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
-\ifx \beditor  \undefined \def \beditor#1{#1}\fi
-\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
-\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
-\ifx \bedition  \undefined \def \bedition#1{#1}\fi
-\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
-\ifx \blocation  \undefined \def \blocation#1{#1}\fi
-\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
-\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
-\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
-\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
-\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\burl{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+\providecommand{\doi}[1]{\url{https://doi.org/#1}}
 \bibcommenthead
-\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
-\ifx \botherref \undefined \def \botherref #1{#1}\fi
-\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
-\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
-\ifx \bbook \undefined \def \bbook#1{#1}\fi
-\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
-\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
-\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
-\ifx \endbibitem  \undefined \def \endbibitem {}\fi
-\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
-\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
-\csname PreBibitemsHook\endcsname
 
-%%% 1
-\bibitem[\protect\citeauthoryear{Changeux
-  et~al.}{1984}]{Changeux1984AcetylcholineRA}
-\begin{barticle}
-\bauthor{\bsnm{Changeux}, \binits{J.P.}},
-\bauthor{\bsnm{Devillers-Thiery}, \binits{A.}},
-\bauthor{\bsnm{Chemouilli}, \binits{P.}}:
-\batitle{Acetylcholine receptor: an allosteric protein.}
-\bjtitle{Science}
-\bvolume{225 4668},
-\bfpage{1335}--\blpage{45}
-(\byear{1984})
-\end{barticle}
-\endbibitem
+\bibitem{Changeux1984AcetylcholineRA}
+\bibinfo{author}{Changeux, J.~P.}, \bibinfo{author}{Devillers-Thiery, A.} \&
+  \bibinfo{author}{Chemouilli, P.}
+\newblock \bibinfo{title}{Acetylcholine receptor: an allosteric protein.}
+\newblock \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{225
+  4668}}, \bibinfo{pages}{1335--45} (\bibinfo{year}{1984}).
+\newblock \urlprefix\url{https://api.semanticscholar.org/CorpusID:43689647}.
 
-%%% 2
-\bibitem[\protect\citeauthoryear{Nakanishi}{1994}]{nakanishi1994metabotropic}
-\begin{barticle}
-\bauthor{\bsnm{Nakanishi}, \binits{S.}}:
-\batitle{Metabotropic glutamate receptors: synaptic transmission, modulation,
-  and plasticity}.
-\bjtitle{Neuron}
-\bvolume{13}(\bissue{5}),
-\bfpage{1031}--\blpage{1037}
-(\byear{1994})
-\end{barticle}
-\endbibitem
+\bibitem{UNWIN199331}
+\bibinfo{author}{Unwin, N.}
+\newblock \bibinfo{title}{Neurotransmitter action: Opening of ligand-gated ion
+  channels}.
+\newblock \emph{\bibinfo{journal}{Cell}} \textbf{\bibinfo{volume}{72}},
+  \bibinfo{pages}{31--41} (\bibinfo{year}{1993}).
+\newblock
+  \urlprefix\url{https://www.sciencedirect.com/science/article/pii/S0092867405800261}.
 
-%%% 3
-\bibitem[\protect\citeauthoryear{Greengard}{2001}]{greengard2001neurobiology}
-\begin{barticle}
-\bauthor{\bsnm{Greengard}, \binits{P.}}:
-\batitle{The neurobiology of slow synaptic transmission}.
-\bjtitle{Science}
-\bvolume{294}(\bissue{5544}),
-\bfpage{1024}--\blpage{1030}
-(\byear{2001})
-\end{barticle}
-\endbibitem
+\bibitem{Lemoine2012}
+\bibinfo{author}{Lemoine, D.} \emph{et~al.}
+\newblock \bibinfo{title}{Ligand-gated ion channels: New insights into
+  neurological disorders and ligand recognition}.
+\newblock \emph{\bibinfo{journal}{Chemical Reviews}}
+  \textbf{\bibinfo{volume}{112}}, \bibinfo{pages}{6285--6318}
+  (\bibinfo{year}{2012}).
+\newblock \urlprefix\url{https://doi.org/10.1021/cr3000829}.
+\newblock \bibinfo{note}{PMID: 22988962}.
 
-%%% 4
-\bibitem[\protect\citeauthoryear{Peper et~al.}{1982}]{peper1982acetylcholine}
-\begin{barticle}
-\bauthor{\bsnm{Peper}, \binits{K.}},
-\bauthor{\bsnm{Bradley}, \binits{R.}},
-\bauthor{\bsnm{Dreyer}, \binits{F.}}:
-\batitle{The acetylcholine receptor at the neuromuscular junction}.
-\bjtitle{Physiological Reviews}
-\bvolume{62}(\bissue{4}),
-\bfpage{1271}--\blpage{1340}
-(\byear{1982})
-\end{barticle}
-\endbibitem
+\bibitem{galligan2002ligand}
+\bibinfo{author}{Galligan, J.}
+\newblock \bibinfo{title}{Ligand-gated ion channels in the enteric nervous
+  system}.
+\newblock \emph{\bibinfo{journal}{Neurogastroenterology \& Motility}}
+  \textbf{\bibinfo{volume}{14}}, \bibinfo{pages}{611--623}
+  (\bibinfo{year}{2002}).
 
-%%% 5
-\bibitem[\protect\citeauthoryear{Burnstock}{2007}]{burnstock2007physiology}
-\begin{barticle}
-\bauthor{\bsnm{Burnstock}, \binits{G.}}:
-\batitle{Physiology and pathophysiology of purinergic neurotransmission}.
-\bjtitle{Physiological reviews}
-\bvolume{87}(\bissue{2}),
-\bfpage{659}--\blpage{797}
-(\byear{2007})
-\end{barticle}
-\endbibitem
+\bibitem{feske2012ion}
+\bibinfo{author}{Feske, S.}, \bibinfo{author}{Skolnik, E.~Y.} \&
+  \bibinfo{author}{Prakriya, M.}
+\newblock \bibinfo{title}{Ion channels and transporters in lymphocyte function
+  and immunity}.
+\newblock \emph{\bibinfo{journal}{Nature Reviews Immunology}}
+  \textbf{\bibinfo{volume}{12}}, \bibinfo{pages}{532--547}
+  (\bibinfo{year}{2012}).
 
-%%% 6
-\bibitem[\protect\citeauthoryear{Nicke et~al.}{1998}]{trimer}
-\begin{barticle}
-\bauthor{\bsnm{Nicke}, \binits{A.}},
-\bauthor{\bsnm{Hans}, \binits{B.}},
-\bauthor{\bsnm{J\"{u}rgen}, \binits{R.}},
-\bauthor{\bsnm{Eichele}, \binits{A.}},
-\bauthor{\bsnm{G\"{u}nter}, \binits{L.}},
-\bauthor{\bsnm{Ernst}, \binits{M.}},
-\bauthor{\bsnm{G\"{u}nter}, \binits{S.}}:
-\batitle{P2x1 and p2x3 receptors form stable trimers: a novel structural motif
-  of ligand-gated ion channels}.
-\bjtitle{The EMBO Journal}
-\bvolume{17}(\bissue{11}),
-\bfpage{3016}--\blpage{3028}
-(\byear{1998})
-\end{barticle}
-\endbibitem
+\bibitem{Nicke1998P2X1AP}
+\bibinfo{author}{Nicke, A.} \emph{et~al.}
+\newblock \bibinfo{title}{P2x1 and p2x3 receptors form stable trimers: a novel
+  structural motif of ligand‐gated ion channels}.
+\newblock \emph{\bibinfo{journal}{The EMBO Journal}}
+  \textbf{\bibinfo{volume}{17}} (\bibinfo{year}{1998}).
+\newblock \urlprefix\url{https://api.semanticscholar.org/CorpusID:12663785}.
 
-%%% 7
-\bibitem[\protect\citeauthoryear{Marquez-Klaka
-  et~al.}{2007}]{MarquezKlaka2007IdentificationOA}
-\begin{barticle}
-\bauthor{\bsnm{Marquez-Klaka}, \binits{B.}},
-\bauthor{\bsnm{Rettinger}, \binits{J.}},
-\bauthor{\bsnm{Bhargava}, \binits{Y.}},
-\bauthor{\bsnm{Eisele}, \binits{T.}},
-\bauthor{\bsnm{Nicke}, \binits{A.}}:
-\batitle{Identification of an intersubunit cross-link between substituted
-  cysteine residues located in the putative atp binding site of the p2x1
-  receptor}.
-\bjtitle{The Journal of Neuroscience}
-\bvolume{27},
-\bfpage{1456}--\blpage{1466}
-(\byear{2007})
-\end{barticle}
-\endbibitem
+\bibitem{Sattler2020UnravellingTI}
+\bibinfo{author}{Sattler, C.} \emph{et~al.}
+\newblock \bibinfo{title}{Unravelling the intricate cooperativity of subunit
+  gating in p2x2 ion channels}.
+\newblock \emph{\bibinfo{journal}{Scientific Reports}}
+  \textbf{\bibinfo{volume}{10}} (\bibinfo{year}{2020}).
+\newblock \urlprefix\url{https://api.semanticscholar.org/CorpusID:228099577}.
 
-%%% 8
-\bibitem[\protect\citeauthoryear{Hattori and Gouaux}{2012}]{abierta_p2x}
-\begin{barticle}
-\bauthor{\bsnm{Hattori}, \binits{M.}},
-\bauthor{\bsnm{Gouaux}, \binits{E.}}:
-\batitle{Molecular mechanism of atp binding and ion channel activation in p2x
-  receptors}.
-\bjtitle{Nature}
-\bvolume{485}(\bissue{7397}),
-\bfpage{207}--\blpage{212}
-(\byear{2012})
-\end{barticle}
-\endbibitem
+\bibitem{Hattori2012MolecularMO}
+\bibinfo{author}{Hattori, M.} \& \bibinfo{author}{Gouaux, E.}
+\newblock \bibinfo{title}{Molecular mechanism of atp binding and ion channel
+  activation in p2x receptors}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{485}},
+  \bibinfo{pages}{207--212} (\bibinfo{year}{2012}).
+\newblock \urlprefix\url{https://api.semanticscholar.org/CorpusID:205228486}.
 
-%%% 9
-\bibitem[\protect\citeauthoryear{Kawate et~al.}{2009}]{cerrada_p2x}
-\begin{barticle}
-\bauthor{\bsnm{Kawate}, \binits{T.}},
-\bauthor{\bsnm{Michel}, \binits{J.C.}},
-\bauthor{\bsnm{Birdsong}, \binits{W.T.}},
-\bauthor{\bsnm{Gouaux}, \binits{E.}}:
-\batitle{Crystal structure of the atp-gated p2x4 ion channel in the closed
-  state}.
-\bjtitle{Nature}
-\bvolume{460}(\bissue{7255}),
-\bfpage{592}--\blpage{598}
-(\byear{2009})
-\end{barticle}
-\endbibitem
+\bibitem{Moffatt_hume}
+\bibinfo{author}{Moffatt, L.} \& \bibinfo{author}{Hume, R.~I.}
+\newblock \bibinfo{title}{Responses of rat p2x2 receptors to ultrashort pulses
+  of atp provide insights into atp binding and channel gating}.
+\newblock \emph{\bibinfo{journal}{The Journal of General Physiology}}
+  \textbf{\bibinfo{volume}{130}}, \bibinfo{pages}{183--201}
+  (\bibinfo{year}{2007}).
 
-%%% 10
-\bibitem[\protect\citeauthoryear{Ding and
-  Sachs}{1999}]{properties_single_channe}
-\begin{barticle}
-\bauthor{\bsnm{Ding}, \binits{S.}},
-\bauthor{\bsnm{Sachs}, \binits{F.}}:
-\batitle{Single channel properties of p2x2 purinoceptors}.
-\bjtitle{The Journal of General Physiology}
-\bvolume{113}(\bissue{5}),
-\bfpage{695}--\blpage{720}
-(\byear{1999})
-\end{barticle}
-\endbibitem
+\bibitem{abierta_p2x}
+\bibinfo{author}{Hattori, M.} \& \bibinfo{author}{Gouaux, E.}
+\newblock \bibinfo{title}{Molecular mechanism of atp binding and ion channel
+  activation in p2x receptors}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{485}},
+  \bibinfo{pages}{207--212} (\bibinfo{year}{2012}).
 
-%%% 11
-\bibitem[\protect\citeauthoryear{Moffatt and Hume}{2007}]{Moffatt_hume}
-\begin{barticle}
-\bauthor{\bsnm{Moffatt}, \binits{L.}},
-\bauthor{\bsnm{Hume}, \binits{R.I.}}:
-\batitle{Responses of rat p2x2 receptors to ultrashort pulses of atp provide
-  insights into atp binding and channel gating}.
-\bjtitle{The Journal of General Physiology}
-\bvolume{130}(\bissue{2}),
-\bfpage{183}--\blpage{201}
-(\byear{2007})
-\end{barticle}
-\endbibitem
+\bibitem{cerrada_p2x}
+\bibinfo{author}{Kawate, T.}, \bibinfo{author}{Michel, J.~C.},
+  \bibinfo{author}{Birdsong, W.~T.} \& \bibinfo{author}{Gouaux, E.}
+\newblock \bibinfo{title}{Crystal structure of the atp-gated p2x4 ion channel
+  in the closed state}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{460}},
+  \bibinfo{pages}{592--598} (\bibinfo{year}{2009}).
 
-%%% 12
-\bibitem[\protect\citeauthoryear{Moffatt}{2007}]{Moffatt}
-\begin{barticle}
-\bauthor{\bsnm{Moffatt}, \binits{L.}}:
-\batitle{Estimation of ion channel kinetics from fluctuations of macroscopic
-  currents}.
-\bjtitle{Biophysical Journal}
-\bvolume{93}(\bissue{1}),
-\bfpage{74}--\blpage{91}
-(\byear{2007})
-\end{barticle}
-\endbibitem
+\bibitem{nakanishi1994metabotropic}
+\bibinfo{author}{Nakanishi, S.}
+\newblock \bibinfo{title}{Metabotropic glutamate receptors: synaptic
+  transmission, modulation, and plasticity}.
+\newblock \emph{\bibinfo{journal}{Neuron}} \textbf{\bibinfo{volume}{13}},
+  \bibinfo{pages}{1031--1037} (\bibinfo{year}{1994}).
 
-%%% 13
-\bibitem[\protect\citeauthoryear{Hattori and
-  Gouaux}{2012}]{Hattori2012MolecularMO}
-\begin{barticle}
-\bauthor{\bsnm{Hattori}, \binits{M.}},
-\bauthor{\bsnm{Gouaux}, \binits{E.}}:
-\batitle{Molecular mechanism of atp binding and ion channel activation in p2x
-  receptors}.
-\bjtitle{Nature}
-\bvolume{485},
-\bfpage{207}--\blpage{212}
-(\byear{2012})
-\end{barticle}
-\endbibitem
+\bibitem{greengard2001neurobiology}
+\bibinfo{author}{Greengard, P.}
+\newblock \bibinfo{title}{The neurobiology of slow synaptic transmission}.
+\newblock \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{294}},
+  \bibinfo{pages}{1024--1030} (\bibinfo{year}{2001}).
 
-%%% 14
-\bibitem[\protect\citeauthoryear{Horrigan and
-  Aldrich}{2002}]{Horrigan2002CouplingBV}
-\begin{barticle}
-\bauthor{\bsnm{Horrigan}, \binits{F.T.}},
-\bauthor{\bsnm{Aldrich}, \binits{R.W.}}:
-\batitle{Coupling between voltage sensor activation, ca2+ binding and channel
-  opening in large conductance (bk) potassium channels}.
-\bjtitle{The Journal of General Physiology}
-\bvolume{120},
-\bfpage{267}--\blpage{305}
-(\byear{2002})
-\end{barticle}
-\endbibitem
+\bibitem{peper1982acetylcholine}
+\bibinfo{author}{Peper, K.}, \bibinfo{author}{Bradley, R.} \&
+  \bibinfo{author}{Dreyer, F.}
+\newblock \bibinfo{title}{The acetylcholine receptor at the neuromuscular
+  junction}.
+\newblock \emph{\bibinfo{journal}{Physiological Reviews}}
+  \textbf{\bibinfo{volume}{62}}, \bibinfo{pages}{1271--1340}
+  (\bibinfo{year}{1982}).
 
-%%% 15
-\bibitem[\protect\citeauthoryear{Stelmashenko
-  et~al.}{2012}]{Stelmashenko2012ActivationOT}
-\begin{barticle}
-\bauthor{\bsnm{Stelmashenko}, \binits{O.}},
-\bauthor{\bsnm{Lalo}, \binits{U.}},
-\bauthor{\bsnm{Yang}, \binits{Y.}},
-\bauthor{\bsnm{Bragg}, \binits{L.}},
-\bauthor{\bsnm{North}, \binits{R.A.}},
-\bauthor{\bsnm{Compan}, \binits{V.}}:
-\batitle{Activation of trimeric p2x2 receptors by fewer than three atp
-  molecules}.
-\bjtitle{Molecular Pharmacology}
-\bvolume{82},
-\bfpage{760}--\blpage{766}
-(\byear{2012})
-\end{barticle}
-\endbibitem
+\bibitem{burnstock2007physiology}
+\bibinfo{author}{Burnstock, G.}
+\newblock \bibinfo{title}{Physiology and pathophysiology of purinergic
+  neurotransmission}.
+\newblock \emph{\bibinfo{journal}{Physiological reviews}}
+  \textbf{\bibinfo{volume}{87}}, \bibinfo{pages}{659--797}
+  (\bibinfo{year}{2007}).
 
-%%% 16
-\bibitem[\protect\citeauthoryear{Sattler
-  et~al.}{2020}]{Sattler2020UnravellingTI}
-\begin{botherref}
-\oauthor{\bsnm{Sattler}, \binits{C.}},
-\oauthor{\bsnm{Eick}, \binits{T.}},
-\oauthor{\bsnm{Hummert}, \binits{S.}},
-\oauthor{\bsnm{Schulz}, \binits{E.}},
-\oauthor{\bsnm{Schmauder}, \binits{R.}},
-\oauthor{\bsnm{Schweinitz}, \binits{A.}},
-\oauthor{\bsnm{Unzeitig}, \binits{C.}},
-\oauthor{\bsnm{Schwede}, \binits{F.}},
-\oauthor{\bsnm{Benndorf}, \binits{K.}}:
-Unravelling the intricate cooperativity of subunit gating in p2x2 ion channels.
-Scientific Reports
-\textbf{10}
-(2020)
-\end{botherref}
-\endbibitem
+\bibitem{trimer}
+\bibinfo{author}{Nicke, A.} \emph{et~al.}
+\newblock \bibinfo{title}{P2x1 and p2x3 receptors form stable trimers: a novel
+  structural motif of ligand-gated ion channels}.
+\newblock \emph{\bibinfo{journal}{The EMBO Journal}}
+  \textbf{\bibinfo{volume}{17}}, \bibinfo{pages}{3016--3028}
+  (\bibinfo{year}{1998}).
+
+\bibitem{MarquezKlaka2007IdentificationOA}
+\bibinfo{author}{Marquez-Klaka, B.}, \bibinfo{author}{Rettinger, J.},
+  \bibinfo{author}{Bhargava, Y.}, \bibinfo{author}{Eisele, T.} \&
+  \bibinfo{author}{Nicke, A.}
+\newblock \bibinfo{title}{Identification of an intersubunit cross-link between
+  substituted cysteine residues located in the putative atp binding site of the
+  p2x1 receptor}.
+\newblock \emph{\bibinfo{journal}{The Journal of Neuroscience}}
+  \textbf{\bibinfo{volume}{27}}, \bibinfo{pages}{1456 -- 1466}
+  (\bibinfo{year}{2007}).
+\newblock \urlprefix\url{https://api.semanticscholar.org/CorpusID:14127126}.
+
+\bibitem{properties_single_channe}
+\bibinfo{author}{Ding, S.} \& \bibinfo{author}{Sachs, F.}
+\newblock \bibinfo{title}{Single channel properties of p2x2 purinoceptors}.
+\newblock \emph{\bibinfo{journal}{The Journal of General Physiology}}
+  \textbf{\bibinfo{volume}{113}}, \bibinfo{pages}{695--720}
+  (\bibinfo{year}{1999}).
+
+\bibitem{Horrigan2002CouplingBV}
+\bibinfo{author}{Horrigan, F.~T.} \& \bibinfo{author}{Aldrich, R.~W.}
+\newblock \bibinfo{title}{Coupling between voltage sensor activation, ca2+
+  binding and channel opening in large conductance (bk) potassium channels}.
+\newblock \emph{\bibinfo{journal}{The Journal of General Physiology}}
+  \textbf{\bibinfo{volume}{120}}, \bibinfo{pages}{267 -- 305}
+  (\bibinfo{year}{2002}).
+\newblock \urlprefix\url{https://api.semanticscholar.org/CorpusID:795565}.
+
+\bibitem{Moffatt}
+\bibinfo{author}{Moffatt, L.}
+\newblock \bibinfo{title}{Estimation of ion channel kinetics from fluctuations
+  of macroscopic currents}.
+\newblock \emph{\bibinfo{journal}{Biophysical Journal}}
+  \textbf{\bibinfo{volume}{93}}, \bibinfo{pages}{74--91}
+  (\bibinfo{year}{2007}).
+
+\bibitem{Munch2022}
+\bibinfo{author}{Münch, J.~L.}, \bibinfo{author}{Paul, F.},
+  \bibinfo{author}{Schmauder, R.} \& \bibinfo{author}{Benndorf, K.}
+\newblock \bibinfo{title}{Bayesian inference of kinetic schemes for ion
+  channels by kalman filtering}.
+\newblock \emph{\bibinfo{journal}{eLife}} \textbf{\bibinfo{volume}{11}},
+  \bibinfo{pages}{e62714} (\bibinfo{year}{2022}).
+\newblock \urlprefix\url{https://doi.org/10.7554/eLife.62714}.
+
+\bibitem{Stelmashenko2012ActivationOT}
+\bibinfo{author}{Stelmashenko, O.} \emph{et~al.}
+\newblock \bibinfo{title}{Activation of trimeric p2x2 receptors by fewer than
+  three atp molecules}.
+\newblock \emph{\bibinfo{journal}{Molecular Pharmacology}}
+  \textbf{\bibinfo{volume}{82}}, \bibinfo{pages}{760 -- 766}
+  (\bibinfo{year}{2012}).
+\newblock \urlprefix\url{https://api.semanticscholar.org/CorpusID:17800304}.
 
 \end{thebibliography}

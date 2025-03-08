@@ -433,6 +433,12 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/stxscr.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxsy7.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txsys.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txex-bar.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntx-Regular-tlf-ot1.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txmiaX.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1r.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxsy5.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txsys.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txex-bar.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntxbmi.tfm
@@ -456,12 +462,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntxbsyc.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntxbexa.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntxbexa.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntxbexa.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntx-Regular-tlf-ot1.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txmiaX.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1r.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxsy5.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txsys.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txex-bar.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxbmi.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/NewTXBMI.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxexx.vf
