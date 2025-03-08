@@ -17,7 +17,7 @@
 %% to print line numbers in the margin use lineno option %%
 %%=======================================================%%
 
-\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
 
 %%======================================================%%
 %% to compile with pdflatex/xelatex use pdflatex option %%
@@ -29,7 +29,7 @@
 %%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
 %%The option is available for: sn-basic.bst, sn-vancouver.bst, sn-chicago.bst%  
  
-%%\documentclass[pdflatex,sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+\documentclass[pdflatex,sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
 %%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
 %%\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style 
 %%\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}% Math and Physical Sciences Author Year Reference Style
@@ -105,9 +105,11 @@ name={Extended Data Fig.}
 %\affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
 
 
-\abstract{The activation of ligand-gated ion channels is fundamental to cellular signal transduction, influencing processes from neurotransmission to immune responses. ATP-gated P2X receptors, with their trimeric structure, provide a model system for investigating allosteric regulation. While structural studies have defined their closed and open states, the precise sequence of ATP-driven conformational changes and the role of subunit-specific dynamics remain unresolved.	
-	Here, we demonstrate that the activation kinetics of P2X2 receptors can be accurately reproduced by an asymmetric coupling mechanism, where ATP binding drives the rotation of individual subunits and a saturating increase in conductance as the subunits undergo rotation. Using a novel Bayesian analysis tailored to time-averaged macroscopic currents, we demonstrate that ATP binding stabilizes and lowers the energetic barrier for rotation of the left subunit while minimally influencing the right subunit. A second asymmetric coupling explains the negative cooperativity in binding, with ATP binding at one site paradoxically increasing the barrier at the second site. These modulated energy barriers prevent an unliganded rotation that would lead to premature inactivation. 	
-	Our findings suggest that tunable activation barriers are a general strategy for stabilizing ion channels and signaling proteins in dynamic cellular environments. This framework advances our understanding of allosteric regulation in ligand-gated ion channels and may inform drug design for P2X receptors in conditions such as chronic pain and inflammation.}
+\abstract{
+	The activation of ligand-gated ion channels is fundamental to cellular signal transduction, influencing processes from neurotransmission to immune responses\cite{UNWIN199331, Lemoine2012,galligan2002ligand,feske2012ion}. ATP-gated P2X receptors, with their trimeric structure, provide a model system for investigating allosteric regulation\cite{Nicke1998P2X1AP,Sattler2020UnravellingTI,Hattori2012MolecularMO,Moffatt_hume}. While structural studies have defined their closed and open states\cite{abierta_p2x,cerrada_p2x}, the precise sequence of ATP-driven conformational changes and the role of subunit-specific dynamics remain unresolved. 
+	Here, we demonstrate that the activation kinetics of P2X2 receptors can be accurately reproduced by an asymmetric coupling mechanism, where ATP binding drives the rotation of individual subunits and a saturating increase in conductance as the subunits undergo rotation. Using a novel Bayesian analysis tailored to time-averaged macroscopic currents, we demonstrate that ATP binding stabilizes and lowers the energetic barrier for rotation of the left subunit while minimally influencing the right subunit. A second asymmetric coupling explains the negative cooperativity in binding, with ATP binding at one site paradoxically increasing the barrier at the second site. These modulated energy barriers prevent an unliganded rotation that would lead to premature inactivation. 
+	Our findings suggest that tunable activation barriers are a general strategy for stabilizing ion channels and signaling proteins in dynamic cellular environments. This framework advances our understanding of allosteric regulation in ligand-gated ion channels and may inform drug design for P2X receptors in conditions such as chronic pain and inflammation.
+	}
 
 
 \keywords{Bayesian Analysis, P2X receptors, Cellular Signaling}
