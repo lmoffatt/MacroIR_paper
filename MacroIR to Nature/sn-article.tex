@@ -541,16 +541,6 @@ Collectively, these findings support a four-part hypothesis: (i) individual subu
 
 
 \section{Analysis of the Posterior Distribution of Scheme X Parameters}
-\begin{comment}
-	Schemes cannot mathematically differentiate between interaction with the left subunit or the right subunit, there is no left-right information in the macrocurrents. Therefore it is not surprising that the posterior distribution of the allosteric parameters of Scheme X are all bimodal. As a way to break such symmetry in the priors we arbitrarily set BR to be 10 times RB. However, as the prior standard deviation of the $log10$ of both parameters (and all the remaining ones) was set to be 2, there was enough exploration at low thermodynamic temperatures to jump from one minimum to the other, so both values appear, although at different frequencies. 
-	This bimodality can be removed by determining which is greater if RB or BR, and if the former if the case, swap all the remaining parameters. In this was unimodal distribution were recovered for all allosteric parameters. 
-	Once we correct for the bimodality we find that whereas one interaction is considerable (100-10$^4$ times), the other is much smaller(0-2 times). So, upon binding, there is a strong allosteric interaction with one subunit and a weak interaction with the other. This second subunit will have strong interaction at the other binding site that it is forming. 
-	If we then look at the decomposition of the allosteric interaction we see the following.
-	
-	
-\end{comment}
-
-
 The posterior distributions of parameters in Kinetic Scheme X (Fig.~\ref{fig:posterior_SchemeX}) reveal three distinct behavioral patterns. First, parameters governing kinetic rates, conductance, noise, inactivation constants, and baseline currents exhibit narrow, unimodal posteriors, indicating robust identifiability and strong data constraints. Second, two parameters describing the relationship between conductance and the number of rotated subunits---namely, the current leakage of the closed channel and the current-rotation coupling---show limited but consistent divergence from their priors, suggesting that the data confine their values to specific ranges, that is there is no information in the data to put a lower limit in the leakeage current. 
 Finally, the parameters related to binding-rotation coupling display bimodal distributions, as anticipated given that kinetic data alone cannot resolve the inherent left-right symmetry of the allosteric coupling. Although weakly informative priors were employed to favor one pathway, the affine ensemble Monte Carlo sampling recovered both modes in proportions consistent with the prior, reflecting this symmetry.
 
@@ -644,20 +634,6 @@ Current distributions across rotational states (Fig. \ref{fig:SchemeX_states}c) 
 
 Our findings resolve a longstanding paradox in purinergic signaling - why two functional ATP binding sites suffice for channel activation. The combination of stochastic pre-activation (Fig. \ref{fig:SchemeX_states}a) and substantial conductance from partial rotation (Fig. \ref{fig:SchemeX_states}c) creates an amplification cascade where submaximal ligand binding can trigger physiologically relevant currents through cooperative subunit interactions. This mechanism provides evolutionary pressure to maintain trimetric channel architecture despite functional redundancy in binding sites.
 
-\begin{comment}
-
-\section{From subunit behavior to collective behavior}
-
-Previous analysis was focused on how kinetic coupling affect the kinetic rates of single subunits or binding sites. Figure 4 shows how to extend this behavior to the whole channel. In this squema, each subunit is represented by big ellipse, binding sites by a smaller one. Activated state (rotated or bound) is indicated as a filled elipse and resting states (no rotated or free) by an empty ellipse. The color coding of the arrows and ellipse indicates the interaction state for the underlying transition, grey indicating no interaction, orange the intense BR interaction, light blue the moderate RB and purple (sum of orange and ligth blue) the combination of both.  Vertical lines indicate rotations and horizontal lines indicate bindings/unbindings. As there are three subunits (binding sites) there are at most three vertical (horizontal ) arrows saliendo de cada estado. Cuando hay menos, por ejemplo del estado de inferior izquierdo, cada flecha puede indicar transiciones multiples, por lo que el kinetic rate se debe multiplicar por el numero de subunidades con el mismo estado de interaccion o color. 
-Para saber cual es el kinetic rate de cualquier transicion se busca el estado de interaccion y con esa informacion se va a la figura 3, ahi se multiplica la tasa obtenida por numero de subunidades/sitio de union que  mismo estado de interaccion 
-inicial. 
-
-Con esta información se puede obtener la ocupancia de cada estado durante el experimento. Antes de cada pulso, se esperó 60 segundos desde la ultima aplicacion de ATP, porque solo los estados con 0 ATP unido tenian alguna ocupancia. Interesantemente (figura 5a), alrededor de un 15\% de los canales tenian una subunidad rotada, un 1\% dos y alrededor de 0.02\% tres subunidades rotadas. Fijense que a pesar de que no hay estimulo se observan fluctuaciones en la ocupancia. Esto se debe a que el algoritmo MacroIR atribuye las fluctuaciones estocásticas en la corriente a cambios en la proporcion de estados. 
-En la figura 6b se observan la evolucion de una sample de la  posterior state probability desde que se comienza la aplicación del pulso. Notar la escala logarimica. Se comienza en el estado libre de ATP y en descanso y se van llenando los sitios de unión y luego rotando las subunidades. Interesantemente, en la activación a alta concentracion de ATP, el camino principal  es por los bordes del esquema, mientras que la desactivación hay una significativa contribución de los estados centrales, es decir parcialmente ligados y parcialmente rotados. 
-En la figura 4C se grafica la distribucion a posteriori de la corriente para 0,1,2 y 3 subunidades rotadas. Mientras que la corriente asignada a 0 y 1 subunidad rotada es insignificante, es notable que haya una corriente mas baja pero significativa con dos subunidades rotadas. Si observamos la proporcion de canales con tres y dos subunidades rotadas en ausencia de ligando vemos que la corriente sin ligando es mayoritariamente debida a la conductancia de dos subunidades rotadas. 
-
-Se ha observado consistentemente en la literatura que dos sitios de union al ATP funcionales alcanzan para generar una respuesta. Este grafico explica porqué. 
-\end{comment}
 \section{From State Dynamics to Predictive Likelihood Modeling}
 \label{sec:likelihood}
 
