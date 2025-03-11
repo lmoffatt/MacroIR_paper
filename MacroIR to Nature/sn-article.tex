@@ -577,7 +577,35 @@ Figure~\ref{fig:rates_SchemeX}d deepens this insight by plotting the logarithm o
 
 Importantly, plotting the kinetic coupling factors on a log–log scale enables the classification of positive allosterism into three distinct categories. \textbf{Regular allosterism}—characterized by accelerated \textit{on} rates and reduced \textit{off} rates—appears in the lower right quadrant. \textbf{Catalytic allosterism}, in which both \textit{on} and \textit{off} rates are enhanced (thus lowering the energy barrier), emerges in the upper right quadrant. In contrast, \textbf{inhibitory allosterism}—where both rates are diminished, thereby increasing the energy barrier—would be in the lower left quadrant. This classification provides a clear and visually intuitive framework for understanding the multifaceted nature of allosteric modulation.
 
-\section{Scaling of Molecular Interactions to Channel Behavior}
+\section{Integrating Subunit Conformational Dynamics into Channel Kinetics}
+Building on our model of kinetic coupling at the subunit level, we developed a comprehensive Markov framework to elucidate how molecular interactions collectively govern channel behavior (Fig.~\ref{fig:SchemeX_full}). In our schematic, each subunit is represented as a large ellipse that encapsulates nested binding sites. Resting (unrotated/free) and activated (rotated/bound) conformations are distinguished by empty versus filled ellipses, with rotated subunits drawn in an orientation reflecting activation. Transition dynamics are conveyed via a color code: gray for baseline non-interacting states, orange for strong BR-type interactions, light blue for moderate RB-type interactions, and purple for combined interaction states. Vertical transitions correspond to subunit rotations, whereas horizontal transitions represent ligand binding and unbinding events.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_4_m.pdf}
+	\caption{\textbf{Kinetic Scheme X: A Comprehensive Representation of Subunit Interactions in Channel Activation.} Each subunit is depicted as an ellipse containing nested binding sites; empty ellipses denote unrotated (resting/free) states, and filled ellipses indicate rotated (activated/bound) states. Transition dynamics are color-coded: gray represents baseline non-interacting states; orange indicates strong BR-type interactions; light blue corresponds to moderate RB-type interactions; and purple depicts combined interaction states (additive effect of orange and light blue). Vertical transitions indicate subunit rotations, while horizontal transitions represent ligand binding/unbinding events. The kinetic rate matrix is constructed from rate constants (Fig.~\ref{fig:rates_SchemeX}), scaled by combinatorial factors to account for multiple identical subunits.}
+	\label{fig:SchemeX_full}
+\end{figure}
+
+To construct the kinetic rate matrix, we systematically enumerated all possible state transitions. For each transition, the effective rate is obtained by multiplying the corresponding rate constant (Fig.~\ref{fig:rates_SchemeX}) by the number of subunits undergoing that transition. This method captures both the allosteric coupling among subunits and the combinatorial effects inherent to parallel transition pathways.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{Figure_5_states.pdf}
+	\caption{\textbf{State Occupancies and Functional Currents Across Rotational States.} (a) Equilibrium state occupancies measured 60\,s after stimulus clearance reveal that stochastic fluctuations yield measurable pre-activation in the absence of ligand, with 15.2\% $\pm$ 1.3\% of channels displaying one rotated subunit, 1.1\% $\pm$ 0.2\% showing two rotated subunits, and 0.02\% $\pm$ 0.01\% achieving full rotation (mean $\pm$ SEM, n=7). (b) Temporal evolution of state probabilities during ATP stimulation indicates that high-concentration ATP pulses (10\,mM) predominantly drive activation via sequential (edge) transitions (ligand binding followed by rotation), whereas deactivation involves central states with mixed bound/unbound configurations (Wilcoxon signed-rank test, p<0.001). (c) Distribution of unitary currents across rotational states demonstrates that partial activation is functionally significant; channels with two rotated subunits produce 48\% $\pm$ 5\% of maximal current (n=112), accounting for the baseline current observed under ligand-free conditions.}
+	\label{fig:SchemeX_states}
+\end{figure}
+
+Using this framework, we computed the equilibrium state occupancies under resting conditions (60\,s post-stimulus clearance). Notably, stochastic fluctuations produce measurable occupancy in pre-activated states even in the absence of ligand (Fig.~\ref{fig:SchemeX_states}a), a phenomenon quantitatively captured by our MacroIR analysis, which attributes current fluctuations to intrinsic stochastic state transitions rather than measurement noise.
+
+The temporal evolution of state probabilities during ATP stimulation reveals distinct activation and deactivation pathways (Fig.~\ref{fig:SchemeX_states}b). High-concentration ATP pulses (10\,mM) promote activation predominantly via sequential edge transitions (ligand binding followed by rotation), while deactivation proceeds through central states characterized by mixed bound and unbound configurations.
+
+Finally, current distributions across rotational states (Fig.~\ref{fig:SchemeX_states}c) demonstrate that partial activation is functionally significant: channels with two rotated subunits generate 48\% $\pm$ 5\% of maximal current. Thus, while full channel activation produces the majority of the current during ATP stimulation, pre-activation currents are largely attributable to channels in partially activated (doubly rotated) states.
+
+These findings resolve a longstanding paradox in purinergic signaling by explaining how only two functional ATP binding sites suffice to trigger channel activation.
+
+
+\section{Scaling of conformational Interactions to Channel Behavior}
 Building on our model of kinetic coupling effects at the subunit level, we developed a comprehensive Markov model to elucidate how these molecular interactions collectively determine the behavior of the entire channel (Fig.~\ref{fig:SchemeX_full}). In our schematic, each subunit is depicted as a large ellipse and each binding site as a smaller ellipse. Resting (unrotated/free) and activated (rotated/bound) states are distinguished by empty versus filled shapes—with activated subunits also shown in a rotated orientation. Transition dynamics are conveyed using a color scheme: gray indicates baseline non-interacting states, orange denotes strong BR-type interactions, light blue corresponds to moderate RB-type interactions, and purple represents combined interaction states (reflecting an additive effect of orange and light blue). Vertical transitions correspond to subunit rotations, while horizontal transitions reflect ligand binding and unbinding events.
 \begin{figure}[!htbp]
 	\centering
