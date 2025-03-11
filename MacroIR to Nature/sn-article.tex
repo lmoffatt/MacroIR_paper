@@ -420,9 +420,12 @@ Propagation to the next time point is given by
 \boldsymbol{\Sigma}^{\text{prior}}(t_{n+1}) = \mathrm{diag}\Bigl(\boldsymbol{\mu}^{\text{prior}}(t_{n+1})\Bigr) + \mathbf{P}(\Delta t_n)^{\mathrm{T}} \Bigl( \boldsymbol{\Sigma}^{\text{post}}(t_n) - \boldsymbol{\mu}^{\text{post}}(t_n) \Bigr) \mathbf{P}(\Delta t_n).
 \label{eq:macro_mean_next_cov}
 \end{equation}
+
+
 \subsubsection{MacroIR: A Bayesian Framework for Interval-Averaged Analysis of Channel Ensembles}
 
-We introduce MacroIR (Macroscopic Interval Recursive), a Bayesian framework for analyzing time-averaged Markovian processes over successive intervals—as encountered in macropatch recordings. MacroIR leverages the \textbf{boundary state}, which represents the joint probability of starting in state \(i_0\) and ending in state \(i_t\) over an interval \([0,t]\), without explicitly expanding the state space.
+We introduce MacroIR (Macroscopic Interval Recursive), a Bayesian framework for analyzing time-averaged Markovian processes over successive intervals, as encountered in macropatch recordings. In contrast with previous time-averaging algorithms \cite{Munch2022}, 
+MacroIR leverages the \textbf{boundary state}, which represents the joint probability of starting in state \(i_0\) and ending in state \(i_t\) over an interval \([0,t]\), without explicitly expanding the state space.
 
 The boundary state prior mean is defined as:
 \begin{equation}
