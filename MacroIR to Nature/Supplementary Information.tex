@@ -10,6 +10,8 @@
 \usepackage{lipsum}                   % For placeholder text (dummy text)
 \usepackage{hyperref}                 % For hyperlinks
 \usepackage{times}                    % Times font
+\usepackage{xcolor}%
+\usepackage{amssymb}
 
 \begin{document}
 
@@ -43,26 +45,9 @@ Consejo Nacional de Investigaciones Científicas y T\'{e}cnicas,  Universidad Na
 	\caption{Table Caption}\label{tab:example}
 	\begin{tabular}{@{}llll@{}}
 		\hline
-		Parameter & True Value & 90% CI & Discrepancy \\
+		Parameter & True Value & 90\% CI & Discrepancy \\
 		\hline
-		Binding_on($b_{on}$) & 6.024 $\mu$M$^{-1}\,s^{-1}$ & (5.758, 6.797) & \textcolor{green}{✓ (Within)} \\
-		Binding_off($b_{off}$) & 824.5 $s^{-1}$ & (759.5, 970.4) & \textcolor{green}{✓ (Within)} \\
-		Rocking_on($r_{on}$) & 1683 $s^{-1}$ & (1575, 1834) & \textcolor{green}{✓ (Within)} \\
-		Rocking_off($r_{off}$) & 157.2 $s^{-1}$ & (135.2, 192.5) & \textcolor{green}{✓ (Within)} \\
-		RB($RB$) & 3.488  & (1.991, 8.72) & \textcolor{green}{✓ (Within)} \\
-		RB_0($RB_{r_{on}}$) & 2.262  & (2.15, 3.706) & \textcolor{green}{✓ (Within)} \\
-		RB_1($RB_{b_{on}}$) & 0.1338  & (0.06159, 0.263) & \textcolor{green}{✓ (Within)} \\
-		BR($BR$) & 56.5  & (25.34, 86.74) & \textcolor{green}{✓ (Within)} \\
-		BR_0($BR_{b_{on}}$) & 3.073  & (1.526, 6.441) & \textcolor{green}{✓ (Within)} \\
-		BR_1($BR_{r_{on}}$) & 3376  & (1591, 3537) & \textcolor{green}{✓ (Within)} \\
-		Rocking_Current_factor($R_{\gamma}$) & 1122  & (221.3, 7544) & \textcolor{green}{✓ (Within)} \\
-		Leakeage_current_ratio($\rho_{leak}$) & 4.09e-07  & (1.014e-08, 1.01e-05) & \textcolor{green}{✓ (Within)} \\
-		Gating_Current($\gamma$) & 1.925 $pA$ & (1.267, 1.758) & \textcolor{blue}{↓ Under} \\
-		Current_Noise($\epsilon^2$) & 0.000249 $pA^2\,s^{-1}$ & (0.0002447, 0.0003369) & \textcolor{green}{✓ (Within)} \\
-		Pink_Noise($\nu^2$) & 0.6133 $pA^2$ & (0.4167, 0.6972) & \textcolor{green}{✓ (Within)} \\
-		Current_Baseline($i_{0}$) & 5.301 $pA$ & (4.184, 7.355) & \textcolor{green}{✓ (Within)} \\
-		Num_ch($N_{ch}$) & 1136  & (1224, 1737) & \textcolor{red}{↑ Over} \\
-		inactivation_rate($k_{inact}$) & 0.0003357 $s^{-1}$ & (0.0003039, 0.0003798) & \textcolor{green}{✓ (Within)} \\
+		Binding$_{on}$(b$_{on}$) & 6.024 $\mu$ M$^{-1}$\,s$^{-1}$ & (5.758, 6.797) & \textcolor{green}{✓ (Within)} \\
 		\hline
 	\end{tabular}
 \end{table}
