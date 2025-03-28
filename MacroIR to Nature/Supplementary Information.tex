@@ -12,7 +12,8 @@
 \usepackage{times}                    % Times font
 \usepackage{xcolor}%
 \usepackage{amssymb}
-
+\usepackage{pifont}
+\renewcommand{\thetable}{S\arabic{table}}
 \begin{document}
 
 % Title page with authors and addresses
@@ -37,34 +38,78 @@ Consejo Nacional de Investigaciones Científicas y T\'{e}cnicas,  Universidad Na
 % Supplementary Tables
 \section*{Supplementary Tables}
 \label{sec:supp-tables}
-% Example of a supplementary table:
+% Example of a supplementary table<:
 \begin{table}[
 	htbp
 	]
 	\centering
 	\caption{Table Caption}\label{tab:example}
-	\begin{tabular}{@{}llll@{}}
+	\begin{tabular}{@{}lllll@{}}
 		\hline
-		Parameter & True Value & 90\% CI & Discrepancy \\
+		Parameter & True Value & Median & 90\% CI & Diagnostic \\
 		\hline
-		Binding$_{on}$(b$_{on}$) & 6.024 $\mu$ M$^{-1}$\,s$^{-1}$ & (5.758, 6.797) & \textcolor{green}{✓ (Within)} \\
+		Binding on ($b_{on}$) & 6.024 $\mu$M$^{-1}\,s^{-1}$ & 6.266 & (5.758, 6.797) & \textcolor{green}{$\checkmark$ (Within)} \\
+		Binding off ($b_{off}$) & 824.5 $s^{-1}$ & 860.3 & (759.5, 970.4) & \textcolor{green}{$\checkmark$ (Within)} \\
+		Rotation on ($r_{on}$) & 1683 $s^{-1}$ & 1705 & (1575, 1834) & \textcolor{green}{$\checkmark$ (Within)} \\
+		Rotation off ($r_{off}$) & 157.2 $s^{-1}$ & 156.8 & (135.2, 192.5) & \textcolor{green}{$\checkmark$ (Within)} \\
+		BR Equilibrium Coupling ($BR$) & 3.488  & 4.828 & (1.991, 8.72) & \textcolor{green}{$\checkmark$ (Within)} \\
+		BR Rotation Coupling ($BR_{r_{on}}$) & 2.262  & 2.806 & (2.15, 3.706) & \textcolor{green}{$\checkmark$ (Within)} \\
+		BR Binding Coupling ($BR_{b_{on}}$) & 0.1338  & 0.1526 & (0.06159, 0.263) & \textcolor{green}{$\checkmark$ (Within)} \\
+		RB Equilibrium Coupling ($RB$) & 56.5  & 40.8 & (25.34, 86.74) & \textcolor{green}{$\checkmark$ (Within)} \\
+		RB Binding Coupling ($RB_{b_{on}}$) & 3.073  & 2.944 & (1.526, 6.441) & \textcolor{green}{$\checkmark$ (Within)} \\
+		RB Rotation Coupling ($RB_{r_{on}}$) & 3376  & 2366 & (1591, 3537) & \textcolor{green}{$\checkmark$ (Within)} \\
+		Rotation Current Coupling ($R_{\gamma}$) & 1122  & 1077 & (221.3, 7544) & \textcolor{green}{$\checkmark$ (Within)} \\
+		Current Leakeage Ratio ($\rho_{leak}$) & 4.09e-07  & 4.364e-07 & (1.014e-08, 1.01e-05) & \textcolor{green}{$\checkmark$ (Within)} \\
+		Unitary Channel Current ($\gamma$) & 1.925 $pA$ & 1.491 & (1.267, 1.758) & \textcolor{blue}{$\downarrow$ Under} \\
+		White Noise ($\epsilon^2$) & 0.000249 $pA^2\,s^{-1}$ & 0.0002858 & (0.0002447, 0.0003369) & \textcolor{green}{$\checkmark$ (Within)} \\
+		Pink Noise ($\nu^2$) & 0.6133 $pA^2$ & 0.5469 & (0.4167, 0.6972) & \textcolor{green}{$\checkmark$ (Within)} \\
+		Baseline Current ($i_{0}$) & 5.301 $pA$ & 5.428 & (4.184, 7.355) & \textcolor{green}{$\checkmark$ (Within)} \\
+		Number of Channels ($N_{ch}$) & 1136  & 1465 & (1224, 1737) & \textcolor{red}{$\uparrow$ Over} \\
+		Inactivation Rate ($k_{inact}$) & 0.0003357 $s^{-1}$ & 0.0003399 & (0.0003039, 0.0003798) & \textcolor{green}{$\checkmark$ (Within)} \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[
+	htbp
+	]
+	\centering
+	\caption{Table Caption}\label{tab:example}
+	\begin{tabular}{@{}llllllllllll@{}}
+		\hline
+		Algorithm & Scheme & CPUs & Processor & Days & Iter & Burned fraction & ESS & ln(Evidence) & 90\% CI & $\hat{r}$ & Convergence \\
+		\hline
+		R & I & 16 & AMD Opteron 6276 & 48 & 518 & 6/9 & 41250 & -2776.93 & (-2776.97, -2776.90) & 0.9999932 & ✅ Converged \\
+		R & II & 16 & AMD Opteron 6276 & 48 & 528 & 6/9 & 43065 & -2747.38 & (-2747.42, -2747.35) & 1.0001174 & ✅ Converged \\
+		R & III & 16 & AMD Opteron 6276 & 47 & 482 & 6/9 & 34778 & -2624.57 & (-2624.61, -2624.53) & 1.0005311 & ✅ Converged \\
+		R & IV & 32 & Xeon E5-2670 & 13 & 773 & 6/9 & 28964 & -2575.74 & (-2575.78, -2575.70) & 1.0011714 & ✅ Converged \\
+		R & IV & 32 & AMD Opteron 6276 & 45 & 399 & 8/9 & 10118 & -2575.67 & (-2575.74, -2575.60) & 1.0007181 & ✅ Converged \\
+		R & V & 16 & AMD Opteron 6276 & 48 & 525 & 6/9 & 43049 & -2576.09 & (-2576.12, -2576.06) & 0.9999795 & ✅ Converged \\
+		R & VI & 16 & Xeon E5-2670 & 47 & 655 & 8/9 & 10219 & -2492.12 & (-2492.18, -2492.05) & 0.9999916 & ✅ Converged \\
+		R & VII & 16 & Xeon E5-2670 & 44 & 114 & 8/9 &  1845 & -2501.28 & (-2501.43, -2501.13) & 1.0111716 & ✅ Converged \\
+		R & VII & 32 & AMD EPYC 7302P & 52 & 214 & 6/9 &  6062 & -2498.92 & (-2499.01, -2498.84) & 1.0062420 & ✅ Converged \\
+		R & VIII & 16 & AMD Opteron 6276 & 44 & 184 & 6/9 &  7901 & -2516.93 & (-2517.00, -2516.86) & 1.0000923 & ✅ Converged \\
+		R & IX & 32 & Xeon E5-2670 & 12 & 260 & 6/9 & 15988 & -2521.35 & (-2521.40, -2521.29) & 1.0000173 & ✅ Converged \\
+		R & IX & 16 & AMD Opteron 6276 & 44 & 207 & 6/9 & 10719 & -2521.19 & (-2521.25, -2521.13) & 0.9999614 & ✅ Converged \\
+		R & X & 32 & Xeon E5-2670 & 44 & 519 & 8/9 &  8846 & -2490.33 & (-2490.40, -2490.26) & 1.0005367 & ✅ Converged \\
+		R & XI & 32 & Xeon E5-2670 & 44 & 406 & 8/9 &  6311 & -2498.87 & (-2498.95, -2498.79) & 1.0002031 & ✅ Converged \\
+		NR & I & 16 & AMD Opteron 6276 & 48 & 867 & 6/9 & 80108 & -3183.36 & (-3183.39, -3183.34) & 0.9999907 & ✅ Converged \\
+		NR & II & 16 & AMD Opteron 6276 & 48 & 778 & 6/9 & 66764 & -3045.10 & (-3045.13, -3045.08) & 0.9999965 & ✅ Converged \\
+		NR & III & 16 & AMD Opteron 6276 & 48 & 728 & 6/9 & 56459 & -3030.72 & (-3030.75, -3030.69) & 1.0027547 & ✅ Converged \\
+		NR & IV & 32 & AMD Opteron 6276 & 45 & 519 & 6/9 & 35859 & -2881.28 & (-2881.31, -2881.24) & 1.0000581 & ✅ Converged \\
+		NR & V & 16 & AMD Opteron 6276 & 48 & 734 & 6/9 & 58425 & -3124.53 & (-3124.56, -3124.50) & 1.0000003 & ✅ Converged \\
+		NR & VI & 16 & Xeon E5-2670 & 47 & 735 & 8/9 & 11848 & -2870.56 & (-2870.62, -2870.50) & 1.0003977 & ✅ Converged \\
+		NR & VII & 16 & Xeon E5-2670 & 45 & 123 & 8/9 &     3 & -3008.86 & (-3014.00, -3003.72) & 1.2093928 & ❌ Not Converged \\
+		NR & VII & 32 & AMD EPYC 7302P & 48 & 231 & 8/9 &     4 & -2910.43 & (-2914.33, -2906.53) & 1.1635172 & ⚠️ Almost Converged \\
+		NR & VIII & 16 & AMD Opteron 6276 & 44 & 259 & 8/9 &  3582 & -2956.41 & (-2956.52, -2956.30) & 0.9999557 & ✅ Converged \\
+		NR & IX & 16 & AMD Opteron 6276 & 45 & 376 & 8/9 &    52 & -2971.13 & (-2972.18, -2970.08) & 1.0205074 & ✅ Converged \\
+		NR & X & 16 & Xeon E5-2670 & 48 & 466 & 6/9 & 24935 & -2878.69 & (-2878.73, -2878.64) & 0.9999746 & ✅ Converged \\
+		NR & XI & 16 & Xeon E5-2670 & 47 & 441 & 8/9 &  7123 & -2893.11 & (-2893.19, -2893.02) & 1.0042215 & ✅ Converged \\
 		\hline
 	\end{tabular}
 \end{table}
 
 
-\begin{table}[H]
-\centering
-\caption{Supplementary Table 1: Description of parameters.}
-\begin{tabular}{lcc}
-\hline
-Parameter & Value & Description \\
-\hline
-Parameter 1 & 10 & Example description \\
-Parameter 2 & 20 & Example description \\
-\hline
-\end{tabular}
-\end{table}
 
 % Supplementary Discussion
 \section*{Supplementary Discussion}
