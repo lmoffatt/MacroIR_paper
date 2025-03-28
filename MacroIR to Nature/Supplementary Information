@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+
+% Packages recommended for Nature Supplementary Information
+\usepackage[margin=1in]{geometry}     % Set appropriate margins
+\usepackage{setspace}                 % For adjustable line spacing
+\usepackage{graphicx}                 % For figures
+\usepackage{amsmath, amssymb}         % For equations and symbols
+\usepackage{caption}                  % For caption formatting
+\usepackage{float}                    % To precisely position tables/figures
+\usepackage{lipsum}                   % For placeholder text (dummy text)
+\usepackage{hyperref}                 % For hyperlinks
+\usepackage{times}                    % Times font
+
+\begin{document}
+
+% Title page with authors and addresses
+\begin{center}
+\Large\textbf{Supplementary Information}\\[1em]
+\normalsize
+\textbf{Title of the Supplementary Information}\\[1em]
+\textbf{Authors:} First Author\textsuperscript{1}, Second Author\textsuperscript{2}, Third Author\textsuperscript{3}\\[1em]
+\small
+\textsuperscript{1} Department of Biology, University of X, City, Country\\
+\textsuperscript{2} Institute of Advanced Research, University of Y, City, Country\\
+\textsuperscript{3} Department of Computational Sciences, Institute of Z, City, Country\\[2em]
+\end{center}
+
+% Supplementary Methods
+\section*{Supplementary Methods}
+\label{sec:supp-methods}
+% Provide detailed methodology here.
+\lipsum[1] % Replace with your content
+
+% Supplementary Tables
+\section*{Supplementary Tables}
+\label{sec:supp-tables}
+% Example of a supplementary table:
+\begin{table}[H]
+\centering
+\caption{Supplementary Table 1: Description of parameters.}
+\begin{tabular}{lcc}
+\hline
+Parameter & Value & Description \\
+\hline
+Parameter 1 & 10 & Example description \\
+Parameter 2 & 20 & Example description \\
+\hline
+\end{tabular}
+\end{table}
+
+% Supplementary Discussion
+\section*{Supplementary Discussion}
+\label{sec:supp-discussion}
+% Provide extended discussion and interpretations here.
+\lipsum[2] % Replace with your content
+
+% Supplementary Equations
+\section*{Supplementary Equations}
+\label{sec:supp-equations}
+% List and number your supplementary equations here.
+\begin{equation}
+E = mc^2
+\end{equation}
+\begin{equation}
+\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
+\end{equation}
+
+% Supplementary Notes
+\section*{Supplementary Notes}
+\label{sec:supp-notes}
+% Include additional notes, clarifications (e.g., on statistical analyses), acknowledgements, and grant numbers here.
+\lipsum[3] % Replace with your content
+
+\end{document}
