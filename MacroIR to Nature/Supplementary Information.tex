@@ -13,7 +13,7 @@
 \usepackage{booktabs} % For \toprule, \midrule and \bottomrule
 \usepackage{siunitx} % Formats the units and values
 \usepackage{pgfplotstable} % Generates table from .csv
-
+\pgfplotsset{compat=1.18} 
 \begin{document}
 	
 	% Title page with authors and addresses
@@ -58,7 +58,8 @@
 			\label{table1}
 			\pgfplotstabletypeset[
 			col sep=comma, % the separator in our .csv file
-			header=has colnames, % use the first row as column names
+			string type,
+			header=has colnames, 
 			columns={Algo,Sch,Proc,Dur,Iter,ESS,lnEv,CI,Rhat,Conv}, % specify the columns to display
 			columns/Algo/.style={
 				column type={l} % Left align text
@@ -70,45 +71,43 @@
 				column type={l} % Left align text
 			},
 			columns/Dur/.style={
-				column type={S},
-				table-format=2.0 % Adjust format based on expected values
+				column type={S[table-format=2.0]}
 			},
 			columns/Iter/.style={
 				column name=Iterations, % Change display name
-				column type={S},
-				table-format=5.0 % Adjust format based on expected values
+				column type={S[table-format=5.0]}
 			},
 			columns/ESS/.style={
-				column type={S},
-				table-format=5.0 % Adjust format based on expected values
+				column type={S[table-format=5.0]}
 			},
 			columns/lnEv/.style={
-				column type={S},
-				table-format=-3.6 % Adjust format based on expected values
+				column type={S[table-format=-3.6]}
 			},
 			columns/CI/.style={
 				column type={l} % Left align the interval
 			},
 			columns/Rhat/.style={
 				column name=$R_{\text{hat}}$, % Use math mode for R_hat
-				column type={S},
-				table-format=1.6 % Adjust format based on expected values
+				column type={S[table-format=1.6]}
 			},
 			columns/Conv/.style={
 				column name=Conv,
 				column type={c} % Center the convergence symbol
 			},
 			every head row/.style={
-				before row={\toprule}, % have a rule at top
-				after row={
-					& & \multicolumn{1}{c}{ncores} & days & thousands & samples & ln of & 90\% & $R_{\text{hat}}$ & indication\\
-					& & \multicolumn{1}{c}{processor number} & & of iterations & & Evidence & Credible interval & & of convergence\\
-					\midrule} % rule under units
+				before row={\toprule}%, % Rule at the top
+				% after row={
+					%   & & \multicolumn{1}{c}{ncores} & days & \k & samples & ln of & 90\% & $R_{\text{hat}}$ & indication\\
+					%   & & \multicolumn{1}{c}{processor number} & & of iterations & & Evidence & Credible interval & & of convergence\\
+					%   \midrule} % Rule after header rows
 			},
-			every last row/.style={after row=\bottomrule}, % rule at bottom
-			]{Supplementary_table_1.csv} % filename/path to file
+			every last row/.style={after row=\bottomrule} % Rule at the bottom
+			]{Supplementary_table_1.csv}
 		\end{center}
-	\end{table}\section*{Supplementary Discussion}
+	\end{table}
+	
+	
+	\section*{Supplementary Discussion}
 	\label{sec:supp-discussion}
 	% Provide extended discussion and interpretations here.
 	\lipsum[2] % Replace with your content
