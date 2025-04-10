@@ -7,7 +7,7 @@
 \usepackage{amsmath, amssymb}         % For equations and symbols
 \usepackage{caption}                  % For caption formatting
 \usepackage{float}                    % To precisely position tables/figures
-\usepackage{lipsum}                   % For placeholder text (dummy text)
+%\usepackage{lipsum}                   % For placeholder text (dummy text)
 \usepackage{hyperref}                 % For hyperlinks
 \usepackage{times}                    % Times font
 \usepackage{booktabs} % For \toprule, \midrule and \bottomrule
@@ -31,10 +31,10 @@
 	\end{center}
 	
 	% Supplementary Methods
-	\section*{Supplementary Methods}
-	\label{sec:supp-methods}
+	%\section*{Supplementary Methods}
+	%\label{sec:supp-methods}
 	% Provide detailed methodology here.
-	\lipsum[1] % Replace with your content
+	%\lipsum[1] % Replace with your content
 	
 	% Supplementary Tables
 	\section*{Supplementary Tables}
@@ -92,7 +92,7 @@
 				column name={$90\% CI$\textsuperscript{h}},string type},
 			every head row/.style={before row=\toprule, after row=\midrule},
 			columns/rhat_posterior/.style={
-				column name={$\hat{R}$ \textsuperscript{i}},.cd,std, dec sep align},
+				column name={$\hat{R}$ \textsuperscript{i}},.cd,std,precision=4, dec sep align},
 			columns/ess_posterior/.style={column name={ESS \textsuperscript{j}},.cd,std, dec sep align},
 			columns/Median_prior/.style={column name={Median\textsuperscript{c}},std, dec sep align},
 			columns/sd_prior/.style={column name={sd \textsuperscript{d}},.cd,std, dec sep align},
@@ -124,9 +124,47 @@
 		\label{table2}
 	\end{table}
 	
-	
-	
-	
+	\begin{table}[h!]
+		\centering
+		\resizebox{\textwidth}{!}{%
+			\pgfplotstabletypeset[
+			col sep=comma, % the separator in our .csv file
+			header=has colnames, 
+			columns={Symbol,Parameter,Unit,Dm,Median_prior,gsd_prior,CI_prior,rhat_prior,ess_prior}, % specify the columns to display
+			columns/Symbol/.style={column name={Parameter\textsuperscript{a}},string type,
+				column type=l},
+			columns/Parameter/.style={column name={Full Name\textsuperscript{b}},string type,
+				column type=l},
+			columns/Unit/.style={column name={Units\textsuperscript{c}},string type},
+			columns/Dm/.style={column name={DM\textsuperscript{c}},string type},
+			columns/Median_prior/.style={column name={Median\textsuperscript{f}},std, dec sep align},
+			columns/gsd_prior/.style={column name={gsd \textsuperscript{g}},.cd,std, dec sep align},
+			columns/CI_prior/.style={
+				column name={$90\% CI$\textsuperscript{h}},string type},
+			every head row/.style={before row=\toprule, after row=\midrule},
+			columns/rhat_prior/.style={
+				column name={$\hat{R}$ \textsuperscript{i}},.cd,std,precision=4, dec sep align},
+			columns/ess_prior/.style={column name={ESS \textsuperscript{j}},.cd,std, dec sep align},
+			columns/Median_prior/.style={column name={Median\textsuperscript{c}},std, dec sep align},
+			columns/sd_prior/.style={column name={sd \textsuperscript{d}},.cd,std, dec sep align},
+			columns/CI_prior/.style={column name={$90\% CI$\textsuperscript{e}},string type},
+			columns/PCF_sd/.style={column name={$PCF_{sd}$ \textsuperscript{k}},.cd,std, dec sep align},
+			columns/PCF_CI/.style={column name={$PCF_{CI}$\textsuperscript{l}},.cd,std, dec sep align},
+			every last row/.style={after row=\bottomrule}
+			]{Supplementary_table_2b.csv}%
+		}
+\caption{Characterization of the Affine Invariant sampling of Scheme X parameters at $\beta=0$, that is when only the prior distribution determined the sampling.  
+	\textsuperscript{a} Parameter symbol. 
+	\textsuperscript{b} Full parameter name. 
+	\textsuperscript{c} Units of measurement. 
+	\textsuperscript{d} An “X” indicates that the de‐mixing operation (see Table~\ref{table2} ) was applied over all samples.
+	\textsuperscript{e} Prior median. 
+	\textsuperscript{f} Prior geometric standard deviation (gsd). The expected value for the common prior variance of 2 is $10^{\sqrt{2}}\approx 25.95$ 
+	\textsuperscript{h} Prior Equal-tail 90\% credible interval (5\%–95\% quantiles). The expected quantiles for a median of 1 are ($4.72 \cdot 10^{-3} , 212$).  
+	\textsuperscript{i} Potential scale reduction factor, \(\ensuremath{\hat{R}}\), used to assess convergence. 
+	\textsuperscript{j} Effective sample size (ESS). }
+		\label{table3}
+	\end{table}
 	
 	
 	
@@ -153,33 +191,33 @@
 			every last row/.style={after row=\bottomrule}
 			]{Supplementary_table_3.csv}%
 		}
-		\caption{Validation of MacroIR using simulated data. To assess the robustness of our Bayesian framework, we validated the MacroIR method using simulated recordings. We generated synthetic ATP-activated currents based on known kinetic parameters for Scheme X, ensuring that the simulation conditions matched our experimental setup. We then applied MacroIR to this dataset to evaluate its ability to recover the original parameters. \textsuperscript{a} Parameter symbol. \textsuperscript{b} Parameter full name. \textsuperscript{c} Units   \textsuperscript{d} Parameter value used to generate the simulated data.\textsuperscript{e} Median of the posterior distribution of each parameter after the MacroIR algorithm over the simulated data.    \textsuperscript{f} Credible Interval of each parameter. 
+		\caption{Validation of MacroIR using simulated data. To assess the robustness of our Bayesian framework, we validated the MacroIR method using simulated recordings. We generated synthetic ATP-activated currents based on known kinetic parameters for Scheme X, ensuring that the simulation conditions matched our experimental setup. We then applied MacroIR to this dataset to evaluate its ability to recover the original parameters. \textsuperscript{a} Parameter symbol. \textsuperscript{b} Parameter full name. \textsuperscript{c} Units   \textsuperscript{d} Parameter value used to generate the simulated data.\textsuperscript{e} Median of the posterior distribution of each parameter after the MacroIR algorithm over the simulated data and the de-mixing operatorion    \textsuperscript{f} Credible Interval of each parameter. 
 			\textsuperscript{g} Diagnostic of the recovery of each parameter. Is the recovered value within the 90\% Credible Interval (green) is it overestimated (red) or is it underestimated (blue). 
 		}
 		\label{table4}
 	\end{table}
 	
 	
-	\section*{Supplementary Discussion}
-	\label{sec:supp-discussion}
+	%\section*{Supplementary Discussion}
+	%\label{sec:supp-discussion}
 	% Provide extended discussion and interpretations here.
-	\lipsum[2] % Replace with your content
+	%\lipsum[2] % Replace with your content
 	
 	% Supplementary Equations
-	\section*{Supplementary Equations}
-	\label{sec:supp-equations}
+	%\section*{Supplementary Equations}
+	%\label{sec:supp-equations}
 	% List and number your supplementary equations here.
-	\begin{equation}
-		E = mc^2
-	\end{equation}
-	\begin{equation}
-		\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
-	\end{equation}
+	%\begin{equation}
+	%	E = mc^2
+	%\end{equation}
+	%\begin{equation}
+	%	\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
+	%\end{equation}
 	
 	% Supplementary Notes
-	\section*{Supplementary Notes}
-	\label{sec:supp-notes}
+	%\section*{Supplementary Notes}
+	%\label{sec:supp-notes}
 	% Include additional notes, clarifications (e.g., on statistical analyses), acknowledgements, and grant numbers here.
-	\lipsum[3] % Replace with your content
+	%\lipsum[3] % Replace with your content
 	
 \end{document}

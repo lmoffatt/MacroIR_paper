@@ -18,11 +18,12 @@
 \Large\textbf{Supplementary Information}\\[1em]
 \normalsize
 \textbf{Title of the Supplementary Information}\\[1em]
-\textbf{Authors:} First Author\textsuperscript{1}, Second Author\textsuperscript{2}, Third Author\textsuperscript{3}\\[1em]
+\textbf{Authors:} Luciano Moffatt\textsuperscript{1}, Gustavo Pierdominici-Sottile\textsuperscript{2}\\[1em]
 \small
-\textsuperscript{1} Department of Biology, University of X, City, Country\\
-\textsuperscript{2} Institute of Advanced Research, University of Y, City, Country\\
-\textsuperscript{3} Department of Computational Sciences, Institute of Z, City, Country\\[2em]
+\textsuperscript{1} Instituto de Qu\'{i}mica F\'{i}sica de los Materiales, Medio Ambiente y Energ\'{i}a, Consejo Nacional de Investigaciones Científicas y T\'{e}cnicas, Facultad de Ciencia Exactas y Naturales , Universidad de Buenos Aires, Ciudad Aut\'{o}noma de Buenos Aires (1428), Argentina\\
+\textsuperscript{2} Departamento de Ciencia y Tecnolog\'{i}a, 
+Consejo Nacional de Investigaciones Científicas y T\'{e}cnicas,  Universidad Nacional de Quilmes, S\'{a}enz Pe\~{n}a 352,Bernal ( B1876BXD), Buenos Aires,Argentina\\
+
 \end{center}
 
 % Supplementary Methods

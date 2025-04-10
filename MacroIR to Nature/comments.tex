@@ -25,7 +25,7 @@
 	\section{Figures}
 
 	
-	\begin{comment}
+	\subsection{comment}
 		Voy a tratar de expresar mis ideas de lo que el paper debe decir en comentarios como este. 
 		
 		Estuve usando mucho chatgpt y un problema que esto genera es que tenes miles de variantes del texto desperdigadas en muchos lugares. 
@@ -35,10 +35,10 @@
 		nota del 23 de diciembre: 
 		rehice algunos calculos, 
 		
-	\end{comment}
 	
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		Cuales son los resultados del paper en orden decreciente de importancia:
 		
 		
@@ -105,7 +105,7 @@
 		
 		5. En este trabajo se ponen en valor varios avances metodologicos: 
 		
-		A. El mas importante son los cuadrantes del grafico f_on vs f_off que permite separar las situaciones donde cambia la barrera energetica y cuando cambia el salto en energia libre, seprarndo la regulacion cinetica de la termodinamica. Estamos impactados por la simplicidad y profundidad conceptual de esta herramienta, que no entendemos del todo aun. 
+		A. El mas importante son los cuadrantes del grafico $f_on$ vs $f_off$ que permite separar las situaciones donde cambia la barrera energetica y cuando cambia el salto en energia libre, seprarndo la regulacion cinetica de la termodinamica. Estamos impactados por la simplicidad y profundidad conceptual de esta herramienta, que no entendemos del todo aun. 
 		
 		B. El desarrollo teorico mas trabajoso y demandante fue el del algoritmo MacroIR. Combinando este algoritmo con un afine-invariante parallel tempering con ajuste dinamico de temperaturas, se lograron hacer analisis cineticos de modelos complejos en situaciones experimentales reales. El costo computacional de este combo esta en el reino de lo posible: ocho nucleos durante dos semanas. Todavia hay mucho por hacer en la optimizacion de este algoritmo. 
 		Si bien no es necesario calcular la evidencia para obtener la distribucion a posteriori, el metodo de paralel tempering asegura una busqueda exhaustiva en el espacio de parametros, especialmente en situaciones multimodales como todos los modelos medianamente complejos. 
@@ -121,10 +121,10 @@
 		
 		X. Conclusiones metodologicas. El planteo inicial es hipotetico deductivo: a partir de informacion estructural (hipotesis) armamos un modelo cinetico (deduccion)  sin tener en cuenta la informacion cinetica disponible. 
 		Ahora, la parametrizacion del modelo era amplia y algunos valores de los parametros resultaron inesperados para nosotros, en particular los que determinan que las las barreras energeticas cambiasen. En esto seguimos mas un patron inductivo: a partir de la informacion obtenida formulamos nuevas hipotesis no envisionadas inicialmente. 
-		La parametrizacion inicial del acoplamiento cinetico alosterico fue extendiendo el concepto de Linear free energy relationship y suponiamos que la pendiente deberia estar entre 0 y 1. No lograrmos buenos ajustes de esta forma y reparametrizamos la relacion extendiendo la parametrizacion de la constante de equilibrio. Esto permitio mejores ajustes, pero no encotrabamos el significado cinetico. Este se hizo claro al graficar las f_on vs f_off y entender   
-	\end{comment}
+		La parametrizacion inicial del acoplamiento cinetico alosterico fue extendiendo el concepto de Linear free energy relationship y suponiamos que la pendiente deberia estar entre 0 y 1. No lograrmos buenos ajustes de esta forma y reparametrizamos la relacion extendiendo la parametrizacion de la constante de equilibrio. Esto permitio mejores ajustes, pero no encotrabamos el significado cinetico. Este se hizo claro al graficar las $$f_on$$ vs $$f_off$$ y entender   
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		
 		Este texto surgio de un momento de lucidez
 		
@@ -145,11 +145,11 @@
 		Ahora la formulacion estandard del alosterismo se restringe a la constante de equilibrio, se plantea entonces la pregunta de como se puede modelar la cinetica del acoplamiento alosterico?
 		Ahi se extiende la misma idea de los factores alostericos pero a las rates forward y backward (buscar los terminos apropiados). un simple diagrama muestra que en realidad no es que haya alosterismo, sino que el alosterismo es una reparametrizacion de los rates y que se cumple siempre y cuando distingamos los estados como combinacion de los cambios conformacionales. 
 		
-		Entonces surge la pregunta: como interpreto los factores kineto-alostericos? La primer respuesta a esta pregunta fue usar la analogia con la linear free energy relationship usada para analizar el efecto de mutaciones sobre la cinetica. Pero surgio un problema: se deben permitir exponentes fuera del intervalo 0-1? y ademas fitear en este rango era mas dificil. Se opto por parametrizar contra factores analogos a los del equilibrio tanto sobre los k/r_on como sobre los off. Y esto dio lugar a un resultado que llevo un tiempo interpretar: algunas interacciones asceleraban tanto la kon como la koff y ahi surgio la pregunta: 
-		que significa la relacion entre los f_kon y f_koff?
+		Entonces surge la pregunta: como interpreto los factores kineto-alostericos? La primer respuesta a esta pregunta fue usar la analogia con la linear free energy relationship usada para analizar el efecto de mutaciones sobre la cinetica. Pero surgio un problema: se deben permitir exponentes fuera del intervalo 0-1? y ademas fitear en este rango era mas dificil. Se opto por parametrizar contra factores analogos a los del equilibrio tanto sobre los k/$r_on$ como sobre los off. Y esto dio lugar a un resultado que llevo un tiempo interpretar: algunas interacciones asceleraban tanto la kon como la koff y ahi surgio la pregunta: 
+		que significa la relacion entre los $f_kon$ y $f_koff$?
 		
 		Una forma de verlo es a traves de perfiles de energia: el alto de la barrera es proporcional al logaritmo del kon y la diferencia entre kon y koff es proporcional a la constante de equilibrio. 
-		De esta forma wue  los f_on y f_off sean mayores a uno indican que baja la barrera energetica para la rotacion. 
+		De esta forma wue  los $f_on$ y $f_off$ sean mayores a uno indican que baja la barrera energetica para la rotacion. 
 		
 		Finalmente en la discusion surge la pregunta: y qué ventaja tendria bajar la barrera energetica en lugar de tenerla siempre baja (ya que en ambos casos la proporcion de tiempo abierto depende de la keq y no de las f-on y f-off)? 
 		Una posible respuesta es que el canal podria ser vulnerable durante la rotacion a entrar a un estado irreversible. Y la pregunta aqui es que tipo de configuracion markoviana haria que la entrada a un estado irreversible dependa de la cantidad de cruces? y la respuesta es que la regulacion alosterica seria en la entrada y salida del energetic landscape y no durante la rotacion en si misma. Si la regulacion alosterica afectara a todo el camino, no habria ninguna diferencia en la propension a llegar a un estado irreversible entre una cinetica rapida y una cientica corta. 
@@ -164,40 +164,40 @@
 		2) como representar los cambios de conductancia? la respuesta fue suponer que era instantanea y determinada por el numero de subunidades rotadas. No se represento un cambio adicional de gating. como en esquemas anteriores. Esto permitió ajustar la conductancia parcial de 2 subunidades rotadas, una importante prediccion coherente con el hecho de que canales con solo dos sitios de union al atp activos muestran respuesta al ATP. Tambien esto es coherente con observaciones de canal unico donde se obsrvan subconductancias. 
 		
 		3) es la activacion sincronica o secuencial? Esta disyuntiva se represento en un tabajo anterior, en este trabajo donde se rehacen los modelos sabiendo que el sitio de union es entre subunidades, solo se debe rehacer la alternativa secuencial ya que la sincronica no cambia entre un sitio de union entre subunidades o dentro. La evidencia del modelo sincronico es inferior y multimodal.
-	\end{comment}
 	
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		comentarios del abstract: 
 		me llevo el ultimo fin de semana entero pulirlo, siendo asistido por chatgpt. 
 		Creo que el exceso de chatgpt es muy malo ya que multiplica los textos comos los espejos de Borges. 
 		
 		Mi sensacion es que pone demasiado enfasis en lo mas espectacular de los resultados (cambios en las barreras) y no en lo mas robusto (que fiteamos el modelo basandonos en consideraciones estructurales).
 		
-	\end{comment}
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		Corridas que faltarían hacer, preguntas por contestar: 
-		1. Cuanta informacion extra se obtiene con MacroIR respecto de MacroINR y cuanto con MacroMR. (scheme_10 vs scheme_9)
+		1. Cuanta informacion extra se obtiene con MacroIR respecto de MacroINR y cuanto con MacroMR. ($scheme_10$ vs $scheme_9$)
 		
 		2. Concluir las corridas de los esquemas que no confluyeron. 
 		logL-> 6, 7
 		logEvi->7,8,9,11
 		
-		3. tema ruido blanco solo: corrida con scheme_10 solo
+		3. tema ruido blanco solo: corrida con $scheme_10$ solo
 		
 		
 		
-		3. verificar los requerimientos para el buen comportamiento bayesiano: correr con priors mas amplios en los factores de bayes que me interesen, por ejemplo scheme_10 y 9. 
+		3. verificar los requerimientos para el buen comportamiento bayesiano: correr con priors mas amplios en los factores de bayes que me interesen, por ejemplo $scheme_10$ y 9. 
 		luego 11 y 6 y 4. 
 		
 		
 		
-	\end{comment}
 	
 	
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		Table 1 | List of key reporting points for the BARG
 		Preamble
 		A. Why Bayesian. If the audience requires it, explain what benefits will be gleaned by a Bayesian analysis (as opposed to a frequentist analysis). [] --> introduction, results or discussion
@@ -205,7 +205,7 @@
 		Step 1. Explain the model
 		A. Data variables. Explain the dependent (predicted) variables and independent (predictor) variables[]. -->methods subsection
 		
-		B. L ikelihood function and parameters. For every model, explain the likelihood function and all the parameters, distinguishing clearly between parameters of primary theoretical interest and
+		B. Likelihood function and parameters. For every model, explain the likelihood function and all the parameters, distinguishing clearly between parameters of primary theoretical interest and
 		ancillary parameters. If the model is multilevel, be sure that the hierarchical structure is clearly explained, along with any covariance structure if multivariate parameter distributions are
 		used.  []--> methods subsection
 		C. Prior distribution. For every model, explain and justify the prior distribution of the parameters in the model.[]-->methods subsection
@@ -245,44 +245,43 @@
 		
 		C. ROPE limits. If using a continuous-parameter posterior distribution as the basis for decision, state and justify the limits of the ROPE and the required probability mass.
 		D. B
-		 F, decision threshold and model probabilities. If using model comparison or hypothesis testing as the basis for a decision, state and justify the decision threshold for the posterior model
+	    F, decision threshold and model probabilities. If using model comparison or hypothesis testing as the basis for a decision, state and justify the decision threshold for the posterior model
 		probability, and the minimum prior model probability that would make the posterior model probability exceed the decision threshold.
 		E. Estimated values too. If deciding about null values, always also report the estimate of the parameter value (central tendency and credible interval).
 		Step 5. Report sensitivity analysis [] --> subsection in methods
-		A. For broad priors. If the prior is intended to be vague or only mildly informed so that it has minimal influence on the posterior, show that other vague priors produce similar posterior
+		A. For broad priors. If the prior is intended to be vague or only mildly informed so that it has minimal influence on the posterior, show that other vague priors produce similar posterior
 		results. []--> aca tengo que hacer correr otra cadena. 
 		
 		B. For informed priors. If the prior is informed by previous research, show what posterior results from a vague prior or from a range of differently informed priors.
 		
-		C. For default priors. If using a default prior, show the effect of varying its settings. Be sure that the range of default priors constitutes theoretically meaningful priors, and consider whether
+		C. For default priors. If using a default prior, show the effect of varying its settings. Be sure that the range of default priors constitutes theoretically meaningful priors, and consider whether
 		they mimic plausible empirically informed priors.
 		D. B
-		 Fs and model probabilites. If the analysis involves model comparison or hypothesis testing, then for each prior report not only the BFs but also the posterior model probabilities for a
+		Fs and model probabilites. If the analysis involves model comparison or hypothesis testing, then for each prior report not only the BFs but also the posterior model probabilities for a
 		range of prior model probabilities. [] --> tengo que correr otros esquemas tambien. 
 		
-		E. Decisions. If making decisions, report whether decisions change under different priors. For BFs, report changes in the minimum prior model probability needed to achieve decisive
+		E. Decisions. If making decisions, report whether decisions change under different priors. For BFs, report changes in the minimum prior model probability needed to achieve decisive
 		posterior model probability.
 		
 		Step 6. Make it reproducible []--> subsection in methods
 		A. Software and installation. Explain all the software that is necessary and where to obtain it. If possible, use non-proprietary software. []--> subsection in methods
 		B. Software version details. The posted script should include detailed information about the software version numbers.
-		C. S cript and data. Post the complete analysis script (that is, computer code) and data in a stable public repository with persistent URLs, so that anyone can download it and exactly reproduce the analysis. Be sure that it is clear how to navigate the site and find relevant files, for example, with a wiki overview or readme file. If posting data, be sure that it respects privacy and copyright restrictions. If the original data cannot be posted publicly, it may be helpful to post dummy data of the same form so that users can verify the operation of the analysis script.  -->[] aqui con la wiki voy a tener que trabajar, probablmente despues del envio. 
+		C. Script and data. Post the complete analysis script (that is, computer code) and data in a stable public repository with persistent URLs, so that anyone can download it and exactly reproduce the analysis. Be sure that it is clear how to navigate the site and find relevant files, for example, with a wiki overview or readme file. If posting data, be sure that it respects privacy and copyright restrictions. If the original data cannot be posted publicly, it may be helpful to post dummy data of the same form so that users can verify the operation of the analysis script.  -->[] aqui con la wiki voy a tener que trabajar, probablmente despues del envio. 
 		
-		D. R
-		 eadable for humans. Make the posted script genuinely readable by human beings. Annotate the code with thorough explanatory comments and spatially arrange the code for human
+		D. Readable for humans. Make the posted script genuinely readable by human beings. Annotate the code with thorough explanatory comments and spatially arrange the code for human
 		readability.
 		
 		E. All auxiliary files. Check that all the needed auxiliary files (utility scripts, image files, bibliography files, formatting files and so on) are also posted.
 		F. Runs as posted. Check that the posted script and accompanying files run as is when downloaded to a different computer. The code should have no lines that load files from personal
 		computer directories or non-persistent URLs. [] --> modificando los scripts de dirac quizas pueda hacerlo. 
 		
-		G. MCMC chains for time-intensive runs. For MCMC runs that take a long time to compute, it is helpful to post an MCMC chain so that people can inspect the MCMC chain without having to
+		G. MCMC chains for time-intensive runs. For MCMC runs that take a long time to compute, it is helpful to post an MCMC chain so that people can inspect the MCMC chain without having to
 		wait through an entire run duration. [] --> subirlas a github. 
 		
 		H. Reproducible MCMC. To make MCMC chains exactly reproducible, the pseudo-random number generators should be explicitly seeded.
-	\end{comment}
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		preguntas y graficos que las responden
 		
 		1. Como se que la implementacion de MacroIR es correcta?
@@ -293,8 +292,8 @@
 		un grafico al estilo mi paper de biophysical journal ayudaria mucho -->al S1
 		
 		
-	\end{comment}
-	\begin{comment}
+	
+	\subsection{comment}
 		mejor vamos por los resultados
 		
 		1. esquemas  + Evidencias comparadas de equemas cineticos alternativos. 
@@ -319,7 +318,7 @@
 		
 		
 		
-		3. el tercer grafico seria el de los f_off vs f_on y la energia libre en funcion de la reaction coordinate
+		3. el tercer grafico seria el de los $f_off$ vs $f_on$ y la energia libre en funcion de la reaction coordinate
 		
 		Idea: explicar el acoplamiento en terminos de constantes de equilibrio y barreras energeticas. 
 		
@@ -355,24 +354,24 @@
 		1: 
 		
 		
-	\end{comment}
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		ranking:
 		S0. el metodo funciona. 
 		recupero los parametros
 		la  
-		3. esquema ilustracion (error aqui)  f_off vs f_on y energia libre 
+		3. esquema ilustracion (error aqui)  $f_off$ vs $f_on$ y energia libre 
 		1.  esquemas + evidencias + posterior predictions
 		2. posterior kinetic parameters  + de la current at different number of rotations
 		5. posterior states 
 		4. posterior rates koff vos kons and complete scheme with color code
 		
 		
-	\end{comment}
 	
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		figura 1
 		responde a la pregunta: 
 		que resulta de comparar la evidencia de esquemas cienticos alternativos
@@ -385,9 +384,9 @@
 		los voy a hacer todos en R []
 		--> evidencias []
 		--->posterior predictions []
-	\end{comment}
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		figura 2
 		cual es la distribucion a posteriori de los parametros del esquema 10?
 		
@@ -398,22 +397,22 @@
 		
 		D parameters gating
 		E current per number of rotated subunits
-	\end{comment}
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		figura 3 
 		como actua el acoplamiento alosterico sobre la cinetica de binding y de rotation para la subunidad izquierda y derecha
 		
 		A acoplamiento entre binding y rotacion de la subunidad izquierda
 		B acoplamiento entre binding y rotacion de la subunidad derecha
-		C f_off vs F_on plot (buscar nombre con chatgpt[]) : analisis de los cuadrantes
-		D f_off vs f_on posteriors
+		C $f_off$ vs $f_on$ plot (buscar nombre con chatgpt[]) : analisis de los cuadrantes
+		D $f_off$ vs $f_on$ posteriors
 		E  energia libre vs reaction coordinate 
 		F delta delta energia libre vs reaction coordinate
 		
-	\end{comment}
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		figure 4. 
 		la pregunta que responde este grafico es como se refleja el acomplamiento entre subunidades a nivel del canal ionico
 		
@@ -421,18 +420,18 @@
 		B grado de acoplamiento para cada  biding transition (buscar mejor wording)
 		C muestro roff vs ron
 		D grado de acoplamiento de las transiciones de rotacion
-	\end{comment}
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		figure 5
 		la pregunta es la posterior probability of state occupancy
 		A trayectoria temporal para cada estado y para cada grado de acoplamiento(buscar mejor termino[])
 		B heat map de state probability en funcion del tiempo y la concentracion de ATP
 		
-	\end{comment}
 	
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		supplementary figures
 		
 		
@@ -477,10 +476,11 @@
 		
 		conductancias para los inter-subunit
 		
-	\end{comment}
-	\begin{comment}
+	
+	\subsection{comment}
 		
-		\\\\The activation of ligand-gated ion channels is fundamental to cellular signal transduction, impacting diverse processes such as neurotransmission and immune responses. ATP‐gated P2X receptors, with their relatively simple trimeric structure, offer an attractive model for probing the mechanisms of allosteric regulation. Although structural studies have defined the closed and open states of these channels, the precise sequence of ATP‐induced conformational changes and the role of subunit‐specific dynamics remain unresolved. Here, we demonstrate that the activation kinetics of P2X2 receptors can be accurately reproduced by an asymmetric coupling mechanism, where ATP binding drives the rotation of individual subunits and a saturating increase in conductance as the subunits undergo rotation. Using a novel Bayesian analysis tailored to time-averaged macroscopic currents, we demonstrate that ATP binding stabilizes and lowers the energetic barrier for rotation of the left subunit while minimally influencing the right subunit. A second asymmetric coupling explains the negative cooperativity in binding, with ATP binding at one site paradoxically increasing the barrier at the second site. These modulated energy barriers prevent an unliganded rotation that would lead to premature inactivation. Our findings suggest that such tunable activation barriers represent a general strategy for stabilizing ion channels and signaling proteins in dynamic cellular environments. This work provides a mechanistic framework for understanding allosteric regulation in ligand-gated ion channels, with implications for designing therapies targeting P2X receptors in conditions such as chronic pain and inflammation}. \\\\\\  %}
+	 
+		The activation of ligand-gated ion channels is fundamental to cellular signal transduction, impacting diverse processes such as neurotransmission and immune responses. ATP‐gated P2X receptors, with their relatively simple trimeric structure, offer an attractive model for probing the mechanisms of allosteric regulation. Although structural studies have defined the closed and open states of these channels, the precise sequence of ATP‐induced conformational changes and the role of subunit‐specific dynamics remain unresolved. Here, we demonstrate that the activation kinetics of P2X2 receptors can be accurately reproduced by an asymmetric coupling mechanism, where ATP binding drives the rotation of individual subunits and a saturating increase in conductance as the subunits undergo rotation. Using a novel Bayesian analysis tailored to time-averaged macroscopic currents, we demonstrate that ATP binding stabilizes and lowers the energetic barrier for rotation of the left subunit while minimally influencing the right subunit. A second asymmetric coupling explains the negative cooperativity in binding, with ATP binding at one site paradoxically increasing the barrier at the second site. These modulated energy barriers prevent an unliganded rotation that would lead to premature inactivation. Our findings suggest that such tunable activation barriers represent a general strategy for stabilizing ion channels and signaling proteins in dynamic cellular environments. This work provides a mechanistic framework for understanding allosteric regulation in ligand-gated ion channels, with implications for designing therapies targeting P2X receptors in conditions such as chronic pain and inflammation.
 		
 		Ligand-gated ion channels translate chemical signals into electrical activity, a process central to physiology and disease. Among these, ATP-activated P2X receptors exhibit a unique trimeric architecture where intersubunit ligand binding triggers pore opening, yet the dynamic coordination of subunit motions during activation remains unknown. This gap limits mechanistic understanding and therapeutic targeting of P2X receptors in conditions like chronic pain. Here, we resolve this coordination by developing \textit{MacroIR}, a Bayesian framework that extracts subunit-specific kinetic parameters from macroscopic currents. Applying \textit{MacroIR} to sub-millisecond ATP pulses, we show that ATP binding induces \textit{asymmetric subunit rotation}, preferentially lowering the activation barrier of one subunit while increasing it in its neighbor. This kinetic asymmetry explains longstanding paradoxes: how two ATP-binding sites suffice for activation, why ligand binding exhibits negative cooperativity, and how unliganded pore opening is suppressed. Crucially, ATP acts catalytically, accelerating both forward and reverse transitions to minimize futile conformational cycles—a "kinetic stability" mechanism that prioritizes transition-state regulation over equilibrium shifts. Unlike classical allostery, which focuses on endpoint stabilization, our results demonstrate that proteins dynamically optimize energy landscapes to avoid structural vulnerabilities. The \textit{MacroIR} framework generalizes to dynamic macromolecules, bridging structural snapshots with functional kinetics. By redefining allostery as a kinetic phenomenon, this work opens avenues for therapeutics targeting energy barriers rather than ligand-binding sites, offering precision in modulating P2X receptors and related molecular machines.\\\\\\\\\ %}
 %\abstract{
@@ -496,7 +496,7 @@ Here we show that the activation kinetics of P2X2 receptors are governed by an a
 
 Our findings challenge traditional symmetric models of receptor activation by directly linking structural dynamics to kinetic modulation. The uncovered tunable activation barriers not only refine our understanding of P2X receptor gating but also provide a mechanistic framework that may extend to other ligand-gated ion channels. In a broader context, these insights open new avenues for the rational design of therapeutic agents targeting allosteric sites in conditions such as chronic pain and inflammation.
 \\\\	
-The activation of ligand-gated ion channels is fundamental to cellular signal transduction, impacting diverse processes such as neurotransmission and immune responses. ATP-gated P2X2 receptors, with their structurally simple architecture, provide an accessible model for studying the mechanisms underlying intersubunit allosteric regulation. However, the coordination of ATP-induced conformational transitions in P2X2 remains poorly understood. Here, we demonstrate that the activation kinetics of P2X2 receptors can be accurately reproduced by an asymmetric coupling mechanism, where ATP binding drives the rotation of individual subunits and a saturating increase in conductance as the subunits undergo rotation. Using a novel Bayesian analysis of ultra-short ATP pulse experiments, we demonstrate that ATP binding stabilizes and lowers the energetic barrier for rotation of the left subunit while minimally influencing the right subunit. A second asymmetric coupling explains the negative cooperativity in binding, with ATP binding at one site paradoxically increasing the barrier at the second site. These modulated energy barriers prevent an unliganded rotation that would lead to premature inactivation. Our findings suggest that such tunable activation barriers represent a general strategy for stabilizing ion channels and signaling proteins in dynamic cellular environments. This work provides a mechanistic framework for understanding allosteric regulation in ligand-gated ion channels, with implications for designing therapies targeting P2X receptors in conditions such as chronic pain and inflammation.}
+The activation of ligand-gated ion channels is fundamental to cellular signal transduction, impacting diverse processes such as neurotransmission and immune responses. ATP-gated P2X2 receptors, with their structurally simple architecture, provide an accessible model for studying the mechanisms underlying intersubunit allosteric regulation. However, the coordination of ATP-induced conformational transitions in P2X2 remains poorly understood. Here, we demonstrate that the activation kinetics of P2X2 receptors can be accurately reproduced by an asymmetric coupling mechanism, where ATP binding drives the rotation of individual subunits and a saturating increase in conductance as the subunits undergo rotation. Using a novel Bayesian analysis of ultra-short ATP pulse experiments, we demonstrate that ATP binding stabilizes and lowers the energetic barrier for rotation of the left subunit while minimally influencing the right subunit. A second asymmetric coupling explains the negative cooperativity in binding, with ATP binding at one site paradoxically increasing the barrier at the second site. These modulated energy barriers prevent an unliganded rotation that would lead to premature inactivation. Our findings suggest that such tunable activation barriers represent a general strategy for stabilizing ion channels and signaling proteins in dynamic cellular environments. This work provides a mechanistic framework for understanding allosteric regulation in ligand-gated ion channels, with implications for designing therapies targeting P2X receptors in conditions such as chronic pain and inflammation.
 
 
 
@@ -513,13 +513,13 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 % 
 % \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
 
-\end{comment}
+
 
 	
 	
 	\section{Comentarios}
 	
-	\begin{comment}
+	\subsection{comment}
 		subtitulos
 		La primer pregunta es: como empiezo?
 		
@@ -557,10 +557,10 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		
 		
 		
-	\end{comment}
 	
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		
 		Como organizo los resultados?
 		una posibilidad es a traves de buscar las preguntas respondidas. 
@@ -582,20 +582,20 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		Ahora, de la misma forma en que se plantean estados hipoteticos en un esquema convencional, para ajustar los datos experimentales,  se pueden  plantear cambios conformacionales hipotéticos sin tener en claro cual es su correlato estructural. Tal es el caso del flipping, el cual puede ser planteado como un cambio conformacional que ocurre a nivel del receptor entero o cada subunidad por separado. 
 		Pero existe otra posibilidad y esta es la de plantear los cambios conformacionales y sus acoplamientos solo en base a el conocimiento que se tiene de la estructura. Este camino se planteo en este trabajo donde solo se plantean  dos cambios conformacionales la union del agonista y la rotacion de cada subunidad y dado que cada sitio de union involucra a dos subunidades (y el reverso cada subunidad esta involucrada en dos sitios de union), cada union del agonista se acopla a la rotacion de ambas subunidades. Y aquí se plantean dos posibilidades, que el acoplamiento, a pesar de involucrar difrentes residuos, sea identico con ambas subunidades o que los acoplamientos sean diferentes, asimétricos. 
 		También se planteó otra alternativa: la de que el acoplamiento sea ternario, es decir que la rotación conjunta de ambas subunidades sea estructuralmente favorecida. El acoplamiento ternario puede ser visto matematicamente como una parametrización de un esquema convencional en tres dimensiones, la rotacion de la subunidad izquierda, la rotación de la subunidad de la derecha y unión del agonista. Este parametrización alostérica define las constantes del siguiente modo: 
-	\end{comment}
 	
 	
 	
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		Se planteó un esquema donde el unico acoplamiento alostérico era este acoplamiento ternario y se lograron reproducir los resultados aunque con una menor evidencia. 
 		
 		Algunos cambios se dan a nivel de la subunidad, como la unión del agonista o la rotación de una subunidad, mientras que otros cambios tienen sentido a nivel de todo el canal, como el gating. 
 		
-	\end{comment}
 	
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		
 		
 		
@@ -609,8 +609,8 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		
 		
 		
-	\end{comment}
-	\begin{comment}
+	
+	\subsection{comment}
 		Resultados en orden conceptual
 		
 		
@@ -627,9 +627,9 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		Esquema de mayor evidencia con interpretación conformacional
 		El esquema de mayor evidencia es uno convencional de difícil interpretación mecanistica. El esquema siguiente en grado de evidencia, usa 4 grados de libertad menos y es ya sí construido a partir de puras consideraciones mecanísticas: es el esquema 10, siendo este un esquema derivado a partir de interacciones conformacionales locales. Es decir que el comportamiento global del canal se construye a partir de la suma de cambios e interacciones locales. Solo se suponen dos cambios conformacionales: la union del agonista y la rotacion de cada subunidad. La corriente que pasa a traves del canal se supone que es función del número de subunidades rotadas. Esta formula se obtuvo a partir del siguiente supuesto. Se supuso que en realidad habria un tercer cambio conformacional, el gating y que este estaría acoplado alostéricamente a la rotacion de subunidades, cada subunidad estabilizando más el canal abierto. 
 		La idea es que esta cambio conformacional sería mucho más rapido que la resolución temporal del experimento, por lo que lo que se vería es una corriente promedio que depende del numero de subunidades rotadas y la cinetica de gating no se veria modelada. La formula entonces es la siguiente: 
-	\end{comment}
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		
 		Este texto surgio de un momento de lucidez
 		
@@ -650,11 +650,11 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		Ahora la formulacion estandard del alosterismo se restringe a la constante de equilibrio, se plantea entonces la pregunta de como se puede modelar la cinetica del acoplamiento alosterico?
 		Ahi se extiende la misma idea de los factores alostericos pero a las rates forward y backward (buscar los terminos apropiados). un simple diagrama muestra que en realidad no es que haya alosterismo, sino que el alosterismo es una reparametrizacion de los rates y que se cumple siempre y cuando distingamos los estados como combinacion de los cambios conformacionales. 
 		
-		Entonces surge la pregunta: como interpreto los factores kineto-alostericos? La primer respuesta a esta pregunta fue usar la analogia con la linear free energy relationship usada para analizar el efecto de mutaciones sobre la cinetica. Pero surgio un problema: se deben permitir exponentes fuera del intervalo 0-1? y ademas fitear en este rango era mas dificil. Se opto por parametrizar contra factores analogos a los del equilibrio tanto sobre los k/r_on como sobre los off. Y esto dio lugar a un resultado que llevo un tiempo interpretar: algunas interacciones asceleraban tanto la kon como la koff y ahi surgio la pregunta: 
-		que significa la relacion entre los f_kon y f_koff?
+		Entonces surge la pregunta: como interpreto los factores kineto-alostericos? La primer respuesta a esta pregunta fue usar la analogia con la linear free energy relationship usada para analizar el efecto de mutaciones sobre la cinetica. Pero surgio un problema: se deben permitir exponentes fuera del intervalo 0-1? y ademas fitear en este rango era mas dificil. Se opto por parametrizar contra factores analogos a los del equilibrio tanto sobre los k/ron como sobre los off. Y esto dio lugar a un resultado que llevo un tiempo interpretar: algunas interacciones asceleraban tanto la kon como la koff y ahi surgio la pregunta: 
+		que significa la relacion entre los $f_kon$ y $f_koff$?
 		
 		Una forma de verlo es a traves de perfiles de energia: el alto de la barrera es proporcional al logaritmo del kon y la diferencia entre kon y koff es proporcional a la constante de equilibrio. 
-		De esta forma wue  los f_on y f_off sean mayores a uno indican que baja la barrera energetica para la rotacion. 
+		De esta forma wue  los $f_on$ y $f_off$ sean mayores a uno indican que baja la barrera energetica para la rotacion. 
 		
 		Finalmente en la discusion surge la pregunta: y qué ventaja tendria bajar la barrera energetica en lugar de tenerla siempre baja (ya que en ambos casos la proporcion de tiempo abierto depende de la keq y no de las f-on y f-off)? 
 		Una posible respuesta es que el canal podria ser vulnerable durante la rotacion a entrar a un estado irreversible. Y la pregunta aqui es que tipo de configuracion markoviana haria que la entrada a un estado irreversible dependa de la cantidad de cruces? y la respuesta es que la regulacion alosterica seria en la entrada y salida del energetic landscape y no durante la rotacion en si misma. Si la regulacion alosterica afectara a todo el camino, no habria ninguna diferencia en la propension a llegar a un estado irreversible entre una cinetica rapida y una cientica corta. 
@@ -669,7 +669,7 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		2) como representar los cambios de conductancia? la respuesta fue suponer que era instantanea y determinada por el numero de subunidades rotadas. No se represento un cambio adicional de gating. como en esquemas anteriores. Esto permitió ajustar la conductancia parcial de 2 subunidades rotadas, una importante prediccion coherente con el hecho de que canales con solo dos sitios de union al atp activos muestran respuesta al ATP. Tambien esto es coherente con observaciones de canal unico donde se obsrvan subconductancias. 
 		
 		3) es la activacion sincronica o secuencial? Esta disyuntiva se represento en un tabajo anterior, en este trabajo donde se rehacen los modelos sabiendo que el sitio de union es entre subunidades, solo se debe rehacer la alternativa secuencial ya que la sincronica no cambia entre un sitio de union entre subunidades o dentro. La evidencia del modelo sincronico es inferior y multimodal.
-	\end{comment}
+	
 	
 	\begin{equation}
 		i(n)= i_{max} \cdot \frac{E_n}{E_n+1}
@@ -680,7 +680,7 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		\label{eq:efficacy_rotated}
 	\end{equation}
 	
-	\begin{comment}
+	\subsection{comment}
 		Esta parametrizacion permite reducir el numero de estados a la mitad y llevar el tiempo de calculo al terreno de lo posible. Por otro lado tambien representa otra posibilidad la de que el tamaño del poro aumente con el numero de subunidades rotadas. 
 		
 		Mecanismos similares con una menor Evidencia
@@ -712,9 +712,9 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		Otros esquemas mostraron una menor evidencia
 		
 		
-	\end{comment}
 	
-	\begin{comment}
+	
+	\subsection{comment}
 		
 		
 		Cuales son los resultados del paper en orden decreciente de importancia:
@@ -770,7 +770,7 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		
 		5. En este trabajo se ponen en valor varios avances metodologicos: 
 		
-		A. El mas importante son los cuadrantes del grafico f_on vs f_off que permite separar las situaciones donde cambia la barrera energetica y cuando cambia el salto en energia libre, seprarndo la regulacion cinetica de la termodinamica. Estamos impactados por la simplicidad y profundidad conceptual de esta herramienta, que no entendemos del todo aun. 
+		A. El mas importante son los cuadrantes del grafico $f_on$ vs $f_off$ que permite separar las situaciones donde cambia la barrera energetica y cuando cambia el salto en energia libre, seprarndo la regulacion cinetica de la termodinamica. Estamos impactados por la simplicidad y profundidad conceptual de esta herramienta, que no entendemos del todo aun. 
 		
 		B. El desarrollo teorico mas trabajoso y demandante fue el del algoritmo MacroIR. Combinando este algoritmo con un afine-invariante parallel tempering con ajuste dinamico de temperaturas, se lograron hacer analisis cineticos de modelos complejos en situaciones experimentales reales. El costo computacional de este combo esta en el reino de lo posible: ocho nucleos durante dos semanas. Todavia hay mucho por hacer en la optimizacion de este algoritmo. 
 		Si bien no es necesario calcular la evidencia para obtener la distribucion a posteriori, el metodo de paralel tempering asegura una busqueda exhaustiva en el espacio de parametros, especialmente en situaciones multimodales como todos los modelos medianamente complejos. 
@@ -786,8 +786,8 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		
 		X. Conclusiones metodologicas. El planteo inicial es hipotetico deductivo: a partir de informacion estructural (hipotesis) armamos un modelo cinetico (deduccion)  sin tener en cuenta la informacion cinetica disponible. 
 		Ahora, la parametrizacion del modelo era amplia y algunos valores de los parametros resultaron inesperados para nosotros, en particular los que determinan que las las barreras energeticas cambiasen. En esto seguimos mas un patron inductivo: a partir de la informacion obtenida formulamos nuevas hipotesis no envisionadas inicialmente. 
-		La parametrizacion inicial del acoplamiento cinetico alosterico fue extendiendo el concepto de Linear free energy relationship y suponiamos que la pendiente deberia estar entre 0 y 1. No lograrmos buenos ajustes de esta forma y reparametrizamos la relacion extendiendo la parametrizacion de la constante de equilibrio. Esto permitio mejores ajustes, pero no encotrabamos el significado cinetico. Este se hizo claro al graficar las f_on vs f_off y entender   
-	\end{comment}
+		La parametrizacion inicial del acoplamiento cinetico alosterico fue extendiendo el concepto de Linear free energy relationship y suponiamos que la pendiente deberia estar entre 0 y 1. No lograrmos buenos ajustes de esta forma y reparametrizamos la relacion extendiendo la parametrizacion de la constante de equilibrio. Esto permitio mejores ajustes, pero no encotrabamos el significado cinetico. Este se hizo claro al graficar las $f_on$ vs $f_off$ y entender   
+	
 	
 	
 	\section{Introduction}
@@ -796,10 +796,10 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 	
 	% This is an inline comment, it will not appear in the final document.
 	
-	\begin{comment}
+	\subsection{comment}
 		This entire block is commented out and will not appear in the final document.
 		It is useful for temporarily removing content without deleting it.
-	\end{comment}
+	
 	
 	\section{Methods}
 	Describe the methodology here. You can include equations like:
@@ -820,7 +820,7 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 	Beyond ion channels, this work provides a blueprint for studying dynamic allostery in molecular motors and enzymes. Therapeutic strategies targeting kinetic asymmetry—rather than binding pockets—could yield next-generation P2X\textsubscript{2} modulators with enhanced specificity. More broadly, evolutionary optimization of energy landscapes emerges as a universal strategy for proteins operating in noisy cellular environments, where minimizing transition state exposure outweighs the benefits of rapid conformational cycling.
 	
 	\section{Discussion}
-	\begin{comment}
+	\subsection{comment}
 		\section{De los estados a la likelihood y mas allá}
 		Con la información de la probabilidad de los estados y la conductancia se puede calcular la corriente esperada (figura 6 a). Vemos que existen fluctuaciones en la corriente pre-pulso que MacroIR puede reproducir. Reproduce con trampa, ya que usa la información de la medida anterior para predecir la próxima, pero obtiene información cinética (y como vimos en la figura anterior, de conductancia) en el camino. Como se ve en la figura, el esquema 10 reproduce el perfil temporal de la respuesta de forma excelente. 
 		Ahora, excelente no es un concepto cientifico, necesitamos algo mejor, una likelihood. Para obtener una likelihood necesitamos una varianza y eso también lo entrega MacoIR. La varianza tiene tres componentes, el ruido estocástico generado por los cambios aleatorios de los estados, el ruido instrumental blanco (que disminuye con la duración de los intervalos de promediación) y un ruido rosa que modela otros procesos estocásticos no reproducidos por el esquema 10. Estos procesos pueden ser otros canales o detalles de la cinética que no son tomados por el esquema 10. Como se ve en la figura el ruido rosa es reducido, pero su distribución a posteriori es acotada, de modo que algo contribuye. El ruido blanco es significativo para las mediciones mas breves a concentracion baja de ATP, mientras que el ruido estocástico es mayoritario en el resto de los casos. Esto implica que hay mucha información disponible en estas fluctuaciones estocasticas, explicando la deficiencia de MacroINR para reproducir el ranking de modelos cineticos. 
@@ -983,7 +983,7 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		
 		
 		
-	\end{comment}
+	
 	Deepseek
 	Asymmetric Kinetic Coupling in P2X2 Activation
 	ATP binding to P2X2 receptors triggers asymmetric subunit rotation, a mechanism resolved through conformational kinetic modeling and the Bayesian framework MacroIR. By analyzing macroscopic currents with MacroIR—which retains kinetic information in time-averaged data—we identified ligand-induced stabilization of rotational transitions in one subunit and kinetic suppression in another. This asymmetry explains why two ATP-binding sites suffice for activation and how negative cooperativity arises. Unexpectedly, ATP also acts catalytically, lowering energy barriers for both forward ($k_on$) and reverse ($k_off$) transitions. This dual action minimizes unliganded rotation frequency (not equilibrium occupancy), suggesting a biological strategy to avoid vulnerable transition states while permitting rapid ligand-driven gating.
@@ -1011,12 +1011,12 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 	
 	The dynamic regulation of ion channels has historically been interpreted through two disconnected lenses: equilibrium-based allosteric models and purely phenomenological kinetic schemes. Our work bridges this gap by introducing a conformational kinetic framework that explicitly ties discrete structural rearrangements to functional macro-currents. Central to this advance is the demonstration that kinetic rate constants ($k_{\text{on}}$, $k_{\text{off}}$) and their couplings map directly onto physical transitions between well-defined conformational states—a paradigm we term the \textit{conformational model}. Unlike classical allostery, which focuses on ligand-binding equilibria ($K_d$), our approach reveals how evolution could optimize the kinetic landscape itself, working on barrier modulation ($\Delta G^{\ddagger}$) and not only over mere state stabilization. 
 	
-	\begin{comment}
+	\subsection{comment}
 		bueno, reveals es un poco fuerte suggest podria ser. 
 		tendria que poner citas de alosterismo Monod Chagenau W, para los phenomenological kinetic schemes, ahi no se. 
-		En realidad Horrinton & Aldrich intentan analyzar la cinetica del alosterismo. Tengo que citarlo como un antecedente
+		En realidad Horrinton  Aldrich intentan analyzar la cinetica del alosterismo. Tengo que citarlo como un antecedente
 		. 
-	\end{comment}
+	
 	
 	
 	The clustering of experimental data in catalytic quadrants of the $k_{\text{on}}$–$k_{\text{off}}$ phase space (Fig.~\ref{fig:quadrants}) underscores a critical biological strategy: suppressing transition frequencies to minimize exposure of vulnerable structural elements during conformational changes and the probability of landing in an non-functional state. This \textit{kinetic stability} mechanism—achieved by elevating energy barriers for regulated motions—explains why mutations altering rotational gate potentials (Fig.~\ref{fig:barriers}) often prove pathogenic despite preserving ligand-binding affinities. By reducing the frequency of reaching high-risk path forking states (e.g., those with exposed redox-sensitive residues), proteins balance functional dynamics with structural resilience.  
@@ -1039,12 +1039,12 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 	
 	\section{Discussion}
 	The dynamic behavior of ion channels has long been interpreted through equilibrium-driven allosteric models or phenomenological kinetic schemes divorced from structural insights. Here, we resolve this divide by introducing a conformational kinetic framework that directly links discrete structural transitions to experimentally observed macro-currents. Our findings not only validate the predictive power of kinetic-conformational modeling but also redefine principles of allosteric regulation, emphasizing kinetic coupling as a critical evolutionary driver.  
-	\begin{comment}
+	\subsection{comment}
 		esta bien, pero: 
 		1) tengo que mencionar la importancia del analisis bayesiano que solo se pudo hacer con la integracion temporal conseguida con macroir.
 		2) quizas mencionar que el kinetic coupling tiene que ver con las barreras energeticas. 
 		3) no se si puedo decir que el kinetic coupling es un evolutionary driver, tampoco puedo decir que no lo sea. 
-	\end{comment}
+	
 	
 	
 	\subsection{Integrating structure and kinetics}  
@@ -1113,7 +1113,7 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 	
 	\paragraph*{Conclusion} We establish kinetic coupling as a fundamental mechanism balancing functional dynamics with structural resilience. This paradigm shift—from equilibrium to kinetic control—reconciles discrepancies between structural and functional studies while opening new avenues for understanding allostery and disease 
 	
-	\begin{comment}
+	\subsection{comment}
 		
 		\section{Discussion}\label{discussion}
 		\subsection{Mechanistic Significance of Scheme 10}
@@ -1136,210 +1136,15 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		\newpage
 		
 		
-	\end{comment}
 	
-	\begin{comment}
-		
-		
-		\section{Tables}\label{sec5}
-		
-		
-		\begin{table}[h]
-			\caption{Posterior distribution of Scheme X}\label{tab1}%
-			\begin{tabular}{c|c|c|c}
-				\hline
-				\hline
-				parameters & median & CI\_hdi\_low & CI\_hdi\_hi \\ 
-				\hline
-				\hline
-				\rowcolor[HTML]{efefef} 
-				RB & 632.661 & 0.1441125 & 3.918861 10^{3} \\ 
-				RB_{rot} & 2.454486 10^{4} & 1.260341 & 1.401152 10^{5} \\ 
-				\rowcolor[HTML]{efefef} 
-				RB_{bon} & 6.248909 & 1.933688 10^{-6} & 38.56124 \\ 
-				BR & 1.612385 & 0.2657464 & 1.106451 10^{3} \\ 
-				\rowcolor[HTML]{efefef} 
-				BR_{rot} & 2.241492 & 1.077178 & 3.979711 10^{4} \\ 
-				BR_{bon} & 6.986098 10^{-3} & 9.626552 10^{-7} & 11.16657 \\ 
-				\hline
-				\hline
-			\end{tabular}
-			\footnotetext{Source: This is an example of table footnote. This is an example of table footnote.}
-			\footnotetext[1]{Example for a first table footnote. This is an example of table footnote.}
-			\footnotetext[2]{Example for a second table footnote. This is an example of table footnote.}
-		\end{table}
+	
+	\subsection{comment}
 		
 		
 		
 		
-		\noindent
-		
-		The input format for the above table is as follows:
-		
-		
-		
-		
-		\begin{table}[h]
-			\caption{Example of a lengthy table which is set to full textwidth}\label{tab2}
-			\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccccc}
-				\toprule%
-				& \multicolumn{3}{@{}c@{}}{Element 1\footnotemark[1]} & \multicolumn{3}{@{}c@{}}{Element 2\footnotemark[2]} \\\cmidrule{2-4}\cmidrule{5-7}%
-				Project & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ \\
-				\midrule
-				Element 3  & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$\\
-				Element 4  & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$\\
-				\botrule
-			\end{tabular*}
-			\footnotetext{Note: This is an example of table footnote. This is an example of table footnote this is an example of table footnote this is an example of~table footnote this is an example of table footnote.}
-			\footnotetext[1]{Example for a first table footnote.}
-			\footnotetext[2]{Example for a second table footnote.}
-		\end{table}
-		
-		In case of double column layout, tables which do not fit in single column width should be set to full text width. For this, you need to use \verb+\begin{table*}+ \verb+...+ \verb+\end{table*}+ instead of \verb+\begin{table}+ \verb+...+ \verb+\end{table}+ environment. Lengthy tables which do not fit in textwidth should be set as rotated table. For this, you need to use \verb+\begin{sidewaystable}+ \verb+...+ \verb+\end{sidewaystable}+ instead of \verb+\begin{table*}+ \verb+...+ \verb+\end{table*}+ environment. This environment puts tables rotated to single column width. For tables rotated to double column width, use \verb+\begin{sidewaystable*}+ \verb+...+ \verb+\end{sidewaystable*}+.
-		
-		\begin{sidewaystable}
-			\caption{Tables which are too long to fit, should be written using the ``sidewaystable'' environment as shown here}\label{tab3}
-			\begin{tabular*}{\textheight}{@{\extracolsep\fill}lcccccc}
-				\toprule%
-				& \multicolumn{3}{@{}c@{}}{Element 1\footnotemark[1]}& \multicolumn{3}{@{}c@{}}{Element\footnotemark[2]} \\\cmidrule{2-4}\cmidrule{5-7}%
-				Projectile & Energy	& $\sigma_{calc}$ & $\sigma_{expt}$ & Energy & $\sigma_{calc}$ & $\sigma_{expt}$ \\
-				\midrule
-				Element 3 & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$ \\
-				Element 4 & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$ \\
-				Element 5 & 990 A & 1168 & $1547\pm12$ & 780 A & 1166 & $1239\pm100$ \\
-				Element 6 & 500 A & 961  & $922\pm10$  & 900 A & 1268 & $1092\pm40$ \\
-				\botrule
-			\end{tabular*}
-			\footnotetext{Note: This is an example of table footnote this is an example of table footnote this is an example of table footnote this is an example of~table footnote this is an example of table footnote.}
-			\footnotetext[1]{This is an example of table footnote.}
-		\end{sidewaystable}
-		
-		\section{Figures}\label{sec6}
-		
-		As per the \LaTeX\ standards you need to use eps images for \LaTeX\ compilation and \verb+pdf/jpg/png+ images for \verb+PDFLaTeX+ compilation. This is one of the major difference between \LaTeX\ and \verb+PDFLaTeX+. Each image should be from a single input .eps/vector image file. Avoid using subfigures. The command for inserting images for \LaTeX\ and \verb+PDFLaTeX+ can be generalized. The package used to insert images in \verb+LaTeX/PDFLaTeX+ is the graphicx package. Figures can be inserted via the normal figure environment as shown in the below example:
-		
-		%%=============================================%%
-		%% For presentation purpose, we have included  %%
-		%% \bigskip command. Please ignore this.       %%
-		%%=============================================%%
-		\bigskip
-		\begin{verbatim}
-			\begin{figure}[<placement-specifier>]
-				\centering
-				\includegraphics{<eps-file>}
-				\caption{<figure-caption>}\label{<figure-label>}
-			\end{figure}
-		\end{verbatim}
-		\bigskip
-		%%=============================================%%
-		%% For presentation purpose, we have included  %%
-		%% \bigskip command. Please ignore this.       %%
-		%%=============================================%%
-		
-		
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=0.9\textwidth]{fig.eps}
-			\caption{This is a widefig. This is an example of long caption this is an example of long caption  this is an example of long caption this is an example of long caption}\label{fig1}
-		\end{figure}
-		
-		In case of double column layout, the above format puts figure captions/images to single column width. To get spanned images, we need to provide \verb+\begin{figure*}+ \verb+...+ \verb+\end{figure*}+.
-		
-		For sample purpose, we have included the width of images in the optional argument of \verb+\includegraphics+ tag. Please ignore this. 
-		
-		\section{Algorithms, Program codes and Listings}\label{sec7}
-		
-		Packages \verb+algorithm+, \verb+algorithmicx+ and \verb+algpseudocode+ are used for setting algorithms in \LaTeX\ using the format:
-		
-		%%=============================================%%
-		%% For presentation purpose, we have included  %%
-		%% \bigskip command. Please ignore this.       %%
-		%%=============================================%%
-		\bigskip
-		\begin{verbatim}
-			\begin{algorithm}
-				\caption{<alg-caption>}\label{<alg-label>}
-				\begin{algorithmic}[1]
-					. . .
-				\end{algorithmic}
-			\end{algorithm}
-		\end{verbatim}
-		\bigskip
-		%%=============================================%%
-		%% For presentation purpose, we have included  %%
-		%% \bigskip command. Please ignore this.       %%
-		%%=============================================%%
-		
-		You may refer above listed package documentations for more details before setting \verb+algorithm+ environment. For program codes, the ``verbatim'' package is required and the command to be used is \verb+\begin{verbatim}+ \verb+...+ \verb+\end{verbatim}+. 
-		
-		Similarly, for \verb+listings+, use the \verb+listings+ package. \verb+\begin{lstlisting}+ \verb+...+ \verb+\end{lstlisting}+ is used to set environments similar to \verb+verbatim+ environment. Refer to the \verb+lstlisting+ package documentation for more details.
-		
-		A fast exponentiation procedure:
-		
-		\lstset{texcl=true,basicstyle=\small\sf,commentstyle=\small\rm,mathescape=true,escapeinside={(*}{*)}}
-		\begin{lstlisting}
-			begin
-			for $i:=1$ to $10$ step $1$ do
-			expt($2,i$);  
-			newline() od                (*\textrm{Comments will be set flush to the right margin}*)
-			where
-			proc expt($x,n$) $\equiv$
-			$z:=1$;
-			do if $n=0$ then exit fi;
-			do if odd($n$) then exit fi;                 
-			comment: (*\textrm{This is a comment statement;}*)
-			$n:=n/2$; $x:=x*x$ od;
-			{ $n>0$ };
-			$n:=n-1$; $z:=z*x$ od;
-			print($z$). 
-			end
-		\end{lstlisting}
-		
-		\begin{algorithm}
-			\caption{Calculate $y = x^n$}\label{algo1}
-			\begin{algorithmic}[1]
-				\Require $n \geq 0 \vee x \neq 0$
-				\Ensure $y = x^n$ 
-				\State $y \Leftarrow 1$
-				\If{$n < 0$}\label{algln2}
-				\State $X \Leftarrow 1 / x$
-				\State $N \Leftarrow -n$
-				\Else
-				\State $X \Leftarrow x$
-				\State $N \Leftarrow n$
-				\EndIf
-				\While{$N \neq 0$}
-				\If{$N$ is even}
-				\State $X \Leftarrow X \times X$
-				\State $N \Leftarrow N / 2$
-				\Else[$N$ is odd]
-				\State $y \Leftarrow y \times X$
-				\State $N \Leftarrow N - 1$
-				\EndIf
-				\EndWhile
-			\end{algorithmic}
-		\end{algorithm}
-		
-		%%=============================================%%
-		%% For presentation purpose, we have included  %%
-		%% \bigskip command. Please ignore this.       %%
-		%%=============================================%%
-		\bigskip
-		\begin{minipage}{\hsize}%
-			\lstset{frame=single,framexleftmargin=-1pt,framexrightmargin=-17pt,framesep=12pt,linewidth=0.98\textwidth,language=pascal}% Set your language (you can change the language for each code-block optionally)
-			%%% Start your code-block
-			\begin{lstlisting}
-				for i:=maxint to 0 do
-				begin
-				{ do nothing }
-				end;
-				Write('Case insensitive ');
-				Write('Pascal keywords.');
-			\end{lstlisting}
-		\end{minipage}
-		
-	\end{comment}
-	\begin{comment}
+	
+	\subsection{comment}
 		
 		\section{From subunit behavior to collective behavior}
 		
@@ -1352,15 +1157,15 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 		En la figura 4C se grafica la distribucion a posteriori de la corriente para 0,1,2 y 3 subunidades rotadas. Mientras que la corriente asignada a 0 y 1 subunidad rotada es insignificante, es notable que haya una corriente mas baja pero significativa con dos subunidades rotadas. Si observamos la proporcion de canales con tres y dos subunidades rotadas en ausencia de ligando vemos que la corriente sin ligando es mayoritariamente debida a la conductancia de dos subunidades rotadas. 
 		
 		Se ha observado consistentemente en la literatura que dos sitios de union al ATP funcionales alcanzan para generar una respuesta. Este grafico explica porqué. 
-	\end{comment}
-	\begin{comment}
+	
+	\subsection{comment}
 		Schemes cannot mathematically differentiate between interaction with the left subunit or the right subunit, there is no left-right information in the macrocurrents. Therefore it is not surprising that the posterior distribution of the allosteric parameters of Scheme X are all bimodal. As a way to break such symmetry in the priors we arbitrarily set BR to be 10 times RB. However, as the prior standard deviation of the $log10$ of both parameters (and all the remaining ones) was set to be 2, there was enough exploration at low thermodynamic temperatures to jump from one minimum to the other, so both values appear, although at different frequencies. 
 		This bimodality can be removed by determining which is greater if RB or BR, and if the former if the case, swap all the remaining parameters. In this was unimodal distribution were recovered for all allosteric parameters. 
 		Once we correct for the bimodality we find that whereas one interaction is considerable (100-10$^4$ times), the other is much smaller(0-2 times). So, upon binding, there is a strong allosteric interaction with one subunit and a weak interaction with the other. This second subunit will have strong interaction at the other binding site that it is forming. 
 		If we then look at the decomposition of the allosteric interaction we see the following.
 		
 		
-	\end{comment}
+	
 	
 	\section{Discussion}
 	\label{dis}
@@ -1380,9 +1185,9 @@ The activation of ligand-gated ion channels is fundamental to cellular signal tr
 	\section{Conclusion}
 	Summarize the findings and their implications here.
 	
-	\begin{comment}
+	\subsection{comment}
 		This conclusion may need to be revised based on new results.
-	\end{comment}
+	
 	
 	\bibliographystyle{plain}  % Bibliography style
 	\bibliography{references}   % Assumes a references.bib file exists
